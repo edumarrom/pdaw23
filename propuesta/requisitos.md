@@ -8,7 +8,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [1](https://github.com/edumarrom/pdaw23/issues/1) |
 
 | **R2**     | **Código fuente**         |
 | --------------: | :------------------- |
@@ -17,7 +17,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [2](https://github.com/edumarrom/pdaw23/issues/2) |
 
 | **R3**     | **Estilo del código**         |
 | --------------: | :------------------- |
@@ -26,7 +26,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [3](https://github.com/edumarrom/pdaw23/issues/3) |
 
 | **R4**     | **Tres lanzamientos**         |
 | --------------: | :------------------- |
@@ -35,7 +35,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [4](https://github.com/edumarrom/pdaw23/issues/4) |
 
 | **R5**     | **README.md**         |
 | --------------: | :------------------- |
@@ -44,7 +44,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [5](https://github.com/edumarrom/pdaw23/issues/5) |
 
 | **R6**     | **Documentación**         |
 | --------------: | :------------------- |
@@ -53,7 +53,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [6](https://github.com/edumarrom/pdaw23/issues/6) |
 
 | **R7**     | **Incidencias en GitHub**         |
 | --------------: | :------------------- |
@@ -62,7 +62,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [7](https://github.com/edumarrom/pdaw23/issues/7) |
 
 | **R8**     | **Etiquetas e hitos**         |
 | --------------: | :------------------- |
@@ -71,7 +71,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [8](https://github.com/edumarrom/pdaw23/issues/8) |
 
 | **R9**     | **Rama master**         |
 | --------------: | :------------------- |
@@ -80,7 +80,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [9](https://github.com/edumarrom/pdaw23/issues/9) |
 
 | **R10**     | **Gestión del proyecto**         |
 | --------------: | :------------------- |
@@ -89,7 +89,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [10](https://github.com/edumarrom/pdaw23/issues/10) |
 
 | **R11**     | **Final de cada iteración**         |
 | --------------: | :------------------- |
@@ -98,7 +98,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [11](https://github.com/edumarrom/pdaw23/issues/11) |
 
 | **R12**     | **Validación de formularios**         |
 | --------------: | :------------------- |
@@ -107,7 +107,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [12](https://github.com/edumarrom/pdaw23/issues/12) |
 
 | **R13**     | **Gestión de ventanas**         |
 | --------------: | :------------------- |
@@ -116,7 +116,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [13](https://github.com/edumarrom/pdaw23/issues/13) |
 
 | **R14**     | **Manejo de eventos**         |
 | --------------: | :------------------- |
@@ -125,7 +125,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [14](https://github.com/edumarrom/pdaw23/issues/14) |
 
 | **R15**     | **DOM**         |
 | --------------: | :------------------- |
@@ -134,7 +134,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [15](https://github.com/edumarrom/pdaw23/issues/15) |
 
 | **R16**     | **Almacenamiento en el lado del cliente**         |
 | --------------: | :------------------- |
@@ -143,7 +143,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [16](https://github.com/edumarrom/pdaw23/issues/16) |
 
 | **R17**     | **Alpine.js**         |
 | --------------: | :------------------- |
@@ -152,7 +152,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [17](https://github.com/edumarrom/pdaw23/issues/17) |
 
 | **R18**     | **Plugin no trabajado en clase**         |
 | --------------: | :------------------- |
@@ -161,7 +161,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [18](https://github.com/edumarrom/pdaw23/issues/18) |
 
 | **R19**     | **Utilización de AJAX**         |
 | --------------: | :------------------- |
@@ -170,7 +170,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [19](https://github.com/edumarrom/pdaw23/issues/19) |
 
 | **R20**     | **ECMAScript2015 (ES6)**         |
 | --------------: | :------------------- |
@@ -179,7 +179,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [20](https://github.com/edumarrom/pdaw23/issues/20) |
 
 | **R21**     | **PHP**         |
 | --------------: | :------------------- |
@@ -188,7 +188,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [21](https://github.com/edumarrom/pdaw23/issues/21) |
 
 | **R22**     | **Laravel Framework**         |
 | --------------: | :------------------- |
@@ -197,7 +197,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [22](https://github.com/edumarrom/pdaw23/issues/22) |
 
 | **R23**     | **PostgreSQL**         |
 | --------------: | :------------------- |
@@ -206,7 +206,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [23](https://github.com/edumarrom/pdaw23/issues/23) |
 
 | **R24**     | **Cloud computing**         |
 | --------------: | :------------------- |
@@ -215,7 +215,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [24](https://github.com/edumarrom/pdaw23/issues/24) |
 
 | **R25**     | **Pruebas funcionales**         |
 | --------------: | :------------------- |
@@ -224,7 +224,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [25](https://github.com/edumarrom/pdaw23/issues/25) |
 
 | **R26**     | **Aplicación escalable**         |
 | --------------: | :------------------- |
@@ -233,7 +233,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [26](https://github.com/edumarrom/pdaw23/issues/26) |
 
 | **R27**     | **Etiquetas semánticas de HTML5**         |
 | --------------: | :------------------- |
@@ -242,7 +242,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [27](https://github.com/edumarrom/pdaw23/issues/27) |
 
 | **R28**     | **Presentación mediante CSS**         |
 | --------------: | :------------------- |
@@ -251,7 +251,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [28](https://github.com/edumarrom/pdaw23/issues/28) |
 
 | **R29**     | **Diseño flexible**         |
 | --------------: | :------------------- |
@@ -260,7 +260,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [29](https://github.com/edumarrom/pdaw23/issues/29) |
 
 | **R30**     | **Transiciones, transformaciones, animaciones y contenido multimedia**         |
 | --------------: | :------------------- |
@@ -269,7 +269,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [30](https://github.com/edumarrom/pdaw23/issues/30) |
 
 | **R31**     | **Uso de microdatos**         |
 | --------------: | :------------------- |
@@ -278,7 +278,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [31](https://github.com/edumarrom/pdaw23/issues/31) |
 
 | **R32**     | **Validación HTML5, CSS3 y accesibilidad**         |
 | --------------: | :------------------- |
@@ -287,7 +287,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [32](https://github.com/edumarrom/pdaw23/issues/32) |
 
 | **R33**     | **Diseño para varias resoluciones**         |
 | --------------: | :------------------- |
@@ -296,7 +296,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [33](https://github.com/edumarrom/pdaw23/issues/33) |
 
 | **R34**     | **Varios navegadores**         |
 | --------------: | :------------------- |
@@ -305,7 +305,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [34](https://github.com/edumarrom/pdaw23/issues/34) |
 
 | **R35**     | **Despliegue en un Host**         |
 | --------------: | :------------------- |
@@ -314,7 +314,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [35](https://github.com/edumarrom/pdaw23/issues/35) |
 
 | **R36**     | **Despliegue en un servidor local**         |
 | --------------: | :------------------- |
@@ -323,7 +323,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [36](https://github.com/edumarrom/pdaw23/issues/36) |
 
 | **R37**     | **Diseño de la base de datos**         |
 | --------------: | :------------------- |
@@ -332,7 +332,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [37](https://github.com/edumarrom/pdaw23/issues/37) |
 
 | **R38**     | **Trasladar modelo de datos a Laravel**         |
 | --------------: | :------------------- |
@@ -341,7 +341,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [38](https://github.com/edumarrom/pdaw23/issues/38) |
 
 | **R39**     | **Definiendo un usuario**         |
 | --------------: | :------------------- |
@@ -350,7 +350,7 @@
 | **Tipo**        | Información                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [39](https://github.com/edumarrom/pdaw23/issues/39) |
 
 | **R40**     | **Registrarse**         |
 | --------------: | :------------------- |
@@ -359,7 +359,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [40](https://github.com/edumarrom/pdaw23/issues/40) |
 
 | **R41**     | **Iniciar sesión**         |
 | --------------: | :------------------- |
@@ -368,7 +368,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [41](https://github.com/edumarrom/pdaw23/issues/41) |
 
 | **R42**     | **Editar perfil de usuario**         |
 | --------------: | :------------------- |
@@ -377,7 +377,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [42](https://github.com/edumarrom/pdaw23/issues/42) |
 
 | **R43**     | **Recuperar contraseña**         |
 | --------------: | :------------------- |
@@ -386,7 +386,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [43](https://github.com/edumarrom/pdaw23/issues/43) |
 
 | **R44**     | **Eliminar cuenta de usuario**         |
 | --------------: | :------------------- |
@@ -395,7 +395,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [44](https://github.com/edumarrom/pdaw23/issues/44) |
 
 | **R45**     | **Ver cursos adquiridos**         |
 | --------------: | :------------------- |
@@ -404,7 +404,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [45](https://github.com/edumarrom/pdaw23/issues/45) |
 
 | **R46**     | **Visor de lecciones**         |
 | --------------: | :------------------- |
@@ -413,7 +413,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [46](https://github.com/edumarrom/pdaw23/issues/46) |
 
 | **R47**     | **Seguimiento del curso**         |
 | --------------: | :------------------- |
@@ -422,7 +422,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [47](https://github.com/edumarrom/pdaw23/issues/47) |
 
 | **R48**     | **Marcar lección como finalizada**         |
 | --------------: | :------------------- |
@@ -431,7 +431,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [48](https://github.com/edumarrom/pdaw23/issues/48) |
 
 | **R49**     | **CPanel de profesor**         |
 | --------------: | :------------------- |
@@ -440,7 +440,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [49](https://github.com/edumarrom/pdaw23/issues/49) |
 
 | **R50**     | **CPanel de administrador**         |
 | --------------: | :------------------- |
@@ -449,7 +449,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [50](https://github.com/edumarrom/pdaw23/issues/50) |
 
 | **R51**     | **Implementar sistema de roles y permisos**         |
 | --------------: | :------------------- |
@@ -458,7 +458,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Media         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [51](https://github.com/edumarrom/pdaw23/issues/51) |
 
 | **R52**     | **Definir reglas de accesos**         |
 | --------------: | :------------------- |
@@ -467,7 +467,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [52](https://github.com/edumarrom/pdaw23/issues/52) |
 
 | **R53**     | **Definiendo un curso**         |
 | --------------: | :------------------- |
@@ -476,7 +476,7 @@
 | **Tipo**        | Información                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [53](https://github.com/edumarrom/pdaw23/issues/53) |
 
 | **R54**     | **Listar los cursos**         |
 | --------------: | :------------------- |
@@ -485,7 +485,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [54](https://github.com/edumarrom/pdaw23/issues/54) |
 
 | **R55**     | **Mostrar un curso**         |
 | --------------: | :------------------- |
@@ -494,7 +494,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [55](https://github.com/edumarrom/pdaw23/issues/55) |
 
 | **R56**     | **Crear un curso**         |
 | --------------: | :------------------- |
@@ -503,7 +503,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [56](https://github.com/edumarrom/pdaw23/issues/56) |
 
 | **R57**     | **Editar un curso**         |
 | --------------: | :------------------- |
@@ -512,7 +512,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [57](https://github.com/edumarrom/pdaw23/issues/57) |
 
 | **R58**     | **Eliminar un curso**         |
 | --------------: | :------------------- |
@@ -521,7 +521,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [58](https://github.com/edumarrom/pdaw23/issues/58) |
 
 | **R59**     | **Matricularse en un curso**         |
 | --------------: | :------------------- |
@@ -530,7 +530,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [59](https://github.com/edumarrom/pdaw23/issues/59) |
 
 | **R60**     | **Ver los cursos de un profesor**         |
 | --------------: | :------------------- |
@@ -539,7 +539,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [60](https://github.com/edumarrom/pdaw23/issues/60) |
 
 | **R61**     | **Proponer un curso**         |
 | --------------: | :------------------- |
@@ -548,7 +548,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [61](https://github.com/edumarrom/pdaw23/issues/61) |
 
 | **R62**     | **Revisar estado de propuestas**         |
 | --------------: | :------------------- |
@@ -557,7 +557,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [62](https://github.com/edumarrom/pdaw23/issues/62) |
 
 | **R63**     | **Validar un curso**         |
 | --------------: | :------------------- |
@@ -566,7 +566,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [63](https://github.com/edumarrom/pdaw23/issues/63) |
 
 | **R64**     | **Cambiar estado de un curso**         |
 | --------------: | :------------------- |
@@ -575,7 +575,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [64](https://github.com/edumarrom/pdaw23/issues/64) |
 
 | **R65**     | **Ver los cursos de un alumno**         |
 | --------------: | :------------------- |
@@ -584,7 +584,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [65](https://github.com/edumarrom/pdaw23/issues/65) |
 
 | **R66**     | **Filtrado y ordenación de cursos**         |
 | --------------: | :------------------- |
@@ -593,7 +593,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [66](https://github.com/edumarrom/pdaw23/issues/66) |
 
 | **R67**     | **Buscador de cursos**         |
 | --------------: | :------------------- |
@@ -602,7 +602,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [67](https://github.com/edumarrom/pdaw23/issues/67) |
 
 | **R68**     | **Conectar con la API de PayPal**         |
 | --------------: | :------------------- |
@@ -611,7 +611,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [68](https://github.com/edumarrom/pdaw23/issues/68) |
 
 | **R69**     | **Comprar un curso**         |
 | --------------: | :------------------- |
@@ -620,7 +620,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [69](https://github.com/edumarrom/pdaw23/issues/69) |
 
 | **R70**     | **Definiendo una valoración**         |
 | --------------: | :------------------- |
@@ -629,7 +629,7 @@
 | **Tipo**        | Información                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [70](https://github.com/edumarrom/pdaw23/issues/70) |
 
 | **R71**     | **Valorar un curso**         |
 | --------------: | :------------------- |
@@ -638,7 +638,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [71](https://github.com/edumarrom/pdaw23/issues/71) |
 
 | **R72**     | **Mostrar valoración media de un curso**         |
 | --------------: | :------------------- |
@@ -647,7 +647,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [72](https://github.com/edumarrom/pdaw23/issues/72) |
 
 | **R73**     | **Definiendo una categoría**         |
 | --------------: | :------------------- |
@@ -656,7 +656,7 @@
 | **Tipo**        | Información                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [73](https://github.com/edumarrom/pdaw23/issues/73) |
 
 | **R74**     | **Listar las categorías**         |
 | --------------: | :------------------- |
@@ -665,7 +665,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [74](https://github.com/edumarrom/pdaw23/issues/74) |
 
 | **R75**     | **Crear categorías**         |
 | --------------: | :------------------- |
@@ -674,7 +674,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [75](https://github.com/edumarrom/pdaw23/issues/75) |
 
 | **R76**     | **Editar categorías**         |
 | --------------: | :------------------- |
@@ -683,7 +683,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [76](https://github.com/edumarrom/pdaw23/issues/76) |
 
 | **R77**     | **Borrar categorías**         |
 | --------------: | :------------------- |
@@ -692,7 +692,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [77](https://github.com/edumarrom/pdaw23/issues/77) |
 
 | **R78**     | **Asignar a un curso una categoría**         |
 | --------------: | :------------------- |
@@ -701,7 +701,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [78](https://github.com/edumarrom/pdaw23/issues/78) |
 
 | **R79**     | **Definiendo un nivel**         |
 | --------------: | :------------------- |
@@ -710,7 +710,7 @@
 | **Tipo**        | Información                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [79](https://github.com/edumarrom/pdaw23/issues/79) |
 
 | **R80**     | **Listar los niveles**         |
 | --------------: | :------------------- |
@@ -719,7 +719,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [80](https://github.com/edumarrom/pdaw23/issues/80) |
 
 | **R81**     | **Crear niveles**         |
 | --------------: | :------------------- |
@@ -728,7 +728,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [81](https://github.com/edumarrom/pdaw23/issues/81) |
 
 | **R82**     | **Editar niveles**         |
 | --------------: | :------------------- |
@@ -737,7 +737,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [82](https://github.com/edumarrom/pdaw23/issues/82) |
 
 | **R83**     | **Borrar niveles**         |
 | --------------: | :------------------- |
@@ -746,7 +746,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [83](https://github.com/edumarrom/pdaw23/issues/83) |
 
 | **R84**     | **Asignar a un curso un nivel**         |
 | --------------: | :------------------- |
@@ -755,7 +755,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [84](https://github.com/edumarrom/pdaw23/issues/84) |
 
 | **R85**     | **Definiendo un precio**         |
 | --------------: | :------------------- |
@@ -764,7 +764,7 @@
 | **Tipo**        | Información                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [85](https://github.com/edumarrom/pdaw23/issues/85) |
 
 | **R86**     | **Listar los precios**         |
 | --------------: | :------------------- |
@@ -773,7 +773,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [86](https://github.com/edumarrom/pdaw23/issues/86) |
 
 | **R87**     | **Crear precios**         |
 | --------------: | :------------------- |
@@ -782,7 +782,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [87](https://github.com/edumarrom/pdaw23/issues/87) |
 
 | **R88**     | **Editar precios**         |
 | --------------: | :------------------- |
@@ -791,7 +791,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [88](https://github.com/edumarrom/pdaw23/issues/88) |
 
 | **R89**     | **Borrar precios**         |
 | --------------: | :------------------- |
@@ -800,7 +800,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [89](https://github.com/edumarrom/pdaw23/issues/89) |
 
 | **R90**     | **Asignar a un curso un precio**         |
 | --------------: | :------------------- |
@@ -809,7 +809,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [90](https://github.com/edumarrom/pdaw23/issues/90) |
 
 | **R91**     | **Definir objetivos de un curso**         |
 | --------------: | :------------------- |
@@ -818,7 +818,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [91](https://github.com/edumarrom/pdaw23/issues/91) |
 
 | **R92**     | **Definir requisitos de un curso**         |
 | --------------: | :------------------- |
@@ -827,7 +827,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [92](https://github.com/edumarrom/pdaw23/issues/92) |
 
 | **R93**     | **Definir las secciones de un curso**         |
 | --------------: | :------------------- |
@@ -836,7 +836,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [93](https://github.com/edumarrom/pdaw23/issues/93) |
 
 | **R94**     | **Definir las lecciones de un curso**         |
 | --------------: | :------------------- |
@@ -845,7 +845,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [94](https://github.com/edumarrom/pdaw23/issues/94) |
 
 | **R95**     | **Agregar recursos a una lección**         |
 | --------------: | :------------------- |
@@ -854,7 +854,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [95](https://github.com/edumarrom/pdaw23/issues/95) |
 
 | **R96**     | **Agregar recursos a una sección**         |
 | --------------: | :------------------- |
@@ -863,7 +863,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [96](https://github.com/edumarrom/pdaw23/issues/96) |
 
 | **R97**     | **Agregar recursos a un curso**         |
 | --------------: | :------------------- |
@@ -872,7 +872,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [97](https://github.com/edumarrom/pdaw23/issues/97) |
 
 | **R98**     | **Definiendo un comentario**         |
 | --------------: | :------------------- |
@@ -881,7 +881,7 @@
 | **Tipo**        | Información                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [98](https://github.com/edumarrom/pdaw23/issues/98) |
 
 | **R99**     | **Cajón de comentarios de una lección**         |
 | --------------: | :------------------- |
@@ -890,7 +890,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [99](https://github.com/edumarrom/pdaw23/issues/99) |
 
 | **R100**     | **Comentar en una lección**         |
 | --------------: | :------------------- |
@@ -899,7 +899,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [100](https://github.com/edumarrom/pdaw23/issues/100) |
 
 | **R101**     | **Editar un comentario**         |
 | --------------: | :------------------- |
@@ -908,7 +908,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [101](https://github.com/edumarrom/pdaw23/issues/101) |
 
 | **R102**     | **Borrar un comentario**         |
 | --------------: | :------------------- |
@@ -917,7 +917,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [102](https://github.com/edumarrom/pdaw23/issues/102) |
 
 | **R103**     | **Valorar un comentario**         |
 | --------------: | :------------------- |
@@ -926,7 +926,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [103](https://github.com/edumarrom/pdaw23/issues/103) |
 
 | **R104**     | **Definiendo un descuento**         |
 | --------------: | :------------------- |
@@ -935,7 +935,7 @@
 | **Tipo**        | Información                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [104](https://github.com/edumarrom/pdaw23/issues/104) |
 
 | **R105**     | **Listar los descuentos**         |
 | --------------: | :------------------- |
@@ -944,7 +944,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [105](https://github.com/edumarrom/pdaw23/issues/105) |
 
 | **R106**     | **Crear un descuento**         |
 | --------------: | :------------------- |
@@ -953,7 +953,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [106](https://github.com/edumarrom/pdaw23/issues/106) |
 
 | **R107**     | **Editar un descuento**         |
 | --------------: | :------------------- |
@@ -962,7 +962,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [107](https://github.com/edumarrom/pdaw23/issues/107) |
 
 | **R108**     | **Borrar un descuento**         |
 | --------------: | :------------------- |
@@ -971,7 +971,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [108](https://github.com/edumarrom/pdaw23/issues/108) |
 
 | **R109**     | **Programar un descuento**         |
 | --------------: | :------------------- |
@@ -980,7 +980,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [109](https://github.com/edumarrom/pdaw23/issues/109) |
 
 | **R110**     | **Criterios de asignación de descuento**         |
 | --------------: | :------------------- |
@@ -989,7 +989,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [110](https://github.com/edumarrom/pdaw23/issues/110) |
 
 | **R111**     | **Definiendo un tipo de descuento**         |
 | --------------: | :------------------- |
@@ -998,7 +998,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [111](https://github.com/edumarrom/pdaw23/issues/111) |
 
 | **R112**     | **Configurar sistema de correos electrónicos**         |
 | --------------: | :------------------- |
@@ -1007,7 +1007,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [112](https://github.com/edumarrom/pdaw23/issues/112) |
 
 | **R113**     | **Enviar correo al registrarse**         |
 | --------------: | :------------------- |
@@ -1016,7 +1016,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [113](https://github.com/edumarrom/pdaw23/issues/113) |
 
 | **R114**     | **Enviar correo al cambiar contraseña**         |
 | --------------: | :------------------- |
@@ -1025,7 +1025,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [114](https://github.com/edumarrom/pdaw23/issues/114) |
 
 | **R115**     | **Enviar correo al matricularse**         |
 | --------------: | :------------------- |
@@ -1034,7 +1034,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [115](https://github.com/edumarrom/pdaw23/issues/115) |
 
 | **R116**     | **Enviar correo al finalizar un curso**         |
 | --------------: | :------------------- |
@@ -1043,7 +1043,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [116](https://github.com/edumarrom/pdaw23/issues/116) |
 
 | **R117**     | **Enviar correo tras la validación de una propuesta**         |
 | --------------: | :------------------- |
@@ -1052,7 +1052,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [117](https://github.com/edumarrom/pdaw23/issues/117) |
 
 | **R118**     | **Enviar correo al recibir un comentario**         |
 | --------------: | :------------------- |
@@ -1061,7 +1061,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [118](https://github.com/edumarrom/pdaw23/issues/118) |
 
 | **R119**     | **Enviar correo al recibir una respuesta a su comentario**         |
 | --------------: | :------------------- |
@@ -1070,7 +1070,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [119](https://github.com/edumarrom/pdaw23/issues/119) |
 
 | **R120**     | **Enviar correo al recibir una valoración**         |
 | --------------: | :------------------- |
@@ -1079,7 +1079,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [120](https://github.com/edumarrom/pdaw23/issues/120) |
 
 | **R121**     | **Enviar correo al recibir una propuesta**         |
 | --------------: | :------------------- |
@@ -1088,7 +1088,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [121](https://github.com/edumarrom/pdaw23/issues/121) |
 
 | **R122**     | **Configurar sistema de notificaciones**         |
 | --------------: | :------------------- |
@@ -1097,7 +1097,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [122](https://github.com/edumarrom/pdaw23/issues/122) |
 
 | **R123**     | **Enviar notificación tras la validación de una propuesta**         |
 | --------------: | :------------------- |
@@ -1106,7 +1106,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [123](https://github.com/edumarrom/pdaw23/issues/123) |
 
 | **R124**     | **Enviar notificación al recibir un comentario**         |
 | --------------: | :------------------- |
@@ -1115,7 +1115,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [124](https://github.com/edumarrom/pdaw23/issues/124) |
 
 | **R125**     | **Enviar notificación al recibir una respuesta a su comentario**         |
 | --------------: | :------------------- |
@@ -1124,7 +1124,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [125](https://github.com/edumarrom/pdaw23/issues/125) |
 
 | **R126**     | **Enviar notificación  al recibir una valoración**         |
 | --------------: | :------------------- |
@@ -1133,7 +1133,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [126](https://github.com/edumarrom/pdaw23/issues/126) |
 
 | **R127**     | **Enviar notificación al recibir una propuesta**         |
 | --------------: | :------------------- |
@@ -1142,137 +1142,137 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [127](https://github.com/edumarrom/pdaw23/issues/127) |
 
 
 ## Cuadro resumen
 
-| **Requisito** | **Prioridad** | **Tipo** | **Complejidad** | **Entrega** |
-| :------------ | :-----------: | :------: | :-------------: | :---------: |
-| (**R1**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | 
-| (**R2**) Código fuente | Mínimo | Técnico | Fácil | v1 | 
-| (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | 
-| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | 
-| (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | 
-| (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | 
-| (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | 
-| (**R8**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | 
-| (**R9**) Rama master | Mínimo | Técnico | Fácil | v1 | 
-| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | 
-| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | 
-| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | 
-| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | 
-| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | 
-| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 | 
-| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 | 
-| (**R17**) Alpine.js | Mínimo | Técnico | Fácil | v1 | 
-| (**R18**) Plugin no trabajado en clase | Mínimo | Técnico | Fácil | v1 | 
-| (**R19**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 | 
-| (**R20**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 | 
-| (**R21**) PHP | Mínimo | Técnico | Fácil | v1 | 
-| (**R22**) Laravel Framework | Mínimo | Técnico | Fácil | v1 | 
-| (**R23**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | 
-| (**R24**) Cloud computing | Mínimo | Técnico | Fácil | v1 | 
-| (**R25**) Pruebas funcionales | Mínimo | Técnico | Fácil | v1 | 
-| (**R26**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | 
-| (**R27**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | 
-| (**R28**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | 
-| (**R29**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | 
-| (**R30**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | 
-| (**R31**) Uso de microdatos | Mínimo | Técnico | Fácil | v1 | 
-| (**R32**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | 
-| (**R33**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | 
-| (**R34**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | 
-| (**R35**) Despliegue en un Host | Mínimo | Técnico | Fácil | v1 | 
-| (**R36**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | 
-| (**R37**) Diseño de la base de datos | Importante | Técnico | Difícil | v1 | 
-| (**R38**) Trasladar modelo de datos a Laravel | Importante | Técnico | Difícil | v1 | 
-| (**R39**) Definiendo un usuario | Importante | Información | Fácil | v1 | 
-| (**R40**) Registrarse | Importante | Funcional | Fácil | v1 | 
-| (**R41**) Iniciar sesión | Importante | Funcional | Fácil | v1 | 
-| (**R42**) Editar perfil de usuario | Importante | Funcional | Fácil | v1 | 
-| (**R43**) Recuperar contraseña | Importante | Funcional | Fácil | v1 | 
-| (**R44**) Eliminar cuenta de usuario | Importante | Funcional | Fácil | v1 | 
-| (**R45**) Ver cursos adquiridos | Importante | Funcional | Fácil | v2 | 
-| (**R46**) Visor de lecciones | Importante | Funcional | Media | v1 | 
-| (**R47**) Seguimiento del curso | Importante | Funcional | Fácil | v2 | 
-| (**R48**) Marcar lección como finalizada | Importante | Funcional | Fácil | v1 | 
-| (**R49**) CPanel de profesor | Importante | Funcional | Fácil | v1 | 
-| (**R50**) CPanel de administrador | Importante | Funcional | Fácil | v1 | 
-| (**R51**) Implementar sistema de roles y permisos | Importante | Técnico | Media | v2 | 
-| (**R52**) Definir reglas de accesos | Importante | Funcional | Difícil | v2 | 
-| (**R53**) Definiendo un curso | Importante | Información | Fácil | v1 | 
-| (**R54**) Listar los cursos | Importante | Funcional | Fácil | v1 | 
-| (**R55**) Mostrar un curso | Importante | Funcional | Fácil | v1 | 
-| (**R56**) Crear un curso | Importante | Funcional | Fácil | v1 | 
-| (**R57**) Editar un curso | Importante | Funcional | Fácil | v1 | 
-| (**R58**) Eliminar un curso | Importante | Funcional | Fácil | v1 | 
-| (**R59**) Matricularse en un curso | Importante | Funcional | Fácil | v2 | 
-| (**R60**) Ver los cursos de un profesor | Importante | Funcional | Fácil | v2 | 
-| (**R61**) Proponer un curso | Importante | Funcional | Fácil | v2 | 
-| (**R62**) Revisar estado de propuestas | Importante | Funcional | Fácil | v2 | 
-| (**R63**) Validar un curso | Importante | Funcional | Fácil | v2 | 
-| (**R64**) Cambiar estado de un curso | Importante | Funcional | Fácil | v1 | 
-| (**R65**) Ver los cursos de un alumno | Opcional | Funcional | Fácil | v3 | 
-| (**R66**) Filtrado y ordenación de cursos | Opcional | Funcional | Media | v2 | 
-| (**R67**) Buscador de cursos | Opcional | Funcional | Media | v2 | 
-| (**R68**) Conectar con la API de PayPal | Importante | Técnico | Difícil | v3 | 
-| (**R69**) Comprar un curso | Importante | Funcional | Media | v3 | 
-| (**R70**) Definiendo una valoración | Importante | Información | Fácil | v2 | 
-| (**R71**) Valorar un curso | Importante | Funcional | Fácil | v2 | 
-| (**R72**) Mostrar valoración media de un curso | Importante | Funcional | Fácil | v2 | 
-| (**R73**) Definiendo una categoría | Importante | Información | Fácil | v1 | 
-| (**R74**) Listar las categorías | Importante | Funcional | Fácil | v1 | 
-| (**R75**) Crear categorías | Importante | Funcional | Fácil | v1 | 
-| (**R76**) Editar categorías | Importante | Funcional | Fácil | v1 | 
-| (**R77**) Borrar categorías | Importante | Funcional | Fácil | v1 | 
-| (**R78**) Asignar a un curso una categoría | Importante | Funcional | Fácil | v2 | 
-| (**R79**) Definiendo un nivel | Importante | Información | Fácil | v1 | 
-| (**R80**) Listar los niveles | Importante | Funcional | Fácil | v1 | 
-| (**R81**) Crear niveles | Importante | Funcional | Fácil | v1 | 
-| (**R82**) Editar niveles | Importante | Funcional | Fácil | v1 | 
-| (**R83**) Borrar niveles | Importante | Funcional | Fácil | v1 | 
-| (**R84**) Asignar a un curso un nivel | Importante | Funcional | Fácil | v2 | 
-| (**R85**) Definiendo un precio | Importante | Información | Fácil | v1 | 
-| (**R86**) Listar los precios | Importante | Funcional | Fácil | v1 | 
-| (**R87**) Crear precios | Importante | Funcional | Fácil | v1 | 
-| (**R88**) Editar precios | Importante | Funcional | Fácil | v1 | 
-| (**R89**) Borrar precios | Importante | Funcional | Fácil | v1 | 
-| (**R90**) Asignar a un curso un precio | Importante | Funcional | Fácil | v2 | 
-| (**R91**) Definir objetivos de un curso | Importante | Funcional | Fácil | v2 | 
-| (**R92**) Definir requisitos de un curso | Importante | Funcional | Fácil | v2 | 
-| (**R93**) Definir las secciones de un curso | Importante | Funcional | Fácil | v2 | 
-| (**R94**) Definir las lecciones de un curso | Importante | Funcional | Fácil | v2 | 
-| (**R95**) Agregar recursos a una lección | Importante | Funcional | Fácil | v2 | 
-| (**R96**) Agregar recursos a una sección | Opcional | Funcional | Fácil | v2 | 
-| (**R97**) Agregar recursos a un curso | Opcional | Funcional | Fácil | v2 | 
-| (**R98**) Definiendo un comentario | Importante | Información | Fácil | v3 | 
-| (**R99**) Cajón de comentarios de una lección | Importante | Funcional | Fácil | v3 | 
-| (**R100**) Comentar en una lección | Importante | Funcional | Fácil | v3 | 
-| (**R101**) Editar un comentario | Importante | Funcional | Fácil | v3 | 
-| (**R102**) Borrar un comentario | Importante | Funcional | Fácil | v3 | 
-| (**R103**) Valorar un comentario | Opcional | Funcional | Fácil | v3 | 
-| (**R104**) Definiendo un descuento | Opcional | Información | Fácil | v3 | 
-| (**R105**) Listar los descuentos | Opcional | Funcional | Fácil | v3 | 
-| (**R106**) Crear un descuento | Opcional | Funcional | Fácil | v3 | 
-| (**R107**) Editar un descuento | Opcional | Funcional | Fácil | v3 | 
-| (**R108**) Borrar un descuento | Opcional | Funcional | Fácil | v3 | 
-| (**R109**) Programar un descuento | Opcional | Funcional | Fácil | v3 | 
-| (**R110**) Criterios de asignación de descuento | Opcional | Funcional | Fácil | v3 | 
-| (**R111**) Definiendo un tipo de descuento | Opcional | Funcional | Fácil | v3 | 
-| (**R112**) Configurar sistema de correos electrónicos | Importante | Técnico | Media | v3 | 
-| (**R113**) Enviar correo al registrarse | Importante | Funcional | Media | v3 | 
-| (**R114**) Enviar correo al cambiar contraseña | Importante | Funcional | Media | v3 | 
-| (**R115**) Enviar correo al matricularse | Importante | Funcional | Media | v3 | 
-| (**R116**) Enviar correo al finalizar un curso | Importante | Funcional | Media | v3 | 
-| (**R117**) Enviar correo tras la validación de una propuesta | Importante | Funcional | Media | v3 | 
-| (**R118**) Enviar correo al recibir un comentario | Importante | Funcional | Media | v3 | 
-| (**R119**) Enviar correo al recibir una respuesta a su comentario | Importante | Funcional | Media | v3 | 
-| (**R120**) Enviar correo al recibir una valoración | Importante | Funcional | Media | v3 | 
-| (**R121**) Enviar correo al recibir una propuesta | Importante | Funcional | Media | v3 | 
-| (**R122**) Configurar sistema de notificaciones | Opcional | Técnico | Difícil | v3 | 
-| (**R123**) Enviar notificación tras la validación de una propuesta | Opcional | Funcional | Difícil | v3 | 
-| (**R124**) Enviar notificación al recibir un comentario | Opcional | Funcional | Difícil | v3 | 
-| (**R125**) Enviar notificación al recibir una respuesta a su comentario | Opcional | Funcional | Difícil | v3 | 
-| (**R126**) Enviar notificación  al recibir una valoración | Opcional | Funcional | Difícil | v3 | 
-| (**R127**) Enviar notificación al recibir una propuesta | Opcional | Funcional | Difícil | v3 | 
+| **Requisito** | **Prioridad** | **Tipo** | **Complejidad** | **Entrega** | **Incidencia** |
+| :------------ | :-----------: | :------: | :-------------: | :---------: | :------------: |
+| (**R1**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [1](https://github.com/edumarrom/pdaw23/issues/1) |
+| (**R2**) Código fuente | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [2](https://github.com/edumarrom/pdaw23/issues/2) |
+| (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [3](https://github.com/edumarrom/pdaw23/issues/3) |
+| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [4](https://github.com/edumarrom/pdaw23/issues/4) |
+| (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [5](https://github.com/edumarrom/pdaw23/issues/5) |
+| (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [6](https://github.com/edumarrom/pdaw23/issues/6) |
+| (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [7](https://github.com/edumarrom/pdaw23/issues/7) |
+| (**R8**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [8](https://github.com/edumarrom/pdaw23/issues/8) |
+| (**R9**) Rama master | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [9](https://github.com/edumarrom/pdaw23/issues/9) |
+| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [10](https://github.com/edumarrom/pdaw23/issues/10) |
+| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [11](https://github.com/edumarrom/pdaw23/issues/11) |
+| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [12](https://github.com/edumarrom/pdaw23/issues/12) |
+| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [13](https://github.com/edumarrom/pdaw23/issues/13) |
+| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [14](https://github.com/edumarrom/pdaw23/issues/14) |
+| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [15](https://github.com/edumarrom/pdaw23/issues/15) |
+| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [16](https://github.com/edumarrom/pdaw23/issues/16) |
+| (**R17**) Alpine.js | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [17](https://github.com/edumarrom/pdaw23/issues/17) |
+| (**R18**) Plugin no trabajado en clase | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [18](https://github.com/edumarrom/pdaw23/issues/18) |
+| (**R19**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [19](https://github.com/edumarrom/pdaw23/issues/19) |
+| (**R20**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [20](https://github.com/edumarrom/pdaw23/issues/20) |
+| (**R21**) PHP | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [21](https://github.com/edumarrom/pdaw23/issues/21) |
+| (**R22**) Laravel Framework | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [22](https://github.com/edumarrom/pdaw23/issues/22) |
+| (**R23**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [23](https://github.com/edumarrom/pdaw23/issues/23) |
+| (**R24**) Cloud computing | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [24](https://github.com/edumarrom/pdaw23/issues/24) |
+| (**R25**) Pruebas funcionales | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [25](https://github.com/edumarrom/pdaw23/issues/25) |
+| (**R26**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [26](https://github.com/edumarrom/pdaw23/issues/26) |
+| (**R27**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [27](https://github.com/edumarrom/pdaw23/issues/27) |
+| (**R28**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [28](https://github.com/edumarrom/pdaw23/issues/28) |
+| (**R29**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [29](https://github.com/edumarrom/pdaw23/issues/29) |
+| (**R30**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [30](https://github.com/edumarrom/pdaw23/issues/30) |
+| (**R31**) Uso de microdatos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [31](https://github.com/edumarrom/pdaw23/issues/31) |
+| (**R32**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [32](https://github.com/edumarrom/pdaw23/issues/32) |
+| (**R33**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [33](https://github.com/edumarrom/pdaw23/issues/33) |
+| (**R34**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [34](https://github.com/edumarrom/pdaw23/issues/34) |
+| (**R35**) Despliegue en un Host | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [35](https://github.com/edumarrom/pdaw23/issues/35) |
+| (**R36**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [36](https://github.com/edumarrom/pdaw23/issues/36) |
+| (**R37**) Diseño de la base de datos | Importante | Técnico | Difícil | v1 | | **Incidencia**  | [37](https://github.com/edumarrom/pdaw23/issues/37) |
+| (**R38**) Trasladar modelo de datos a Laravel | Importante | Técnico | Difícil | v1 | | **Incidencia**  | [38](https://github.com/edumarrom/pdaw23/issues/38) |
+| (**R39**) Definiendo un usuario | Importante | Información | Fácil | v1 | | **Incidencia**  | [39](https://github.com/edumarrom/pdaw23/issues/39) |
+| (**R40**) Registrarse | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [40](https://github.com/edumarrom/pdaw23/issues/40) |
+| (**R41**) Iniciar sesión | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [41](https://github.com/edumarrom/pdaw23/issues/41) |
+| (**R42**) Editar perfil de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [42](https://github.com/edumarrom/pdaw23/issues/42) |
+| (**R43**) Recuperar contraseña | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [43](https://github.com/edumarrom/pdaw23/issues/43) |
+| (**R44**) Eliminar cuenta de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [44](https://github.com/edumarrom/pdaw23/issues/44) |
+| (**R45**) Ver cursos adquiridos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [45](https://github.com/edumarrom/pdaw23/issues/45) |
+| (**R46**) Visor de lecciones | Importante | Funcional | Media | v1 | | **Incidencia**  | [46](https://github.com/edumarrom/pdaw23/issues/46) |
+| (**R47**) Seguimiento del curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [47](https://github.com/edumarrom/pdaw23/issues/47) |
+| (**R48**) Marcar lección como finalizada | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [48](https://github.com/edumarrom/pdaw23/issues/48) |
+| (**R49**) CPanel de profesor | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [49](https://github.com/edumarrom/pdaw23/issues/49) |
+| (**R50**) CPanel de administrador | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [50](https://github.com/edumarrom/pdaw23/issues/50) |
+| (**R51**) Implementar sistema de roles y permisos | Importante | Técnico | Media | v2 | | **Incidencia**  | [51](https://github.com/edumarrom/pdaw23/issues/51) |
+| (**R52**) Definir reglas de accesos | Importante | Funcional | Difícil | v2 | | **Incidencia**  | [52](https://github.com/edumarrom/pdaw23/issues/52) |
+| (**R53**) Definiendo un curso | Importante | Información | Fácil | v1 | | **Incidencia**  | [53](https://github.com/edumarrom/pdaw23/issues/53) |
+| (**R54**) Listar los cursos | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [54](https://github.com/edumarrom/pdaw23/issues/54) |
+| (**R55**) Mostrar un curso | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [55](https://github.com/edumarrom/pdaw23/issues/55) |
+| (**R56**) Crear un curso | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [56](https://github.com/edumarrom/pdaw23/issues/56) |
+| (**R57**) Editar un curso | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [57](https://github.com/edumarrom/pdaw23/issues/57) |
+| (**R58**) Eliminar un curso | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [58](https://github.com/edumarrom/pdaw23/issues/58) |
+| (**R59**) Matricularse en un curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [59](https://github.com/edumarrom/pdaw23/issues/59) |
+| (**R60**) Ver los cursos de un profesor | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [60](https://github.com/edumarrom/pdaw23/issues/60) |
+| (**R61**) Proponer un curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [61](https://github.com/edumarrom/pdaw23/issues/61) |
+| (**R62**) Revisar estado de propuestas | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [62](https://github.com/edumarrom/pdaw23/issues/62) |
+| (**R63**) Validar un curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [63](https://github.com/edumarrom/pdaw23/issues/63) |
+| (**R64**) Cambiar estado de un curso | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [64](https://github.com/edumarrom/pdaw23/issues/64) |
+| (**R65**) Ver los cursos de un alumno | Opcional | Funcional | Fácil | v3 | | **Incidencia**  | [65](https://github.com/edumarrom/pdaw23/issues/65) |
+| (**R66**) Filtrado y ordenación de cursos | Opcional | Funcional | Media | v2 | | **Incidencia**  | [66](https://github.com/edumarrom/pdaw23/issues/66) |
+| (**R67**) Buscador de cursos | Opcional | Funcional | Media | v2 | | **Incidencia**  | [67](https://github.com/edumarrom/pdaw23/issues/67) |
+| (**R68**) Conectar con la API de PayPal | Importante | Técnico | Difícil | v3 | | **Incidencia**  | [68](https://github.com/edumarrom/pdaw23/issues/68) |
+| (**R69**) Comprar un curso | Importante | Funcional | Media | v3 | | **Incidencia**  | [69](https://github.com/edumarrom/pdaw23/issues/69) |
+| (**R70**) Definiendo una valoración | Importante | Información | Fácil | v2 | | **Incidencia**  | [70](https://github.com/edumarrom/pdaw23/issues/70) |
+| (**R71**) Valorar un curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [71](https://github.com/edumarrom/pdaw23/issues/71) |
+| (**R72**) Mostrar valoración media de un curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [72](https://github.com/edumarrom/pdaw23/issues/72) |
+| (**R73**) Definiendo una categoría | Importante | Información | Fácil | v1 | | **Incidencia**  | [73](https://github.com/edumarrom/pdaw23/issues/73) |
+| (**R74**) Listar las categorías | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [74](https://github.com/edumarrom/pdaw23/issues/74) |
+| (**R75**) Crear categorías | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [75](https://github.com/edumarrom/pdaw23/issues/75) |
+| (**R76**) Editar categorías | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [76](https://github.com/edumarrom/pdaw23/issues/76) |
+| (**R77**) Borrar categorías | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [77](https://github.com/edumarrom/pdaw23/issues/77) |
+| (**R78**) Asignar a un curso una categoría | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [78](https://github.com/edumarrom/pdaw23/issues/78) |
+| (**R79**) Definiendo un nivel | Importante | Información | Fácil | v1 | | **Incidencia**  | [79](https://github.com/edumarrom/pdaw23/issues/79) |
+| (**R80**) Listar los niveles | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [80](https://github.com/edumarrom/pdaw23/issues/80) |
+| (**R81**) Crear niveles | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [81](https://github.com/edumarrom/pdaw23/issues/81) |
+| (**R82**) Editar niveles | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [82](https://github.com/edumarrom/pdaw23/issues/82) |
+| (**R83**) Borrar niveles | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [83](https://github.com/edumarrom/pdaw23/issues/83) |
+| (**R84**) Asignar a un curso un nivel | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [84](https://github.com/edumarrom/pdaw23/issues/84) |
+| (**R85**) Definiendo un precio | Importante | Información | Fácil | v1 | | **Incidencia**  | [85](https://github.com/edumarrom/pdaw23/issues/85) |
+| (**R86**) Listar los precios | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [86](https://github.com/edumarrom/pdaw23/issues/86) |
+| (**R87**) Crear precios | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [87](https://github.com/edumarrom/pdaw23/issues/87) |
+| (**R88**) Editar precios | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [88](https://github.com/edumarrom/pdaw23/issues/88) |
+| (**R89**) Borrar precios | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [89](https://github.com/edumarrom/pdaw23/issues/89) |
+| (**R90**) Asignar a un curso un precio | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [90](https://github.com/edumarrom/pdaw23/issues/90) |
+| (**R91**) Definir objetivos de un curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [91](https://github.com/edumarrom/pdaw23/issues/91) |
+| (**R92**) Definir requisitos de un curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [92](https://github.com/edumarrom/pdaw23/issues/92) |
+| (**R93**) Definir las secciones de un curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [93](https://github.com/edumarrom/pdaw23/issues/93) |
+| (**R94**) Definir las lecciones de un curso | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [94](https://github.com/edumarrom/pdaw23/issues/94) |
+| (**R95**) Agregar recursos a una lección | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [95](https://github.com/edumarrom/pdaw23/issues/95) |
+| (**R96**) Agregar recursos a una sección | Opcional | Funcional | Fácil | v2 | | **Incidencia**  | [96](https://github.com/edumarrom/pdaw23/issues/96) |
+| (**R97**) Agregar recursos a un curso | Opcional | Funcional | Fácil | v2 | | **Incidencia**  | [97](https://github.com/edumarrom/pdaw23/issues/97) |
+| (**R98**) Definiendo un comentario | Importante | Información | Fácil | v3 | | **Incidencia**  | [98](https://github.com/edumarrom/pdaw23/issues/98) |
+| (**R99**) Cajón de comentarios de una lección | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [99](https://github.com/edumarrom/pdaw23/issues/99) |
+| (**R100**) Comentar en una lección | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [100](https://github.com/edumarrom/pdaw23/issues/100) |
+| (**R101**) Editar un comentario | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [101](https://github.com/edumarrom/pdaw23/issues/101) |
+| (**R102**) Borrar un comentario | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [102](https://github.com/edumarrom/pdaw23/issues/102) |
+| (**R103**) Valorar un comentario | Opcional | Funcional | Fácil | v3 | | **Incidencia**  | [103](https://github.com/edumarrom/pdaw23/issues/103) |
+| (**R104**) Definiendo un descuento | Opcional | Información | Fácil | v3 | | **Incidencia**  | [104](https://github.com/edumarrom/pdaw23/issues/104) |
+| (**R105**) Listar los descuentos | Opcional | Funcional | Fácil | v3 | | **Incidencia**  | [105](https://github.com/edumarrom/pdaw23/issues/105) |
+| (**R106**) Crear un descuento | Opcional | Funcional | Fácil | v3 | | **Incidencia**  | [106](https://github.com/edumarrom/pdaw23/issues/106) |
+| (**R107**) Editar un descuento | Opcional | Funcional | Fácil | v3 | | **Incidencia**  | [107](https://github.com/edumarrom/pdaw23/issues/107) |
+| (**R108**) Borrar un descuento | Opcional | Funcional | Fácil | v3 | | **Incidencia**  | [108](https://github.com/edumarrom/pdaw23/issues/108) |
+| (**R109**) Programar un descuento | Opcional | Funcional | Fácil | v3 | | **Incidencia**  | [109](https://github.com/edumarrom/pdaw23/issues/109) |
+| (**R110**) Criterios de asignación de descuento | Opcional | Funcional | Fácil | v3 | | **Incidencia**  | [110](https://github.com/edumarrom/pdaw23/issues/110) |
+| (**R111**) Definiendo un tipo de descuento | Opcional | Funcional | Fácil | v3 | | **Incidencia**  | [111](https://github.com/edumarrom/pdaw23/issues/111) |
+| (**R112**) Configurar sistema de correos electrónicos | Importante | Técnico | Media | v3 | | **Incidencia**  | [112](https://github.com/edumarrom/pdaw23/issues/112) |
+| (**R113**) Enviar correo al registrarse | Importante | Funcional | Media | v3 | | **Incidencia**  | [113](https://github.com/edumarrom/pdaw23/issues/113) |
+| (**R114**) Enviar correo al cambiar contraseña | Importante | Funcional | Media | v3 | | **Incidencia**  | [114](https://github.com/edumarrom/pdaw23/issues/114) |
+| (**R115**) Enviar correo al matricularse | Importante | Funcional | Media | v3 | | **Incidencia**  | [115](https://github.com/edumarrom/pdaw23/issues/115) |
+| (**R116**) Enviar correo al finalizar un curso | Importante | Funcional | Media | v3 | | **Incidencia**  | [116](https://github.com/edumarrom/pdaw23/issues/116) |
+| (**R117**) Enviar correo tras la validación de una propuesta | Importante | Funcional | Media | v3 | | **Incidencia**  | [117](https://github.com/edumarrom/pdaw23/issues/117) |
+| (**R118**) Enviar correo al recibir un comentario | Importante | Funcional | Media | v3 | | **Incidencia**  | [118](https://github.com/edumarrom/pdaw23/issues/118) |
+| (**R119**) Enviar correo al recibir una respuesta a su comentario | Importante | Funcional | Media | v3 | | **Incidencia**  | [119](https://github.com/edumarrom/pdaw23/issues/119) |
+| (**R120**) Enviar correo al recibir una valoración | Importante | Funcional | Media | v3 | | **Incidencia**  | [120](https://github.com/edumarrom/pdaw23/issues/120) |
+| (**R121**) Enviar correo al recibir una propuesta | Importante | Funcional | Media | v3 | | **Incidencia**  | [121](https://github.com/edumarrom/pdaw23/issues/121) |
+| (**R122**) Configurar sistema de notificaciones | Opcional | Técnico | Difícil | v3 | | **Incidencia**  | [122](https://github.com/edumarrom/pdaw23/issues/122) |
+| (**R123**) Enviar notificación tras la validación de una propuesta | Opcional | Funcional | Difícil | v3 | | **Incidencia**  | [123](https://github.com/edumarrom/pdaw23/issues/123) |
+| (**R124**) Enviar notificación al recibir un comentario | Opcional | Funcional | Difícil | v3 | | **Incidencia**  | [124](https://github.com/edumarrom/pdaw23/issues/124) |
+| (**R125**) Enviar notificación al recibir una respuesta a su comentario | Opcional | Funcional | Difícil | v3 | | **Incidencia**  | [125](https://github.com/edumarrom/pdaw23/issues/125) |
+| (**R126**) Enviar notificación  al recibir una valoración | Opcional | Funcional | Difícil | v3 | | **Incidencia**  | [126](https://github.com/edumarrom/pdaw23/issues/126) |
+| (**R127**) Enviar notificación al recibir una propuesta | Opcional | Funcional | Difícil | v3 | | **Incidencia**  | [127](https://github.com/edumarrom/pdaw23/issues/127) |
