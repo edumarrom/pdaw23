@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->text('description');
-            $table->enum('status', [Course::BORRADOR, Course::REVISION, Course::PUBLICADO])->default(Course::BORRADOR);
+            $table->enum('status', [
+                Course::BORRADOR,
+                Course::REVISION,
+                Course::PUBLICADO
+                ])->default(Course::BORRADOR);
             $table->string('slug');
 
             $table->foreignId('user_id')
