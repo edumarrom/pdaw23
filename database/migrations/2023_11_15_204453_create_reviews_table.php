@@ -11,14 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_user', function (Blueprint $table) {
-            $table->id(); // Pregunta: ¿Debería omitir el campo id en este caso?
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->text('comment');
+            $table->integer('rating');
+
             $table->foreignId('course_id')
                 ->constrained()
                 ->cascadeOnDelete();
+
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_user');
+        Schema::dropIfExists('reviews');
     }
 };
