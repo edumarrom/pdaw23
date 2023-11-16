@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->foreignId('course_id')
                 ->constrained()
-                ->onDelete('cascade');
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }
