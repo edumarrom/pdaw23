@@ -28,4 +28,19 @@ class Lesson extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function resource()
+    {
+        return $this->morphOne(Resource::class, 'resourceable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function likes()
+    {
+        return $this->morphMany(User::class, 'likeable');
+    }
 }
