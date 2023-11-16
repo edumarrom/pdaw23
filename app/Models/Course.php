@@ -38,4 +38,14 @@ class Course extends Model
     {
         return $this->belongsTo(Price::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
 }
