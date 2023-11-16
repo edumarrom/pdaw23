@@ -48,4 +48,24 @@ class Course extends Model
     {
         return $this->belongsTo(Level::class);
     }
+
+    public function requirements()
+    {
+        return $this->hasMany(Requirement::class);
+    }
+
+    public function goals()
+    {
+        return $this->hasMany(Goal::class);
+    }
+
+    public function audiences()
+    {
+        return $this->hasMany(Audience::class);
+    }
+
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
 }
