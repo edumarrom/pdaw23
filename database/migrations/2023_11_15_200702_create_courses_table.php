@@ -22,19 +22,23 @@ return new class extends Migration
                 Course::REVISION,
                 Course::PUBLICADO
                 ])->default(Course::BORRADOR);
+
             $table->string('slug');
 
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnDelete();
+
             $table->foreignId('level_id')
                 ->nullable()
                 ->constrained()
                 ->nullOnDelete();
+
             $table->foreignId('category_id')
                 ->nullable()
                 ->constrained()
                 ->nullOnDelete();
+
             $table->foreignId('price_id')
                 ->nullable()
                 ->constrained()
