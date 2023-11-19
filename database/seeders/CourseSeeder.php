@@ -12,17 +12,12 @@ class CourseSeeder extends Seeder
      */
     public function run(): void
     {
-        $courses = \App\Models\Course::factory(50)->create();
+        $courses = \App\Models\Course::factory(10)->create();
 
         foreach ($courses as $course) {
-            \App\Models\Image::create([
+            \App\Models\Image::factory(1)->create([
                 'imageable_id' => $course->id,
-                'imageable_type' => \App\Models\Course::class,
-                'path' => fake()->imageUrl(640, 360),
-            ]);
-
-            \App\Models\Audience::factory(1)->create([
-                'course_id' => $course->id,
+                'imageable_type' => '\App\Models\Course',
             ]);
 
             \App\Models\Requirement::factory(3)->create([
