@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Platform;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,6 +29,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(PriceSeeder::class);
 
+        $this->call(PlatformSeeder::class);
+
         $courses = \App\Models\Course::factory(50)->create();
 
         foreach ($courses as $course) {
@@ -48,9 +52,21 @@ class DatabaseSeeder extends Seeder
                 'course_id' => $course->id,
             ]);
 
-            \App\Models\Section::factory(rand(5, 10))->create([
+            $sections = \App\Models\Section::factory(rand(3, 5))->create([
                 'course_id' => $course->id,
             ]);
+
+            foreach ($sections as $section) {
+                $lessons =\App\Models\Lesson::factory(rand(3, 5))->create([
+                    'section_id' => $section->id,
+                ]);
+
+                foreach ($lessons as $lesson) {
+                    \App\Models\Description::factory(1)->create([
+                        'lesson_id' => $lesson->id,
+                    ]);
+                }
+            }
         }
     }
 }
