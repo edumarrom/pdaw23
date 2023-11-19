@@ -27,6 +27,30 @@ class DatabaseSeeder extends Seeder
 
         $this->call(PriceSeeder::class);
 
-        \App\Models\Course::factory(50)->create();
+        $courses = \App\Models\Course::factory(50)->create();
+
+        foreach ($courses as $course) {
+            \App\Models\Image::create([
+                'imageable_id' => $course->id,
+                'imageable_type' => \App\Models\Course::class,
+                'path' => fake()->imageUrl(640, 360),
+            ]);
+
+            \App\Models\Audience::factory(1)->create([
+                'course_id' => $course->id,
+            ]);
+
+            \App\Models\Requirement::factory(3)->create([
+                'course_id' => $course->id,
+            ]);
+
+            \App\Models\Goal::factory(3)->create([
+                'course_id' => $course->id,
+            ]);
+
+            \App\Models\Section::factory(rand(5, 10))->create([
+                'course_id' => $course->id,
+            ]);
+        }
     }
 }
