@@ -22,7 +22,9 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased"
+    :class="{'overflow-hidden': open}"
+    x-data="{open: false,}">
 
     <div class="min-h-screen bg-gray-100">
 
