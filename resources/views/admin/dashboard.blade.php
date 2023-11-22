@@ -1,5 +1,5 @@
 <x-admin-layout>
 
-    Hola
+    Hola que tal
 
 </x-admin-layout>
