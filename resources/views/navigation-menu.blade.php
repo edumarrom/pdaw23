@@ -19,9 +19,12 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
-                        <x-application-mark class="block h-9 w-auto" />
+                <div class="shrink-0 flex items-center justify-start">
+                    <a href="{{ route('home') }}" class="flex">
+                        <x-application-mark class="h-14 w-auto mr-3" />
+                        <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
+                            Dabaliu
+                        </span>
                     </a>
                 </div>
 

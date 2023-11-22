@@ -10,8 +10,8 @@
                     <i class="w-6 h-6 text-xl fa-solid fa-bars"></i>
                 </button>
                 <a href="{{ route('home') }}" class="flex ml-2 md:mr-24">
-                    <img src="/storage/dabaliu_logo.png" class="h-8 mr-3" alt="Dabaliu Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                    <x-application-mark alt="" class="h-8 mr-3"/>
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
                         Dabaliu
                     </span>
                 </a>
