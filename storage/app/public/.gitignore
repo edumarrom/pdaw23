@@ -1,2 +1,4 @@
+# Ignora todo excepto el logo
 *
 !.gitignore
+!dabaliu_logo.png

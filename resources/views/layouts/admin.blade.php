@@ -22,7 +22,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased"
+<body class="font-sans antialiased sm:overflow-auto"
     :class="{'overflow-hidden': open}"
     x-data="{open: false,}">
 
@@ -41,6 +41,9 @@
         </div>
 
     </div>
+
+    <div x-show='open' x-on:click="open = false"
+    style="display:none;" class="bg-gray-900 bg-opacity-50 fixed inset-0 z-30 sm:hidden"></div>
 
     @stack('modals')
 
