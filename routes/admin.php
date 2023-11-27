@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LevelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -10,13 +11,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-    session()->flash('swal', [
-        'type' => 'success',
-        'title' => 'Hola mundo',
-        'text' => 'Esto es un modal de prueba',
-        'icon' => 'success',
-    ]);
-
     return view('admin.dashboard');
-})->name('admin.dashboard');
+})->name('dashboard');
+
+Route::resource('/levels', LevelController::class)->names('levels');

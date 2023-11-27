@@ -5,7 +5,14 @@
             'route' => route('admin.dashboard'),
             'icon' => 'fa-solid fa-chart-pie',
             'active' => request()->routeIs('admin.dashboard'),
-        ]
+        ],
+        [
+            'name' => 'Niveles',
+            'route' => route('admin.levels.index'),
+            'icon' => 'fa-solid fa-layer-group',
+            'active' => request()->routeIs('admin.levels.*'),
+        ],
+
     ]
 @endphp
 
