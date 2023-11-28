@@ -75,6 +75,14 @@ class LevelController extends Controller
      */
     public function destroy(Level $level)
     {
-        return "Eliminar nivel";
+        $level->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => 'Nivel borrado satisfactoriamente.',
+        ]);
+
+        return redirect()->route('admin.levels.index');
     }
 }
