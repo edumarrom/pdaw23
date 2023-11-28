@@ -30,7 +30,7 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Crear nivel {$request->name}";
     }
 
     /**
@@ -54,7 +54,7 @@ class LevelController extends Controller
      */
     public function update(Request $request, Level $level)
     {
-        //
+        return "Actualizar nivel {$level->id}";
     }
 
     /**
@@ -62,6 +62,6 @@ class LevelController extends Controller
      */
     public function destroy(Level $level)
     {
-        //
+        return "Eliminar nivel";
     }
 }

@@ -2,11 +2,11 @@
 
     <div class="flex items-center justify-between mb-4">
         <h1 class="text-3xl font-bold">Niveles</h1>
-        <a href="{{ route('admin.levels.create') }}"
-            class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
-            <i class="fa-solid fa-plus"></i>
+        <x-button-link href="{{ route('admin.levels.create') }}"
+            class="bg-blue-500 rounded hover:bg-blue-600">
+            <i class="fa-solid fa-plus mr-2"></i>
             Nuevo
-        </a>
+        </x-button-link>
     </div>
 
     <div class="relative overflow-x-auto">
