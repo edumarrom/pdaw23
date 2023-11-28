@@ -30,7 +30,20 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        return "Crear nivel {$request->name}";
+        $request->validate([
+            'name' => 'required|string|max:255|unique:levels',
+        ]);
+
+        $category = Level::create($request->all());
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => 'Nivel creado satisfactoriamente.',
+        ]);
+
+        return redirect()->route('admin.levels.index');
+            /* ->with('success', 'Nivel creado satisfactoriamente.'); */
     }
 
     /**
