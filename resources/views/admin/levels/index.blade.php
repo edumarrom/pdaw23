@@ -43,7 +43,7 @@
                                 @csrf
                                 @method('delete')
                                 <button type="button" class="text-red-500"
-                                    onclick="deletelevel({{ $level->id }})">
+                                    onclick="deleteLevel({{ $level->id }})">
                                     <i class="fa-solid fa-trash"></i>
                                     Borrar
                                 </button>
@@ -54,4 +54,26 @@
             </tbody>
         </table>
     </div>
+
+    @push('scripts')
+        <script>
+            function deleteLevel(levelId) {
+                const form = document.querySelector('#delete-form-' + levelId);
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¿Estás seguro?',
+                    text: "Esta acción es irreversible",
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirmar',
+                    confirmButtonColor: '#EF4444',
+                    cancelButtonText: 'Cancelar',
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit()
+                    }
+                })
+            }
+        </script>
+    @endpush
 </x-admin-layout>
