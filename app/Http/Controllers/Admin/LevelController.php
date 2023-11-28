@@ -59,7 +59,7 @@ class LevelController extends Controller
      */
     public function edit(Level $level)
     {
-        return view('admin.levels.edit');
+        return view('admin.levels.edit', compact('level'));
     }
 
     /**
@@ -67,7 +67,19 @@ class LevelController extends Controller
      */
     public function update(Request $request, Level $level)
     {
-        return "Actualizar nivel {$level->id}";
+        $request->validate([
+            'name' => 'required|string|max:255|unique:levels',
+        ]);
+
+        $level->update($request->all());
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => 'Nivel editado satisfactoriamente.',
+        ]);
+
+        return redirect()->route('admin.levels.edit', $level);
     }
 
     /**

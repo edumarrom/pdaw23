@@ -21,10 +21,10 @@
         </div>
 
         <div class="flex justify-between mt-16">
-            <x-button-link href="{{ url()->previous() }}">
+            <x-link-button href="{{ url()->previous() }}">
                 <i class="fa-solid fa-xmark mr-2"></i>
                 Cancelar
-            </x-button-link>
+            </x-link-button>
 
             <x-button class="bg-blue-500 rounded hover:bg-blue-600">
                 <i class="fa-solid fa-save mr-2"></i>
