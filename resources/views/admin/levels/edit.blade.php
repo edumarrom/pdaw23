@@ -17,10 +17,14 @@
             <x-input name="name"
                      class="w-full"
                      placeholder="Escribe un nombre para este nivel"
-                     value="{{ $level->name }}" />
+                     value="{{old('name', $level->name)}}" />
         </div>
 
-        <div class="flex justify-end">
+        <div class="flex justify-between mt-16">
+            <x-link-button href="{{ url()->previous() }}">
+                <i class="fa-solid fa-xmark mr-2"></i>
+                Cancelar
+            </x-link-button>
 
             <x-button class="bg-blue-500 rounded hover:bg-blue-600">
                 <i class="fa-solid fa-save mr-2"></i>

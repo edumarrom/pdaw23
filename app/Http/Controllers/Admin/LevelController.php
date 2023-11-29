@@ -68,7 +68,7 @@ class LevelController extends Controller
     public function update(Request $request, Level $level)
     {
         $request->validate([
-            'name' => 'required|string|max:255|unique:levels',
+            'name' => 'required|string|max:255|unique:levels,name,' . $level->id,
         ]);
 
         $level->update($request->all());
@@ -79,7 +79,7 @@ class LevelController extends Controller
             'text' => 'Nivel editado satisfactoriamente.',
         ]);
 
-        return redirect()->route('admin.levels.edit', $level);
+        return redirect()->route('admin.levels.index');
     }
 
     /**
