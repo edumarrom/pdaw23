@@ -9,9 +9,22 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $withCount = ['students', 'reviews'];
+
     public const BORRADOR = 1;
     public const REVISION = 2;
     public const PUBLICADO = 3;
+
+    /* Getters */
+
+    public function getRatingAttribute()
+    {
+        if ($this->reviews_count) {
+            return round($this->reviews->avg('rating'), 1);
+        } else {
+            return 5;
+        }
+    }
 
     /**
      * Devuelve el profesor que creó el curso
@@ -22,11 +35,11 @@ class Course extends Model
     }
 
     /**
-     * Devuelve los estudiantes matridulados en el curso
+     * Devuelve los estudiantes matriculados en el curso
      */
     public function students()
     {
-        return $this->belongsToMany(User::class, 'user_id');
+        return $this->belongsToMany(User::class);
     }
 
     public function reviews()
