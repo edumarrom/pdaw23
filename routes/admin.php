@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LevelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
-    return "Hola que tal";
-});
+Route::get('/', function () {
+    return view('admin.dashboard');
+})->name('dashboard');
+
+Route::resource('/levels', LevelController::class)->names('levels');
