@@ -101,7 +101,6 @@
             @foreach ($courses as $course)
 
                 <article class="bg-white border border-gray-500 rounded transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    {{-- Error, recibe null --}}
                     <img src="{{ Storage::url($course->image->path) }}" alt="">
 
                     <div class="px-6 py-4">
