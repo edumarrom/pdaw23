@@ -96,36 +96,42 @@
         <p class="text-center text-gray-600 text-sm mb-6">Crea una cuenta y comienza a formarte.</p>
 
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-4 gap-x-6 gap-y-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
 
             @foreach ($courses as $course)
 
-                <article class="bg-white border border-gray-500 rounded transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <article class="bg-white border border-gray-500 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <img src="{{ Storage::url($course->image->path) }}" alt="">
 
-                    <div class="px-6 py-4">
+                    <div class="px-4 md:px-2 py-4">
                         <h3 class="text-center text-xl text-gray-700 mb-2">{{ Str::limit($course->title, 40) }}</h3>
                         <p class="text-gray-500 text-sm mb-2">
                             Por <a href="{{-- perfil de profe --}}"
                                     class="text-teal-500 hover:text-teal-700">{{$course->teacher->name}}</a>
                         </p>
 
-                        <ul>
-                            <li class="flex text-gray-500 text-sm mb-2">
-                                <i class="fas fa-star mr-2"></i>
-                                {{$course->rating}}
-                            </li>
-                            <li class="flex text-gray-500 text-sm mb-2">
-                                <i class="fas fa-users mr-2"></i>
-                                {{$course->students_count}}
-                            </li>
-                            <li class="flex text-gray-500 text-sm mb-2">
-                                <i class="fas fa-layer-group mr-2"></i>
-                                {{$course->category->name}}
-                            </li>
-                        </ul>
+                        <div>
+                            <ul class="flex text-sm">
+                                <li class="text-gray-500 mr-2">
+                                    <i class="fa-solid fa-star mr-2"></i>
+                                    {{$course->rating}} |
+                                </li>
+                                <li class="text-gray-500 mr-2">
+                                    <i class="fa-solid fa-users mr-2"></i>
+                                    {{$course->students_count}} |
+                                </li>
+                                <li class="text-gray-500 mr-2">
+                                    {{-- <i class="fa-solid fa-layer-group mr-2"></i> --}}
+                                    {{$course->category->name}}
+                                </li>
+                            </ul>
 
-                        {{-- <p class="text-sm text-gray-500">{{ $course->description }}</p> --}}
+                            <p class="text-sm text-gray-700">{{ Str::limit($course->description, 100) }}</p>
+
+                            {{-- <div class="flex lg:justify-end">
+                                <x-link-button class="w-full lg:w-auto bg-teal-500 hover:bg-teal-700 mt-6 py-4 lg:py-2">+ info</x-link-button>
+                            </div> --}}
+                        </div>
                     </div>
                 </article>
 
