@@ -1,12 +1,68 @@
+WITH
+published_courses AS (
+    SELECT
+        id
+    FROM
+        courses
+    WHERE
+        status  = '3'
+),
+existing_users AS (
+    SELECT
+        *
+    FROM
+        users
+)
+
 INSERT INTO reviews (comment, rating, course_id, user_id)
 VALUES
-    ('Gran curso', 5, 3, 1),
-    ('Buen contenido', 4, 4, 2),
-    ('Interesante', 4, 8, 3),
-    ('Me gustó mucho', 5, 3, 4),
-    ('Podría mejorar', 3, 4, 5),
-    ('Recomendado', 5, 8, 6),
-    ('No me convenció', 2, 3, 7),
-    ('Excelente', 5, 4, 8),
-    ('Buena elección', 4, 8, 9),
-    ('Poco informativo', 2, 3, 10);
+
+(
+    'Lorem Ipsum',
+    (SELECT FLOOR(RANDOM() * (5-1+1) + 1)::int),
+    (SELECT id FROM published_courses ORDER BY RANDOM() LIMIT 1),
+    (SELECT id FROM existing_users ORDER BY RANDOM() LIMIT 1)
+),
+(
+    'Lorem Ipsum',
+    (SELECT FLOOR(RANDOM() * (5-1+1) + 1)::int),
+    (SELECT id FROM published_courses ORDER BY RANDOM() LIMIT 1),
+    (SELECT id FROM existing_users ORDER BY RANDOM() LIMIT 1)
+),
+(
+    'Lorem Ipsum',
+    (SELECT FLOOR(RANDOM() * (5-1+1) + 1)::int),
+    (SELECT id FROM published_courses ORDER BY RANDOM() LIMIT 1),
+    (SELECT id FROM existing_users ORDER BY RANDOM() LIMIT 1)
+),
+(
+    'Lorem Ipsum',
+    (SELECT FLOOR(RANDOM() * (5-1+1) + 1)::int),
+    (SELECT id FROM published_courses ORDER BY RANDOM() LIMIT 1),
+    (SELECT id FROM existing_users ORDER BY RANDOM() LIMIT 1)
+),
+(
+    'Lorem Ipsum',
+    (SELECT FLOOR(RANDOM() * (5-1+1) + 1)::int),
+    (SELECT id FROM published_courses ORDER BY RANDOM() LIMIT 1),
+    (SELECT id FROM existing_users ORDER BY RANDOM() LIMIT 1)
+),
+(
+    'Lorem Ipsum',
+    (SELECT FLOOR(RANDOM() * (5-1+1) + 1)::int),
+    (SELECT id FROM published_courses ORDER BY RANDOM() LIMIT 1),
+    (SELECT id FROM existing_users ORDER BY RANDOM() LIMIT 1)
+),
+(
+    'Lorem Ipsum',
+    (SELECT FLOOR(RANDOM() * (5-1+1) + 1)::int),
+    (SELECT id FROM published_courses ORDER BY RANDOM() LIMIT 1),
+    (SELECT id FROM existing_users ORDER BY RANDOM() LIMIT 1)
+),
+(
+    'Lorem Ipsum',
+    (SELECT FLOOR(RANDOM() * (5-1+1) + 1)::int),
+    (SELECT id FROM published_courses ORDER BY RANDOM() LIMIT 1),
+    (SELECT id FROM existing_users ORDER BY RANDOM() LIMIT 1)
+)
+;
