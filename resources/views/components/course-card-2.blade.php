@@ -1,10 +1,10 @@
-<article class="bg-white border border-gray-500 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<article class="flex flex-col bg-white border border-gray-500 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 
     <img src="{{ Storage::url($course->image->path) }}" alt="">
 
-    <div class="px-4 md:px-2 py-4">
+    <div class="flex flex-col flex-1 px-4 md:px-2 py-4">
         <h3 class="text-center text-xl text-gray-700 mb-2">{{ Str::limit($course->title, 40) }}</h3>
-        <p class="text-gray-500 text-sm mb-2">
+        <p class="text-gray-500 text-sm mt-auto mb-2">
             Por <a href="{{-- perfil de profe --}}"
                     class="text-teal-500 hover:text-teal-700">{{$course->teacher->name}}</a>
         </p>
