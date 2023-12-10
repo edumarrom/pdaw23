@@ -8,7 +8,7 @@
         [
             'name' => __('Courses'),
             'route' => route('courses.index'),
-            'active' => false,
+            'active' => request()->routeIs('courses.*'),
         ],
     ]
 @endphp

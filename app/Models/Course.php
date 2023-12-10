@@ -15,6 +15,11 @@ class Course extends Model
     public const REVISION = 2;
     public const PUBLICADO = 3;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     /* Getters */
 
     public function getRatingAttribute()
