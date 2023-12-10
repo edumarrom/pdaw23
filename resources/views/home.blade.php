@@ -100,40 +100,7 @@
 
             @foreach ($courses as $course)
 
-                <article class="bg-white border border-gray-500 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <img src="{{ Storage::url($course->image->path) }}" alt="">
-
-                    <div class="px-4 md:px-2 py-4">
-                        <h3 class="text-center text-xl text-gray-700 mb-2">{{ Str::limit($course->title, 40) }}</h3>
-                        <p class="text-gray-500 text-sm mb-2">
-                            Por <a href="{{-- perfil de profe --}}"
-                                    class="text-teal-500 hover:text-teal-700">{{$course->teacher->name}}</a>
-                        </p>
-
-                        <div>
-                            <ul class="flex text-sm">
-                                <li class="text-gray-500 mr-2">
-                                    <i class="fa-solid fa-star mr-2"></i>
-                                    {{$course->rating}} |
-                                </li>
-                                <li class="text-gray-500 mr-2">
-                                    <i class="fa-solid fa-users mr-2"></i>
-                                    {{$course->students_count}} |
-                                </li>
-                                <li class="text-gray-500 mr-2">
-                                    {{-- <i class="fa-solid fa-layer-group mr-2"></i> --}}
-                                    {{$course->category->name}}
-                                </li>
-                            </ul>
-
-                            <p class="text-sm text-gray-700">{{ Str::limit($course->description, 100) }}</p>
-
-                            {{-- <div class="flex lg:justify-end">
-                                <x-link-button class="w-full lg:w-auto bg-teal-500 hover:bg-teal-700 mt-6 py-4 lg:py-2">+ info</x-link-button>
-                            </div> --}}
-                        </div>
-                    </div>
-                </article>
+                <x-course-card-2 :course="$course"></x-course-card-2>
 
             @endforeach
 
