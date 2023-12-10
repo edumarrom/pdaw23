@@ -7,7 +7,7 @@
         ],
         [
             'name' => __('Courses'),
-            'route' => route('dashboard'),
+            'route' => route('courses.index'),
             'active' => false,
         ],
     ]
