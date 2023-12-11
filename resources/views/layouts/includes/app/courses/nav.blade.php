@@ -5,7 +5,8 @@
 
             <h3 class="inline-flex items-center text-xl text-gray-700">Filtrar por: </h3>
 
-            <button class="bg-white text-gray-700 rounded shadow h-10 px-4">Todos los cursos</button>
+            <button class="bg-white text-gray-700 rounded shadow h-10 px-4"
+                    wire:click="resetFilters">Todos los cursos</button>
 
             <x-dropdown align="left">
                 <x-slot name="trigger">
@@ -22,7 +23,8 @@
 
                 <x-slot name="content">
                     @foreach ($categories as $category)
-                        <x-dropdown-link href="#">
+                        <x-dropdown-link class="cursor-pointer"
+                            wire:click="$set('category_id', {{$category->id}})">
                             {{ $category->name }}
                         </x-dropdown-link>
                     @endforeach
@@ -44,7 +46,8 @@
 
                 <x-slot name="content">
                     @foreach ($levels as $level)
-                        <x-dropdown-link href="#">
+                        <x-dropdown-link class="cursor-pointer"
+                            wire:click="$set('level_id', {{$level->id}})">
                             {{ $level->name }}
                         </x-dropdown-link>
                     @endforeach
