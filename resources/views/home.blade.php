@@ -1,5 +1,6 @@
 <x-app-layout>
 
+    {{-- Hero Section --}}
     <section class="bg-cover" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url({{ asset('img/home/landing_home.jpg') }})">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
             <div class="with-full md:w3/4 lg:w-1/2">
@@ -9,7 +10,7 @@
                     incluso compartirlos con la comunidad.
                 </p>
 
-                <!-- Search Bar -->
+                {{-- Search bar --}}
                 <div class="pt-2 relative mx-auto text-gray-600">
                     <input class=" w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none focus:ring-indigo-500"
                     type="search" name="search" placeholder="Vue para principantes...">

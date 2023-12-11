@@ -12,9 +12,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::where('status', 3)->latest('id')->take(8)->get();
-
-        return view('courses.index', compact('courses'));
+        return view('courses.index');
     }
 
     /**
