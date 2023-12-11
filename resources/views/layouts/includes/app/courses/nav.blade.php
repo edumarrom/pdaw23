@@ -1,4 +1,4 @@
-<nav class="bg-gray-200 py-4">
+<nav class="bg-gray-200 py-4 border-b-2 border-gray-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="flex space-x-2">

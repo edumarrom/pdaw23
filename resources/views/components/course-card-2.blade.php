@@ -10,7 +10,7 @@
         </p>
 
         <div class="cursor-default">
-            <ul class="flex text-sm justify-between">
+            <ul class="flex text-xs justify-between mb-2">
                 <li class="text-gray-500 mr-2">
                     <i class="fa-solid fa-star"></i>
                     {{$course->rating}}
@@ -23,6 +23,11 @@
                 <li class="text-gray-500 mr-2">
                     <i class="fa-solid fa-layer-group"></i>
                     {{$course->category->name}}
+                </li>
+
+                <li class="text-gray-500 mr-2">
+                    <i class="fa-solid fa-cubes"></i>
+                    {{$course->level->name}}
                 </li>
             </ul>
 

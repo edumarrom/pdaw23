@@ -1,6 +1,6 @@
 <div>
     {{-- Success is as dangerous as failure. --}}
-    {{-- Miau --}}
+    {{-- @todo Si se seleccionan, mostrar los filtros activos  --}}
 
     @include('layouts.includes.app.courses.nav')
 
