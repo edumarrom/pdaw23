@@ -41,7 +41,10 @@
                 {{ $slot }}
             </main>
 
-            @include('layouts.includes.app.footer')
+            <!-- Page Footer -->
+            <footer class="mt-24 bg-white border-t-2">
+                @include('layouts.includes.app.footer')
+            </footer>
         </div>
 
         @stack('modals')
