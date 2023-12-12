@@ -29,6 +29,8 @@ class CourseIndex extends Component
 
         $levels = Level::all();
 
+        $this->resetPage();
+
         return view('livewire.course-index', compact('courses', 'categories', 'levels'));
     }
 
