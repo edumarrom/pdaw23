@@ -15,6 +15,26 @@ class Course extends Model
     public const REVISION = 2;
     public const PUBLICADO = 3;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /* Query Scopes */
+    public function scopeCategory($query, $category_id)
+    {
+        if ($category_id) {
+            return $query->where('category_id', $category_id);
+        }
+    }
+
+    public function scopeLevel($query, $level_id)
+    {
+        if ($level_id) {
+            return $query->where('level_id', $level_id);
+        }
+    }
+
     /* Getters */
 
     public function getRatingAttribute()

@@ -10,7 +10,7 @@
         </p>
 
         <div class="cursor-default">
-            <ul class="flex text-sm justify-between">
+            <ul class="flex text-xs justify-between mb-2">
                 <li class="text-gray-500 mr-2">
                     <i class="fa-solid fa-star"></i>
                     {{$course->rating}}
@@ -24,6 +24,11 @@
                     <i class="fa-solid fa-layer-group"></i>
                     {{$course->category->name}}
                 </li>
+
+                <li class="text-gray-500 mr-2">
+                    <i class="fa-solid fa-cubes"></i>
+                    {{$course->level->name}}
+                </li>
             </ul>
 
         </div>
@@ -32,6 +37,7 @@
             <p class="text-sm text-gray-700">{{ Str::limit($course->description, 100) }}</p>
         </div>
 
-        <x-link-button class="w-full text-center bg-teal-500 hover:bg-teal-700 mt-2">Más info</x-link-button>
+        <x-link-button class="w-full text-center bg-teal-500 hover:bg-teal-700 mt-2"
+                href="{{ route('courses.show', $course) }}">Más info</x-link-button>
     </div>
 </article>
