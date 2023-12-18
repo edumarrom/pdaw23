@@ -36,7 +36,7 @@
         </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-3 gap-8">
 
         <div class="col-span-2 space-y-12">
 
@@ -53,14 +53,14 @@
 
             <section>
                 <h3 class="text-3xl font-bold mt-6 mb-2">
-                    <i class="fa fa-solid fa-flag-checkered rotate-45 mr-2"></i>
-                    Lo que aprenderás <small>(Objetivos de prendizaje)</small>
+                    <i class="fa fa-solid fa-graduation-cap mr-2"></i>
+                    Lo que aprenderás
                 </h3>
                 <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
                     <ul class="grid grid-cols-2 gap-x-6 gap-y-2">
                         @foreach ($course->goals as $goal)
                             <li class="">
-                                <i class="fa fa-solid fa-caret-right text-lg mr-2"></i>
+                                <i class="fa fa-solid fa-check text-lg mr-2"></i>
                                 {{$goal->name}}
                             </li>
                         @endforeach
@@ -70,14 +70,14 @@
 
             <section>
                 <h3 class="text-3xl font-bold mt-6 mb-2">
-                    <i class="fa fa-solid fa-vial mr-2"></i>
-                    Lo que debes saber <small>(Requisitos previos)</small>
+                    <i class="fa fa-solid fa-list-check mr-2"></i>
+                    Lo que debes saber
                 </h3>
                 <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
                     <ul class="grid grid-cols-2 gap-x-6 gap-y-2">
                         @foreach ($course->requirements as $requirement)
                             <li class="">
-                                <i class="fa fa-solid fa-caret-right text-lg mr-2"></i>
+                                <i class="fa fa-solid fa-check text-lg mr-2"></i>
                                 {{$requirement->name}}
                             </li>
                         @endforeach
@@ -101,8 +101,8 @@
                             @endif>
                             <header class="px-4 py-2 cursor-pointer" x-on:click="open =!open">
                                 <h4 class="text-xl font-bold">
-                                    <i class="fa fa-solid text-lg mr-2 trans"
-                                            x-bind:class="open ? 'fa-caret-down' : 'fa-caret-right'"></i>
+                                    <i class="fa fa-solid fa-caret-right text-lg mr-2 transition-all"
+                                            x-bind:class="!open || 'rotate-90'"></i>
                                     {{ $section->title }}
                                 </h4>
                             </header>
@@ -132,10 +132,10 @@
                     <i class="fa fa-solid fa-comment-dots mr-2"></i>
                     Opiniones
                 </h3>
-                <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
+                <div class="text-gray-700 bg-white shadow rounded divide-y-2">
                     @foreach ($course->reviews as $review)
 
-                        <article class="flex">
+                        <article class="flex p-4">
                             <figure class="mr-4">
                                 <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$review->user->profile_photo_url}}" alt="">
                             </figure>
@@ -157,6 +157,29 @@
                             </div>
                         </article>
                     @endforeach
+                </div>
+            </section>
+        </div>
+
+        <div class="relative bottom-24">
+            <section class="text-gray-700 bg-white shadow-lg rounded p-4 space-y-4">
+                <div >
+                    <div class="flex">
+                        <img class="h-16 w-16 object-cover rounded-full shadow-lg" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
+
+                        <div class="ml-2">
+                            <p>Realizado por</p>
+                            <h3 class="text-3xl font-bold">
+                                {{ $course->teacher->name }}
+                            </h3>
+                            <a class="text-teal-500 hover:text-teal-700" href="">{{'@' . Str::slug($course->teacher->name, '')}}</a>
+                        </div>
+                    </div>
+
+                    <x-link-button class="flex items-center justify-center h-12 mt-4 text-lg bg-teal-500 hover:bg-teal-700">
+                        Inscríbete ahora
+                    </x-link-button>
+
                 </div>
             </section>
         </div>
