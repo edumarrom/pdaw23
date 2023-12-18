@@ -38,11 +38,23 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-3">
 
-        <div class="col-span-2">
+        <div class="col-span-2 space-y-12">
+
+            <section>
+                <h3 class="text-3xl font-bold mt-6 mb-2">
+                    <i class="fa fa-solid fa-circle-info mr-2"></i>
+                    Acerca del curso
+                </h3>
+
+                <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
+                    {{$course->description}}
+                </div>
+            </section>
+
             <section>
                 <h3 class="text-3xl font-bold mt-6 mb-2">
                     <i class="fa fa-solid fa-flag-checkered rotate-45 mr-2"></i>
-                    Objetivos de prendizaje
+                    Lo que aprenderás <small>(Objetivos de prendizaje)</small>
                 </h3>
                 <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
                     <ul class="grid grid-cols-2 gap-x-6 gap-y-2">
@@ -59,7 +71,7 @@
             <section>
                 <h3 class="text-3xl font-bold mt-6 mb-2">
                     <i class="fa fa-solid fa-vial mr-2"></i>
-                    Requisitos previos
+                    Lo que debes saber <small>(Requisitos previos)</small>
                 </h3>
                 <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
                     <ul class="grid grid-cols-2 gap-x-6 gap-y-2">
@@ -74,35 +86,78 @@
             </section>
 
             <section>
-            <h3 class="text-3xl font-bold mt-6 mb-2">
-                <i class="fa fa-solid fa-book rotate-45 mr-2"></i>
-                Contenido del curso
-            </h3>
+                <h3 class="text-3xl font-bold mt-6 mb-2">
+                    <i class="fa fa-solid fa-book mr-2"></i>
+                    Contenido del curso
+                </h3>
 
-            <div class="grid grid-cols-1 text-gray-700 bg-white rounded divide-y-2">
-                @foreach ($course->sections as $section)
-                    <article class="py-2">
-                        <header class="px-4 py-2 cursor-pointer">
-                            <h4 class="text-lg font-bold underline">{{ $section->title }}</h4>
-                        </header>
+                <div class="grid grid-cols-1 text-gray-700  bg-white shadow rounded divide-y-2">
+                    @foreach ($course->sections as $section)
+                        <article class="py-2"
+                            @if ($loop->first)
+                                x-data="{open: true}"
+                                @else
+                                x-data="{open: false}"
+                            @endif>
+                            <header class="px-4 py-2 cursor-pointer" x-on:click="open =!open">
+                                <h4 class="text-xl font-bold">
+                                    <i class="fa fa-solid text-lg mr-2 trans"
+                                            x-bind:class="open ? 'fa-caret-down' : 'fa-caret-right'"></i>
+                                    {{ $section->title }}
+                                </h4>
+                            </header>
 
-                        <div>
-                            <ul>
-                                @foreach ($section->lessons as $lesson)
-                                    <a href="{{-- ruta al visor de lección --}}">
-                                        <li class="flex px-4 py-2 hover:bg-gray-200">
-                                            <i class="fa fa-solid fa-play-circle text-lg mr-2"></i>
-                                            {{ $lesson->title }}
-                                        </li>
-                                    </a>
-                                @endforeach
-                            </ul>
-                        </div>
+                            <div x-show="open">
+                                <hr/>
+                                <ul>
+                                    @foreach ($section->lessons as $lesson)
+                                        <a href="{{-- ruta al visor de lección --}}">
+                                            <li class="flex px-4 py-2 hover:bg-gray-200">
+                                                <i class="fa fa-solid fa-play-circle text-lg mr-2"></i>
+                                                {{ $lesson->title }}
+                                            </li>
+                                        </a>
+                                    @endforeach
+                                </ul>
+                            </div>
 
-                    </article>
-                @endforeach
-            </div>
+                        </article>
+                    @endforeach
+                </div>
 
+            </section>
+
+            <section>
+                <h3 class="text-3xl font-bold mt-6 mb-2">
+                    <i class="fa fa-solid fa-comment-dots mr-2"></i>
+                    Opiniones
+                </h3>
+                <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
+                    @foreach ($course->reviews as $review)
+
+                        <article class="flex">
+                            <figure class="mr-4">
+                                <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$review->user->profile_photo_url}}" alt="">
+                            </figure>
+                            <div class="card flex-1">
+                                <div class="card-body">
+                                    <h2 class="text-xl font-bold">{{$review->user->name}}</h2>
+                                    <!--  -->
+                                    <ul class="flex text-sm">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($review->rating >= $i)
+                                                <li class="mr-1"><i class="fa fa-solid fa-star text-yellow-400"></i></li>
+                                            @else
+                                                <li class="mr-1"><i class="fa fa-solid fa-star text-gray-400"></i></li>
+                                            @endif
+                                        @endfor
+                                    </ul>
+                                    {{$review->comment}}
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
             </section>
         </div>
 
