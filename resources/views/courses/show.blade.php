@@ -36,9 +36,10 @@
         </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-3 gap-8">
+    <div class="max-w-7xl mt-8 mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-        <div class="col-span-2 space-y-12">
+        {{-- Columna izquierda --}}
+        <div class="lg:col-span-2 order-2 lg:order-1 space-y-12">
 
             <section>
                 <h3 class="text-3xl font-bold mt-6 mb-2">
@@ -57,7 +58,7 @@
                     Lo que aprenderás
                 </h3>
                 <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
-                    <ul class="grid grid-cols-2 gap-x-6 gap-y-2">
+                    <ul class="grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2">
                         @foreach ($course->goals as $goal)
                             <li class="">
                                 <i class="fa fa-solid fa-check text-lg mr-2"></i>
@@ -74,7 +75,7 @@
                     Lo que debes saber
                 </h3>
                 <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
-                    <ul class="grid grid-cols-2 gap-x-6 gap-y-2">
+                    <ul class="grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2">
                         @foreach ($course->requirements as $requirement)
                             <li class="">
                                 <i class="fa fa-solid fa-check text-lg mr-2"></i>
@@ -146,7 +147,7 @@
                                     <ul class="flex text-sm">
                                         @for ($i = 1; $i <= 5; $i++)
                                             @if ($review->rating >= $i)
-                                                <li class="mr-1"><i class="fa fa-solid fa-star text-yellow-400"></i></li>
+                                                <li class="mr-1"><i class="fa fa-solid fa-star text-amber-400"></i></li>
                                             @else
                                                 <li class="mr-1"><i class="fa fa-solid fa-star text-gray-400"></i></li>
                                             @endif
@@ -161,9 +162,10 @@
             </section>
         </div>
 
-        <div class="relative bottom-24">
+        {{-- Columna derecha --}}
+        <div class="order-1 lg:order-2 lg:relative lg:bottom-24">
             <section class="text-gray-700 bg-white shadow-lg rounded p-4 space-y-4">
-                <div >
+                <div>
                     <div class="flex">
                         <img class="h-16 w-16 object-cover rounded-full shadow-lg" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
 
@@ -179,7 +181,6 @@
                     <x-link-button class="flex items-center justify-center h-12 mt-4 text-lg bg-teal-500 hover:bg-teal-700">
                         Inscríbete ahora
                     </x-link-button>
-
                 </div>
             </section>
         </div>
