@@ -177,12 +177,15 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('courses.enroll', $course) }}" method="post">
-                        @csrf
-                        <x-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700">
-                            Inscríbete ahora
-                        </x-button>
-                    </form>
+                    @can('enrolled', $course)
+                        <form action="{{ route('courses.enroll', $course) }}" method="post">
+                            @csrf
+                            <x-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700">
+                                Inscríbete ahora
+                            </x-button>
+                        </form>
+                    @endcan
+
                 </div>
             </section>
         </div>
