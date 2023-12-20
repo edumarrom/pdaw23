@@ -19,6 +19,14 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::resource('courses', CourseController::class)->names('courses');
 
+Route::post('courses/{course}/enroll', [CourseController::class, 'enroll'])
+    ->middleware('auth')
+    ->name('courses.enroll');
+
+Route::get('courses-status/{course}', function ($course) {
+   return "Matriculado en el curso: {$course}";
+})->name('courses.status');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
