@@ -64,7 +64,7 @@ class CourseController extends Controller
     }
 
     public function enroll(Course $course) {
-        $course->students()->attach(auth()->user()->id);
+        $course->students()->sync(auth()->user()->id);
 
         return redirect()->route('courses.status', $course);
     }
