@@ -37,7 +37,7 @@
             <p class="text-sm text-gray-700">{{ Str::limit($course->description, 100) }}</p>
         </div>
 
-        <x-link-button class="w-full text-center bg-teal-500 hover:bg-teal-700 mt-2"
+        <x-link-button class="w-full justify-center bg-teal-500 hover:bg-teal-700 mt-2"
                 href="{{ route('courses.show', $course) }}">Más info</x-link-button>
     </div>
 </article>

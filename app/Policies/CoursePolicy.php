@@ -20,8 +20,8 @@ class CoursePolicy
      * Comprueba si un alumno se encuentra matriculado en un curso.
      * @return bool
      */
-    public function enroll(User $user, Course $course)
+    public function enrolled(User $user, Course $course)
     {
-        return false;
+        return $course->students->contains($user->id);
     }
 }
