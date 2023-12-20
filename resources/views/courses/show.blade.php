@@ -143,7 +143,6 @@
                             <div class="card flex-1">
                                 <div class="card-body">
                                     <h2 class="text-xl font-bold">{{$review->user->name}}</h2>
-                                    <!--  -->
                                     <ul class="flex text-sm">
                                         @for ($i = 1; $i <= 5; $i++)
                                             @if ($review->rating >= $i)
@@ -174,13 +173,16 @@
                             <h3 class="text-3xl font-bold">
                                 {{ $course->teacher->name }}
                             </h3>
-                            <a class="text-teal-500 hover:text-teal-700" href="">{{'@' . Str::slug($course->teacher->name, '')}}</a>
+                            <a class="text-sm text-teal-500 hover:text-teal-700" href="">{{'@' . Str::slug($course->teacher->name, '')}}</a>
                         </div>
                     </div>
 
-                    <x-link-button class="flex items-center justify-center h-12 mt-4 text-lg bg-teal-500 hover:bg-teal-700">
-                        Inscríbete ahora
-                    </x-link-button>
+                    <form action="{{ route('courses.enroll', $course) }}" method="post">
+                        @csrf
+                        <x-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700">
+                            Inscríbete ahora
+                        </x-button>
+                    </form>
                 </div>
             </section>
         </div>
