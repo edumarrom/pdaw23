@@ -173,16 +173,27 @@
                             <h3 class="text-3xl font-bold">
                                 {{ $course->teacher->name }}
                             </h3>
-                            <a class="text-sm text-teal-500 hover:text-teal-700" href="">{{'@' . Str::slug($course->teacher->name, '')}}</a>
+                            <a class="text-sm text-teal-500 hover:text-teal-700"
+                                    href="">
+                                {{'@' . Str::slug($course->teacher->name, '')}}
+                            </a>
                         </div>
                     </div>
 
-                    <form action="{{ route('courses.enroll', $course) }}" method="post">
-                        @csrf
-                        <x-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700">
-                            Inscríbete ahora
-                        </x-button>
-                    </form>
+                    @can('enrolled', $course)
+                        <x-link-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700"
+                                href="{{ route('courses.status', $course) }}">
+                            Continuar con el curso
+                        </x-link-button>
+                    @else
+                        <form action="{{ route('courses.enroll', $course) }}" method="post">
+                            @csrf
+                            <x-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700">
+                                Inscríbete ahora
+                            </x-button>
+                        </form>
+                    @endcan
+
                 </div>
             </section>
         </div>

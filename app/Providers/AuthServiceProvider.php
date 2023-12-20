@@ -13,7 +13,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        // No necesitamos registrar nuestras policies si seguimos las convenciones de Laravel.
+        // @see https://laravel.com/docs/10.x/authorization#policy-auto-discovery
     ];
 
     /**
