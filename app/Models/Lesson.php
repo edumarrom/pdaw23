@@ -9,6 +9,14 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    /**
+     * Devuelve true si la lección actual está completada, false en caso contrario.
+     */
+    public function getCompletedAttribute()
+    {
+        return $this->users->contains(auth()->user()->id);
+    }
+
     public function section()
     {
         return $this->belongsTo(Section::class);
