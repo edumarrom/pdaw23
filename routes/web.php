@@ -23,9 +23,9 @@ Route::post('courses/{course}/enroll', [CourseController::class, 'enroll'])
     ->middleware('auth')
     ->name('courses.enroll');
 
-Route::get('courses-status/{course}', function ($course) {
-   return "Matriculado en el curso: {$course}";
-})->name('courses.status');
+
+
+Route::get('courses/{course}/learn', [CourseController::class, 'learn'])->name('courses.learn');
 
 Route::middleware([
     'auth:sanctum',
