@@ -68,9 +68,4 @@ class CourseController extends Controller
 
         return redirect()->route('courses.status', $course);
     }
-
-    public function learn(Course $course)
-    {
-        return view('courses.learn', compact('course'));
-    }
 }

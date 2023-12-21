@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
+use App\Livewire\CourseLearn;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,7 @@ Route::post('courses/{course}/enroll', [CourseController::class, 'enroll'])
 
 
 
-Route::get('courses/{course}/learn', [CourseController::class, 'learn'])->name('courses.learn');
+Route::get('courses/{course}/learn', CourseLearn::class)->name('courses.learn');
 
 Route::middleware([
     'auth:sanctum',
