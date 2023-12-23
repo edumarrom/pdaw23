@@ -9,6 +9,11 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     /**
      * Devuelve true si la lección actual está completada, false en caso contrario.
      */

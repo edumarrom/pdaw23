@@ -24,9 +24,7 @@ Route::post('courses/{course}/enroll', [CourseController::class, 'enroll'])
     ->middleware('auth')
     ->name('courses.enroll');
 
-
-
-Route::get('courses/{course}/learn', CourseLearn::class)->name('courses.learn');
+Route::get('courses/{course}/learn/{lesson?}', CourseLearn::class)->name('courses.learn');
 
 Route::middleware([
     'auth:sanctum',

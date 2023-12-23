@@ -3,7 +3,7 @@
 
         {{-- Columna izquierda--}}
         <div class="col-span-2">
-
+            {{ $lesson }}
         </div>
 
         {{-- Columna derecha--}}
