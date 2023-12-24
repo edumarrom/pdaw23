@@ -182,7 +182,7 @@
 
                     @can('enrolled', $course)
                         <x-link-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700"
-                                href="{{ route('courses.status', $course) }}">
+                                href="{{ route('courses.learn', $course) }}">
                             Continuar con el curso
                         </x-link-button>
                     @else
