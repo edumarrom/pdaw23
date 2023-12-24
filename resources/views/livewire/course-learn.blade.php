@@ -3,7 +3,32 @@
 
         {{-- Columna izquierda--}}
         <div class="col-span-2">
-            {{ $lesson }}
+
+            {!! $lesson->iframe !!}
+            <h1 class="text-2xl text-gray-700 font-bold">
+                {{ $lesson->title }}
+            </h1>
+            <div>
+                @if ($previous)
+                <x-link-button href="{{route('courses.learn', [$course, $previous])}}">
+                    Anterior
+                </x-link-button>
+                @else
+                <x-link-button href="#" class="bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
+                    Anterior
+                </x-link-button>
+                @endif
+
+                @if ($next)
+                <x-link-button href="{{route('courses.learn', [$course, $next])}}">
+                    Siguiente
+                </x-link-button>
+                @else
+                <x-link-button href="#" class="bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
+                    Siguiente
+                </x-link-button>
+                @endif
+            </div>
         </div>
 
         {{-- Columna derecha--}}
@@ -26,7 +51,7 @@
                 </div>
             </div>
 
-            <ul>
+            <ul class="mt-4">
                 @foreach ($course->sections as $section)
                     <li>
                         <span class="font-bold text-rose-600">[{{ $section->id }}]</span>
@@ -37,7 +62,7 @@
                             @foreach ($section->lessons as $lesson)
                                 <li>
                                     <i class="fa-solid fa-play-circle mr-2"></i>
-                                    <a href="">
+                                    <a href="{{ route('courses.learn', [$course, $lesson]) }}">
                                         <span class="font-bold text-rose-400">[{{ $lesson->id }}]</span>
                                         {{ Str::limit($lesson->title, 30) }}
                                     </a>
