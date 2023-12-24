@@ -25,7 +25,8 @@ class CourseLearn extends Component
             $this->lesson = $lesson;
         } else {
             foreach ($course->lessons as $lesson) {
-                if (!$lesson->completed) {
+                /* Si la lección no está, o se trata de la última lección */
+                if (!$lesson->completed || $course->lessons->last()->id == $lesson->id) {
                     $this->lesson = $lesson;
                     break;
                 }
@@ -42,5 +43,26 @@ class CourseLearn extends Component
     public function render()
     {
         return view('livewire.course-learn');
+    }
+
+    public function toggleCompleted()
+    {
+        if ($this->lesson->completed) {
+            $this->lesson->users()->detach(auth()->user()->id);
+        } else {
+            $this->lesson->users()->attach(auth()->user()->id);
+        }
+    }
+
+    public function getAdvanceProperty()
+    {
+        $i = 0;
+        foreach ($this->course->lessons as $lesson) {
+            if ($lesson->completed) {
+                $i++;
+            }
+        }
+        $advance = ($i * 100) / ($this->course->lessons->count());
+        return round($advance, 2);
     }
 }

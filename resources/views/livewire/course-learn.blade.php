@@ -1,8 +1,8 @@
 <div class="mt-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 lg:gap-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         {{-- Columna izquierda--}}
-        <div class="col-span-2 mb-6">
+        <div class="lg:col-span-2 mb-6">
 
             <div class="embed-responsive rounded mb-4">
                 {!! $lesson->iframe !!}
@@ -19,7 +19,10 @@
             @endif
 
             <label class="relative inline-flex items-center mt-2 mb-5 cursor-pointer">
-                <input type="checkbox" value="" class="sr-only peer">
+                <input type="checkbox"
+                    class="sr-only peer"
+                    wire:click="toggleCompleted"
+                    @if ($this->lesson->completed) checked @endif>
                 <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
                 <span class="ms-3 text-base font-medium text-gray-700 dark:text-gray-300">Marcar lección como completa</span>
             </label>
@@ -30,7 +33,7 @@
                     Anterior
                 </x-link-button>
                 @else
-                <x-link-button href="#" class="bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
+                <x-link-button href="#" class="!bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
                     Anterior
                 </x-link-button>
                 @endif
@@ -40,7 +43,7 @@
                     Siguiente
                 </x-link-button>
                 @else
-                <x-link-button href="#" class="bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
+                <x-link-button href="#" class="!bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
                     Siguiente
                 </x-link-button>
                 @endif
@@ -65,6 +68,11 @@
                         {{'@' . Str::slug($course->teacher->name, '')}}
                     </a>
                 </div>
+            </div>
+
+            <div class="mt-2 text-sm text-gray-600">{{$this->advance}}% completado</div>
+            <div class="w-full bg-gray-200 rounded-full h-1.5 mb-4 ">
+                <div class="bg-indigo-400 h-1.5 rounded-full transition-width ease-in-out duration-500" style="width: {{$this->advance}}%"></div>
             </div>
 
             <ul class="mt-4">
