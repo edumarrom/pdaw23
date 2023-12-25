@@ -33,7 +33,7 @@
                     Anterior
                 </x-link-button>
                 @else
-                <x-link-button href="#" class="!bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
+                <x-link-button class="btn-disabled" disabled>
                     Anterior
                 </x-link-button>
                 @endif
@@ -43,7 +43,7 @@
                     Siguiente
                 </x-link-button>
                 @else
-                <x-link-button href="#" class="!bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
+                <x-link-button class="btn-disabled" disabled>
                     Siguiente
                 </x-link-button>
                 @endif

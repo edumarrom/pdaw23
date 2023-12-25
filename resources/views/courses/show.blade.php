@@ -181,13 +181,14 @@
                     </div>
 
                     @can('enrolled', $course)
-                        <x-link-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700"
+                        <x-link-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 btn-teal"
                                 href="{{ route('courses.learn', $course) }}">
                             Continuar con el curso
                         </x-link-button>
                     @else
                         <form action="{{ route('courses.enroll', $course) }}" method="post">
                             @csrf
+                            {{-- @todo Hacer funcionar la clase btn-teal --}}
                             <x-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700">
                                 Inscríbete ahora
                             </x-button>
