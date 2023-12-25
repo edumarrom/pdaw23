@@ -36,7 +36,7 @@
         </div>
     </section>
 
-    <div class="max-w-7xl mt-8 mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         {{-- Columna izquierda --}}
         <div class="lg:col-span-2 order-2 lg:order-1 space-y-12">

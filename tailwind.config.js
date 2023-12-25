@@ -21,3 +21,22 @@ export default {
 
     plugins: [forms, typography],
 };
+
+module.exports = {
+    content: ['./**/*.html', './**/*.blade.php', './**/*.vue', './**/*.jsx'],
+    theme: {
+        container: {
+            center: true,
+            padding: {
+                DEFAULT: '1rem',
+                sm: '1.5rem',
+                lg: '2rem',
+            },
+            screens: {
+                lg: '80rem', // max-w-7xl
+            },
+        },
+    },
+    variants: {},
+    plugins: [],
+};
