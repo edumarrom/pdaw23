@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-8">
+<div class="container py-4 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-8">
     <div class="col-span-full lg:col-span-2">
         <div class="flex items-center justify-start">
             <x-application-mark class="h-24 w-auto"/>

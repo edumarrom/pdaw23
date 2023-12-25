@@ -1,6 +1,6 @@
 <x-app-layout>
     <section class="bg-cover {{-- bg-right-top bg-no-repeat --}} py-12" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url({{Storage::url($course->image->path) }})">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
                 <img class="h-80 w-full object-cover rounded border-4 border-gray-300 border-s-white" src="{{Storage::url($course->image->path)}}" alt="">
             </figure>
@@ -36,7 +36,7 @@
         </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="container mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         {{-- Columna izquierda --}}
         <div class="lg:col-span-2 order-2 lg:order-1 space-y-12">
