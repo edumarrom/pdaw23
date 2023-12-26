@@ -1,4 +1,4 @@
-<article class="flex flex-col bg-white border border-gray-500 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<article class="flex flex-col bg-white shadow-md rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
 
     <img src="{{ Storage::url($course->image->path) }}" alt="">
 

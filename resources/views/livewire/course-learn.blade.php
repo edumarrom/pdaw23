@@ -4,7 +4,7 @@
         {{-- Columna izquierda--}}
         <div class="lg:col-span-2 mb-6">
 
-            <div class="embed-responsive rounded mb-4">
+            <div class="embed-responsive rounded mb-4 shadow-lg">
                 {!! $lesson->iframe !!}
             </div>
 
@@ -27,7 +27,7 @@
                 <span class="ms-3 text-base font-medium text-gray-700 dark:text-gray-300">Marcar lección como completa</span>
             </label>
 
-            <div class="flex justify-between text-gray-700 bg-white shadow-lg rounded-lg p-4">
+            <div class="flex justify-between card shadow-lg rounded-lg">
                 @if ($previous)
                 <x-link-button href="{{route('courses.learn', [$course, $previous])}}">
                     Anterior
@@ -51,7 +51,7 @@
         </div>
 
         {{-- Columna derecha--}}
-        <div class="text-gray-700 bg-white shadow-lg rounded p-4">
+        <div class="card">
             <p class="text-xl font-bold text-center">{{ $course->title }}</p>
 
             <div class="flex items-center mt-2">

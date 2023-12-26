@@ -47,7 +47,7 @@
                     Acerca del curso
                 </h3>
 
-                <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
+                <div class="card space-y-4">
                     {{$course->description}}
                 </div>
             </section>
@@ -57,7 +57,7 @@
                     <i class="fa fa-solid fa-graduation-cap mr-2"></i>
                     Lo que aprenderás
                 </h3>
-                <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
+                <div class="card space-y-4">
                     <ul class="grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2">
                         @foreach ($course->goals as $goal)
                             <li class="">
@@ -74,7 +74,7 @@
                     <i class="fa fa-solid fa-list-check mr-2"></i>
                     Lo que debes saber
                 </h3>
-                <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
+                <div class="card space-y-4">
                     <ul class="grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2">
                         @foreach ($course->requirements as $requirement)
                             <li class="">
@@ -133,15 +133,15 @@
                     <i class="fa fa-solid fa-comment-dots mr-2"></i>
                     Opiniones
                 </h3>
-                <div class="text-gray-700 bg-white shadow rounded divide-y-2">
+                <div class="card p-0 divide-y-2">
                     @foreach ($course->reviews as $review)
 
                         <article class="flex p-4">
                             <figure class="mr-4">
                                 <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$review->user->profile_photo_url}}" alt="">
                             </figure>
-                            <div class="card flex-1">
-                                <div class="card-body">
+                            <div class="flex-1">
+                                <div>
                                     <h2 class="text-xl font-bold">{{$review->user->name}}</h2>
                                     <ul class="flex text-sm">
                                         @for ($i = 1; $i <= 5; $i++)
@@ -163,7 +163,7 @@
 
         {{-- Columna derecha --}}
         <div class="order-1 lg:order-2 lg:relative lg:bottom-24">
-            <section class="text-gray-700 bg-white shadow-lg rounded p-4 space-y-4">
+            <section class="card shadow-lg space-y-4">
                 <div>
                     <div class="flex">
                         <img class="h-16 w-16 object-cover rounded-full shadow-lg" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
