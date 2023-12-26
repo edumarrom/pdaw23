@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\TeacherCourses;
 
-Route::get('/', function () {
-    return 'área de profesores';
-});
+Route::get('courses', TeacherCourses::class)
+    ->name('courses.index');
