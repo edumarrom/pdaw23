@@ -77,14 +77,23 @@
 
             <ul class="mt-4">
                 @foreach ($course->sections as $section)
-                    <li class="text-gray-700 mb-4">
+                    <li class="text-gray-700 mb-4"
+                        {{-- x-open temporalmente en true hasta resolver --}}
+                        x-data="{open: true}">
                         {{-- <span class="font-bold text-rose-600">[{{ $section->id }}]</span> --}}
-                        <a class="inline-block mb-2 font-bold" href="">
-                            {{ Str::limit($section->title, 40) }}
-                        </a>
-                        <ul>
+                        <div class="mb-2">
+                            <i class="fa fa-solid fa-caret-right text-base mr-2 transition-all"
+                                x-bind:class="!open || 'rotate-90'"></i>
+                            <span class="text-sm font-bold cursor-pointer" x-on:click="open =!open">
+                                {{ Str::limit($section->title, 40) }}
+                            </span>
+                        </div>
+                        <ul x-show="open" x-collapse>
                             @foreach ($section->lessons as $lesson)
-                                <li class="flex">
+                                <li class="flex"
+                                    @if ($lesson->id == $this->lesson->id)
+                                        {{-- @todo: Si en esta sección está la lección activa, abrir el desplegable --}}
+                                    @endif>
                                     <div>
                                         <a href="{{ route('courses.learn', [$course, $lesson]) }}">
 

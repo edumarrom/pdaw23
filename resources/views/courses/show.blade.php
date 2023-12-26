@@ -97,7 +97,7 @@
                         <article class="py-2"
                             @if ($loop->first)
                                 x-data="{open: true}"
-                                @else
+                            @else
                                 x-data="{open: false}"
                             @endif>
                             <header class="px-4 py-2 cursor-pointer" x-on:click="open =!open">
@@ -108,7 +108,7 @@
                                 </h4>
                             </header>
 
-                            <div x-show="open">
+                            <div x-show="open" x-collapse>
                                 <hr/>
                                 <ul>
                                     @foreach ($section->lessons as $lesson)
