@@ -78,10 +78,8 @@
             <ul class="mt-4">
                 @foreach ($course->sections as $section)
                     <li class="text-gray-700 mb-4"
-                        {{-- x-open temporalmente en true hasta resolver --}}
                         x-data="{open: false}">
-                        {{-- <span class="font-bold text-rose-600">[{{ $section->id }}]</span> --}}
-                        <div class="mb-2 cursor-pointer" x-on:click="open =!open">
+                        <div class="mb-2 cursor-pointer" x-on:click="open = !open">
                             <i class="fa fa-solid fa-caret-right text-base mr-2 transition-all"
                                 x-bind:class="!open || 'rotate-90'"></i>
                             <span class="text-sm font-bold">
@@ -92,7 +90,6 @@
                             @foreach ($section->lessons as $lesson)
                                 <li class="flex"
                                     @if ($lesson->id == $this->lesson->id)
-                                        {{-- @done: Si en esta sección está la lección activa, abrir el desplegable --}}
                                         x-init="open = 'true'"
                                     @endif>
                                     <div>

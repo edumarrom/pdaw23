@@ -22,21 +22,25 @@ export default {
     plugins: [forms, typography],
 };
 
+/* @done: Resolver por qué customizar la clase container rompe elementos como los inputs */
 module.exports = {
-    content: ['./**/*.html', './**/*.blade.php', './**/*.vue', './**/*.jsx'],
+    content: ['./**/*.html', './**/*.blade.php', './**/*.ts'],
     theme: {
-        container: {
-            center: true,
-            padding: {
-                DEFAULT: '1rem',
-                sm: '1.5rem',
-                lg: '2rem',
-            },
-            screens: {
-                lg: '80rem', // max-w-7xl
+        extend: {
+            container: {
+                center: true,
+                padding: {
+                    DEFAULT: '1rem',
+                    sm: '1.5rem',
+                    lg: '2rem',
+                },
+                screens: {
+                    lg: '80rem', // max-w-7xl
+                },
             },
         },
     },
     variants: {},
-    plugins: [],
+    // Es necesario agregar los plugins para que carguen
+    plugins: [forms, typography],
 };
