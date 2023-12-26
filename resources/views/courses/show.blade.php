@@ -189,7 +189,7 @@
                         <form action="{{ route('courses.enroll', $course) }}" method="post">
                             @csrf
                             {{-- @todo Hacer funcionar la clase btn-teal --}}
-                            <x-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700">
+                            <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
                                 Inscríbete ahora
                             </x-button>
                         </form>
