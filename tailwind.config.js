@@ -22,7 +22,6 @@ export default {
     plugins: [forms, typography],
 };
 
-/* @done: Resolver por qué customizar la clase container rompe elementos como los inputs */
 module.exports = {
     content: ['./**/*.html', './**/*.blade.php', './**/*.ts'],
     theme: {
@@ -41,6 +40,5 @@ module.exports = {
         },
     },
     variants: {},
-    // Es necesario agregar los plugins para que carguen
     plugins: [forms, typography],
 };
