@@ -101,7 +101,7 @@
 
             @foreach ($courses as $course)
 
-                <x-course-card-2 :course="$course"></x-course-card-2>
+                <x-course-card :course="$course"></x-course-card>
 
             @endforeach
 
