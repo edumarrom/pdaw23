@@ -1,6 +1,6 @@
 <x-app-layout>
     <section class="bg-cover {{-- bg-right-top bg-no-repeat --}} py-12" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url({{Storage::url($course->image->path) }})">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
                 <img class="h-80 w-full object-cover rounded border-4 border-gray-300 border-s-white" src="{{Storage::url($course->image->path)}}" alt="">
             </figure>
@@ -36,7 +36,7 @@
         </div>
     </section>
 
-    <div class="max-w-7xl mt-8 mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="container mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         {{-- Columna izquierda --}}
         <div class="lg:col-span-2 order-2 lg:order-1 space-y-12">
@@ -47,7 +47,7 @@
                     Acerca del curso
                 </h3>
 
-                <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
+                <div class="card space-y-4">
                     {{$course->description}}
                 </div>
             </section>
@@ -57,7 +57,7 @@
                     <i class="fa fa-solid fa-graduation-cap mr-2"></i>
                     Lo que aprenderás
                 </h3>
-                <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
+                <div class="card space-y-4">
                     <ul class="grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2">
                         @foreach ($course->goals as $goal)
                             <li class="">
@@ -74,7 +74,7 @@
                     <i class="fa fa-solid fa-list-check mr-2"></i>
                     Lo que debes saber
                 </h3>
-                <div class="text-gray-700 bg-white shadow rounded p-4 space-y-4">
+                <div class="card space-y-4">
                     <ul class="grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2">
                         @foreach ($course->requirements as $requirement)
                             <li class="">
@@ -97,7 +97,7 @@
                         <article class="py-2"
                             @if ($loop->first)
                                 x-data="{open: true}"
-                                @else
+                            @else
                                 x-data="{open: false}"
                             @endif>
                             <header class="px-4 py-2 cursor-pointer" x-on:click="open =!open">
@@ -108,7 +108,7 @@
                                 </h4>
                             </header>
 
-                            <div x-show="open">
+                            <div x-show="open" x-collapse>
                                 <hr/>
                                 <ul>
                                     @foreach ($section->lessons as $lesson)
@@ -133,15 +133,15 @@
                     <i class="fa fa-solid fa-comment-dots mr-2"></i>
                     Opiniones
                 </h3>
-                <div class="text-gray-700 bg-white shadow rounded divide-y-2">
+                <div class="card p-0 divide-y-2">
                     @foreach ($course->reviews as $review)
 
                         <article class="flex p-4">
                             <figure class="mr-4">
                                 <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$review->user->profile_photo_url}}" alt="">
                             </figure>
-                            <div class="card flex-1">
-                                <div class="card-body">
+                            <div class="flex-1">
+                                <div>
                                     <h2 class="text-xl font-bold">{{$review->user->name}}</h2>
                                     <ul class="flex text-sm">
                                         @for ($i = 1; $i <= 5; $i++)
@@ -163,7 +163,7 @@
 
         {{-- Columna derecha --}}
         <div class="order-1 lg:order-2 lg:relative lg:bottom-24">
-            <section class="text-gray-700 bg-white shadow-lg rounded p-4 space-y-4">
+            <section class="card shadow-lg space-y-4">
                 <div>
                     <div class="flex">
                         <img class="h-16 w-16 object-cover rounded-full shadow-lg" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
@@ -181,14 +181,15 @@
                     </div>
 
                     @can('enrolled', $course)
-                        <x-link-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700"
+                        <x-link-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 btn-teal"
                                 href="{{ route('courses.learn', $course) }}">
                             Continuar con el curso
                         </x-link-button>
                     @else
                         <form action="{{ route('courses.enroll', $course) }}" method="post">
                             @csrf
-                            <x-button class="w-full justify-center rounded-md !text-sm h-12 mt-4 bg-teal-500 hover:bg-teal-700">
+                            {{-- @todo Hacer funcionar la clase btn-teal --}}
+                            <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
                                 Inscríbete ahora
                             </x-button>
                         </form>

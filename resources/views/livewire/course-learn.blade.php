@@ -1,10 +1,10 @@
 <div class="mt-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="container grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         {{-- Columna izquierda--}}
         <div class="lg:col-span-2 mb-6">
 
-            <div class="embed-responsive rounded mb-4">
+            <div class="embed-responsive rounded mb-4 shadow-lg">
                 {!! $lesson->iframe !!}
             </div>
 
@@ -27,13 +27,13 @@
                 <span class="ms-3 text-base font-medium text-gray-700 dark:text-gray-300">Marcar lección como completa</span>
             </label>
 
-            <div class="flex justify-between text-gray-700 bg-white shadow-lg rounded-lg p-4">
+            <div class="flex justify-between card shadow-lg rounded-lg">
                 @if ($previous)
                 <x-link-button href="{{route('courses.learn', [$course, $previous])}}">
                     Anterior
                 </x-link-button>
                 @else
-                <x-link-button href="#" class="!bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
+                <x-link-button class="btn-disabled" disabled>
                     Anterior
                 </x-link-button>
                 @endif
@@ -43,7 +43,7 @@
                     Siguiente
                 </x-link-button>
                 @else
-                <x-link-button href="#" class="!bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 cursor-default" disabled>
+                <x-link-button class="btn-disabled" disabled>
                     Siguiente
                 </x-link-button>
                 @endif
@@ -51,7 +51,7 @@
         </div>
 
         {{-- Columna derecha--}}
-        <div class="text-gray-700 bg-white shadow-lg rounded p-4">
+        <div class="card">
             <p class="text-xl font-bold text-center">{{ $course->title }}</p>
 
             <div class="flex items-center mt-2">
@@ -77,14 +77,21 @@
 
             <ul class="mt-4">
                 @foreach ($course->sections as $section)
-                    <li class="text-gray-700 mb-4">
-                        {{-- <span class="font-bold text-rose-600">[{{ $section->id }}]</span> --}}
-                        <a class="inline-block mb-2 font-bold" href="">
-                            {{ Str::limit($section->title, 40) }}
-                        </a>
-                        <ul>
+                    <li class="text-gray-700 mb-4"
+                        x-data="{open: false}">
+                        <div class="mb-2 cursor-pointer" x-on:click="open = !open">
+                            <i class="fa fa-solid fa-caret-right text-base mr-2 transition-all"
+                                x-bind:class="!open || 'rotate-90'"></i>
+                            <span class="text-sm font-bold">
+                                {{ Str::limit($section->title, 40) }}
+                            </span>
+                        </div>
+                        <ul x-show="open" x-collapse>
                             @foreach ($section->lessons as $lesson)
-                                <li class="flex">
+                                <li class="flex"
+                                    @if ($lesson->id == $this->lesson->id)
+                                        x-init="open = 'true'"
+                                    @endif>
                                     <div>
                                         <a href="{{ route('courses.learn', [$course, $lesson]) }}">
 
