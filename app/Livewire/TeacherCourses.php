@@ -2,12 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Models\Course;
 use Livewire\Component;
 
 class TeacherCourses extends Component
 {
     public function render()
     {
-        return view('livewire.teacher-courses');
+
+        $courses = Course::where('user_id', auth()->user()->id)->get();
+
+        return view('livewire.teacher-courses', compact('courses'));
     }
 }
