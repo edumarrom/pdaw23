@@ -47,10 +47,13 @@
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Título
+                        Curso
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Alumnos matriculados
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Valoraciones
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Estado
@@ -81,8 +84,42 @@
                         <td class="px-6 py-4">
                             {{ $course->students->count() }}
                         </td>
+
                         <td class="px-6 py-4">
 
+                            <div class="ps-3">
+
+                                <div class="flex">
+                                    @if ($course->reviews_count > 0)
+                                        <ul class="flex items-center text-sm">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if ($course->rating >= $i)
+                                                    <i class="fa-solid fa-star text-yellow-500"></i>
+                                                @else
+                                                    <i class="fa-solid fa-star text-gray-500"></i>
+                                                @endif
+                                            @endfor
+                                        </ul>
+                                        <span class="text-xs text-gray-500 ml-2">
+                                                ({{ $course->rating }})
+                                    @endif
+
+                                    </span>
+                                </div>
+
+                                <div class="font-normal text-gray-500">
+                                    @if ($course->reviews_count > 0)
+                                        {{ $course->reviews_count }} valoraciones
+                                    @else
+                                        Sin valoraciones
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </td>
+
+                        <td class="px-6 py-4">
                             @switch($course->status)
                                 @case(1)
                                     <div class="flex items-center">
@@ -100,9 +137,7 @@
                                     </div>
                                     @break
                                 @default
-
                             @endswitch
-
                         </td>
                         <td class="px-6 py-4">
                             <a href="#" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5">Editar</a>
