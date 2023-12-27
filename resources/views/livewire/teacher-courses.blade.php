@@ -3,8 +3,8 @@
     <div class="relative overflow-x-auto mt-24 shadow-md sm:rounded-lg">
         {{-- Facetado --}}
         <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white">
-            <div>
-                <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
+            <div x-data="{open: false}" x-on:click.outside="open = false">
+                <button x-on:click="open =!open" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
                     <span class="sr-only">Botón de acciones</span>
                     Acciones
                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -12,7 +12,7 @@
                     </svg>
                 </button>
                 <!-- Dropdown menu -->
-                <div id="dropdownAction" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                <div x-show="open" x-transition class="absolute mt-1 ml-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                     <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownActionButton">
                         <li>
                             <a href="#" class="block px-4 py-2 hover:bg-gray-100">Publicar</a>
@@ -22,7 +22,7 @@
                         </li>
                     </ul>
                     <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Delete User</a>
+                        <a href="#" class="block px-4 py-2 text-sm rounded text-gray-700 hover:bg-red-200">Delete User</a>
                     </div>
                 </div>
             </div>
