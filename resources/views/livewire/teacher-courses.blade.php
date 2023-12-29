@@ -1,15 +1,21 @@
 <div class="container">
 
-    <div class="relative overflow-x-auto mt-24 shadow-md sm:rounded-lg">
+    <div class="flex items-center justify-between mt-24">
+        <h2 class="text-3xl font-bold text-gray-700">Mis cursos</h2>
+        <x-link-button href="#" class="btn-indigo !text-sm !font-medium !tracking-normal capitalize ">
+            <i class="fa fa-solid fa-plus mr-2"></i>
+            Nuevo curso
+        </x-link-button>
+    </div>
+
+    <div class="relative overflow-x-auto mt-6 shadow-md sm:rounded-lg">
         {{-- Facetado --}}
         <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white">
             <div x-data="{open: false}" x-on:click.outside="open = false">
                 <button x-on:click="open =!open" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
                     <span class="sr-only">Botón de acciones</span>
                     Acciones
-                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                    </svg>
+                    <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
                 </button>
                 <!-- Dropdown menu -->
                 <div x-show="open" x-transition class="absolute mt-1 ml-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
@@ -29,11 +35,10 @@
             <label for="table-search" class="sr-only">Buscar</label>
             <div class="relative">
                 <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                    </svg>
+                    <i class="fa fa-solid fa-search text-gray-500"></i>
                 </div>
-                <input wire:model.live.debounce.750ms="search" type="search" id="table-search-courses" class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Buscar un curso">
+                <input id="table-search-courses" type="search" wire:model.live.debounce.750ms="search" placeholder="Buscar un curso"
+                    class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500">
             </div>
         </div>
 
@@ -43,7 +48,8 @@
                     <tr>
                         <th scope="col" class="p-4">
                             <div class="flex items-center">
-                                <input id="checkbox-all-search" type="checkbox" wire:model.live="selectAll" class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500focus:ring-2">
+                                <input id="checkbox-all-search" type="checkbox" wire:model.live="selectAll"
+                                    class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2">
                                 <label for="checkbox-all-search" class="sr-only">checkbox</label>
                             </div>
                         </th>
@@ -71,12 +77,13 @@
                         <tr class="bg-white border-b hover:bg-gray-50">
                             <td class="w-4 p-4">
                                 <div class="flex items-center">
-                                    <input id="checkbox-table-search" type="checkbox" wire:model.live="selected" value={{ $course->id }} class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2">
+                                    <input id="checkbox-table-search" type="checkbox" wire:model.live="selected" value="{{ $course->id }}"
+                                        class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2">
                                     <label for="checkbox-table-search" class="sr-only">checkbox</label>
                                 </div>
                             </td>
                             <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
-                                <img class="w-auto h-20 rounded" src="{{ Storage::url($course->image->path) }}" alt="Jese image">
+                                <img class="w-auto h-20 rounded" src="{{ Storage::url($course->image->path) }}" alt="">
                                 <div class="ps-3">
                                     <div class="text-base font-semibold">{{ $course->title }}</div>
                                     <div class="font-normal text-gray-500">{{ $course->category->name }}</div>
@@ -141,7 +148,8 @@
                                 @endswitch
                             </td>
                             <td class="px-6 py-4">
-                                <a href="#" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5">Editar</a>
+                                <a class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5"
+                                    href="#">Editar</a>
                             </td>
                         </tr>
 
@@ -152,7 +160,7 @@
         @else
             <div class="flex items-center justify-center p-4">
                 <div class="flex flex-col items-center">
-                    <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt="Sin resultados">
+                    <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt="">
                     {{-- Source: https://www.creativefabrica.com/product/cactus-tumbleweed-2/ref/154380/ --}}
                     <h3 class="text-lg font-bold text-gray-600">No hay cursos que coincidan con tu búsqueda</h3>
                 </div>
