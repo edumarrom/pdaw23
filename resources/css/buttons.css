@@ -6,6 +6,10 @@
   @apply bg-teal-500 hover:bg-teal-700 focus:bg-teal-700 active:bg-teal-900 focus:ring-teal-500
 }
 
+.btn-indigo {
+  @apply bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:ring-indigo-500
+}
+
 .btn-disabled {
   @apply bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 focus:ring-gray-300 cursor-not-allowed
 }
