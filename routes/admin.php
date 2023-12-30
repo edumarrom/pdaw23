@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\LevelController;
+use App\Http\Controllers\Admin\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,5 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::resource('/levels', LevelController::class)->names('levels');
+
+Route::resource('/roles', RoleController::class)->names('roles');
