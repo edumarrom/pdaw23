@@ -42,7 +42,7 @@ class RoleController extends Controller
             'text' => "Rol '$role->name' creado satisfactoriamente.",
         ]);
 
-        return redirect()->route('admin.roles.edit', $role);
+        return redirect()->route('admin.roles.index', $role);
     }
 
     /**
@@ -66,7 +66,19 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:roles,name,' . $role->id,
+        ]);
+
+        $role->update($request->all());
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Rol '$role->name' editado satisfactoriamente.",
+        ]);
+
+        return redirect()->route('admin.roles.index', $role);
     }
 
     /**
@@ -74,6 +86,15 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $roleName = $role->name;
+        $role->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Rol '$roleName' borrado satisfactoriamente.",
+        ]);
+
+        return redirect()->route('admin.roles.index');
     }
 }

@@ -19,14 +19,14 @@
                         <th scope="col" class="px-6 py-3">
                             Nombre
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="wpx-6 py-3 md:w-1/3 lg:w-1/6">
                             Acciones
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($roles as $role)
-                        <tr class="bg-white border-b">
+                        <tr class="bg-white border-b hover:bg-gray-50">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $role->id }}
                             </th>
