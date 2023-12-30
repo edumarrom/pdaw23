@@ -17,4 +17,4 @@ Route::get('/', function () {
 
 Route::resource('/levels', LevelController::class)->names('levels');
 
-Route::resource('/roles', RoleController::class)->names('roles');
+Route::resource('/roles', RoleController::class)->names('roles')->except('show');
