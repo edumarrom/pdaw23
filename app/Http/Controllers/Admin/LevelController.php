@@ -34,7 +34,7 @@ class LevelController extends Controller
             'name' => 'required|string|max:255|unique:levels',
         ]);
 
-        $category = Level::create($request->all());
+        $level = Level::create($request->all());
 
         session()->flash('swal', [
             'icon' => 'success',

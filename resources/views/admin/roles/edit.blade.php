@@ -1,23 +1,23 @@
 <x-admin-layout>
     <div class="flex items-center justify-between mb-4">
-        <h1 class="text-3xl font-bold">Nuevo rol</h1>
+        <h1 class="text-3xl font-bold">Editar rol</h1>
     </div>
 
-    <form action="{{ route('admin.roles.store') }}" method="post"
+    <form action="{{ route('admin.roles.update', $role) }}" method="post"
         class="bg-white rounded-lg p-6 shadow-lg">
+        @method('PUT')
         @csrf
 
-        <x-validation-errors class="mb-4"/>
+        <x-validation-errors class="mb-4" />
 
         <div class="mb-4">
             <x-label class="mb-2">
                 Nombre
             </x-label>
-            <x-input
-                name="name"
-                class="w-full"
-                placeholder="Escribe el nombre del nuevo rol"
-                value="{{old('name')}}"/>
+            <x-input name="name"
+                     class="w-full"
+                     placeholder="Escribe un nombre para este rol"
+                     value="{{old('name', $role->name)}}" />
         </div>
 
         <div class="flex justify-between mt-16">
@@ -31,6 +31,5 @@
                 Guardar
             </x-button>
         </div>
-
     </form>
 </x-admin-layout>
