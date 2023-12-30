@@ -85,7 +85,7 @@
         <p class="text-center text-white">Crea una cuenta y comienza a formarte.</p>
 
         <div class="flex justify-center mt-4">
-            <x-link-button href="{{ route('register') }}" class="btn-teal py-4 px-6">
+            <x-link-button href="{{ route('register') }}" color="teal" class="py-4 px-6">
                 {{ __('Regístrate') }}
             </x-link-button>
         </div>
