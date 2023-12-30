@@ -2,7 +2,7 @@
 
     <div class="flex items-center justify-between mt-24">
         <h2 class="text-3xl font-bold text-gray-700">Mis cursos</h2>
-        <x-link-button href="#" class="btn-indigo !text-sm !font-medium !tracking-normal capitalize ">
+        <x-link-button color="indigo" class="!text-sm !font-medium !tracking-normal capitalize ">
             <i class="fa fa-solid fa-plus mr-2"></i>
             Nuevo curso
         </x-link-button>
