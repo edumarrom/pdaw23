@@ -13,6 +13,12 @@
             'active' => request()->routeIs('admin.levels.*'),
         ],
         [
+            'name' => 'Usuarios',
+            'route' => route('admin.users.index'),
+            'icon' => 'fa-solid fa-users',
+            'active' => request()->routeIs('admin.users.*'),
+        ],
+        [
             'name' => 'Permisos',
             'route' => route('admin.permissions.index'),
             'icon' => 'fa-solid fa-user-shield',
