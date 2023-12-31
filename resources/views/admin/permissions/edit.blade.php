@@ -3,7 +3,7 @@
         <h1 class="text-3xl font-bold">Editar permiso</h1>
     </div>
 
-    <form action="{{ route('admin.permissions.update', $role) }}" method="post"
+    <form action="{{ route('admin.permissions.update', $permission) }}" method="post"
         class="bg-white rounded-lg p-6 shadow-lg">
         @method('PUT')
         @csrf
