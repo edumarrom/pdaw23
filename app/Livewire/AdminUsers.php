@@ -20,4 +20,9 @@ class AdminUsers extends Component
 
         return view('livewire.admin-users', compact('users'));
     }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 }
