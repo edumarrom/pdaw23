@@ -1,9 +1,9 @@
 <x-admin-layout>
     <div class="flex items-center justify-between mb-4">
-        <h1 class="text-3xl font-bold">Editar rol</h1>
+        <h1 class="text-3xl font-bold">Editar permiso</h1>
     </div>
 
-    <form action="{{ route('admin.roles.update', $role) }}" method="post"
+    <form action="{{ route('admin.permissions.update', $role) }}" method="post"
         class="bg-white rounded-lg p-6 shadow-lg">
         @method('PUT')
         @csrf
@@ -16,12 +16,12 @@
             </x-label>
             <x-input name="name"
                      class="w-full"
-                     placeholder="Escribe un nombre para este rol"
-                     value="{{old('name', $role->name)}}" />
+                     placeholder="Escribe un nombre para este permiso"
+                     value="{{old('name', $permission->name)}}" />
         </div>
 
         <div class="flex justify-between mt-16">
-            <x-link-button href="{{ route('admin.roles.index') }}">
+            <x-link-button href="{{ route('admin.permissions.index') }}">
                 <i class="fa-solid fa-xmark mr-2"></i>
                 Cancelar
             </x-link-button>
