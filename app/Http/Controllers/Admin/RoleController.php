@@ -42,7 +42,7 @@ class RoleController extends Controller
             'text' => "Rol '$role->name' creado satisfactoriamente.",
         ]);
 
-        return redirect()->route('admin.roles.index', $role);
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -70,7 +70,7 @@ class RoleController extends Controller
             'text' => "Rol '$role->name' editado satisfactoriamente.",
         ]);
 
-        return redirect()->route('admin.roles.index', $role);
+        return redirect()->route('admin.roles.index');
     }
 
     /**
