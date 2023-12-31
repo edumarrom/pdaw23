@@ -13,18 +13,17 @@
             'active' => request()->routeIs('admin.levels.*'),
         ],
         [
-            'name' => 'Roles',
-            'route' => route('admin.roles.index'),
-            'icon' => 'fa-solid fa-user-gear',
-            'active' => request()->routeIs('admin.roles.*'),
-        ],
-        [
             'name' => 'Permisos',
             'route' => route('admin.permissions.index'),
             'icon' => 'fa-solid fa-user-shield',
             'active' => request()->routeIs('admin.permissions.*'),
         ],
-
+        [
+            'name' => 'Roles',
+            'route' => route('admin.roles.index'),
+            'icon' => 'fa-solid fa-user-gear',
+            'active' => request()->routeIs('admin.roles.*'),
+        ],
     ]
 @endphp
 
