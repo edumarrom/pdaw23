@@ -17,7 +17,13 @@
                             ID
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Foto
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Nombre
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Email
                         </th>
                         <th scope="col" class="wpx-6 py-3 md:w-1/3 lg:w-1/6">
                             Acciones
@@ -31,7 +37,13 @@
                                 {{ $user->id }}
                             </th>
                             <td class="px-6 py-4">
+                                <img class="w-auto h-12 rounded-full" src="{{ $user->profile_photo_url }}" alt="">
+                            </td>
+                            <td class="px-6 py-4">
                                 {{ $user->name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $user->email }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="{{ route('admin.users.edit', $user) }}">
@@ -54,6 +66,11 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="mt-6">
+            {{ $users->links() }}
+        </div>
+
     </div>
 
     @push('scripts')
