@@ -1,10 +1,10 @@
 <x-admin-layout>
     <div class="container">
         <div class="flex items-center justify-between mb-4">
-            <h1 class="text-3xl font-bold">Editar rol</h1>
+            <h1 class="text-3xl font-bold">Editar Usuario</h1>
         </div>
 
-        <form action="{{ route('admin.roles.update', $role) }}" method="post"
+        <form action="{{ route('admin.users.update', $user) }}" method="post"
             class="bg-white rounded-lg p-6 shadow-lg">
             @method('PUT')
             @csrf
@@ -17,31 +17,61 @@
                          type="text"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          required
-                         placeholder="Escribe un nombre para este rol"
-                         value="{{old('name', $role->name)}}" />
+                         placeholder="Escribe un nombre para este usuario"
+                         value="{{old('name', $user->name)}}" />
             </div>
 
             <div class="mb-4">
-                <p class="mb-2 font-medium text-sm text-gray-700">Permisos</p>
+                <x-label for="email" class="mb-2" value="Email" />
+                <x-input name="email"
+                         type="email"
+                         class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
+                         required
+                         placeholder="Escribe un email para este usuario"
+                         value="{{old('email', $user->email)}}" />
+            </div>
+
+            {{-- <div class="mb-4">
+                <x-label for="current_password" class="mb-2" value="Contraseña actual" />
+                <x-input name="current_password"
+                         type="password"
+                         class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
+                         placeholder="Escribe tu contraseña actual" />
+
+            <div class="mb-4">
+                <x-label for="password" class="mb-2" value="Contraseña" />
+                <x-input name="password"
+                         type="password"
+                         class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
+                         placeholder="Escribe tu nueva contrasela" />
+            </div>
+
+            <div class="mb-4">
+                <x-label for="password_confirmation" class="mb-2" value="Confirmar contraseña" />
+                <x-input name="password_confirmation"
+                         type="password"
+                         class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
+                         placeholder="Confirma tu nueva contraseña" /> --}}
+
+            <div class="mb-4">
+                <x-label for="roles" class="mb-2" value="Roles" />
                 <ul>
-                    @foreach ($permissions as $permission)
-
-                    <li class="mb-2">
-
-                        <x-label>
-                            <x-checkbox name="permissions[]"
-                                        class="mr-1 !text-blue-600 focus:!ring-blue-500"
-                                        value="{{ $permission->id }}"
-                                        :checked="in_array($permission->id, old('permissions', $role->permissions->pluck('id')->toArray()  ))"
-                            />
-                                {{ $permission->name }}
-                        </x-label>
+                    @foreach ($roles as $role)
+                        <li class="mb-2">
+                            <x-label>
+                                <x-checkbox name="roles[]"
+                                            class="mr-1 !text-blue-600 focus:!ring-blue-500"
+                                            value="{{ $role->id }}"
+                                            :checked="in_array($role->id, old('roles', $user->roles->pluck('id')->toArray()  ))"/>
+                                    {{ $role->name }}
+                            </x-label>
+                        </li>
                     @endforeach
                 </ul>
             </div>
 
             <div class="flex justify-between mt-16">
-                <x-link-button href="{{ route('admin.roles.index') }}">
+                <x-link-button href="{{ route('admin.users.index') }}">
                     <i class="fa-solid fa-xmark mr-2"></i>
                     Cancelar
                 </x-link-button>

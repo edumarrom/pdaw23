@@ -16,6 +16,7 @@ class AdminUsers extends Component
     {
         $users = User::where('name', 'ILIKE', '%' . $this->search . '%')
             ->orWhere('email', 'ILIKE', '%' . $this->search . '%')
+            ->orderBy('id', 'asc')
             ->paginate();
 
         return view('livewire.admin-users', compact('users'));
