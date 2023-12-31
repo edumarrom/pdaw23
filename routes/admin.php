@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\LevelController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,5 @@ Route::get('/', function () {
 Route::resource('/levels', LevelController::class)->names('levels');
 
 Route::resource('/roles', RoleController::class)->names('roles')->except('show');
+
+Route::resource('/permissions', PermissionController::class)->names('permissions')->except('show');
