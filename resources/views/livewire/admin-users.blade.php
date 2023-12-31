@@ -1,5 +1,15 @@
 <div>
 
+    <div class="card rounded-lg mb-4">
+        <div class="relative">
+            <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                <i class="fa fa-solid fa-search text-gray-500"></i>
+            </div>
+            <input id="table-search-users" type="search" wire:model.live.debounce.750ms="search" placeholder="Buscar un usuario"
+                class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500">
+        </div>
+    </div>
+
     <div class="relative overflow-x-auto rounded-lg shadow-xl">
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-blue-100">

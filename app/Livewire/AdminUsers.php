@@ -10,9 +10,13 @@ class AdminUsers extends Component
 {
     use WithPagination;
 
+    public $search;
+
     public function render()
     {
-        $users = User::paginate();
+        $users = User::where('name', 'ILIKE', '%' . $this->search . '%')
+            ->orWhere('email', 'ILIKE', '%' . $this->search . '%')
+            ->paginate();
 
         return view('livewire.admin-users', compact('users'));
     }
