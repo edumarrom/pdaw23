@@ -76,7 +76,7 @@
                                     <i class="fa-solid fa-pen"></i>
                                     Editar
                                 </a>
-                                {{-- <form action="{{ route('admin.users.destroy', $user) }}" method="post"
+                                <form action="{{ route('admin.users.destroy', $user) }}" method="post"
                                     id='delete-form-{{ $user->id }}'>
                                     @csrf
                                     @method('delete')
@@ -85,7 +85,7 @@
                                         <i class="fa-solid fa-trash"></i>
                                         Borrar
                                     </button>
-                                </form> --}}
+                                </form>
                             </td>
                         </tr>
                     @endforeach

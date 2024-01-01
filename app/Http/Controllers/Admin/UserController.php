@@ -115,6 +115,16 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        return $user;
+        $userName = $user->name;
+        $user->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Usuario '$userName' borrado satisfactoriamente.",
+            'confirmButtonColor' => '#3B82F6',
+        ]);
+
+        return redirect()->route('admin.users.index');
     }
 }
