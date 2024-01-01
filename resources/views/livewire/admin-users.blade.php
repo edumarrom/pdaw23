@@ -27,6 +27,9 @@
                         <th scope="col" class="px-6 py-3">
                             Email
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            Roles
+                        </th>
                         <th scope="col" class="wpx-6 py-3 md:w-1/3 lg:w-1/6">
                             Acciones
                         </th>
@@ -47,6 +50,14 @@
                             <td class="px-6 py-4">
                                 {{ $user->email }}
                             </td>
+                            <td class="px-6 py-4">
+                                @foreach ($user->roles as $role)
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        {{ $role->name }}
+                                    </span>
+                                @endforeach
+
+
                             <td class="px-6 py-4">
                                 <a href="{{ route('admin.users.edit', $user) }}">
                                     <i class="fa-solid fa-pen"></i>

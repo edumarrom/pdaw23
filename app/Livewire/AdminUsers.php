@@ -16,6 +16,9 @@ class AdminUsers extends Component
     {
         $users = User::where('name', 'ILIKE', '%' . $this->search . '%')
             ->orWhere('email', 'ILIKE', '%' . $this->search . '%')
+            ->orWhereHas('roles', function ($query) {
+                $query->where('name', 'ILIKE', '%' . $this->search . '%');
+            })
             ->orderBy('id', 'asc')
             ->paginate();
 
