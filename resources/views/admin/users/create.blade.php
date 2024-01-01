@@ -1,10 +1,10 @@
 <x-admin-layout>
     <div class="container">
         <div class="flex items-center justify-between mb-4">
-            <h1 class="text-3xl font-bold">Nuevo rol</h1>
+            <h1 class="text-3xl font-bold">Nuevo usuario</h1>
         </div>
 
-        <form action="{{ route('admin.roles.store') }}" method="post"
+        <form action="{{ route('admin.users.store') }}" method="post"
             class="bg-white rounded-lg p-6 shadow-lg">
             @csrf
 
@@ -16,25 +16,50 @@
                          type="text"
                          required
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Escribe el nombre del nuevo rol"
+                         placeholder="Escribe el nombre del nuevo usuario"
                          value="{{old('name')}}" />
             </div>
 
             <div class="mb-4">
-                <p class="mb-2 font-medium text-sm text-gray-700">Permisos</p>
-                <ul>
-                    @foreach ($permissions as $permission)
+                <x-label for="email" class="mb-2" value="Email" />
+                <x-input id="email"
+                         name="email"
+                         type="email"
+                         class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
+                         required
+                         placeholder="Escribe el email del nuevo usuario"
+                         value="{{old('email')}}" />
+            </div>
 
-                    <li class="mb-2">
+            <div class="mb-4">
+                <x-label for="password" class="mb-2" value="Contraseña" />
+                <x-input name="password"
+                         type="password"
+                         class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
+                         placeholder="Escribe la contraseña del nuevo usuario" />
+            </div>
 
-                        <x-label>
-                            <x-checkbox name="permissions[]"
-                                        class="mr-1 !text-blue-600 focus:!ring-blue-500"
-                                        value="{{ $permission->id }}"
-                                        :checked="in_array($permission->id, old('permissions', []))"
-                            />
-                                {{ $permission->name }}
-                        </x-label>
+            <div class="mb-4">
+                <x-label for="password_confirmation" class="mb-2" value="Confirmar contraseña" />
+                <x-input name="password_confirmation"
+                         type="password"
+                         class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
+                         placeholder="Confirma la contraseña" />
+            </div>
+
+            <div class="mb-4">
+                <x-label for="roles" class="mb-2" value="Roles" />
+                <ul id="roles">
+                    @foreach ($roles as $role)
+                        <li class="mb-2">
+                            <x-label>
+                                <x-checkbox name="roles[]"
+                                            class="mr-1 !text-blue-600 focus:!ring-blue-500"
+                                            value="{{ $role->id }}"
+                                            :checked="in_array($role->id, old('roles', [] ))"/>
+                                    {{ $role->name }}
+                            </x-label>
+                        </li>
                     @endforeach
                 </ul>
             </div>

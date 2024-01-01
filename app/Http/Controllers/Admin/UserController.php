@@ -24,7 +24,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -32,7 +34,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password'  => 'nullable|string|min:8|confirmed',
+            'permissions'   => 'nullable|array',
+        ]);
+
+        /* Crea el usuario, pero la contraseña debe ser encriptada con bcrypt */
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password'  => bcrypt($request->password),
+        ]);
+
+        $user->roles()->sync($request->roles);
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Usuario '$user->name' editado satisfactoriamente.",
+            'confirmButtonColor' => '#3B82F6',
+        ]);
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
