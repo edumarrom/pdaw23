@@ -13,7 +13,8 @@
 
             <div class="mb-4">
                 <x-label for="name" class="mb-2" value="Nombre" />
-                <x-input name="name"
+                <x-input id="name"
+                         name="name"
                          type="text"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          required
@@ -23,20 +24,14 @@
 
             <div class="mb-4">
                 <x-label for="email" class="mb-2" value="Email" />
-                <x-input name="email"
+                <x-input id="email"
+                         name="email"
                          type="email"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          required
                          placeholder="Escribe un email para este usuario"
                          value="{{old('email', $user->email)}}" />
             </div>
-
-            {{-- <div class="mb-4">
-                <x-label for="current_password" class="mb-2" value="Contraseña actual" />
-                <x-input name="current_password"
-                         type="password"
-                         class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Escribe tu contraseña actual" />
 
             <div class="mb-4">
                 <x-label for="password" class="mb-2" value="Contraseña" />
@@ -51,11 +46,12 @@
                 <x-input name="password_confirmation"
                          type="password"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Confirma tu nueva contraseña" /> --}}
+                         placeholder="Confirma tu nueva contraseña" />
+            </div>
 
             <div class="mb-4">
                 <x-label for="roles" class="mb-2" value="Roles" />
-                <ul>
+                <ul id="roles">
                     @foreach ($roles as $role)
                         <li class="mb-2">
                             <x-label>
