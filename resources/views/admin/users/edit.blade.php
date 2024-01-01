@@ -38,7 +38,7 @@
                 <x-input name="password"
                          type="password"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Escribe tu nueva contrasela" />
+                         placeholder="Escribe la nueva contraseña del usuario" />
             </div>
 
             <div class="mb-4">
@@ -46,7 +46,7 @@
                 <x-input name="password_confirmation"
                          type="password"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Confirma tu nueva contraseña" />
+                         placeholder="Confirma la contraseña" />
             </div>
 
             <div class="mb-4">

@@ -37,11 +37,10 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
-            'password'  => 'nullable|string|min:8|confirmed',
+            'password'  => 'required|string|min:8|confirmed',
             'permissions'   => 'nullable|array',
         ]);
 
-        /* Crea el usuario, pero la contraseña debe ser encriptada con bcrypt */
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -58,14 +57,6 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('admin.users.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        return view('admin.users.show', compact('user'));
     }
 
     /**

@@ -9,8 +9,8 @@
             </x-link-button>
         </div>
 
+        {{-- Tabla de usuarios --}}
         @livewire('admin-users')
-
     </div>
 
     @push('scripts')

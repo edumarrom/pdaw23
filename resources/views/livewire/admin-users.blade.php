@@ -1,5 +1,5 @@
 <div>
-
+    {{-- Buscador --}}
     <div class="card rounded-lg shadow-md mb-4">
         <div class="relative">
             <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -97,13 +97,12 @@
             {{ $users->links() }}
         </div>
     @else
-    <div class="flex items-center justify-center p-4">
-        <div class="flex flex-col items-center">
-            <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt="">
-            {{-- Source: https://www.creativefabrica.com/product/cactus-tumbleweed-2/ref/154380/ --}}
-            <h3 class="text-lg font-bold text-gray-600">No hay usuarios que coincidan con tu búsqueda</h3>
+        <div class="flex items-center justify-center p-4">
+            <div class="flex flex-col items-center">
+                <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt="">
+                {{-- Source: https://www.creativefabrica.com/product/cactus-tumbleweed-2/ref/154380/ --}}
+                <h3 class="text-lg font-bold text-gray-600">No hay usuarios que coincidan con tu búsqueda</h3>
+            </div>
         </div>
-    </div>
     @endif
-
 </div>

@@ -21,4 +21,4 @@ Route::resource('/roles', RoleController::class)->names('roles')->except('show')
 
 Route::resource('/permissions', PermissionController::class)->names('permissions')->except('show');
 
-Route::resource('/users', UserController::class)->names('users');
+Route::resource('/users', UserController::class)->names('users')->except('show');
