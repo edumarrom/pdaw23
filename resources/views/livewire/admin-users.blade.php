@@ -27,7 +27,7 @@
                         <th scope="col" class="px-6 py-3">
                             Roles
                         </th>
-                        <th scope="col" class="wpx-6 py-3 md:w-1/3 lg:w-1/6">
+                        <th scope="col" class="px-6 py-3">
                             Acciones
                         </th>
                     </tr>
@@ -72,7 +72,7 @@
 
 
                             <td class="px-6 py-4">
-                                <a href="{{ route('admin.users.edit', $user) }}">
+                                <a href="{{ route('admin.users.edit', $user) }}" class="inline-block hover:text-gray-700">
                                     <i class="fa-solid fa-pen"></i>
                                     Editar
                                 </a>
@@ -80,7 +80,7 @@
                                     id='delete-form-{{ $user->id }}'>
                                     @csrf
                                     @method('delete')
-                                    <button type="button" class="text-red-500"
+                                    <button type="button" class=" text-rose-500 hover:text-rose-700"
                                         onclick="deleteUser({{ $user->id }})">
                                         <i class="fa-solid fa-trash"></i>
                                         Borrar
