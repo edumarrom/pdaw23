@@ -45,8 +45,7 @@
                                 {{ $user->email }}
                             </td>
                             <td class="px-6 py-4">
-                                @foreach ($user->roles as $role)
-
+                                @foreach ($user->roles->sortBy('id') as $role)
                                     @switch($role->id)
                                         @case(1)
                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
@@ -69,8 +68,6 @@
                                             </span>
                                     @endswitch
                                 @endforeach
-
-
                             <td class="px-6 py-4">
                                 <a href="{{ route('admin.users.edit', $user) }}" class="inline-block hover:text-gray-700">
                                     <i class="fa-solid fa-pen"></i>

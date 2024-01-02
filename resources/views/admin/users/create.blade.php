@@ -65,7 +65,7 @@
             </div>
 
             <div class="flex justify-between mt-16">
-                <x-link-button href="{{ route('admin.roles.index') }}">
+                <x-link-button href="{{ route('admin.users.index') }}">
                     <i class="fa-solid fa-xmark mr-2"></i>
                     Cancelar
                 </x-link-button>
