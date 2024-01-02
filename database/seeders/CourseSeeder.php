@@ -19,7 +19,17 @@ class CourseSeeder extends Seeder
      */
     public function run(): void
     {
-        $courses = Course::factory(30)->create();
+        $courses = Course::factory(49)->create();
+
+        $myCourse = Course::factory()->create([
+            'title' => 'Mi primer curso',
+            'slug' => 'mi-primer-curso',
+            'user_id' => 1,
+            'category_id' => 1,
+            'level_id' => 1,
+            'price_id' => 1,
+        ]);
+        $courses->push($myCourse);
 
         foreach ($courses as $course) {
             Image::factory(1)->create([
