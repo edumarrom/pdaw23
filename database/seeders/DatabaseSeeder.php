@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Contracts\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +24,10 @@ class DatabaseSeeder extends Seeder
 
         Storage::deleteDirectory('courses');
         Storage::makeDirectory('courses');
+
+        $this->call(PermissionSeeder::class);
+
+        $this->call(RoleSeeder::class);
 
         $this->call(UserSeeder::class);
 
