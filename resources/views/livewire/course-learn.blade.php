@@ -33,7 +33,7 @@
                     Anterior
                 </x-link-button>
                 @else
-                <x-link-button class="btn-disabled" disabled>
+                <x-link-button disabled>
                     Anterior
                 </x-link-button>
                 @endif
@@ -43,7 +43,7 @@
                     Siguiente
                 </x-link-button>
                 @else
-                <x-link-button class="btn-disabled" disabled>
+                <x-link-button disabled>
                     Siguiente
                 </x-link-button>
                 @endif

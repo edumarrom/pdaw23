@@ -132,26 +132,29 @@
                                 <div class="border-t border-gray-200"></div>
 
                                 <!-- Teacher Management -->
-                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Teacher Management') }}
-                                </div>
+                                @can('course-read')
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('Teacher Management') }}
+                                    </div>
 
-                                <x-dropdown-link href="{{ route('teacher.courses.index') }}">
-                                    {{ __('My courses') }}
-                                </x-dropdown-link>
+                                    <x-dropdown-link href="{{ route('teacher.courses.index') }}">
+                                        {{ __('My courses') }}
+                                    </x-dropdown-link>
 
-                                <div class="border-t border-gray-200"></div>
+                                    <div class="border-t border-gray-200"></div>
+                                @endcan
 
-                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Admin Management') }}
-                                </div>
+                                @can('admin-cpanel')
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('Admin Management') }}
+                                    </div>
 
-                                <x-dropdown-link href="{{ route('admin.dashboard') }}">
-                                    {{ __('Dashboard') }}
-                                </x-dropdown-link>
+                                    <x-dropdown-link href="{{ route('admin.dashboard') }}">
+                                        {{ __('Dashboard') }}
+                                    </x-dropdown-link>
 
-                                <div class="border-t border-gray-200"></div>
-
+                                    <div class="border-t border-gray-200"></div>
+                                @endcan
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
@@ -227,32 +230,39 @@
 
                     <div class="border-t border-gray-200"></div>
 
-                    <!-- Teacher Management -->
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Teacher Management') }}
-                    </div>
+                    @can('course-read')
+                        <!-- Teacher Management -->
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Teacher Management') }}
+                        </div>
 
-                    <x-responsive-nav-link href="{{ route('teacher.courses.index') }}" :active="request()->routeIs('teacher.courses.index')">
-                        {{ __('My courses') }}
-                    </x-responsive-nav-link>
+                        <x-responsive-nav-link href="{{ route('teacher.courses.index') }}" :active="request()->routeIs('teacher.courses.index')">
+                            {{ __('My courses') }}
+                        </x-responsive-nav-link>
 
-                    <div class="border-t border-gray-200"></div>
+                        <div class="border-t border-gray-200"></div>
+                    @endcan
 
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Admin Management') }}
-                    </div>
+                    @can('admin-cpanel')
+                        <!-- Admin Management -->
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Admin Management') }}
+                        </div>
 
-                    <x-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-responsive-nav-link>
+                        <x-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-responsive-nav-link>
+
+                        <div class="border-t border-gray-200"></div>
+                    @endcan
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
                         </x-responsive-nav-link>
-                    @endif
 
-                    <div class="border-t border-gray-200"></div>
+                        <div class="border-t border-gray-200"></div>
+                    @endif
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}" x-data>

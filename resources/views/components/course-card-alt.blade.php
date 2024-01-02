@@ -29,6 +29,6 @@
             <p class="text-sm text-gray-700">{{ Str::limit($course->description, 100) }}</p>
         </div>
 
-        <x-link-button class="w-full text-center btn-teal mt-2">Más info</x-link-button>
+        <x-link-button color="teal" class="w-full text-center mt-2">Más info</x-link-button>
     </div>
 </article>
