@@ -132,26 +132,29 @@
                                 <div class="border-t border-gray-200"></div>
 
                                 <!-- Teacher Management -->
-                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Teacher Management') }}
-                                </div>
+                                @can('course-read')
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('Teacher Management') }}
+                                    </div>
 
-                                <x-dropdown-link href="{{ route('teacher.courses.index') }}">
-                                    {{ __('My courses') }}
-                                </x-dropdown-link>
+                                    <x-dropdown-link href="{{ route('teacher.courses.index') }}">
+                                        {{ __('My courses') }}
+                                    </x-dropdown-link>
 
-                                <div class="border-t border-gray-200"></div>
+                                    <div class="border-t border-gray-200"></div>
+                                @endcan
 
-                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Admin Management') }}
-                                </div>
+                                @can('admin-cpanel')
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('Admin Management') }}
+                                    </div>
 
-                                <x-dropdown-link href="{{ route('admin.dashboard') }}">
-                                    {{ __('Dashboard') }}
-                                </x-dropdown-link>
+                                    <x-dropdown-link href="{{ route('admin.dashboard') }}">
+                                        {{ __('Dashboard') }}
+                                    </x-dropdown-link>
 
-                                <div class="border-t border-gray-200"></div>
-
+                                    <div class="border-t border-gray-200"></div>
+                                @endcan
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
