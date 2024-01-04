@@ -24,10 +24,11 @@ class CourseSeeder extends Seeder
         $myCourse = Course::factory()->create([
             'title' => 'Mi primer curso',
             'slug' => 'mi-primer-curso',
-            'user_id' => 1,
-            'category_id' => 1,
-            'level_id' => 1,
-            'price_id' => 1,
+            'status' => 3,              // Publicado
+            'user_id' => 1,             // edu@dabaliu.test
+            'category_id' => 1,         // Desarrollo web
+            'level_id' => 1,            // Básico
+            'price_id' => 1,            // Gratis
         ]);
         $courses->push($myCourse);
 
