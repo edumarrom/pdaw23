@@ -163,7 +163,7 @@
                 <div class="flex flex-col items-center">
                     <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt="">
                     {{-- Source: https://www.creativefabrica.com/product/cactus-tumbleweed-2/ref/154380/ --}}
-                    <h3 class="text-lg font-bold text-gray-600">No hay cursos que coincidan con tu búsqueda</h3>
+                    <h3 class="text-lg font-bold text-gray-600">Esto está muy tranquilo, demasiado...</h3>
                 </div>
             </div>
         @endif
