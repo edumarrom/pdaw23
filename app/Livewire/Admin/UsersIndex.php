@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminUsers extends Component
+class UsersIndex extends Component
 {
     use WithPagination;
 
@@ -22,7 +22,7 @@ class AdminUsers extends Component
             ->orderBy('id', 'asc')
             ->paginate();
 
-        return view('livewire.admin-users', compact('users'));
+        return view('livewire.admin.users-index', compact('users'));
     }
 
     public function updatingSearch()

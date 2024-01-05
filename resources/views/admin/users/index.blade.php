@@ -10,7 +10,7 @@
         </div>
 
         {{-- Tabla de usuarios --}}
-        @livewire('admin-users')
+        @livewire('admin.users-index')
     </div>
 
     @push('scripts')

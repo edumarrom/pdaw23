@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Teacher;
 
 use App\Models\Course;
 use Livewire\Component;
 
-class TeacherCourses extends Component
+class CoursesIndex extends Component
 {
 
     public $search;
@@ -20,7 +20,7 @@ class TeacherCourses extends Component
             ->where('user_id', auth()->user()->id)
             ->get();
 
-        return view('livewire.teacher-courses', compact('courses'));
+        return view('livewire.teacher.courses-index', compact('courses'));
     }
 
     public function updatedSelectAll($value)
