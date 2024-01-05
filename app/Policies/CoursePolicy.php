@@ -24,4 +24,13 @@ class CoursePolicy
     {
         return $course->students->contains($user->id);
     }
+
+    /**
+     * Comprueba si un curso está publicado.
+     * @return bool
+     */
+    public function published(?User $user, Course $course)
+    {
+        return $course->status == 3;
+    }
 }
