@@ -2,7 +2,8 @@
 
     <div class="flex items-center justify-between mt-24">
         <h2 class="text-3xl font-bold text-gray-700">Mis cursos</h2>
-        <x-link-button color="indigo" class="!text-sm !font-medium !tracking-normal capitalize ">
+        <x-link-button href="{{ route('teacher.courses.create') }}"
+            color="indigo" class="!text-sm !font-medium !tracking-normal capitalize ">
             <i class="fa fa-solid fa-plus mr-2"></i>
             Nuevo curso
         </x-link-button>
@@ -28,7 +29,7 @@
                         </li>
                     </ul>
                     <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm rounded text-gray-700 hover:bg-red-200">Delete User</a>
+                        <a href="#" class="block px-4 py-2 text-sm rounded text-gray-700 hover:bg-red-200">Eliminar</a>
                     </div>
                 </div>
             </div>
@@ -149,7 +150,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <a class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5"
-                                    href="#">Editar</a>
+                                    href="{{ route('teacher.courses.edit', $course) }}">Editar</a>
                             </td>
                         </tr>
 
@@ -162,7 +163,7 @@
                 <div class="flex flex-col items-center">
                     <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt="">
                     {{-- Source: https://www.creativefabrica.com/product/cactus-tumbleweed-2/ref/154380/ --}}
-                    <h3 class="text-lg font-bold text-gray-600">No hay cursos que coincidan con tu búsqueda</h3>
+                    <h3 class="text-lg font-bold text-gray-600">Esto está muy tranquilo, demasiado...</h3>
                 </div>
             </div>
         @endif
