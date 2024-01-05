@@ -13,7 +13,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        return view('teacher.courses.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('teacher.courses.create');
     }
 
     /**
@@ -29,7 +29,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**
@@ -37,7 +37,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('teacher.courses.show', compact('course'));
     }
 
     /**
@@ -45,7 +45,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('teacher.courses.edit', compact('course'));
     }
 
     /**
@@ -53,7 +53,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        return $request->all();
     }
 
     /**
@@ -61,6 +61,6 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        return $course;
     }
 }
