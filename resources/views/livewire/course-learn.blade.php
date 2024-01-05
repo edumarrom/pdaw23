@@ -60,7 +60,7 @@
                 </figure>
                 <div class="ml-2">
                     <p>Realizado por</p>
-                    <h3 class="text-3xl font-bold">
+                    <h3 class="text-xl font-bold">
                         {{ $course->teacher->name }}
                     </h3>
                     <a class="text-sm text-teal-500 hover:text-teal-700"
