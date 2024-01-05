@@ -4,10 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Course;
 use App\Models\Lesson;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class CourseLearn extends Component
 {
+    use AuthorizesRequests;
 
     public Course $course;
     public Lesson $lesson;
@@ -38,6 +40,8 @@ class CourseLearn extends Component
         $this->index = $course->lessons->pluck('id')->search($this->lesson->id);
         $this->previous = $course->lessons[$this->index - 1] ?? null;
         $this->next = $course->lessons[$this->index + 1] ?? null;
+
+        $this->authorize('enrolled', $course);
     }
 
     public function render()
