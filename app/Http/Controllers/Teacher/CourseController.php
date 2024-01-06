@@ -65,14 +65,23 @@ class CourseController extends Controller
 
         $request->validate([
             'title' => 'required|string|max:255',
+            'slug' => 'required|unique:courses,slug,' . $course->id,
             'subtitle' => 'required|string|max:255',
             'description' => 'required|string|max:500',
             'category_id' => 'required|exists:categories,id',
             'level_id' => 'required|exists:levels,id',
             'price_id' => 'required|exists:prices,id',
+            'image' => 'nullable|image',
         ]);
 
         $course->update($request->all());
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Curso '$course->title' editado satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
 
         return redirect()->route('teacher.courses.index');
     }
