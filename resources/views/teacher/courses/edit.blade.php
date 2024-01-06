@@ -69,6 +69,34 @@
                         </x-select>
                     </div>
 
+                    <div class="mb-4">
+                        <x-label for="level_id" class="mb-2"  value="Nivel" />
+                        <x-select id="level_id"
+                                name="level_id"
+                                class="block w-full mb-2">
+                            @foreach($levels as $level)
+                                <option value="{{ $level->id }}"
+                                        @if($level->id == old('level_id', $course->level_id)) selected @endif>
+                                    {{ $level->name }}
+                                </option>
+                            @endforeach
+                        </x-select>
+                    </div>
+
+                    <div class="mb-4">
+                        <x-label for="price_id" class="mb-2"  value="Precio" />
+                        <x-select id="price_id"
+                                name="price_id"
+                                class="block w-full mb-2">
+                            @foreach($prices as $price)
+                                <option value="{{ $price->id }}"
+                                        @if($price->id == old('price_id', $course->price_id)) selected @endif>
+                                    {{ $price->name }}
+                                </option>
+                            @endforeach
+                        </x-select>
+                    </div>
+
                 </form>
             </div>
 
