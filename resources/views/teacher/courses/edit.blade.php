@@ -20,6 +20,7 @@
                                  class="block w-full mb-2"
                                  placeholder="Escribe un título para este curso"
                                  value="{{ old('title', $course->title) }}" />
+                        <x-input-error for="title" class="mt-2" />
                     </div>
 
                     <div class="mb-4">
@@ -31,6 +32,7 @@
                                  class="block w-full mb-2"
                                  placeholder="Escribe un slug para este curso"
                                  value="{{ old('slug', $course->slug) }}" />
+                        <x-input-error for="slug" class="mt-2" />
                     </div>
 
                     <div class="mb-4">
@@ -42,6 +44,7 @@
                                  class="block w-full mb-2"
                                  placeholder="Escribe un subtítulo para este curso"
                                  value="{{ old('subtitle', $course->subtitle) }}" />
+                        <x-input-error for="subtitle" class="mt-2" />
                     </div>
 
                     <div class="mb-4">
@@ -54,13 +57,14 @@
                                     placeholder="Escribe una descripción para este curso">
                             {{ old('description', $course->description) }}
                         </x-textarea>
+                        <x-input-error for="description" class="mt-2" />
                     </div>
 
                     <div class="mb-4">
                         <x-label for="category_id" class="mb-2"  value="Categoría" />
                         <x-select id="category_id"
-                                name="category_id"
-                                class="block w-full mb-2">
+                                  name="category_id"
+                                  class="block w-full mb-2">
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}"
                                         @if($category->id == old('category_id', $course->category_id)) selected @endif>
@@ -68,13 +72,14 @@
                                 </option>
                             @endforeach
                         </x-select>
+                        <x-input-error for="category_id" class="mt-2" />
                     </div>
 
                     <div class="mb-4">
                         <x-label for="level_id" class="mb-2"  value="Nivel" />
                         <x-select id="level_id"
-                                name="level_id"
-                                class="block w-full mb-2">
+                                  name="level_id"
+                                  class="block w-full mb-2">
                             @foreach($levels as $level)
                                 <option value="{{ $level->id }}"
                                         @if($level->id == old('level_id', $course->level_id)) selected @endif>
@@ -82,13 +87,14 @@
                                 </option>
                             @endforeach
                         </x-select>
+                        <x-input-error for="name" class="mt-2" />
                     </div>
 
                     <div class="mb-4">
                         <x-label for="price_id" class="mb-2"  value="Precio" />
                         <x-select id="price_id"
-                                name="price_id"
-                                class="block w-full mb-2">
+                                  name="price_id"
+                                  class="block w-full mb-2">
                             @foreach($prices as $price)
                                 <option value="{{ $price->id }}"
                                         @if($price->id == old('price_id', $course->price_id)) selected @endif>
@@ -96,6 +102,7 @@
                                 </option>
                             @endforeach
                         </x-select>
+                        <x-input-error for="name" class="mt-2" />
                     </div>
 
                     <div class="flex justify-between mt-16">
@@ -112,7 +119,6 @@
 
                 </form>
             </div>
-
 
         </div>
 
