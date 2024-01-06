@@ -51,8 +51,9 @@
                                     required
                                     class="block w-full mb-2"
                                     rows="4"
-                                    placeholder="Escribe una descripción para este curso"
-                                    value="{{ old('description', $course->description) }}" />
+                                    placeholder="Escribe una descripción para este curso">
+                            {{ old('description', $course->description) }}
+                        </x-textarea>
                     </div>
 
                     <div class="mb-4">
@@ -97,8 +98,21 @@
                         </x-select>
                     </div>
 
+                    <div class="flex justify-between mt-16">
+                        <x-link-button href="{{ route('teacher.courses.index') }}">
+                            <i class="fa-solid fa-xmark mr-2"></i>
+                            Cancelar
+                        </x-link-button>
+
+                        <x-button color="blue">
+                            <i class="fa-solid fa-save mr-2"></i>
+                            Guardar
+                        </x-button>
+                    </div>
+
                 </form>
             </div>
+
 
         </div>
 

@@ -61,7 +61,20 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        return $request->all();
+        // return $request->all();
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'subtitle' => 'required|string|max:255',
+            'description' => 'required|string|max:500',
+            'category_id' => 'required|exists:categories,id',
+            'level_id' => 'required|exists:levels,id',
+            'price_id' => 'required|exists:prices,id',
+        ]);
+
+        $course->update($request->all());
+
+        return redirect()->route('teacher.courses.index');
     }
 
     /**

@@ -9,6 +9,11 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $fillable =
+    [
+        'title', 'slug', 'subtitle', 'description', 'level_id', 'category_id', 'price_id',
+    ];
+
     protected $withCount = ['students', 'reviews'];
 
     public const BORRADOR = 1;
