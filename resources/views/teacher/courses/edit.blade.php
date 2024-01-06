@@ -13,7 +13,7 @@
 
                     <div class="mb-6 relative">
                         <figure>
-                            <img class="w-full aspect-[5/1] object-cover object-center rounded-md"
+                            <img id="course-image" class="w-full aspect-[5/1] object-cover object-center rounded-md"
                                  src="{{ Storage::url($course->image->path) }}" alt="">
                         </figure>
 
@@ -24,7 +24,8 @@
                                      name="image"
                                      type="file"
                                      class="hidden"
-                                     accept="image/*" />
+                                     accept="image/*"
+                                     {{-- onchange="previewImage(event)" --}} />
                         </div>
 
                     </div>
@@ -141,4 +142,24 @@
         </div>
 
     </div>
+
+    @push('scripts')
+
+        <script>
+
+            // function previewImage(e) {
+
+            document.querySelector('#image').addEventListener('change', function (e) {
+                let file = e.target.files[0];
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+                    document.querySelector('#course-image').setAttribute('src', e.target.result);
+                    URL.revokeObjectURL(e.target.result);
+                };
+
+                reader.readAsDataURL(file);
+            });
+        </script>
+    @endpush
 </x-app-layout>
