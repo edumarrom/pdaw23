@@ -84,7 +84,8 @@ class CourseController extends Controller
             }
 
             // Actualizar relación polimórfica de la imagen
-            $path = Storage::put('courses', $request->image);
+            $fileName = $request->slug . '.' . $request->file('image')->getClientOriginalExtension();
+            $path = Storage::putFileAs('courses', $request->image, $fileName );
             $course->image->update([
                 'path' => $path,
             ]);
