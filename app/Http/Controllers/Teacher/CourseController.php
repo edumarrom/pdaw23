@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Image;
 use App\Models\Level;
 use App\Models\Price;
 use Illuminate\Http\Request;
@@ -75,10 +76,13 @@ class CourseController extends Controller
             'image' => 'nullable|image',
         ]);
 
-        $data = $request->all();
-
         if ($request->file('image')) {
-            return Storage::put('courses', $request->image);
+            //return Storage::put('courses', $request->image);
+            // Actualizar campo de la tabla polimorfica images, cuyo campo imageable_id es igual al id del curso
+            $path = Storage::put('courses', $request->image);
+            $course->image->update([
+                'path' => $path,
+            ]);
         }
 
         $course->update($request->all());
