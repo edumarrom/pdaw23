@@ -7,7 +7,8 @@
                 <h2 class="text-2xl font-bold">Información del curso</h2>
                 <hr class="mbt-2 mb-6">
 
-                <form action="{{ route('teacher.courses.update', $course) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('teacher.courses.update', $course) }}" method="post" enctype="multipart/form-data"
+                    x-data="data()">
                     @csrf
                     @method('PUT')
 
@@ -38,7 +39,8 @@
                                  required
                                  class="block w-full mb-2"
                                  placeholder="Escribe un título para este curso"
-                                 value="{{ old('title', $course->title) }}" />
+                                 value="{{ old('title', $course->title) }}"
+                                 x-model="title" x-on:input="slug = slugify(title)"/>
                         <x-input-error for="title" class="mt-2" />
                     </div>
 
@@ -50,7 +52,8 @@
                                  required
                                  class="block w-full mb-2"
                                  placeholder="Escribe un slug para este curso"
-                                 value="{{ old('slug', $course->slug) }}" />
+                                 value="{{ old('slug', $course->slug) }}"
+                                 x-model="slug" />
                         <x-input-error for="slug" class="mt-2" />
                     </div>
 
@@ -158,6 +161,32 @@
 
                 reader.readAsDataURL(event.target.files[0]);
             }
+        </script>
+
+        {{-- Crear slug --}}
+        <script>
+            function data() {
+                return {
+                    title: document.querySelector('#title').value,
+                    slug: document.querySelector('#slug').value,
+                    slugify(str) {
+                        str = str.trim().toLowerCase();
+
+                        const from = 'ãàáäâáº½èéëêìíïîõòóöôùúüûñç·/_,:;';
+                        const to = 'aaaaaeeeeeiiiiooooouuuunc------';
+
+                        for (let i = 0, l = from.length; i < l; i++) {
+                            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+                        }
+
+                        str = str.replace(/[^a-z0-9 -]/g, '')
+                            .replace(/\s+/g, '-')
+                            .replace(/-+/g, '-');
+
+                        return str;
+                    }
+                }
+            };
         </script>
 
     @endpush
