@@ -7,7 +7,7 @@
                 <h2 class="text-2xl font-bold">Información del curso</h2>
                 <hr class="mbt-2 mb-6">
 
-                <form action="{{ route('teacher.courses.update', $course) }}" method="post">
+                <form action="{{ route('teacher.courses.update', $course) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -25,7 +25,7 @@
                                      type="file"
                                      class="hidden"
                                      accept="image/*"
-                                     {{-- onchange="previewImage(event)" --}} />
+                                     onchange="previewImage(event)" />
                         </div>
 
                     </div>
@@ -145,21 +145,20 @@
 
     @push('scripts')
 
+        {{-- Previsualizar imagen --}}
         <script>
+            function previewImage(event) {
+                const reader = new FileReader();
 
-            // function previewImage(e) {
-
-            document.querySelector('#image').addEventListener('change', function (e) {
-                let file = e.target.files[0];
-                let reader = new FileReader();
-
-                reader.onload = (e) => {
-                    document.querySelector('#course-image').setAttribute('src', e.target.result);
-                    URL.revokeObjectURL(e.target.result);
+                reader.onload = () => {
+                    const output = document.querySelector('#course-image');
+                    output.src = reader.result;
+                    URL.revokeObjectURL(reader.result)
                 };
 
-                reader.readAsDataURL(file);
-            });
+                reader.readAsDataURL(event.target.files[0]);
+            }
         </script>
+
     @endpush
 </x-app-layout>
