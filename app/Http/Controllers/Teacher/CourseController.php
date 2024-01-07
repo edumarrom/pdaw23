@@ -77,8 +77,13 @@ class CourseController extends Controller
         ]);
 
         if ($request->file('image')) {
-            //return Storage::put('courses', $request->image);
-            // Actualizar campo de la tabla polimorfica images, cuyo campo imageable_id es igual al id del curso
+
+            // Eliminar imagen anterior
+            if ($course->image) {
+                Storage::delete($course->image->path);
+            }
+
+            // Actualizar relación polimórfica de la imagen
             $path = Storage::put('courses', $request->image);
             $course->image->update([
                 'path' => $path,
