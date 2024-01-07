@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Level;
 use App\Models\Price;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -73,6 +74,12 @@ class CourseController extends Controller
             'price_id' => 'required|exists:prices,id',
             'image' => 'nullable|image',
         ]);
+
+        $data = $request->all();
+
+        if ($request->file('image')) {
+            return Storage::put('courses', $request->image);
+        }
 
         $course->update($request->all());
 
