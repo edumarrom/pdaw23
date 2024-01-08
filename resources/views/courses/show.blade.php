@@ -1,8 +1,8 @@
 <x-app-layout>
-    <section class="bg-cover {{-- bg-right-top bg-no-repeat --}} py-12" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url({{Storage::url($course->image->path) }})">
+    <section class="bg-cover {{-- bg-right-top bg-no-repeat --}} py-12" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url({{$course->imagePath }})">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
-                <img class="h-80 w-full object-cover rounded border-4 border-gray-300 border-s-white" src="{{Storage::url($course->image->path)}}" alt="">
+                <img class="h-80 w-full object-cover rounded border-4 border-gray-300 border-s-white" src="{{$course->imagePath}}" alt="">
             </figure>
 
             <div class="text-gray-100">
