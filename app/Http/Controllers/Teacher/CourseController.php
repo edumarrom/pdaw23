@@ -49,7 +49,7 @@ class CourseController extends Controller
             'category_id' => 'required|exists:categories,id',
             'level_id' => 'required|exists:levels,id',
             'price_id' => 'required|exists:prices,id',
-            'image' => 'nullable|image',
+            'image' => 'required|image',
         ]);
 
         $course = Course::create([

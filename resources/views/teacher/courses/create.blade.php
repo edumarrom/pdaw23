@@ -11,24 +11,29 @@
                     x-data="data()">
                     @csrf
 
-                    <div class="mb-6 relative">
-                        <figure>
-                            <img id="course-image" class="w-full aspect-[5/1] object-cover object-center rounded-md"
-                                 src="{{ Storage::url('no-image.png') }}" alt="">
-                        </figure>
+                    <div class="mb-6">
+                        <div class="relative">
+                            <figure>
+                                <img id="course-image" class="w-full aspect-[5/1] object-cover object-center rounded-md"
+                                    src="{{ Storage::url('no-image.png') }}" alt="">
+                            </figure>
 
-                        <div class="absolute bottom-4 left-4">
-                            <x-label for="image" value="Seleccionar imagen"
-                                     class="bg-white px-2 py-1 border border-gray-300 text-sm shadow-sm rounded cursor-pointer" />
-                            <x-input id="image"
-                                     name="image"
-                                     type="file"
-                                     class="hidden"
-                                     accept="image/*"
-                                     onchange="previewImage(event)" />
+                            <div class="absolute bottom-4 left-4">
+                                <x-label for="image" value="Seleccionar imagen"
+                                        class="bg-white px-2 py-1 border border-gray-300 text-sm shadow-sm rounded cursor-pointer" />
+                                <x-input id="image"
+                                        name="image"
+                                        type="file"
+                                        required
+                                        class="hidden"
+                                        accept="image/*"
+                                        onchange="previewImage(event)" />
+                            </div>
+
                         </div>
-
+                        <x-input-error for="image" />
                     </div>
+
 
                     <div class="mb-4">
                         <x-label for="title" class="mb-2"  value="Título" />
