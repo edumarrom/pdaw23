@@ -9,9 +9,16 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable =
-    [
-        'title', 'slug', 'subtitle', 'description', 'level_id', 'category_id', 'price_id',
+    protected $fillable = [
+        'title',
+        'subtitle',
+        'description',
+        'status',
+        'slug',
+        'user_id',
+        'level_id',
+        'category_id',
+        'price_id',
     ];
 
     protected $withCount = ['students', 'reviews'];
