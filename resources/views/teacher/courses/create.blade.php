@@ -15,7 +15,7 @@
                         <div class="relative">
                             <figure>
                                 <img id="course-image" class="w-full aspect-[5/1] object-cover object-center rounded-md"
-                                    src="{{ Storage::url('no-image.png') }}" alt="">
+                                    src="{{ Storage::url('blank-image.png') }}" alt="">
                             </figure>
 
                             <div class="absolute bottom-4 left-4">
@@ -24,7 +24,6 @@
                                 <x-input id="image"
                                         name="image"
                                         type="file"
-                                        required
                                         class="hidden"
                                         accept="image/*"
                                         onchange="previewImage(event)" />

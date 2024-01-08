@@ -49,7 +49,7 @@ class CourseController extends Controller
             'category_id' => 'required|exists:categories,id',
             'level_id' => 'required|exists:levels,id',
             'price_id' => 'required|exists:prices,id',
-            'image' => 'required|image',
+            'image' => 'nullable|image',
         ]);
 
         $course = Course::create([
@@ -123,18 +123,20 @@ class CourseController extends Controller
         ]);
 
         if ($request->file('image')) {
+            $fileName = $request->slug . '.' . $request->file('image')->getClientOriginalExtension();
 
-            // Eliminar imagen anterior
+            // Si el curso tiene imagen, se actualiza, en caso contrario se crea
             if ($course->image) {
                 Storage::delete($course->image->path);
+
+                $path = Storage::putFileAs('courses', $request->image, $fileName );
+                $course->image->update(['path' => $path,]);
+            } else {
+                $path = Storage::putFileAs('courses', $request->image, $fileName );
+                $course->image()->create(['path' => $path,]);
             }
 
-            // Actualizar relación polimórfica de la imagen
-            $fileName = $request->slug . '.' . $request->file('image')->getClientOriginalExtension();
-            $path = Storage::putFileAs('courses', $request->image, $fileName );
-            $course->image->update([
-                'path' => $path,
-            ]);
+
         }
 
         $course->update($request->all());
