@@ -84,7 +84,9 @@
                                 </div>
                             </td>
                             <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
-                                <img class="w-auto h-20 rounded" src="{{ Storage::url($course->image->path) }}" alt="">
+                                @if ($course->image)
+                                    <img class="w-auto h-20 rounded" src="{{ Storage::url($course->image->path) }}" alt="">
+                                @endif
                                 <div class="ps-3">
                                     <div class="text-base font-semibold">{{ $course->title }}</div>
                                     <div class="font-normal text-gray-500">{{ $course->category->name }}</div>

@@ -49,7 +49,7 @@ class CourseController extends Controller
             'category_id' => 'required|exists:categories,id',
             'level_id' => 'required|exists:levels,id',
             'price_id' => 'required|exists:prices,id',
-            'image' => 'nullable|image',
+            'image' => 'required|image',
         ]);
 
         $course = Course::create([
@@ -58,10 +58,20 @@ class CourseController extends Controller
             'description' => $request->description,
             'status' => Course::BORRADOR,
             'slug' => $request->slug,
+            'user_id' => auth()->id(),
             'level_id' => $request->level_id,
             'category_id' => $request->category_id,
             'price_id' => $request->price_id,
         ]);
+
+        if ($request->file('image')) {
+            $fileName = $request->slug . '.' . $request->file('image')->getClientOriginalExtension();
+            $path = Storage::putFileAs('courses', $request->image, $fileName );
+
+            $course->image()->create([
+                'url' => $path,
+            ]);
+        }
 
         session()->flash('swal', [
             'icon' => 'success',
@@ -69,6 +79,8 @@ class CourseController extends Controller
             'text' => "Curso '$course->title' creado satisfactoriamente.",
             'confirmButtonColor' => '#4338CA',
         ]);
+
+        return redirect()->route('teacher.courses.index');
     }
 
     /**
