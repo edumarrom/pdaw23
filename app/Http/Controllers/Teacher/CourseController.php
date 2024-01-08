@@ -69,7 +69,7 @@ class CourseController extends Controller
             $path = Storage::putFileAs('courses', $request->image, $fileName );
 
             $course->image()->create([
-                'url' => $path,
+                'path' => $path,
             ]);
         }
 

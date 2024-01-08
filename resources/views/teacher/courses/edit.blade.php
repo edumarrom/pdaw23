@@ -15,7 +15,7 @@
                     <div class="mb-6 relative border rounded-md overflow-hidden">
                         <figure>
                             <img id="course-image" class="w-full aspect-[5/1] object-cover object-center"
-                                 :src="$course->image = Storage::url($course->image->path)" alt="">
+                                 src="{{ $course->image ? Storage::url($course->image->path) : '' }}" alt="">
                         </figure>
 
                         <div class="absolute bottom-4 left-4">
