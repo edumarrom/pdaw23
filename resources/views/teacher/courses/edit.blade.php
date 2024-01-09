@@ -1,7 +1,9 @@
 <x-app-layout>
-    <div class="container py-8">
+    <div class="container py-8 grid grid-cols-5">
 
-        <div class="card">
+        @include('teacher.courses.includes.aside')
+
+        <div class="card col-span-4">
 
             <div class="px6 py4 text-gray-700">
                 <h2 class="text-2xl font-bold">Información del curso</h2>
