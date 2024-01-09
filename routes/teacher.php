@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Teacher\CourseController;
+use App\Livewire\Teacher\CoursesContent;
 use Illuminate\Support\Facades\Route;
 // use App\Livewire\TeacherCourses;
 
@@ -10,3 +11,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('courses', CourseController::class)
     ->names('courses');
+
+Route::get('courses/{course}/edit/content', CoursesContent::class)
+    ->name('courses.edit.content');

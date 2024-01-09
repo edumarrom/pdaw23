@@ -8,7 +8,7 @@
         ],
         [
             'name' => 'Contenido del curso',
-            'route' => '',
+            'route' => route('teacher.courses.edit.content', $course),
             'icon' => 'fa-solid fa-book',
             'active' => request()->routeIs('teacher.courses.edit.content'),
         ],
@@ -29,8 +29,9 @@
         @foreach ($links as $link)
                 <li>
                     <a  href="{{ $link['route'] }}"
-                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:cursor-pointer
-                        {{ $link['active'] ? 'text-indigo-500' : '' }}">
+                            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:cursor-pointer
+                            {{ $link['active'] ? 'text-indigo-500' : '' }}">
+                        <i class="mr-3 text-xl {{ $link['active'] ? 'text-indigo-500' : 'text-gray-500' }} {{$link['icon']}}"></i>
                         <span class="">{{ $link['name'] }}</span>
                     </a>
                 </li>
