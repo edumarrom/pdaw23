@@ -26,7 +26,12 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('teacher.courses.create');
+
+        $categories = Category::all();
+        $levels = Level::all();
+        $prices = Price::all();
+
+        return view('teacher.courses.create', compact('categories', 'levels', 'prices'));
     }
 
     /**
@@ -34,7 +39,48 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        // return $request->all();
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'slug' => 'required|unique:courses,slug',
+            'subtitle' => 'required|string|max:255',
+            'description' => 'required|string|max:500',
+            'category_id' => 'required|exists:categories,id',
+            'level_id' => 'required|exists:levels,id',
+            'price_id' => 'required|exists:prices,id',
+            'image' => 'nullable|image',
+        ]);
+
+        $course = Course::create([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'description' => $request->description,
+            'status' => Course::BORRADOR,
+            'slug' => $request->slug,
+            'user_id' => auth()->id(),
+            'level_id' => $request->level_id,
+            'category_id' => $request->category_id,
+            'price_id' => $request->price_id,
+        ]);
+
+        if ($request->file('image')) {
+            $fileName = $request->slug . '.' . $request->file('image')->getClientOriginalExtension();
+            $path = Storage::putFileAs('courses', $request->image, $fileName );
+
+            $course->image()->create([
+                'path' => $path,
+            ]);
+        }
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Curso '$course->title' creado satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
+
+        return redirect()->route('teacher.courses.index');
     }
 
     /**
@@ -77,18 +123,20 @@ class CourseController extends Controller
         ]);
 
         if ($request->file('image')) {
+            $fileName = $request->slug . '.' . $request->file('image')->getClientOriginalExtension();
 
-            // Eliminar imagen anterior
+            // Si el curso tiene imagen, se actualiza, en caso contrario se crea
             if ($course->image) {
                 Storage::delete($course->image->path);
+
+                $path = Storage::putFileAs('courses', $request->image, $fileName );
+                $course->image->update(['path' => $path,]);
+            } else {
+                $path = Storage::putFileAs('courses', $request->image, $fileName );
+                $course->image()->create(['path' => $path,]);
             }
 
-            // Actualizar relación polimórfica de la imagen
-            $fileName = $request->slug . '.' . $request->file('image')->getClientOriginalExtension();
-            $path = Storage::putFileAs('courses', $request->image, $fileName );
-            $course->image->update([
-                'path' => $path,
-            ]);
+
         }
 
         $course->update($request->all());

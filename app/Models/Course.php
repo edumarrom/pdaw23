@@ -4,14 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable =
-    [
-        'title', 'slug', 'subtitle', 'description', 'level_id', 'category_id', 'price_id',
+    protected $fillable = [
+        'title',
+        'subtitle',
+        'description',
+        'status',
+        'slug',
+        'user_id',
+        'level_id',
+        'category_id',
+        'price_id',
     ];
 
     protected $withCount = ['students', 'reviews'];
@@ -48,6 +56,14 @@ class Course extends Model
             return round($this->reviews->avg('rating'), 1);
         } else {
             return 5;
+        }
+    }
+
+    public function getImagePathAttribute() {
+        if($this->image) {
+                return Storage::url($this->image->path);
+        } else {
+            return Storage::url('blank-image.png');
         }
     }
 
