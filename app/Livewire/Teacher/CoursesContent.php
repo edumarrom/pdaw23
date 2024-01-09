@@ -2,13 +2,14 @@
 
 namespace App\Livewire\Teacher;
 
+use App\Models\Course;
 use Livewire\Component;
 
 class CoursesContent extends Component
 {
     public $course;
 
-    public function mount($course)
+    public function mount(Course $course)
     {
         $this->course = $course;
     }
