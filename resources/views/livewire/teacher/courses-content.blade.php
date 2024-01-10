@@ -7,7 +7,7 @@
 
             <div class="px6 py4 text-gray-700">
                 <h2 class="text-2xl font-bold">Contenido del curso</h2>
-                <hr class="mbt-2 mb-6">
+                <hr class="mt-2 mb-6">
 
                 @foreach ($course->sections as $item)
 
@@ -20,7 +20,7 @@
                                              name="title"
                                              type="text"
                                              class="block w-full"
-                                             placeholder="Escribe un nombre para este usuario"
+                                             placeholder="Escribe un título para esta sección"
                                              wire:model.live="section.title" />
                                     <x-input-error for="section.title" class="mt-2" />
                                     <x-secondary-button class="ml-2" wire:click="updateSection">
@@ -49,6 +49,42 @@
                     </article>
 
                 @endforeach
+
+                <div x-data="{open: false}">
+                    <x-button type="button" color="indigo" x-on:click="open =!open">
+                        <i class="fa-solid fa-plus mr-1"></i>
+                        <span>Nueva sección</span>
+                    </x-button>
+
+                    <article class="card my-6 border border-gray-100 shadow-md"
+                             x-show="open" x-collapse>
+                        <div class="px-6 py4 text-gray-700">
+                            <h3 class="text-xl font-bold">Nueva sección</h3>
+                            <hr class="mt-2 mb-6">
+
+                            <div class="mb-4">
+                                <x-input id="title"
+                                         name="title"
+                                         type="text"
+                                         class="block w-full"
+                                         placeholder="Escribe un título para esta sección" />
+                                <x-input-error for="section.title" class="mt-2" />
+                            </div>
+
+                            <div class="flex justify-between">
+                                <x-button x-on:click="open = false">
+                                    <i class="fa-solid fa-xmark mr-2"></i>
+                                    Cancelar
+                                </x-button>
+
+                                <x-button color="indigo">
+                                    <i class="fa-solid fa-save mr-2"></i>
+                                    Guardar
+                                </x-button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
 
             </div>
 
