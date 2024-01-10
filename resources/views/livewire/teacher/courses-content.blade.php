@@ -67,8 +67,9 @@
                                          name="title"
                                          type="text"
                                          class="block w-full"
-                                         placeholder="Escribe un título para esta sección" />
-                                <x-input-error for="section.title" class="mt-2" />
+                                         placeholder="Escribe un título para esta sección"
+                                         wire:model.live="title" />
+                                <x-input-error for="title" class="mt-2" />
                             </div>
 
                             <div class="flex justify-between">
@@ -77,7 +78,7 @@
                                     Cancelar
                                 </x-button>
 
-                                <x-button color="indigo">
+                                <x-button color="indigo" wire:click="storeSection">
                                     <i class="fa-solid fa-save mr-2"></i>
                                     Guardar
                                 </x-button>

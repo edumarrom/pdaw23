@@ -10,6 +10,7 @@ class CoursesContent extends Component
 {
     public $course;
     public $section;
+    public $title;
 
     protected $rules = [
         'section.title' => 'required'
@@ -24,6 +25,21 @@ class CoursesContent extends Component
     public function render()
     {
         return view('livewire.teacher.courses-content');
+    }
+
+    public function storeSection()
+    {
+        $this->validate([
+            'title' => 'required'
+        ]);
+
+        $this->course->sections()->create([
+            'title' => $this->title
+        ]);
+
+        $this->reset('title');
+
+        $this->course = $this->course->fresh();
     }
 
     public function editSection(Section $section)
