@@ -64,27 +64,29 @@
                             <h3 class="text-xl font-bold">Nueva sección</h3>
                             <hr class="mt-2 mb-6">
 
-                            <div class="mb-4">
-                                <x-input id="title"
-                                         name="title"
-                                         type="text"
-                                         class="block w-full"
-                                         placeholder="Escribe un título para esta sección"
-                                         wire:model.live="title" />
-                                <x-input-error for="title" class="mt-2" />
-                            </div>
+                            <form wire:submit.prevent='storeSection'>
+                                <div class="mb-4">
+                                    <x-input id="title"
+                                            name="title"
+                                            type="text"
+                                            class="block w-full"
+                                            placeholder="Escribe un título para esta sección"
+                                            wire:model.live="title" />
+                                    <x-input-error for="title" class="mt-2" />
+                                </div>
 
-                            <div class="flex justify-between">
-                                <x-button x-on:click="open = false">
-                                    <i class="fa-solid fa-xmark mr-2"></i>
-                                    Cancelar
-                                </x-button>
+                                <div class="flex justify-between">
+                                    <x-button x-on:click="open = false">
+                                        <i class="fa-solid fa-xmark mr-2"></i>
+                                        Cancelar
+                                    </x-button>
 
-                                <x-button color="indigo" wire:click="storeSection" x-on:click="open = false">
-                                    <i class="fa-solid fa-save mr-2"></i>
-                                    Guardar
-                                </x-button>
-                            </div>
+                                    <x-button color="indigo">
+                                        <i class="fa-solid fa-save mr-2"></i>
+                                        Guardar
+                                    </x-button>
+                                </div>
+                            </form>
                         </div>
                     </article>
                 </div>
