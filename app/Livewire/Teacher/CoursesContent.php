@@ -30,4 +30,15 @@ class CoursesContent extends Component
     {
         $this->section = $section;
     }
+
+    public function updateSection()
+    {
+        $this->validate();
+
+        $this->section->save();
+
+        $this->section = new Section();
+
+        $this->course = $this->course->fresh();
+    }
 }

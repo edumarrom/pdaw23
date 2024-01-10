@@ -15,11 +15,18 @@
                         <div class="px-6 py4">
 
                             @if ($section->id == $item->id)
-                                <x-input wire:model.live="section.title" id="title"
-                                         name="title"
-                                         type="text"
-                                         class="block w-full"
-                                         placeholder="Escribe un nombre para este usuario" />
+                                <form wire:submit.prevent='updateSection' class="flex">
+                                    <x-input id="title"
+                                             name="title"
+                                             type="text"
+                                             class="block w-full"
+                                             placeholder="Escribe un nombre para este usuario"
+                                             wire:model.live="section.title" />
+                                    <x-input-error for="section.title" class="mt-2" />
+                                    <x-secondary-button class="ml-2" wire:click="updateSection">
+                                        <i class="fa-solid fa-check" title="Guardar"></i>
+                                    </x-secondary-button>
+                                </form>
                             @else
                                 <header class="flex justify-between items-center">
                                     <h3 class="cursor-pointer">
