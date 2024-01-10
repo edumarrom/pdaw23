@@ -80,7 +80,7 @@
                                     Cancelar
                                 </x-button>
 
-                                <x-button color="indigo" wire:click="storeSection">
+                                <x-button color="indigo" wire:click="storeSection" x-on:click="open = false">
                                     <i class="fa-solid fa-save mr-2"></i>
                                     Guardar
                                 </x-button>
@@ -98,7 +98,7 @@
     @push('scripts')
 
         <script>
-            window.addEventListener('section-deleted', event => {
+            window.addEventListener('swal', event => {
                 const detail = event.detail[0];
                 Swal.fire({
                     icon: detail.icon,

@@ -33,13 +33,20 @@ class CoursesContent extends Component
             'title' => 'required'
         ]);
 
-        $this->course->sections()->create([
+        $section = $this->course->sections()->create([
             'title' => $this->title
         ]);
 
         $this->reset('title');
 
         $this->course = $this->course->fresh();
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Sección '$section->title' creada satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function editSection(Section $section)
@@ -49,6 +56,8 @@ class CoursesContent extends Component
 
     public function updateSection()
     {
+        $sectionTitle = $this->section->title;
+
         $this->validate();
 
         $this->section->save();
@@ -56,6 +65,13 @@ class CoursesContent extends Component
         $this->section = new Section();
 
         $this->course = $this->course->fresh();
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Sección '$sectionTitle' editada satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function destroySection(Section $section)
@@ -66,7 +82,7 @@ class CoursesContent extends Component
 
         $this->course = $this->course->fresh();
 
-        $this->dispatch('section-deleted', [
+        $this->dispatch('swal', [
             'icon' => 'success',
             'title' => '¡Hecho!',
             'text' => "Sección '$sectionTitle' borrada satisfactoriamente.",
