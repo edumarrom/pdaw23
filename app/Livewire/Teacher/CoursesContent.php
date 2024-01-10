@@ -57,4 +57,20 @@ class CoursesContent extends Component
 
         $this->course = $this->course->fresh();
     }
+
+    public function destroySection(Section $section)
+    {
+        $sectionTitle = $section->title;
+
+        $section->delete();
+
+        $this->course = $this->course->fresh();
+
+        $this->dispatch('section-deleted', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Sección '$sectionTitle' borrada satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
+    }
 }
