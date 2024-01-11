@@ -41,32 +41,52 @@ class CoursesLesson extends Component
     {
         switch ($this->lesson->platform_id) {
             case 1:
-                $path = [
+                $pattern = '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/';
+                preg_match($pattern, $this->lesson->path, $matches);
+                $lessonIframe = [
+                    '<iframe width="560" height="315" src="https://www.youtube.com/embed/',
+                    '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                ];
+                $iframeMatch = 5;
+                $lessonPath = [
                     'required',
                     'url',
-                    'regex:/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/',
+                    "regex:$pattern",
                 ];
+
                 break;
             case 2:
-                $path = [
+                $pattern = '/^(http|https)?:\/\/(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/mi';
+                preg_match($pattern, $this->lesson->path, $matches);
+                $lessonIframe = [
+                    '<iframe src="https://player.vimeo.com/video/',
+                    '" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>',
+                ];
+                $iframeMatch = 4;
+                $lessonPath = [
                     'required',
                     'url',
-                    'regex:/^(http|https)?:\/\/(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/mi',
+                    "regex:$pattern",
                 ];
                 break;
             default:
-                $path = [
+                /* $lessonPath = [
                     'required',
                     'url',
-                ];
+                ]; */
                 break;
         }
+
+        // dd($matches, $lessonIframe, $lessonPath);
+        // Youtube: matches[5] | Vimeo: matches[4]
 
         $this->validate([
             'lesson.title' => 'required',
             'lesson.platform_id' => 'required',
-            'lesson.path' => $path,
+            'lesson.path' => $lessonPath,
         ]);
+
+        $this->lesson->iframe = $lessonIframe[0] . $matches[$iframeMatch] . $lessonIframe[1];
 
         $this->lesson->save();
         $this->lesson = new Lesson();
