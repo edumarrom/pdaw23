@@ -7,7 +7,55 @@
             <div class="px-4 py-2">
 
                 @if ($lesson->id == $item->id)
-                    editar la lección
+                    <form wire:submit.prevent='updateLesson'>
+                        <div class="mb-2">
+                            <x-label for="title" class="mb-1" value="Título" />
+                            <x-input id="title"
+                                    name="title"
+                                    type="text"
+                                    class="block w-full"
+                                    placeholder="Escribe un título para esta lección"
+                                    wire:model.live="lesson.title" />
+                            <x-input-error for="lesson.title" class="mt-2" />
+                        </div>
+
+                        <div class="mb-2">
+                            <x-label for="platform_id" class="mb-1" value="Plataforma" />
+                            <x-select id="platform_id"
+                                      name="platform_id"
+                                      class="block w-full mb-2"
+                                      wire:model.live="lesson.platform_id">
+                                @foreach($platforms as $platform)
+                                    <option value="{{ $platform->id }}">
+                                        {{ $platform->name }}
+                                    </option>
+                                @endforeach
+                            </x-select>
+                        </div>
+
+                        <div class="mb-4">
+                            <x-label for="path" class="mb-1" value="Enlace" />
+                            <x-input id="path"
+                                    name="path"
+                                    type="text"
+                                    class="block w-full"
+                                    placeholder="Escribe un enlace de vídeo para esta lección"
+                                    wire:model.live="lesson.path" />
+                            <x-input-error for="lesson.title" class="mt-2" />
+                        </div>
+
+                        <div class="flex justify-end">
+                            {{-- Botón para cancelar cerrar el formulario --}}
+                            <x-secondary-button type="button" class="hover:bg-rose-600 hover:text-white"
+                                    wire:click="cancelEdit" title="Cancelar">
+                                <i class="fa-solid fa-xmark"></i>
+                            </x-secondary-button>
+                            <x-secondary-button type="submit" class="hover:bg-indigo-500 hover:text-white ml-2"
+                                    title="Guardar">
+                                <i class="fa-solid fa-check"></i>
+                            </x-secondary-button>
+                        </div>
+                    </form>
                 @else
                     <header>
                         <h4>

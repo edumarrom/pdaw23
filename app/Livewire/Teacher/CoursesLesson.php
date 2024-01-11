@@ -3,6 +3,7 @@
 namespace App\Livewire\Teacher;
 
 use App\Models\Lesson;
+use App\Models\Platform;
 use App\Models\Section;
 use Livewire\Component;
 
@@ -10,6 +11,7 @@ class CoursesLesson extends Component
 {
     public $section;
     public $lesson;
+    public $platforms;
 
     protected $rules = [
         'lesson.title' => 'required',
@@ -21,6 +23,7 @@ class CoursesLesson extends Component
     {
         $this->section = $section;
         $this->lesson = new Lesson();
+        $this->platforms = Platform::all();
     }
 
     public function render()
@@ -29,12 +32,12 @@ class CoursesLesson extends Component
     }
 
     public function editLesson($id)
-    /*
-    ¿Por qué da un ArrayToString Exception?
-    {
-        $this->lesson = $lesson;
-    } */
     {
         $this->lesson = Lesson::find($id);
+    }
+
+    public function cancelEdit()
+    {
+        $this->lesson = new Lesson();
     }
 }
