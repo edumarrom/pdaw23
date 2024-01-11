@@ -1,6 +1,6 @@
 <div>
 
-    @foreach ($section->lessons as $item)
+    @foreach ($section->lessons->sortBy('created_at') as $item)
 
         <article class="card border border-gray-100 shadow-md mt-4">
 
@@ -31,6 +31,7 @@
                                     </option>
                                 @endforeach
                             </x-select>
+                            <x-input-error for="platform_id" class="mt-2" />
                         </div>
 
                         <div class="mb-4">
@@ -41,11 +42,10 @@
                                     class="block w-full"
                                     placeholder="Escribe un enlace de vídeo para esta lección"
                                     wire:model.live="lesson.path" />
-                            <x-input-error for="lesson.title" class="mt-2" />
+                            <x-input-error for="lesson.path" class="mt-2" />
                         </div>
 
                         <div class="flex justify-end">
-                            {{-- Botón para cancelar cerrar el formulario --}}
                             <x-secondary-button type="button" class="hover:bg-rose-600 hover:text-white"
                                     wire:click="cancelEdit" title="Cancelar">
                                 <i class="fa-solid fa-xmark"></i>
