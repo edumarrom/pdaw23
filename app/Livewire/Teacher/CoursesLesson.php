@@ -15,8 +15,15 @@ class CoursesLesson extends Component
     public $platforms;
 
     public $title;
+    public $slug;
     public $platform_id = 1;
     public $path;
+
+    /* @todo: Crear un nuevo campo en la tabla platforms con la regex */
+    public $platformPatterns = [
+        1 => '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/',
+        2 => '/^(http|https)?:\/\/(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/mi',
+    ];
 
     protected $rules = [
         'lesson.title' => 'required',
@@ -41,27 +48,20 @@ class CoursesLesson extends Component
 
     public function storeLesson()
     {
-        switch ($this->platform_id) {
-            case 1:
-                $pattern = '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/';
-                break;
-
-            case 2:
-                $pattern = '/^(http|https)?:\/\/(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/mi';
-                break;
-
-            default:
-                break;
-        }
+        $pattern = $this->platformPatterns[$this->platform_id];
 
         $this->validate ([
             'title' => 'required',
+            'slug' => 'required',
             'platform_id' => 'required',
             'path' => ['required', 'url', "regex:$pattern"],
         ]);
 
+        // El iframe es manejado por el LessonObserver
+
         Lesson::create([
             'title' => $this->title,
+            'slug' => $this->slug,
             'platform_id' => $this->platform_id,
             'path' => $this->path,
             'section_id' => $this->section->id,
@@ -69,6 +69,7 @@ class CoursesLesson extends Component
 
         $this->reset([
             'title',
+            'slug',
             'platform_id',
             'path'
         ]);
@@ -84,18 +85,7 @@ class CoursesLesson extends Component
 
     public function updateLesson()
     {
-        switch ($this->lesson->platform_id) {
-            case 1:
-                $pattern = '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/';
-                break;
-
-            case 2:
-                $pattern = '/^(http|https)?:\/\/(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/mi';
-                break;
-
-            default:
-                break;
-        }
+        $pattern = $this->platformPatterns[$this->platform_id];
 
         $this->validate([
             'lesson.title' => 'required',
@@ -123,6 +113,11 @@ class CoursesLesson extends Component
 
     public function updated($propertyName)
     {
+
+        if ($propertyName == 'title') {
+            $this->slug = Str::slug($this->title);
+        }
+
         if ($propertyName == 'lesson.title') {
             $this->lesson->slug = Str::slug($this->lesson->title);
         }

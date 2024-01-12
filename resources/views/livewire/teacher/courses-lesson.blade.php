@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="mb-2">
-                            <x-label for="slug" class="mb-1" value="Título" />
+                            <x-label for="slug" class="mb-1" value="Slug" />
                             <x-input id="slug"
                                     name="slug"
                                     type="text"
@@ -147,8 +147,19 @@
                                 type="text"
                                 class="block w-full"
                                 placeholder="Escribe un título para esta lección"
-                                wire:model.live="title" />
+                                wire:model.live.debounce.1000ms="title" />
                         <x-input-error for="title" class="mt-2" />
+                    </div>
+
+                    <div class="mb-2">
+                        <x-label for="slug" class="mb-1" value="Slug" />
+                        <x-input id="slug"
+                                name="slug"
+                                type="text"
+                                class="block w-full"
+                                placeholder="Escribe un slug para esta lección"
+                                wire:model="slug" />
+                        <x-input-error for="slug" class="mt-2" />
                     </div>
 
                     <div class="mb-2">
