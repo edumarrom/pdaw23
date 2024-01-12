@@ -59,7 +59,7 @@ class CoursesLesson extends Component
 
         // El iframe es manejado por el LessonObserver
 
-        Lesson::create([
+        $lesson = $this->section->lessons()->create([
             'title' => $this->title,
             'slug' => $this->slug,
             'platform_id' => $this->platform_id,
@@ -75,6 +75,14 @@ class CoursesLesson extends Component
         ]);
 
         $this->section = Section::find($this->section->id);
+
+        /* @todo: Lograr que el formulario se vuelva a cerrar si usamos la alerta  */
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Lección '$lesson->title' creada satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function editLesson($id)
@@ -85,6 +93,8 @@ class CoursesLesson extends Component
 
     public function updateLesson()
     {
+        $lessonTitle = $this->lesson->title;
+
         $pattern = $this->platformPatterns[$this->platform_id];
 
         $this->validate([
@@ -97,15 +107,35 @@ class CoursesLesson extends Component
         // El iframe es manejado por el LessonObserver
 
         $this->lesson->save();
+
         $this->lesson = new Lesson();
+
         $this->section = Section::find($this->section->id);
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Lección '$lessonTitle' editada satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function destroyLesson($id)
     {
         $lesson = Lesson::find($id);
+
+        $lessonTitle = $lesson->title;
+
         $lesson->delete();
+
         $this->section = Section::find($this->section->id);
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Lección '$lessonTitle' borrada satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function cancelEdit()

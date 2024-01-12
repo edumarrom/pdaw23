@@ -115,7 +115,9 @@
                         </x-secondary-button>
 
                         <x-secondary-button type="button" class="hover:text-white hover:bg-rose-600"
-                                wire:click="destroyLesson({{ $item->id }})">
+                                wire:click="destroyLesson({{ $item->id }})"
+                                {{-- @todo: Lograr que tras la confirmación se refersque la vista --}}
+                                {{-- onclick="deleteLesson({{ $item->id }})" --}}>
                             <i class="fa-solid fa-trash mr-1"></i>
                             Eliminar
                         </x-secondary-button>
@@ -204,5 +206,39 @@
             </div>
         </article>
     </div>
+
+    @push('scripts')
+
+        <script>
+            window.addEventListener('swal', event => {
+                const detail = event.detail[0];
+                Swal.fire({
+                    icon: detail.icon,
+                    title: detail.title,
+                    text: detail.text,
+                    confirmButtonColor: detail.confirmButtonColor,
+                })
+            })
+        </script>
+
+        <script>
+            function deleteLesson(lessonId) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¿Estás seguro?',
+                    text: "Esta acción es irreversible",
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirmar',
+                    confirmButtonColor: '#EF4444',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        @this.call('destroyLesson', lessonId);
+                    }
+                })
+            }
+        </script>
+
+    @endpush
 
 </div>
