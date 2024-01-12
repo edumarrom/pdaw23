@@ -5,6 +5,7 @@ namespace App\Livewire\Teacher;
 use App\Models\Lesson;
 use App\Models\Platform;
 use App\Models\Section;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class CoursesLesson extends Component
@@ -19,6 +20,7 @@ class CoursesLesson extends Component
 
     protected $rules = [
         'lesson.title' => 'required',
+        'lesson.slug' => 'required',
         'lesson.platform_id' => 'required',
         'lesson.path' => 'required',
     ];
@@ -28,6 +30,8 @@ class CoursesLesson extends Component
         $this->section = $section;
         $this->lesson = new Lesson();
         $this->platforms = Platform::all();
+
+        $this->fill(request()->only('title', 'slug'));
     }
 
     public function render()
@@ -95,12 +99,12 @@ class CoursesLesson extends Component
 
         $this->validate([
             'lesson.title' => 'required',
+            'lesson.slug' => 'required',
             'lesson.platform_id' => 'required',
             'lesson.path' => ['required', 'url', "regex:$pattern"],
         ]);
 
         // El iframe es manejado por el LessonObserver
-        //$this->lesson->iframe = $iframe[0] . $matches[$match] . $iframe[1];
 
         $this->lesson->save();
         $this->lesson = new Lesson();
@@ -110,5 +114,17 @@ class CoursesLesson extends Component
     public function cancelEdit()
     {
         $this->lesson = new Lesson();
+    }
+
+    /* public function updatedTitle($value)
+    {
+        $this->lesson->slug = Str::slug($value);
+    } */
+
+    public function updated($propertyName)
+    {
+        if ($propertyName == 'lesson.title') {
+            $this->lesson->slug = Str::slug($this->lesson->title);
+        }
     }
 }
