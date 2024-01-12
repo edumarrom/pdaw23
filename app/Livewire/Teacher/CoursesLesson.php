@@ -42,33 +42,15 @@ class CoursesLesson extends Component
         switch ($this->lesson->platform_id) {
             case 1:
                 $pattern = '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/';
-                preg_match($pattern, $this->lesson->path, $matches);
-                $match = 5;
-                $iframe = [
-                    '<iframe width="560" height="315" src="https://www.youtube.com/embed/',
-                    '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
-                ];
-
                 break;
+
             case 2:
                 $pattern = '/^(http|https)?:\/\/(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/mi';
-                preg_match($pattern, $this->lesson->path, $matches);
-                $match = 4;
-                $iframe = [
-                    '<iframe src="https://player.vimeo.com/video/',
-                    '" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>',
-                ];
                 break;
+
             default:
-                /* $lessonPath = [
-                    'required',
-                    'url',
-                ]; */
                 break;
         }
-
-        // dd($matches, $iframe, $pattern);
-        // Youtube: matches[5] | Vimeo: matches[4]
 
         $this->validate([
             'lesson.title' => 'required',
@@ -76,7 +58,8 @@ class CoursesLesson extends Component
             'lesson.path' => ['required', 'url', "regex:$pattern"],
         ]);
 
-        $this->lesson->iframe = $iframe[0] . $matches[$match] . $iframe[1];
+        // El iframe es manejado por el LessonObserver
+        //$this->lesson->iframe = $iframe[0] . $matches[$match] . $iframe[1];
 
         $this->lesson->save();
         $this->lesson = new Lesson();
