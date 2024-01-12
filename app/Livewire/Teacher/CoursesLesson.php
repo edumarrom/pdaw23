@@ -13,6 +13,7 @@ class CoursesLesson extends Component
     public $section;
     public $lesson;
     public $platforms;
+    public $description;
 
     public $title;
     public $slug;
@@ -30,6 +31,7 @@ class CoursesLesson extends Component
         'lesson.slug' => 'required',
         'lesson.platform_id' => 'required',
         'lesson.path' => 'required',
+        'lesson.description.description' => 'required',
     ];
 
     public function mount(Section $section)
@@ -55,6 +57,7 @@ class CoursesLesson extends Component
             'slug' => 'required',
             'platform_id' => 'required',
             'path' => ['required', 'url', "regex:$pattern"],
+            'description' => 'required',
         ]);
 
         // El iframe es manejado por el LessonObserver
@@ -67,12 +70,18 @@ class CoursesLesson extends Component
             'section_id' => $this->section->id,
         ]);
 
+        $lesson->description()->create([
+            'description' => $this->description,
+        ]);
+
         $this->reset([
             'title',
             'slug',
             'platform_id',
-            'path'
+            'path',
+            'description',
         ]);
+
 
         $this->section = Section::find($this->section->id);
 
@@ -89,6 +98,7 @@ class CoursesLesson extends Component
     {
         $this->resetValidation();
         $this->lesson = Lesson::find($id);
+        $this->description = $this->lesson->description->description;
     }
 
     public function updateLesson()
@@ -102,9 +112,18 @@ class CoursesLesson extends Component
             'lesson.slug' => 'required',
             'lesson.platform_id' => 'required',
             'lesson.path' => ['required', 'url', "regex:$pattern"],
+            'lesson.description.description' => 'required',
         ]);
 
         // El iframe es manejado por el LessonObserver
+
+        /* Actualiza el campo description de la relacion description */
+        $this->lesson->description->description = $this->lesson->description->description;
+
+        /* Guarda el cambio realizado en la relación description */
+        $this->lesson->description->save();
+
+        // $this->section->description = $this->description;
 
         $this->lesson->save();
 
