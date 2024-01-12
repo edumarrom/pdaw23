@@ -114,7 +114,8 @@
                             Editar
                         </x-secondary-button>
 
-                        <x-secondary-button type="button" class="hover:text-white hover:bg-rose-600">
+                        <x-secondary-button type="button" class="hover:text-white hover:bg-rose-600"
+                                wire:click="destroyLesson({{ $item->id }})">
                             <i class="fa-solid fa-trash mr-1"></i>
                             Eliminar
                         </x-secondary-button>

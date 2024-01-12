@@ -101,6 +101,13 @@ class CoursesLesson extends Component
         $this->section = Section::find($this->section->id);
     }
 
+    public function destroyLesson($id)
+    {
+        $lesson = Lesson::find($id);
+        $lesson->delete();
+        $this->section = Section::find($this->section->id);
+    }
+
     public function cancelEdit()
     {
         $this->lesson = new Lesson();
