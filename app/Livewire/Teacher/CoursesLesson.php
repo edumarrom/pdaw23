@@ -57,6 +57,7 @@ class CoursesLesson extends Component
             'slug' => 'required',
             'platform_id' => 'required',
             'path' => ['required', 'url', "regex:$pattern"],
+            'description' => 'required',
         ]);
 
         // El iframe es manejado por el LessonObserver
@@ -69,12 +70,18 @@ class CoursesLesson extends Component
             'section_id' => $this->section->id,
         ]);
 
+        $lesson->description()->create([
+            'description' => $this->description,
+        ]);
+
         $this->reset([
             'title',
             'slug',
             'platform_id',
-            'path'
+            'path',
+            'description',
         ]);
+
 
         $this->section = Section::find($this->section->id);
 
