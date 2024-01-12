@@ -45,7 +45,7 @@
                             <x-input-error for="lesson.platform_id" class="mt-2" />
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-2">
                             <x-label for="path" class="mb-1" value="Enlace" />
                             <x-input id="path"
                                     name="path"
@@ -54,6 +54,18 @@
                                     placeholder="Escribe un enlace de vídeo para esta lección"
                                     wire:model.live="lesson.path" />
                             <x-input-error for="lesson.path" class="mt-2" />
+                        </div>
+
+                        <div class="mb-4">
+                            <x-label for="description" class="mb-2"  value="Descripción" />
+                            <x-textarea id="description"
+                                        name="description"
+                                        required
+                                        class="block w-full mb-2"
+                                        rows="3"
+                                        placeholder="Escribe una descripción para este curso"
+                                        wire:model.live="lesson.description.description"></x-textarea>
+                            <x-input-error for="lesson.description.description" class="mt-2" />
                         </div>
 
                         <div class="flex justify-end">
