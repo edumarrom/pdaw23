@@ -2,7 +2,7 @@
 
     @foreach ($section->lessons->sortBy('created_at') as $item)
 
-        <article class="card border border-gray-100 shadow-md mt-4">
+        <article class="card border border-gray-100 shadow-md mt-4 mb-6">
 
             <div class="px-4 py-2">
 
@@ -31,7 +31,7 @@
                                     </option>
                                 @endforeach
                             </x-select>
-                            <x-input-error for="platform_id" class="mt-2" />
+                            <x-input-error for="lesson.platform_id" class="mt-2" />
                         </div>
 
                         <div class="mb-4">
@@ -115,4 +115,71 @@
         </article>
 
     @endforeach
+
+    <div x-data="{open: false}">
+        <x-button type="button" color="indigo" x-on:click="open =!open">
+            <i class="fa-solid fa-plus mr-1"></i>
+            <span>Nueva lección</span>
+        </x-button>
+
+        <article class="card my-6 border border-gray-100 shadow-md"
+                 x-show="open" x-collapse>
+            <div class="px-6 py4 text-gray-700">
+                <h3 class="text-xl font-bold">Nueva lección</h3>
+                <hr class="mt-2 mb-6">
+
+                <form wire:submit.prevent='storeLesson'>
+                    <div class="mb-2">
+                        <x-label for="title" class="mb-1" value="Título" />
+                        <x-input id="title"
+                                name="title"
+                                type="text"
+                                class="block w-full"
+                                placeholder="Escribe un título para esta lección"
+                                wire:model.live="title" />
+                        <x-input-error for="title" class="mt-2" />
+                    </div>
+
+                    <div class="mb-2">
+                        <x-label for="platform_id" class="mb-1" value="Plataforma" />
+                        <x-select id="platform_id"
+                                  name="platform_id"
+                                  class="block w-full mb-2"
+                                  wire:model.live="platform_id">
+                            @foreach($platforms as $platform)
+                                <option value="{{ $platform->id }}">
+                                    {{ $platform->name }}
+                                </option>
+                            @endforeach
+                        </x-select>
+                        <x-input-error for="platform_id" class="mt-2" />
+                    </div>
+
+                    <div class="mb-4">
+                        <x-label for="path" class="mb-1" value="Enlace" />
+                        <x-input id="path"
+                                name="path"
+                                type="text"
+                                class="block w-full"
+                                placeholder="Escribe un enlace de vídeo para esta lección"
+                                wire:model.live="path" />
+                        <x-input-error for="path" class="mt-2" />
+                    </div>
+
+                    <div class="flex justify-between">
+                        <x-button x-on:click="open = false">
+                            <i class="fa-solid fa-xmark mr-2"></i>
+                            Cancelar
+                        </x-button>
+
+                        <x-button color="indigo">
+                            <i class="fa-solid fa-save mr-2"></i>
+                            Guardar
+                        </x-button>
+                    </div>
+                </form>
+            </div>
+        </article>
+    </div>
+
 </div>

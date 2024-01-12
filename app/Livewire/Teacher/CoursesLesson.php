@@ -5,7 +5,6 @@ namespace App\Livewire\Teacher;
 use App\Models\Lesson;
 use App\Models\Platform;
 use App\Models\Section;
-use Illuminate\Support\Str;
 use Livewire\Component;
 
 class CoursesLesson extends Component
@@ -13,6 +12,10 @@ class CoursesLesson extends Component
     public $section;
     public $lesson;
     public $platforms;
+
+    public $title;
+    public $platform_id = 1;
+    public $path;
 
     protected $rules = [
         'lesson.title' => 'required',
@@ -32,8 +35,46 @@ class CoursesLesson extends Component
         return view('livewire.teacher.courses-lesson');
     }
 
+    public function storeLesson()
+    {
+        switch ($this->platform_id) {
+            case 1:
+                $pattern = '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/';
+                break;
+
+            case 2:
+                $pattern = '/^(http|https)?:\/\/(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/mi';
+                break;
+
+            default:
+                break;
+        }
+
+        $this->validate ([
+            'title' => 'required',
+            'platform_id' => 'required',
+            'path' => ['required', 'url', "regex:$pattern"],
+        ]);
+
+        Lesson::create([
+            'title' => $this->title,
+            'platform_id' => $this->platform_id,
+            'path' => $this->path,
+            'section_id' => $this->section->id,
+        ]);
+
+        $this->reset([
+            'title',
+            'platform_id',
+            'path'
+        ]);
+
+        $this->section = Section::find($this->section->id);
+    }
+
     public function editLesson($id)
     {
+        $this->resetValidation();
         $this->lesson = Lesson::find($id);
     }
 

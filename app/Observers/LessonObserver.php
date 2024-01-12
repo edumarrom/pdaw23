@@ -25,25 +25,20 @@ class LessonObserver
         ],
     ];
 
+    public function creating(Lesson $lesson)
+    {
+        $path = $lesson->path;
+        $platformId = $lesson->platform_id;
+
+        $lesson->iframe = $this->getVideoIframe($path, $platformId);
+    }
+
     public function updating(Lesson $lesson)
     {
         $path = $lesson->path;
         $platformId = $lesson->platform_id;
 
-        switch ($platformId) {
-            case 1:
-                $iframe = $this->getVideoIframe($path, $platformId);
-                break;
-
-            case 2:
-                $iframe = $this->getVideoIframe($path, $platformId);
-                break;
-
-            default:
-                break;
-        }
-
-        $lesson->iframe = $iframe;
+        $lesson->iframe = $this->getVideoIframe($path, $platformId);
     }
 
     private function getVideoId($path, $platformId)
@@ -54,7 +49,6 @@ class LessonObserver
 
         return $matches[$match];
     }
-
 
     private function getVideoIframe($path, $platformId)
     {
