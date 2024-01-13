@@ -27,11 +27,11 @@ class CoursesLesson extends Component
     ];
 
     protected $rules = [
-        'lesson.title' => 'required',
-        'lesson.slug' => 'required',
-        'lesson.platform_id' => 'required',
-        'lesson.path' => 'required',
-        'lesson.description.description' => 'required',
+        'lesson.title' => ['required', 'string', 'max:80'],
+        'lesson.slug' => ['required', 'max:255', 'unique:lessons,slug'],
+        'lesson.platform_id' => ['required', 'exists:platforms,id'],
+        'lesson.path' => ['required', 'url', 'max:255'],
+        'lesson.description.description' => ['required', 'string', 'max:500'],
     ];
 
     public function mount(Section $section)
@@ -50,17 +50,13 @@ class CoursesLesson extends Component
 
     public function storeLesson()
     {
-        $pattern = $this->platformPatterns[$this->platform_id];
-
         $this->validate ([
-            'title' => 'required',
-            'slug' => 'required',
-            'platform_id' => 'required',
-            'path' => ['required', 'url', "regex:$pattern"],
-            'description' => 'required',
+            'title' => $this->rules['lesson.title'],
+            'slug' => $this->rules['lesson.slug'],
+            'platform_id' => $this->rules['lesson.platform_id'],
+            'path' => ['required', 'url', $this->platformPatterns[$this->platform_id]],
+            'description' => $this->rules['lesson.description.description'],
         ]);
-
-        // El iframe es manejado por el LessonObserver
 
         $lesson = $this->section->lessons()->create([
             'title' => $this->title,
@@ -81,7 +77,6 @@ class CoursesLesson extends Component
             'path',
             'description',
         ]);
-
 
         $this->section = Section::find($this->section->id);
 
@@ -105,30 +100,16 @@ class CoursesLesson extends Component
     {
         $lessonTitle = $this->lesson->title;
 
-        $pattern = $this->platformPatterns[$this->platform_id];
+        $this->rules['lesson.path'] = ['required', 'url', $this->platformPatterns[$this->platform_id]];
+        $this->rules['lesson.slug'] = ['required', 'unique:lessons,slug,' . $this->lesson->id];
 
-        $this->validate([
-            'lesson.title' => 'required',
-            'lesson.slug' => 'required',
-            'lesson.platform_id' => 'required',
-            'lesson.path' => ['required', 'url', "regex:$pattern"],
-            'lesson.description.description' => 'required',
-        ]);
+        $this->validate();
 
-        // El iframe es manejado por el LessonObserver
-
-        /* Actualiza el campo description de la relacion description */
         $this->lesson->description->description = $this->lesson->description->description;
-
-        /* Guarda el cambio realizado en la relación description */
         $this->lesson->description->save();
-
-        // $this->section->description = $this->description;
-
         $this->lesson->save();
 
         $this->lesson = new Lesson();
-
         $this->section = Section::find($this->section->id);
 
         $this->dispatch('swal', [
@@ -161,11 +142,6 @@ class CoursesLesson extends Component
     {
         $this->lesson = new Lesson();
     }
-
-    /* public function updatedTitle($value)
-    {
-        $this->lesson->slug = Str::slug($value);
-    } */
 
     public function updated($propertyName)
     {
