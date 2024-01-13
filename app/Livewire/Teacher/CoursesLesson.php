@@ -82,6 +82,14 @@ class CoursesLesson extends Component
             'description' => $this->description,
         ]);
 
+        if ($this->resource) {
+            $fileName = time() . '_' . $this->resource->getClientOriginalName();
+
+            $lesson->resource()->create([
+                    'path' => $this->resource->storeAs('resources', $fileName),
+                ]);
+        }
+
         $this->reset([
             'title',
             'slug',

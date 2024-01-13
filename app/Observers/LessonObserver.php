@@ -8,17 +8,11 @@ class LessonObserver
 {
     public function creating(Lesson $lesson)
     {
-        $path = $lesson->path;
-        $platformId = $lesson->platform_id;
-
-        $lesson->iframe = $this->getVideoIframe($path, $platformId);
+        $lesson->iframe = $this->getVideoIframe($lesson);
     }
 
     public function updating(Lesson $lesson)
     {
-        $path = $lesson->path;
-        $platformId = $lesson->platform_id;
-
         $lesson->iframe = $this->getVideoIframe($lesson);
     }
 
