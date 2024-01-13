@@ -95,13 +95,11 @@ class CoursesLesson extends Component
     {
         $lessonTitle = $this->lesson->title;
 
-        //$this->rules['lesson.path'] = ['required', 'url', 'regex:' . $this->platformPatterns[$this->platform_id]];
-        $this->rules['lesson.path'] = ['required', 'url', 'regex:' . $this->lesson->platform->pattern];
+        $this->rules['lesson.path'] = ['required', 'url', 'regex:' . Platform::find($this->lesson->platform_id)->pattern];
         $this->rules['lesson.slug'] = ['required', 'unique:lessons,slug,' . $this->lesson->id];
 
         $this->validate();
 
-        $this->lesson->description->description = $this->lesson->description->description;
         $this->lesson->description->save();
         $this->lesson->save();
 
