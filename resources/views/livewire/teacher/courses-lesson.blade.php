@@ -2,10 +2,12 @@
 
     @foreach ($section->lessons->sortBy('created_at') as $item)
 
-        <article class="card border border-gray-100 shadow-md mt-4 mb-6">
+        <article class="card border border-gray-100 shadow-md mt-4 mb-6"
+            x-data="{open: false}">
 
             <div class="px-4 py-2">
 
+                <!-- Formulario de edición -->
                 @if ($lesson->id == $item->id)
                     <form wire:submit.prevent='updateLesson'>
                         <div class="mb-2">
@@ -117,45 +119,64 @@
                         </div>
                     </form>
                 @else
-                    <header>
-                        <h4>
-                            <i class="fa fa-solid fa-play-circle mr-1"></i>
+                    <header class="flex justify-between">
+                        <h4 class="select-none hover:text-indigo-500 hover:cursor-pointer" x-on:click="open = !open">
+                            <i class="fa fa-solid fa-caret-right text-lg mr-2 transition-all"
+                                x-bind:class="!open || 'rotate-90'"></i>
+                            <span class="font-semibold">Lección:</span>
                             {{ $item->title }}
                         </h4>
+
+                        <div>
+                            <x-secondary-button type="button" class="hover:text-white hover:bg-indigo-500 mr-2"
+                                    title="Editar lección" wire:click="editLesson({{ $item->id }})">
+                                <i class="fa-solid fa-pen"></i>
+                            </x-secondary-button>
+
+                            <x-secondary-button type="button" class="hover:text-white hover:bg-rose-600"
+                                title="Borrar lección" wire:click="destroyLesson({{ $item->id }})"
+                                    {{-- @todo: Lograr que tras la confirmación se refersque la vista --}}
+                                    {{-- onclick="deleteLesson({{ $item->id }})" --}}>
+                                <i class="fa-solid fa-trash"></i>
+                            </x-secondary-button>
+                        </div>
                     </header>
 
-                    <div>
+                    <div x-show="open" x-collapse>
 
                         <hr class="my-2">
 
-                        <p class="text-sm">
-                            Plataforma:
+                        <div class="text-sm mb-1">
+                            <span class="mr-1">Plataforma:</span>
                             @switch( Str::lower($item->platform->name) )
                                 @case('youtube')
                                     <span class="text-red-500">
-                                        <i class="fa-brands fa-youtube"></i>
+                                        <i class="fa-brands fa-youtube text-lg"></i>
                                         <span class="font-medium">{{ $item->platform->name }}</span>
                                     </span>
                                     @break
                                 @case('vimeo')
                                     <span class="text-blue-400">
-                                        <i class="fa-brands fa-vimeo"></i>
+                                        <i class="fa-brands fa-vimeo text-lg"></i>
                                         <span class="font-medium">{{ $item->platform->name }}</span>
                                     @break
                                 @default
                                         <span class="font-medium">{{ $item->platform->name }}</span>
                                     </span>
                             @endswitch
-                        </p>
-                        <p class="text-sm">
-                            Enlace:
+                        </div>
+
+                        <div class="text-sm mb-1">
+                            <span class="mr-1">Enlace:</span>
                             <a href="{{ $item->path }}" target="_blank"
-                                    class="text-indigo-500">
+                                    class="hover:text-indigo-500">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-md"></i>
                                 {{ $item->path }}
                             </a>
-                        </p>
+                        </div>
+
                         @if ($item->resource)
-                        <div class="text-sm" wire:click="downloadResource({{ $item->id }})">
+                        <div class="text-sm mb-1" wire:click="downloadResource({{ $item->id }})">
                             <span>Recurso:</span>
                             <span class="hover:text-indigo-500 hover:cursor-pointer ml-1">
                                 <i class="fa-solid fa-download text-lg mr-1"></i>
@@ -163,22 +184,6 @@
                             </span>
                         </div>
                         @endif
-                    </div>
-
-                    <div class="flex justify-end">
-                        <x-secondary-button type="button" class="hover:text-white hover:bg-indigo-500 mr-2"
-                                wire:click="editLesson({{ $item->id }})">
-                            <i class="fa-solid fa-pen mr-1"></i>
-                            Editar
-                        </x-secondary-button>
-
-                        <x-secondary-button type="button" class="hover:text-white hover:bg-rose-600"
-                                wire:click="destroyLesson({{ $item->id }})"
-                                {{-- @todo: Lograr que tras la confirmación se refersque la vista --}}
-                                {{-- onclick="deleteLesson({{ $item->id }})" --}}>
-                            <i class="fa-solid fa-trash mr-1"></i>
-                            Eliminar
-                        </x-secondary-button>
                     </div>
                 @endif
 
@@ -188,6 +193,7 @@
 
     @endforeach
 
+    <!-- Formulario de creación delecciones -->
     <div x-data="{open: false}">
         <x-button type="button" color="indigo" x-on:click="open =!open">
             <i class="fa-solid fa-plus mr-1"></i>
