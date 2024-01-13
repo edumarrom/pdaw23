@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="container py-8 grid grid-cols-5">
 
-        @include('teacher.courses.includes.aside')
+        @include('teacher.includes.courses.aside')
 
         <div class="card col-span-4">
 

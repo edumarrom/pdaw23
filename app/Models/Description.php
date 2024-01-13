@@ -9,6 +9,8 @@ class Description extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['description'];
+
     public function lesson()
     {
         return $this->belongsTo(Lesson::class);

@@ -9,6 +9,15 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'path',
+        'iframe',
+        'platform_id',
+        'section_id',
+    ];
+
     public function getRouteKeyName()
     {
         return 'slug';
