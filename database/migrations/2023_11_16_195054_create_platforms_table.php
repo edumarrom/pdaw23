@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('platforms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('pattern');
+            $table->tinyInteger('match');
+            $table->json('iframe');
             $table->timestamps();
         });
     }

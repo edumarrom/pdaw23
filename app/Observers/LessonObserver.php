@@ -6,25 +6,6 @@ use App\Models\Lesson;
 
 class LessonObserver
 {
-    public $platformData = [
-        1 => [
-            'pattern' => '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/',
-            'match' => 5,
-            'iframe' => [
-                '<iframe width="560" height="315" src="https://www.youtube.com/embed/',
-                '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
-            ],
-        ],
-        2 => [
-            'pattern' => '/^(http|https)?:\/\/(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/mi',
-            'match' => 4,
-            'iframe' => [
-                '<iframe src="https://player.vimeo.com/video/',
-                '" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>',
-            ],
-        ],
-    ];
-
     public function creating(Lesson $lesson)
     {
         $path = $lesson->path;
@@ -38,22 +19,24 @@ class LessonObserver
         $path = $lesson->path;
         $platformId = $lesson->platform_id;
 
-        $lesson->iframe = $this->getVideoIframe($path, $platformId);
+        $lesson->iframe = $this->getVideoIframe($lesson);
     }
 
-    private function getVideoId($path, $platformId)
+    private function getVideoId(Lesson $lesson)
     {
-        $pattern = $this->platformData[$platformId]['pattern'];
+        $pattern = $lesson->platform->pattern;
+        $path = $lesson->path;
+
         preg_match($pattern, $path, $matches);
-        $match = $this->platformData[$platformId]['match'];
+        $match = $lesson->platform->match;
 
         return $matches[$match];
     }
 
-    private function getVideoIframe($path, $platformId)
+    private function getVideoIframe(Lesson $lesson)
     {
-        $iframe = $this->platformData[$platformId]['iframe'];
-        $videoId = $this->getVideoId($path, $platformId);
+        $iframe = json_decode($lesson->platform->iframe);
+        $videoId = $this->getVideoId($lesson);
 
         return $iframe[0] . $videoId . $iframe[1];
     }

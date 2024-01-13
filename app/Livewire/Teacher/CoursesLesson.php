@@ -20,12 +20,6 @@ class CoursesLesson extends Component
     public $platform_id = 1;
     public $path;
 
-    /* @todo: Crear un nuevo campo en la tabla platforms con la regex */
-    public $platformPatterns = [
-        1 => '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/',
-        2 => '/^(http|https)?:\/\/(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/mi',
-    ];
-
     protected $rules = [
         'lesson.title' => ['required', 'string', 'max:80'],
         'lesson.slug' => ['required', 'max:255', 'unique:lessons,slug'],
@@ -54,7 +48,8 @@ class CoursesLesson extends Component
             'title' => $this->rules['lesson.title'],
             'slug' => $this->rules['lesson.slug'],
             'platform_id' => $this->rules['lesson.platform_id'],
-            'path' => ['required', 'url', $this->platformPatterns[$this->platform_id]],
+            //'path' => ['required', 'url', 'regex:' . $this->platformPatterns[$this->platform_id]],
+            'path' => ['required', 'url', 'regex:' . Platform::find($this->platform_id)->pattern],
             'description' => $this->rules['lesson.description.description'],
         ]);
 
@@ -100,7 +95,8 @@ class CoursesLesson extends Component
     {
         $lessonTitle = $this->lesson->title;
 
-        $this->rules['lesson.path'] = ['required', 'url', $this->platformPatterns[$this->platform_id]];
+        //$this->rules['lesson.path'] = ['required', 'url', 'regex:' . $this->platformPatterns[$this->platform_id]];
+        $this->rules['lesson.path'] = ['required', 'url', 'regex:' . $this->lesson->platform->pattern];
         $this->rules['lesson.slug'] = ['required', 'unique:lessons,slug,' . $this->lesson->id];
 
         $this->validate();
