@@ -68,13 +68,37 @@
                         </div>
 
                         <div class="mb-4">
+
                             <x-label for="resource" class="mb-1" value="Recurso" />
-                            <x-input id="resource"
-                                    name="resource"
-                                    type="file"
-                                    class="block w-full bg-white px-3 py-2 border border-gray-300 text-sm shadow-sm rounded cursor-pointer"
-                                    wire:model.live="resource" />
-                            <x-input-error for="resource" class="mt-2" />
+                            <div class="px-3 py-2 border border-gray-300 text-sm rounded">
+
+                                @if ($item->resource)
+                                <div class="flex justify-between">
+
+                                    <div wire:click="downloadResource({{ $item->id }})">
+                                        <span>Recurso actual:</span>
+                                        <span class="hover:text-indigo-500 ml-1 hover:cursor-pointer">
+                                            <i class="fa-solid fa-download text-lg mr-1"></i>
+                                            <span>{{ Str::afterLast($item->resource->path, '/') }}</span>
+                                        </span>
+                                    </div>
+
+                                    <x-secondary-button type="button"
+                                            class="hover:bg-rose-600 hover:text-white"
+                                            wire:click="destroyResource({{ $item->id }})">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </x-secondary-button>
+
+                                </div>
+                                @endif
+
+                                <x-input id="resource"
+                                         name="resource"
+                                         type="file"
+                                         class="block w-full py-2 shadow-none"
+                                         wire:model.live="resource" />
+                                <x-input-error for="resource" class="mt-2" />
+                            </div>
 
                             <div class="mt-2" wire:loading wire:target="resource">
                                 <span>Cargando...</span>
@@ -126,10 +150,19 @@
                         <p class="text-sm">
                             Enlace:
                             <a href="{{ $item->path }}" target="_blank"
-                                class="text-indigo-500">
+                                    class="text-indigo-500">
                                 {{ $item->path }}
                             </a>
                         </p>
+                        @if ($item->resource)
+                        <div class="text-sm" wire:click="downloadResource({{ $item->id }})">
+                            <span>Recurso:</span>
+                            <span class="hover:text-indigo-500 hover:cursor-pointer ml-1">
+                                <i class="fa-solid fa-download text-lg mr-1"></i>
+                                <span>{{ Str::afterLast($item->resource->path, '/') }}</span>
+                            </span>
+                        </div>
+                        @endif
                     </div>
 
                     <div class="flex justify-end">

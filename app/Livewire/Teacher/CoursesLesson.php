@@ -6,6 +6,7 @@ use App\Models\Lesson;
 use App\Models\Platform;
 use App\Models\Section;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -47,13 +48,24 @@ class CoursesLesson extends Component
         return view('livewire.teacher.courses-lesson');
     }
 
+    public function updated($propertyName)
+    {
+
+        if ($propertyName == 'title') {
+            $this->slug = Str::slug($this->title);
+        }
+
+        if ($propertyName == 'lesson.title') {
+            $this->lesson->slug = Str::slug($this->lesson->title);
+        }
+    }
+
     public function storeLesson()
     {
         $this->validate ([
             'title' => $this->rules['lesson.title'],
             'slug' => $this->rules['lesson.slug'],
             'platform_id' => $this->rules['lesson.platform_id'],
-            //'path' => ['required', 'url', 'regex:' . $this->platformPatterns[$this->platform_id]],
             'path' => ['required', 'url', 'regex:' . Platform::find($this->platform_id)->pattern],
             'description' => $this->rules['lesson.description.description'],
         ]);
@@ -94,7 +106,6 @@ class CoursesLesson extends Component
         $this->resetValidation();
         $this->lesson = Lesson::find($id);
         $this->description = $this->lesson->description->description;
-        // $this->resource = $this->lesson->resource;
     }
 
     public function updateLesson()
@@ -114,7 +125,7 @@ class CoursesLesson extends Component
 
             // Si la lección tiene un recurso, se actualiza, en caso contrario se crea
             if ($this->lesson->resource) {
-                // @todo: Eliminar el recurso anterior
+                Storage::delete($this->lesson->resource->path);
 
                 $this->lesson->resource->update([
                     'path' => $this->resource->storeAs('resources', $fileName),
@@ -155,20 +166,26 @@ class CoursesLesson extends Component
         ]);
     }
 
+    // Al estar dentro del formulario, no necesito pasarle el id de la lección
+    public function destroyResource()
+    {
+        Storage::delete($this->lesson->resource->path);
+
+        $this->lesson->resource->delete();
+
+        $this->section = Section::find($this->section->id);
+    }
+
+    // ¿Por qué si se llama fuera del formulario, se debe pasar el id de la lección?
+    public function downloadResource($id)
+    {
+        $lesson = Lesson::find($id);
+
+        return response()->download(storage_path('app/public/' . $lesson->resource->path));
+    }
+
     public function cancelEdit()
     {
         $this->lesson = new Lesson();
-    }
-
-    public function updated($propertyName)
-    {
-
-        if ($propertyName == 'title') {
-            $this->slug = Str::slug($this->title);
-        }
-
-        if ($propertyName == 'lesson.title') {
-            $this->lesson->slug = Str::slug($this->lesson->title);
-        }
     }
 }
