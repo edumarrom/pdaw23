@@ -14,7 +14,7 @@
         ],
         [
             'name' => 'Metas y requisitos',
-            'route' => '',
+            'route' => route('teacher.courses.edit.goals', $course),
             'icon' => 'fa-solid fa-list-check',
             'active' => request()->routeIs('teacher.courses.edit.goals'),
         ],
