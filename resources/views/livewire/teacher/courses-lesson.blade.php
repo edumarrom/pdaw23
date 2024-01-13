@@ -56,7 +56,7 @@
                             <x-input-error for="lesson.path" class="mt-2" />
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-2">
                             <x-label for="description" class="mb-2"  value="Descripción" />
                             <x-textarea id="description"
                                         name="description"
@@ -65,6 +65,20 @@
                                         placeholder="Escribe una descripción para esta lección"
                                         wire:model.live="lesson.description.description"></x-textarea>
                             <x-input-error for="lesson.description.description" class="mt-2" />
+                        </div>
+
+                        <div class="mb-4">
+                            <x-label for="resource" class="mb-1" value="Recurso" />
+                            <x-input id="resource"
+                                    name="resource"
+                                    type="file"
+                                    class="block w-full bg-white px-3 py-2 border border-gray-300 text-sm shadow-sm rounded cursor-pointer"
+                                    wire:model.live="resource" />
+                            <x-input-error for="resource" class="mt-2" />
+
+                            <div class="mt-2" wire:loading wire:target="resource">
+                                <span>Cargando...</span>
+                            </div>
                         </div>
 
                         <div class="flex justify-end">

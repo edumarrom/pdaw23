@@ -7,13 +7,17 @@ use App\Models\Platform;
 use App\Models\Section;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CoursesLesson extends Component
 {
+    use WithFileUploads;
+
     public $section;
     public $lesson;
     public $platforms;
     public $description;
+    public $resource;
 
     public $title;
     public $slug;
@@ -26,6 +30,7 @@ class CoursesLesson extends Component
         'lesson.platform_id' => ['required', 'exists:platforms,id'],
         'lesson.path' => ['required', 'url', 'max:255'],
         'lesson.description.description' => ['required', 'string', 'max:500'],
+        'resource' => ['nullable'],
     ];
 
     public function mount(Section $section)
@@ -89,6 +94,7 @@ class CoursesLesson extends Component
         $this->resetValidation();
         $this->lesson = Lesson::find($id);
         $this->description = $this->lesson->description->description;
+        // $this->resource = $this->lesson->resource;
     }
 
     public function updateLesson()
@@ -102,6 +108,23 @@ class CoursesLesson extends Component
 
         $this->lesson->description->save();
         $this->lesson->save();
+
+        if ($this->resource) {
+            $fileName = time() . '_' . $this->resource->getClientOriginalName();
+
+            // Si la lección tiene un recurso, se actualiza, en caso contrario se crea
+            if ($this->lesson->resource) {
+                // @todo: Eliminar el recurso anterior
+
+                $this->lesson->resource->update([
+                    'path' => $this->resource->storeAs('resources', $fileName),
+                ]);
+            } else {
+                $this->lesson->resource()->create([
+                    'path' => $this->resource->storeAs('resources', $fileName),
+                ]);
+            }
+        }
 
         $this->lesson = new Lesson();
         $this->section = Section::find($this->section->id);
