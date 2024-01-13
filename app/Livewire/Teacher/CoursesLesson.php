@@ -6,14 +6,19 @@ use App\Models\Lesson;
 use App\Models\Platform;
 use App\Models\Section;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CoursesLesson extends Component
 {
+    use WithFileUploads;
+
     public $section;
     public $lesson;
     public $platforms;
     public $description;
+    public $resource;
 
     public $title;
     public $slug;
@@ -26,6 +31,7 @@ class CoursesLesson extends Component
         'lesson.platform_id' => ['required', 'exists:platforms,id'],
         'lesson.path' => ['required', 'url', 'max:255'],
         'lesson.description.description' => ['required', 'string', 'max:500'],
+        'resource' => ['nullable'],
     ];
 
     public function mount(Section $section)
@@ -42,13 +48,24 @@ class CoursesLesson extends Component
         return view('livewire.teacher.courses-lesson');
     }
 
+    public function updated($propertyName)
+    {
+
+        if ($propertyName == 'title') {
+            $this->slug = Str::slug($this->title);
+        }
+
+        if ($propertyName == 'lesson.title') {
+            $this->lesson->slug = Str::slug($this->lesson->title);
+        }
+    }
+
     public function storeLesson()
     {
         $this->validate ([
             'title' => $this->rules['lesson.title'],
             'slug' => $this->rules['lesson.slug'],
             'platform_id' => $this->rules['lesson.platform_id'],
-            //'path' => ['required', 'url', 'regex:' . $this->platformPatterns[$this->platform_id]],
             'path' => ['required', 'url', 'regex:' . Platform::find($this->platform_id)->pattern],
             'description' => $this->rules['lesson.description.description'],
         ]);
@@ -64,6 +81,14 @@ class CoursesLesson extends Component
         $lesson->description()->create([
             'description' => $this->description,
         ]);
+
+        if ($this->resource) {
+            $fileName = time() . '_' . $this->resource->getClientOriginalName();
+
+            $lesson->resource()->create([
+                    'path' => $this->resource->storeAs('resources', $fileName),
+                ]);
+        }
 
         $this->reset([
             'title',
@@ -103,6 +128,23 @@ class CoursesLesson extends Component
         $this->lesson->description->save();
         $this->lesson->save();
 
+        if ($this->resource) {
+            $fileName = time() . '_' . $this->resource->getClientOriginalName();
+
+            // Si la lección tiene un recurso, se actualiza, en caso contrario se crea
+            if ($this->lesson->resource) {
+                Storage::delete($this->lesson->resource->path);
+
+                $this->lesson->resource->update([
+                    'path' => $this->resource->storeAs('resources', $fileName),
+                ]);
+            } else {
+                $this->lesson->resource()->create([
+                    'path' => $this->resource->storeAs('resources', $fileName),
+                ]);
+            }
+        }
+
         $this->lesson = new Lesson();
         $this->section = Section::find($this->section->id);
 
@@ -132,20 +174,26 @@ class CoursesLesson extends Component
         ]);
     }
 
+    // Al estar dentro del formulario, no necesito pasarle el id de la lección
+    public function destroyResource()
+    {
+        Storage::delete($this->lesson->resource->path);
+
+        $this->lesson->resource->delete();
+
+        $this->section = Section::find($this->section->id);
+    }
+
+    // ¿Por qué si se llama fuera del formulario, se debe pasar el id de la lección?
+    public function downloadResource($id)
+    {
+        $lesson = Lesson::find($id);
+
+        return response()->download(storage_path('app/public/' . $lesson->resource->path));
+    }
+
     public function cancelEdit()
     {
         $this->lesson = new Lesson();
-    }
-
-    public function updated($propertyName)
-    {
-
-        if ($propertyName == 'title') {
-            $this->slug = Str::slug($this->title);
-        }
-
-        if ($propertyName == 'lesson.title') {
-            $this->lesson->slug = Str::slug($this->lesson->title);
-        }
     }
 }
