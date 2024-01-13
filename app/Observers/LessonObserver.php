@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Lesson;
+use Illuminate\Support\Facades\Storage;
 
 class LessonObserver
 {
@@ -14,6 +15,14 @@ class LessonObserver
     public function updating(Lesson $lesson)
     {
         $lesson->iframe = $this->getVideoIframe($lesson);
+    }
+
+    public function deleting(Lesson $lesson)
+    {
+        if ($lesson->resource) {
+            Storage::delete($lesson->resource->path);
+            $lesson->resource->delete();
+        }
     }
 
     private function getVideoId(Lesson $lesson)
