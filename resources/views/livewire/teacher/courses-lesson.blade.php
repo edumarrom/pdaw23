@@ -1,9 +1,8 @@
 <div>
 
-    @foreach ($section->lessons->sortBy('created_at') as $item)
+    @foreach ($section->lessons->sortBy(['created_at desc', 'id desc']) as $item)
 
-        <article class="card border border-gray-100 shadow-md mt-4 mb-6"
-            x-data="{open: false}">
+        <article class="card border border-gray-100 shadow-md mt-4 mb-6" x-data="{open: false}">
 
             <div class="px-4 py-2">
 
@@ -119,7 +118,7 @@
                         </div>
                     </form>
                 @else
-                    <header class="flex justify-between">
+                    <header class="flex justify-between items-center">
                         <h4 class="select-none hover:text-indigo-500 hover:cursor-pointer" x-on:click="open = !open">
                             <i class="fa fa-solid fa-caret-right text-lg mr-2 transition-all"
                                 x-bind:class="!open || 'rotate-90'"></i>
@@ -193,7 +192,7 @@
 
     @endforeach
 
-    <!-- Formulario de creación delecciones -->
+    <!-- Formulario de creación -->
     <div x-data="{open: false}">
         <x-button type="button" color="indigo" x-on:click="open =!open">
             <i class="fa-solid fa-plus mr-1"></i>

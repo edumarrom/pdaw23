@@ -6,14 +6,24 @@
         <div class="card col-span-4">
 
             <div class="px6 py4 text-gray-700">
-                <h2 class="text-2xl font-bold">Contenido del curso</h2>
+                <h2 class="text-2xl font-bold">
+                    <i class="fa fa-solid fa-book mr-1"></i>
+                    Contenido del curso
+                </h2>
                 <hr class="mt-2 mb-6">
 
-                @foreach ($course->sections->sortBy('created_at') as $item)
+                @foreach ($course->sections->sortBy(['created_at desc', 'id desc']) as $item)
 
-                    <article class="card mb-6 border border-gray-100 shadow-md">
+
+                    <article class="card mb-6 border border-gray-100 shadow-md"
+                        @if ($loop->first)
+                            x-data="{open: true}"
+                        @else
+                            x-data="{open: false}"
+                        @endif>
                         <div class="px-6 py4">
 
+                            <!-- Formulario de edición -->
                             @if ($section->id == $item->id)
                                 <form wire:submit.prevent='updateSection' class="flex">
                                     <x-input id="title"
@@ -29,8 +39,11 @@
                                 </form>
                             @else
                                 <header class="flex justify-between items-center">
-                                    <h3 class=" text-lg font-semibold cursor-pointer">
-                                        <i class="fa-solid fa-bookmark mr-1"></i>
+                                    <h3 class="text-lg select-none hover:text-indigo-500 hover:cursor-pointer"
+                                            x-on:click="open = !open">
+                                        <i class="fa fa-solid fa-caret-right text-lg mr-2 transition-all"
+                                            x-bind:class="!open || 'rotate-90'"></i>
+                                        <span class="font-semibold">Sección:</span>
                                         {{$item->title}}
                                     </h3>
 
@@ -47,7 +60,7 @@
                                     </div>
                                 </header>
 
-                                <div>
+                                <div x-show="open" x-collapse>
                                     @livewire('teacher.courses-lesson', ['section' => $item], key($item->id))
                                 </div>
                             @endif
