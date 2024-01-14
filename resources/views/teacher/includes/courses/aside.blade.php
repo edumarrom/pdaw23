@@ -1,7 +1,7 @@
 @php
     $links = [
         [
-            'name' => 'Información del curso',
+            'name' => 'Información básica',
             'route' => route('teacher.courses.edit', $course),
             'icon' => 'fa-solid fa-info-circle',
             'active' => request()->routeIs('teacher.courses.edit'),
@@ -34,10 +34,10 @@
         Volver al listado de cursos
     </x-link-button>
 
-    <div>
+    <h1>
         <span class="inline-block font-semibold">Editando:</span>
         <span class="inline-block text-base mb-4">{{ $course->title }}</span>
-    </div>
+    </h1>
 
     <ul class="text-md">
 

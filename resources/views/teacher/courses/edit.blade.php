@@ -6,8 +6,13 @@
         <div class="card col-span-4">
 
             <div class="px6 py4 text-gray-700">
-                <h2 class="text-2xl font-bold">Información del curso</h2>
-                <hr class="mbt-2 mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold">
+                        <i class="fa-solid fa-info-circle mr-1"></i>
+                        Información básica
+                    </h2>
+                    <hr class="mt-2 mb-6">
+                </div>
 
                 <form action="{{ route('teacher.courses.update', $course) }}" method="post" enctype="multipart/form-data"
                     x-data="data()">
