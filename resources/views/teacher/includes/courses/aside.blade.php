@@ -18,6 +18,12 @@
             'icon' => 'fa-solid fa-list-check',
             'active' => request()->routeIs('teacher.courses.edit.goals'),
         ],
+        [
+            'name' => 'Alumnos matriculados',
+            'route' => route('teacher.courses.edit.students', $course),
+            'icon' => 'fa-solid fa-users',
+            'active' => request()->routeIs('teacher.courses.edit.students'),
+        ],
     ];
 @endphp
 
