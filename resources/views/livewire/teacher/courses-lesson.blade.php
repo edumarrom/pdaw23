@@ -2,7 +2,7 @@
 
     @foreach ($lessons as $item)
 
-        <article class="card border border-gray-100 shadow-md mt-4 mb-6" x-data="{open: false}">
+        <article class="card border border-gray-100 shadow-md mt-4 @if(!$loop->last) mb-6 @endif" x-data="{open: false}">
 
             <div class="px-4 py-2">
 
@@ -194,7 +194,7 @@
 
     <!-- Formulario de creación -->
     <div x-data="{open: false}">
-        <x-button type="button" color="indigo" x-on:click="open =!open">
+        <x-button type="button" color="indigo" x-on:click="open =!open" class="mt-4">
             <i class="fa-solid fa-plus mr-1"></i>
             <span>Nueva lección</span>
         </x-button>
