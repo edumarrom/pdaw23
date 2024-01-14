@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
@@ -22,3 +23,5 @@ Route::resource('/roles', RoleController::class)->names('roles')->except('show')
 Route::resource('/permissions', PermissionController::class)->names('permissions')->except('show');
 
 Route::resource('/users', UserController::class)->names('users')->except('show');
+
+Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
