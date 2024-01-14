@@ -132,7 +132,7 @@
                                 <div class="border-t border-gray-200"></div>
 
                                 <!-- Teacher Management -->
-                                @can('course-read')
+                                @can('teacher-cpanel')
                                     <div class="block px-4 py-2 text-xs text-gray-400">
                                         {{ __('Teacher Management') }}
                                     </div>
@@ -230,7 +230,7 @@
 
                     <div class="border-t border-gray-200"></div>
 
-                    @can('course-read')
+                    @can('teacher-cpanel')
                         <!-- Teacher Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
                             {{ __('Teacher Management') }}

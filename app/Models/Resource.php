@@ -9,6 +9,8 @@ class Resource extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['path'];
+
     public function resourceable()
     {
         return $this->morphTo();

@@ -10,36 +10,15 @@
     </div>
 
     <div class="relative overflow-x-auto mt-6 shadow-md sm:rounded-lg">
-        {{-- Facetado --}}
-        <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white">
-            <div x-data="{open: false}" x-on:click.outside="open = false">
-                <button x-on:click="open =!open" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
-                    <span class="sr-only">Botón de acciones</span>
-                    Acciones
-                    <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
-                </button>
-                <!-- Dropdown menu -->
-                <div x-show="open" x-transition class="absolute mt-1 ml-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                    <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownActionButton">
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Publicar</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Ocultar</a>
-                        </li>
-                    </ul>
-                    <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm rounded text-gray-700 hover:bg-red-200">Eliminar</a>
-                    </div>
-                </div>
-            </div>
+        {{-- Buscador --}}
+        <div class="{{-- flex items-center justify-between flex-column flex-wrap md:flex-row --}} space-y-4 md:space-y-0 p-4 bg-white">
             <label for="table-search" class="sr-only">Buscar</label>
             <div class="relative">
                 <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                     <i class="fa fa-solid fa-search text-gray-500"></i>
                 </div>
                 <input id="table-search-courses" type="search" wire:model.live.debounce.750ms="search" placeholder="Buscar un curso"
-                    class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500">
+                    class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-full bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500">
             </div>
         </div>
 
@@ -47,13 +26,6 @@
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
-                        <th scope="col" class="p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-all-search" type="checkbox" wire:model.live="selectAll"
-                                    class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2">
-                                <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                            </div>
-                        </th>
                         <th scope="col" class="px-6 py-3">
                             Curso
                         </th>
@@ -76,15 +48,8 @@
                     @foreach ($courses as $course)
 
                         <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="w-4 p-4">
-                                <div class="flex items-center">
-                                    <input id="checkbox-table-search" type="checkbox" wire:model.live="selected" value="{{ $course->id }}"
-                                        class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2">
-                                    <label for="checkbox-table-search" class="sr-only">checkbox</label>
-                                </div>
-                            </td>
-                            <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
-                                <img class="w-auto h-20 rounded" src="{{ Storage::url($course->image->path) }}" alt="">
+                            <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-wrap">
+                                <img class="w-auto h-20 aspect-[16/9] rounded object-cover object-center" src="{{ $course->imagePath }}" alt="">
                                 <div class="ps-3">
                                     <div class="text-base font-semibold">{{ $course->title }}</div>
                                     <div class="font-normal text-gray-500">{{ $course->category->name }}</div>
@@ -149,8 +114,20 @@
                                 @endswitch
                             </td>
                             <td class="px-6 py-4">
-                                <a class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5"
-                                    href="{{ route('teacher.courses.edit', $course) }}">Editar</a>
+                                <a class="inline-block mb-2 cursor-pointer text-gray-500 hover:text-gray-700"
+                                    href="{{ route('teacher.courses.edit', $course) }}">
+                                    <i class="fa-solid fa-pen mr-1"></i>Editar
+                                </a>
+                                <form action="{{ route('teacher.courses.destroy', $course) }}" method="post"
+                                    id="delete-form-{{ $course->id }}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" class="inline-block cursor-pointer text-rose-500 hover:text-rose-700"
+                                        onclick="destroyCourse({{ $course->id }})">
+                                        <i class="fa-solid fa-trash"></i>
+                                        Borrar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
 
@@ -158,16 +135,63 @@
 
                 </tbody>
             </table>
-        @else
-            <div class="flex items-center justify-center p-4">
-                <div class="flex flex-col items-center">
-                    <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt="">
-                    {{-- Source: https://www.creativefabrica.com/product/cactus-tumbleweed-2/ref/154380/ --}}
-                    <h3 class="text-lg font-bold text-gray-600">Esto está muy tranquilo, demasiado...</h3>
-                </div>
+
+            <div class="mt-6 mb-4 mx-6">
+                {{ $courses->links() }}
             </div>
+        @else
+        <div class="flex items-center justify-center p-4">
+            <div class="flex flex-col items-center">
+                @if ($search)
+                    <i class="fa-regular fa-face-sad-tear text-8xl text-gray-200 mb-6"></i>
+                    <h3 class="text-lg font-bold text-gray-600">
+                        No hay cursos que coincidan con "{{ $search }}".
+                    </h3>
+                @else
+                    {{-- <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt=""> --}}
+                    <i class="fa-solid fa-cloud-moon text-8xl text-gray-200 mb-6"></i>
+                    <h3 class="text-lg font-bold text-gray-600">
+                            Esto está muy tranquilo. Demasiado...
+                    </h3>
+                @endif
+            </div>
+        </div>
         @endif
 
     </div>
 
+    @push('scripts')
+
+        <script>
+            window.addEventListener('swal', event => {
+                const detail = event.detail[0];
+                Swal.fire({
+                    icon: detail.icon,
+                    title: detail.title,
+                    text: detail.text,
+                    confirmButtonColor: detail.confirmButtonColor,
+                })
+            })
+        </script>
+
+        <script>
+            function destroyCourse(courseId) {
+                const form = document.querySelector('#delete-form-' + courseId);
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¿Estás seguro?',
+                    text: "Esta acción es irreversible",
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirmar',
+                    confirmButtonColor: '#EF4444',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                })
+            }
+        </script>
+
+    @endpush
 </div>

@@ -9,6 +9,8 @@ class Requirement extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function course()
     {
         return $this->belongsTo(Course::class);

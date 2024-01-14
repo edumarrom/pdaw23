@@ -1,6 +1,6 @@
 <article class="bg-white border border-gray-500 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 
-    <img src="{{ Storage::url($course->image->path) }}" alt="">
+    <img src="{{ $course->imagePath }}" alt="">
 
     <div class="px-4 md:px-2 py-4">
         <h3 class="text-center text-xl text-gray-700 mb-2">{{ Str::limit($course->title, 40) }}</h3>
