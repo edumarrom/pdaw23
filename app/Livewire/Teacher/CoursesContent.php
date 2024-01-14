@@ -91,4 +91,9 @@ class CoursesContent extends Component
             'confirmButtonColor' => '#4338CA',
         ]);
     }
+
+    public function cancelEdit()
+    {
+        $this->section = new Section();
+    }
 }

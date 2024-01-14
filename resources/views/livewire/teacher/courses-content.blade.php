@@ -23,20 +23,26 @@
                         @endif>
                         <div class="px-6 py4">
 
-                            <!-- Formulario de edición -->
+                            {{-- Formulario de edición --}}
                             @if ($section->id == $item->id)
-                                <form wire:submit.prevent='updateSection' class="flex">
-                                    <x-input id="title"
-                                             name="title"
-                                             type="text"
-                                             class="block w-full"
-                                             placeholder="Escribe un título para esta sección"
-                                             wire:model.live="section.title" />
-                                    <x-input-error for="section.title" class="mt-2" />
-                                    <x-secondary-button class="ml-2" wire:click="updateSection">
-                                        <i class="fa-solid fa-check" title="Guardar"></i>
-                                    </x-secondary-button>
-                                </form>
+                            <form wire:submit.prevent="updateSection" class="flex">
+                                <x-input id="title"
+                                        name="title"
+                                        type="text"
+                                        class="block w-full"
+                                        placeholder="Escribe un título para esta sección"
+                                        wire:model.live="section.title" />
+                                <x-input-error for="section.title" class="ml-2" />
+
+                                <x-secondary-button type="button" class="hover:bg-rose-600 hover:text-white ml-1"
+                                        wire:click="cancelEdit" title="Cancelar">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </x-secondary-button>
+                                <x-secondary-button type="submit" class="hover:bg-indigo-500 hover:text-white ml-1"
+                                        title="Guardar">
+                                    <i class="fa-solid fa-check"></i>
+                                </x-secondary-button>
+                            </form>
                             @else
                                 <header class="flex justify-between items-center">
                                     <h3 class="text-lg select-none hover:text-indigo-500 hover:cursor-pointer"
@@ -70,6 +76,7 @@
 
                 @endforeach
 
+                {{-- Formulario de creación --}}
                 <div x-data="{open: false}">
                     <x-button type="button" color="indigo" x-on:click="open =!open">
                         <i class="fa-solid fa-plus mr-1"></i>
@@ -82,7 +89,7 @@
                             <h3 class="text-xl font-bold">Nueva sección</h3>
                             <hr class="mt-2 mb-6">
 
-                            <form wire:submit.prevent='storeSection'>
+                            <form wire:submit.prevent="storeSection">
                                 <div class="mb-4">
                                     <x-input id="title"
                                             name="title"
@@ -94,7 +101,7 @@
                                 </div>
 
                                 <div class="flex justify-between">
-                                    <x-button x-on:click="open = false">
+                                    <x-button type="button" x-on:click="open = false">
                                         <i class="fa-solid fa-xmark mr-2"></i>
                                         Cancelar
                                     </x-button>
