@@ -169,4 +169,12 @@ class CourseController extends Controller
         $this->authorize('delivered', $course);
         return view('teacher.courses.goals', compact('course'));
     }
+
+    public function status(Course $course)
+    {
+        $course->status = Course::REVISION;
+        $course->save();
+
+        return back();
+    }
 }
