@@ -8,7 +8,7 @@
 
             <div class="px-6 py4">
                 <h2 class="text-2xl font-bold">
-                    <i class="fa-solid fa-students mr-1"></i>
+                    <i class="fa-solid fa-users mr-1"></i>
                     Alumnos matriculados
                 </h2>
                 <hr class="mt-2 mb-6">
@@ -16,14 +16,14 @@
 
             <div class="relative overflow-x-auto mt-6 shadow-md sm:rounded-lg border border-gray-100">
                 {{-- Buscador --}}
-                <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white">
+                <div class="{{-- flex items-center justify-between flex-column flex-wrap md:flex-row --}} space-y-4 md:space-y-0 p-4 bg-white">
                     <label for="table-search" class="sr-only">Buscar</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                             <i class="fa fa-solid fa-search text-gray-500"></i>
                         </div>
                         <input id="table-search-courses" type="search" wire:model.live.debounce.750ms="search" placeholder="Buscar un alumno"
-                            class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500">
+                            class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
                 </div>
 
@@ -67,7 +67,12 @@
                                     </td> --}}
 
                                     <td class="px-6 py-4">
-                                        ...
+                                        {{-- enlace centrado dentro de la celda con href="mailto:" --}}
+                                        <a href="mailto:{{ $student->email }}"
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 hover:bg-indigo-200 hover:text-indigo-900">
+                                            <i class="fa-solid fa-envelope mr-1"></i>
+                                            Enviar email
+                                        </a>
                                     </td>
                                 </tr>
 
@@ -75,12 +80,22 @@
 
                         </tbody>
                     </table>
+
+                    <div class="mt-6 mb-4 mx-6">
+                        {{ $students->links() }}
+                    </div>
                 @else
                     <div class="flex items-center justify-center p-4">
                         <div class="flex flex-col items-center">
-                            <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt="">
-                            {{-- Source: https://www.creativefabrica.com/product/cactus-tumbleweed-2/ref/154380/ --}}
-                            <h3 class="text-lg font-bold text-gray-600">Esto está muy tranquilo, demasiado...</h3>
+                            <i class="fa-regular fa-face-sad-tear text-8xl text-gray-200 mb-6"></i>
+                            {{-- <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt=""> --}}
+                            <h3 class="text-lg font-bold text-gray-600">
+                                @if ($search)
+                                    No hay alumnos que coincidan con "{{ $search }}".
+                                @else
+                                    No hay ningún alumno matriculado en este curso.
+                                @endif
+                            </h3>
                         </div>
                     </div>
                 @endif
