@@ -34,13 +34,20 @@ class CoursesRequirements extends Component
             'name' => $this->rules['requirement.name'],
         ]);
 
-        $this->course->requirements()->create([
+        $requirement = $this->course->requirements()->create([
             'name' => $this->name,
         ]);
 
         $this->reset('name');
 
         $this->course = Course::find($this->course->id);
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Requisito '$requirement->name' creado satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function edit(Requirement $requirement)
@@ -50,6 +57,8 @@ class CoursesRequirements extends Component
 
     public function update()
     {
+        $name = $this->requirement->name;
+
         $this->validate();
 
         $this->requirement->save();
@@ -57,13 +66,29 @@ class CoursesRequirements extends Component
         $this->requirement = new Requirement();
 
         $this->course = Course::find($this->course->id);
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Requisito '$name' editado satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function destroy(Requirement $requirement)
     {
+        $name = $requirement->name;
+
         $requirement->delete();
 
         $this->course = Course::find($this->course->id);
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Requisito '$name' borrado satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function cancel()

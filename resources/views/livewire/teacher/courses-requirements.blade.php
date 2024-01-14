@@ -49,8 +49,7 @@
                                     <i class="fa-solid fa-pen mr-1"></i>Editar
                                 </span>
                                 <span class="inline-block cursor-pointer text-rose-500 hover:text-rose-700"
-                                    wire:click="destroy({{ $item }})"
-                                    {{-- onclick="deleteRequirement({{ $item->id }})" --}}>
+                                    onclick="destroyRequirement({{ $item }})">
                                     <i class="fa-solid fa-trash mr-1"></i>Eliminar
                                 </span>
                             </div>
@@ -107,4 +106,36 @@
             </div>
         </article>
     </div>
+
+    @push('scripts')
+        <script>
+            window.addEventListener('swal', event => {
+                const detail = event.detail[0];
+                Swal.fire({
+                    icon: detail.icon,
+                    title: detail.title,
+                    text: detail.text,
+                    confirmButtonColor: detail.confirmButtonColor,
+                })
+            })
+        </script>
+
+        <script>
+            function destroyRequirement(requirement) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¿Estás seguro?',
+                    text: "Esta acción es irreversible",
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirmar',
+                    confirmButtonColor: '#EF4444',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        @this.call('destroy', requirement);
+                    }
+                })
+            }
+        </script>
+    @endpush
 </div>

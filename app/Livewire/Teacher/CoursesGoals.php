@@ -34,13 +34,20 @@ class CoursesGoals extends Component
             'name' => $this->rules['goal.name'],
         ]);
 
-        $this->course->goals()->create([
+        $goal = $this->course->goals()->create([
             'name' => $this->name,
         ]);
 
         $this->reset('name');
 
         $this->course = Course::find($this->course->id);
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Meta '$goal->name' creada satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function edit(Goal $goal)
@@ -50,6 +57,8 @@ class CoursesGoals extends Component
 
     public function update()
     {
+        $name = $this->goal->name;
+
         $this->validate();
 
         $this->goal->save();
@@ -57,13 +66,29 @@ class CoursesGoals extends Component
         $this->goal = new Goal();
 
         $this->course = Course::find($this->course->id);
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Meta '$name' editada satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function destroy(Goal $goal)
     {
+        $name = $goal->name;
+
         $goal->delete();
 
         $this->course = Course::find($this->course->id);
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Meta '$name' borrada satisfactoriamente.",
+            'confirmButtonColor' => '#4338CA',
+        ]);
     }
 
     public function cancel()
