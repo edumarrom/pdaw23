@@ -14,3 +14,6 @@ Route::resource('courses', CourseController::class)
 
 Route::get('courses/{course}/edit/content', CoursesContent::class)
     ->name('courses.edit.content');
+
+Route::get('courses/{course}/edit/goals', [CourseController::class, 'goals'])
+    ->name('courses.edit.goals');
