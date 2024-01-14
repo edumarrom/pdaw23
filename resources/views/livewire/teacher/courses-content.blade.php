@@ -12,8 +12,9 @@
                 </h2>
                 <hr class="mt-2 mb-6">
 
-                @foreach ($sections as $item)
+            @if ($sections->count())
 
+                @foreach ($sections as $item)
 
                     <article class="card mb-6 border border-gray-100 shadow-md"
                         @if ($loop->first)
@@ -59,8 +60,8 @@
                                             <i class="fa-solid fa-pen mr-1"></i>Editar
                                         </span>
                                         <span class="inline-block cursor-pointer text-rose-500 hover:text-rose-700"
-                                              {{-- wire:click="destroySection({{$item}})" --}}
-                                              onclick="deleteSection({{ $item->id }})">
+                                            {{-- wire:click="destroySection({{$item}})" --}}
+                                            onclick="deleteSection({{ $item->id }})">
                                             <i class="fa-solid fa-trash mr-1"></i>Eliminar
                                         </span>
                                     </div>
@@ -75,6 +76,18 @@
                     </article>
 
                 @endforeach
+
+            @else
+
+                <div class="flex items-center justify-center p-4">
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-book text-8xl text-gray-200 mb-6"></i>
+                        <h3 class="text-lg font-bold text-gray-500">No hay seccciones definidas para este curso</h3>
+                    </div>
+                </div>
+
+            @endif
+
 
                 {{-- Formulario de creación --}}
                 <div x-data="{open: false}">
