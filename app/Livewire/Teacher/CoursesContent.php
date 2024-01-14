@@ -18,6 +18,7 @@ class CoursesContent extends Component
 
     public function mount(Course $course)
     {
+        $this->authorize('delivered', $course);
         $this->course = $course;
         $this->section = new Section();
     }

@@ -33,4 +33,13 @@ class CoursePolicy
     {
         return $course->status == 3;
     }
+
+    /**
+     * Comprueba si un usuario es el autor de un curso.
+     * @return bool
+     */
+    public function delivered(User $user, Course $course)
+    {
+        return $course->user_id == $user->id;
+    }
 }
