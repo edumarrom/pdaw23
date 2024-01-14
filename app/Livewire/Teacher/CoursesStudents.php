@@ -21,10 +21,12 @@ class CoursesStudents extends Component
 
     public function render()
     {
-        $students = $this->course->students()->where('name', 'ILIKE', '%' . $this->search . '%')
-            ->orWhere('email', 'ILIKE', '%' . $this->search . '%')
-            ->orderBy('name', 'asc')
-            ->paginate(10);
+        $students = $this->course->students()->where(function ($query) {
+            $query->where('name', 'ILIKE', '%' . $this->search . '%')
+                ->orWhere('email', 'ILIKE', '%' . $this->search . '%');
+        })
+        ->orderBy('name', 'asc')
+        ->paginate(10);
 
         return view('livewire.teacher.courses-students', compact('students'));
     }
