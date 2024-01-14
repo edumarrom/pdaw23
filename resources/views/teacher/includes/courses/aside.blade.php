@@ -27,17 +27,26 @@
     ];
 @endphp
 
-<aside class="text-gray-800">
-    <p class="text-2xl font-medium text-gray-900 mb-4">Menú de edición</p>
+<aside class="text-gray-700 mr-2">
 
-    <ul class="text-lg">
+    <x-link-button href="{{ route('teacher.courses.index') }}" color="white" class="mb-4">
+        <i class="fa-solid fa-arrow-left mr-1"></i>
+        Volver al listado de cursos
+    </x-link-button>
+
+    <div>
+        <span class="inline-block font-semibold">Editando:</span>
+        <span class="inline-block text-base mb-4">{{ $course->title }}</span>
+    </div>
+
+    <ul class="text-md">
 
         @foreach ($links as $link)
                 <li>
                     <a  href="{{ $link['route'] }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:cursor-pointer
-                            {{ $link['active'] ? 'text-indigo-500' : '' }}">
-                        <i class="mr-3 text-xl {{ $link['active'] ? 'text-indigo-500' : 'text-gray-500' }} {{$link['icon']}}"></i>
+                            class="flex items-center p-2 mb-2 rounded-lg hover:cursor-pointer
+                            @if ($link['active']) bg-indigo-500 text-white hover:bg-indigo-600 @else hover:bg-gray-200 @endif">
+                        <i class="mr-2 text-xl   {{$link['icon']}}"></i>
                         <span class="">{{ $link['name'] }}</span>
                     </a>
                 </li>
