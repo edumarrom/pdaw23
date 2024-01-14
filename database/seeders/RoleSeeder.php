@@ -19,6 +19,7 @@ class RoleSeeder extends Seeder
 
         $role->givePermissionTo([
             'admin-cpanel',
+            'teacher-cpanel',
             'course-create',
             'course-read',
             'course-edit',
@@ -30,6 +31,7 @@ class RoleSeeder extends Seeder
         ]);
 
         $role->givePermissionTo([
+            'teacher-cpanel',
             'course-create',
             'course-read',
             'course-edit',

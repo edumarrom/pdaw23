@@ -18,6 +18,10 @@ class PermissionSeeder extends Seeder
             'name' => 'admin-cpanel',
         ]);
 
+        Permission::create([
+            'name' => 'teacher-cpanel',
+        ]);
+
         // Course permissions
         Permission::create([
             'name' => 'course-create',

@@ -41,7 +41,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->name('admin.')
                 ->group(base_path('routes/admin.php'));
 
-            Route::middleware('web', 'auth')
+            Route::middleware('web', 'auth', 'can:teacher-cpanel')
                 ->prefix('teacher')
                 ->name('teacher.')
                 ->group(base_path('routes/teacher.php'));
