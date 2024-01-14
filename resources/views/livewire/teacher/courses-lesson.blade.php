@@ -1,6 +1,6 @@
 <div>
 
-    @foreach ($section->lessons->sortBy(['created_at desc', 'id desc']) as $item)
+    @foreach ($lessons as $item)
 
         <article class="card border border-gray-100 shadow-md mt-4 mb-6" x-data="{open: false}">
 

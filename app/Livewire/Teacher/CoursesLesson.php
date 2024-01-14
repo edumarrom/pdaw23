@@ -45,7 +45,8 @@ class CoursesLesson extends Component
 
     public function render()
     {
-        return view('livewire.teacher.courses-lesson');
+        $lessons = $this->section->lessons()->orderBy('created_at', 'asc')->orderBy('id', 'asc')->get();
+        return view('livewire.teacher.courses-lesson', compact('lessons'));
     }
 
     public function updated($propertyName)

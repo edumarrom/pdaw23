@@ -12,7 +12,7 @@
                 </h2>
                 <hr class="mt-2 mb-6">
 
-                @foreach ($course->sections->sortBy(['created_at desc', 'id desc']) as $item)
+                @foreach ($sections as $item)
 
 
                     <article class="card mb-6 border border-gray-100 shadow-md"

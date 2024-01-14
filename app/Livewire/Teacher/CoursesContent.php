@@ -25,7 +25,8 @@ class CoursesContent extends Component
 
     public function render()
     {
-        return view('livewire.teacher.courses-content');
+        $sections = $this->course->sections()->orderBy('created_at', 'asc')->orderBy('id', 'asc')->get();
+        return view('livewire.teacher.courses-content', compact('sections'));
     }
 
     public function storeSection()
