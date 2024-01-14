@@ -31,7 +31,7 @@ class CoursesLesson extends Component
         'lesson.platform_id' => ['required', 'exists:platforms,id'],
         'lesson.path' => ['required', 'url', 'max:255'],
         'lesson.description.description' => ['required', 'string', 'max:500'],
-        'resource' => ['nullable'],
+        'resource' => ['nullable', 'file', 'max:20480'], // 20MB
     ];
 
     public function mount(Section $section)
