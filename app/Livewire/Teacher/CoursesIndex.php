@@ -4,34 +4,25 @@ namespace App\Livewire\Teacher;
 
 use App\Models\Course;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class CoursesIndex extends Component
 {
+    use WithPagination;
 
     public $search;
-
-    public $selected = [];
-
-    public $selectAll = false;
 
     public function render()
     {
         $courses = Course::where('title', 'ILIKE', '%' . $this->search . '%')
             ->where('user_id', auth()->user()->id)
-            ->get();
+            ->paginate(10);
 
         return view('livewire.teacher.courses-index', compact('courses'));
     }
 
-    public function updatedSelectAll($value)
+    public function updatingSearch()
     {
-        if ($value) {
-            $this->selected = Course::where('title', 'ILIKE', '%' . $this->search . '%')
-                ->where('user_id', auth()->user()->id)
-                ->pluck('id')
-                ->map(fn ($id) => (string) $id);
-        } else {
-            $this->selected = [];
-        }
+        $this->resetPage();
     }
 }
