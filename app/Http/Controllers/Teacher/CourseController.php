@@ -96,6 +96,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $this->authorize('delivered', $course);
 
         $categories = Category::all();
         $levels = Level::all();
@@ -109,6 +110,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
+        $this->authorize('delivered', $course);
         // return $request->all();
 
         $request->validate([
@@ -161,6 +163,7 @@ class CourseController extends Controller
 
     public function goals(Course $course)
     {
+        $this->authorize('delivered', $course);
         return view('teacher.courses.goals', compact('course'));
     }
 }
