@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
     ->name('courses.index'); */
 
 Route::resource('courses', CourseController::class)
-    ->names('courses');
+    ->names('courses')->except('show');
 
 Route::get('courses/{course}/edit/content', CoursesContent::class)
     ->name('courses.edit.content');

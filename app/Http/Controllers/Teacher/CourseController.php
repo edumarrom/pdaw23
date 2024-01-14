@@ -84,14 +84,6 @@ class CourseController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Course $course)
-    {
-        return view('teacher.courses.show', compact('course'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Course $course)
