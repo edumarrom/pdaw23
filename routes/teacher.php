@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Teacher\CourseController;
 use App\Livewire\Teacher\CoursesContent;
+use App\Livewire\Teacher\CoursesStudents;
 use Illuminate\Support\Facades\Route;
 // use App\Livewire\TeacherCourses;
 
@@ -17,3 +18,6 @@ Route::get('courses/{course}/edit/content', CoursesContent::class)
 
 Route::get('courses/{course}/edit/goals', [CourseController::class, 'goals'])
     ->name('courses.edit.goals');
+
+Route::get('courses/{course}/edit/students', CoursesStudents::class)
+    ->name('courses.edit.students');
