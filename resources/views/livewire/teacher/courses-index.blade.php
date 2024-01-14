@@ -12,7 +12,9 @@
     <div class="relative overflow-x-auto mt-6 shadow-md sm:rounded-lg">
         {{-- Facetado --}}
         <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white">
-            <div x-data="{open: false}" x-on:click.outside="open = false">
+
+            {{-- Botón acciones --}}
+            {{-- <div x-data="{open: false}" x-on:click.outside="open = false">
                 <button x-on:click="open =!open" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
                     <span class="sr-only">Botón de acciones</span>
                     Acciones
@@ -22,17 +24,26 @@
                 <div x-show="open" x-transition class="absolute mt-1 ml-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                     <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownActionButton">
                         <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Publicar</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                <i class="fa-solid fa-eye mr-1"></i>
+                                Publicar
+                            </a>
                         </li>
                         <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Ocultar</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                <i class="fa-solid fa-eye-slash mr-1"></i>
+                                Ocultar
+                            </a>
                         </li>
                     </ul>
                     <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm rounded text-gray-700 hover:bg-red-200">Eliminar</a>
+                        <a onclick="deleteCourse({{ }})" class="block px-4 py-2 text-sm rounded text-gray-700 hover:bg-rose-600 hover:text-white">
+                            <i class="fa-solid fa-trash mr-1"></i>
+                            Eliminar
+                        </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <label for="table-search" class="sr-only">Buscar</label>
             <div class="relative">
                 <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -47,13 +58,13 @@
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
-                        <th scope="col" class="p-4">
+                        {{-- <th scope="col" class="p-4">
                             <div class="flex items-center">
                                 <input id="checkbox-all-search" type="checkbox" wire:model.live="selectAll"
                                     class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2">
                                 <label for="checkbox-all-search" class="sr-only">checkbox</label>
                             </div>
-                        </th>
+                        </th> --}}
                         <th scope="col" class="px-6 py-3">
                             Curso
                         </th>
@@ -76,13 +87,13 @@
                     @foreach ($courses as $course)
 
                         <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="w-4 p-4">
+                            {{-- <td class="w-4 p-4">
                                 <div class="flex items-center">
                                     <input id="checkbox-table-search" type="checkbox" wire:model.live="selected" value="{{ $course->id }}"
                                         class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2">
                                     <label for="checkbox-table-search" class="sr-only">checkbox</label>
                                 </div>
-                            </td>
+                            </td> --}}
                             <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
                                 <img class="w-auto h-20 aspect-[16/9] rounded object-cover object-center" src="{{ $course->imagePath }}" alt="">
                                 <div class="ps-3">
@@ -148,9 +159,25 @@
                                     @default
                                 @endswitch
                             </td>
-                            <td class="px-6 py-4">
+                            {{-- <td class="px-6 py-4">
                                 <a class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5"
                                     href="{{ route('teacher.courses.edit', $course) }}">Editar</a>
+                            </td> --}}
+                            <td class="px-6 py-4">
+                                <a class="inline-block mb-2 cursor-pointer text-gray-500 hover:text-gray-700"
+                                    href="{{ route('teacher.courses.edit', $course) }}">
+                                    <i class="fa-solid fa-pen mr-1"></i>Editar
+                                </a>
+                                <form action="{{ route('teacher.courses.destroy', $course) }}" method="post"
+                                    id="delete-form-{{ $course->id }}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" class="inline-block cursor-pointer text-rose-500 hover:text-rose-700"
+                                        onclick="destroyCourse({{ $course->id }})">
+                                        <i class="fa-solid fa-trash"></i>
+                                        Borrar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
 
@@ -170,4 +197,38 @@
 
     </div>
 
+    @push('scripts')
+
+        <script>
+            window.addEventListener('swal', event => {
+                const detail = event.detail[0];
+                Swal.fire({
+                    icon: detail.icon,
+                    title: detail.title,
+                    text: detail.text,
+                    confirmButtonColor: detail.confirmButtonColor,
+                })
+            })
+        </script>
+
+        <script>
+            function destroyCourse(courseId) {
+                const form = document.querySelector('#delete-form-' + courseId);
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¿Estás seguro?',
+                    text: "Esta acción es irreversible",
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirmar',
+                    confirmButtonColor: '#EF4444',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                })
+            }
+        </script>
+
+    @endpush
 </div>

@@ -158,7 +158,18 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        return $course;
+        $this->authorize('delivered', $course);
+
+        $title = $course->title;
+        $course->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Curso '$title' borrado satisfactoriamente.",
+        ]);
+
+        return redirect()->route('teacher.courses.index');
     }
 
     public function goals(Course $course)
