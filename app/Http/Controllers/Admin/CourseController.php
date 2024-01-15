@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ApprovedCourse;
+use App\Mail\RejectedCourse;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -59,6 +60,8 @@ class CourseController extends Controller
     {
         $course->status = Course::BORRADOR;
         $course->save();
+
+        Mail::to($course->teacher->email)->send(new RejectedCourse($course));
 
         session()->flash('swal', [
             'icon' => 'success',
