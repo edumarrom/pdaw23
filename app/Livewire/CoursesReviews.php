@@ -3,16 +3,21 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class CoursesReviews extends Component
 {
+    use WithPagination;
+
     public $course;
     public $rating = 5;
     public $comment = '';
 
     public function render()
     {
-        return view('livewire.courses-reviews');
+        $reviews = $this->course->reviews()->orderBy('created_at', 'desc')->paginate(5);
+
+        return view('livewire.courses-reviews', compact('reviews'));
     }
 
     public function store()

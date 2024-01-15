@@ -5,7 +5,7 @@
             Opiniones
         </h3>
 
-        <div class="">
+        <div class="mb-2">
 
             <div class="px-4 py-2">
                 <div>
@@ -50,62 +50,74 @@
 
         </div>
 
-        <div class="card mb-4">
+        @can('enrolled', $course)
 
-            <div  class="px-4 py-2  ">
+            @if($course->reviews->contains('user_id', auth()->id()))
+                <div class="card mb-4">
 
-                <form wire:submit.prevent='store'>
-                    <div class="mb-2">
-                        <span class="text-xl font-semibold mr-2">Valora este curso:</span>
+                    <div  class="px-4 py-1  ">
+                        ¡Gracias por compartir tu opinión con nosotros!
+                    </div>
+                </div>
+            @else
+                <div class="card mb-4">
 
-                        {{-- Hacer un checkbox que su label sea un icono de estrella de fontawesome  --}}
-                        <div class="inline-block">
-                            <ul class="flex text-xl">
-                                <li class="mr-1 cursor-pointer" wire:click="$set('rating', 1)">
-                                    <i class="fa fa-solid fa-star @if ($rating >= 1) text-amber-400 @else text-gray-400 @endif"></i>
-                                </li>
-                                <li class="mr-1 cursor-pointer" wire:click="$set('rating', 2)">
-                                    <i class="fa fa-solid fa-star @if ($rating >= 2) text-amber-400 @else text-gray-400 @endif"></i>
-                                </li>
-                                <li class="mr-1 cursor-pointer" wire:click="$set('rating', 3)">
-                                    <i class="fa fa-solid fa-star @if ($rating >= 3) text-amber-400 @else text-gray-400 @endif"></i>
-                                </li>
-                                <li class="mr-1 cursor-pointer" wire:click="$set('rating', 4)">
-                                    <i class="fa fa-solid fa-star @if ($rating >= 4) text-amber-400 @else text-gray-400 @endif"></i>
-                                </li>
-                                <li class="mr-1 cursor-pointer" wire:click="$set('rating', 5)">
-                                    <i class="fa fa-solid fa-star @if ($rating == 5) text-amber-400 @else text-gray-400 @endif"></i>
-                                </li>
-                            </ul>
-                        </div>
+                    <div  class="px-4 py-2  ">
+
+                        <form wire:submit.prevent='store'>
+                            <div class="mb-2">
+                                <span class="text-xl font-semibold mr-2">Valora este curso:</span>
+
+                                {{-- Hacer un checkbox que su label sea un icono de estrella de fontawesome  --}}
+                                <div class="inline-block">
+                                    <ul class="flex text-xl">
+                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 1)">
+                                            <i class="fa fa-solid fa-star @if ($rating >= 1) text-amber-400 @else text-gray-400 @endif"></i>
+                                        </li>
+                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 2)">
+                                            <i class="fa fa-solid fa-star @if ($rating >= 2) text-amber-400 @else text-gray-400 @endif"></i>
+                                        </li>
+                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 3)">
+                                            <i class="fa fa-solid fa-star @if ($rating >= 3) text-amber-400 @else text-gray-400 @endif"></i>
+                                        </li>
+                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 4)">
+                                            <i class="fa fa-solid fa-star @if ($rating >= 4) text-amber-400 @else text-gray-400 @endif"></i>
+                                        </li>
+                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 5)">
+                                            <i class="fa fa-solid fa-star @if ($rating == 5) text-amber-400 @else text-gray-400 @endif"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mb-2">
+                                <x-textarea id="comment"
+                                            name="comment"
+                                            class="block w-full mb-2"
+                                            rows="3"
+                                            placeholder="Cuéntanos qué te ha parecido este curso"
+                                            wire:model.live="comment"></x-textarea>
+                                <x-input-error for="comment" class="mt-2" />
+                            </div>
+
+                            <div class="flex justify-end">
+                                <x-secondary-button type="submit" class="hover:bg-indigo-500 hover:text-white ml-2"
+                                        title="Enviar">
+                                    <i class="fa-solid fa-check mr-1"></i>
+                                    Enviar
+                                </x-secondary-button>
+                            </div>
+                        </form>
+
                     </div>
 
-                    <div class="mb-2">
-                        <x-textarea id="comment"
-                                    name="comment"
-                                    class="block w-full mb-2"
-                                    rows="3"
-                                    placeholder="Cuéntanos qué te ha parecido este curso"
-                                    wire:model.live="comment"></x-textarea>
-                        <x-input-error for="comment" class="mt-2" />
-                    </div>
-
-                    <div class="flex justify-end">
-                        <x-secondary-button type="submit" class="hover:bg-indigo-500 hover:text-white ml-2"
-                                title="Enviar">
-                            <i class="fa-solid fa-check mr-1"></i>
-                            Enviar
-                        </x-secondary-button>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
+                </div>
+            @endif
+        @endcan
 
         <div class="card p-0 divide-y-2">
 
-            @foreach ($course->reviews as $review)
+            @foreach ($reviews as $review)
 
                 <article class="flex p-4">
                     <figure class="mr-4">
@@ -128,6 +140,10 @@
                     </div>
                 </article>
             @endforeach
+        </div>
+
+        <div class="mt-6">
+            {{ $reviews->links(data: ['scrollTo' => false]) }}
         </div>
     </section>
 </div>
