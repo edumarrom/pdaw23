@@ -212,16 +212,81 @@
                         </div>
                     </div>
 
+                    <div class="mt-6 mb-2">
+                        <h2 class="text-lg tex-gray-800 font-semibold">Requisitos del curso:</h2>
+                        <hr class="mt-2 mb-4">
+                        <ul class="text-sm space-y-1">
+                            <li>
+                                @if ($course->image)
+                                    <i aria-label="Sí" class="fa-solid fa-circle-check text-base text-green-700 mr-1"></i>
+                                @else
+                                    <i aria-label="No" class="fa-solid fa-circle-xmark text-base text-rose-500 mr-1"></i>
+                                @endif
+                                Tiene imagen de portada.
+                            </li>
+                            <li>
+                                @if (Str::length($course->description) >= 200)
+                                    <i aria-label="Sí" class="fa-solid fa-circle-check text-base text-green-700 mr-1"></i>
+                                @else
+                                    <i aria-label="No" class="fa-solid fa-circle-xmark text-base text-rose-500 mr-1"></i>
+                                @endif
+                                La descripción tiene al menos 200 caracteres.
+                            <li>
+                                @if ($course->goals->count() && $course->goals->count() >= 3)
+                                    <i aria-label="Sí" class="fa-solid fa-circle-check text-base text-green-700 mr-1"></i>
+                                @else
+                                    <i aria-label="No" class="fa-solid fa-circle-xmark text-base text-rose-500 mr-1"></i>
+                                @endif
+                                Tiene al menos 3 requisitos definidos.
+                            </li>
+                            <li>
+                                @if ($course->requirements->count() && $course->requirements->count() >= 3)
+                                    <i aria-label="Sí" class="fa-solid fa-circle-check text-base text-green-700 mr-1"></i>
+                                @else
+                                    <i aria-label="No" class="fa-solid fa-circle-xmark text-base text-rose-500 mr-1"></i>
+                                @endif
+                                Tiene al menos 3 requisitos definidos.
+                            </li>
+                            <li>
+                                @if ($course->sections->count() >= 3 || $course->lessons->count() >= 8)
+                                    <i aria-label="Sí" class="fa-solid fa-circle-check text-base text-green-700 mr-1"></i>
+                                    Tiene al menos 3 secciones, o 8 lecciones.
+                                    <ul class="mt-2 pl-6 list-disc list-inside">
+                                        <li>{{ $course->sections->count() }} secciones.</li>
+                                        <li>{{ $course->lessons->count() }} lecciones en total.</li>
+                                    </ul>
+                                @else
+                                    <i aria-label="No" class="fa-solid fa-circle-xmark text-base text-rose-500 mr-1"></i>
+                                    Tiene al menos 3 secciones, o 8 lecciones.
+                                @endif
+                            </li>
+
+                        </ul>
+                    </div>
+
                     <div class="flex justify-between">
                         <form action="{{ route('admin.courses.approve', $course) }}" method="post"
-                                class="w-full mx-0.5">
+                                class="w-full mx-1">
                             @csrf
-                            <x-button color="blue" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
-                                Aprobar
-                            </x-button>
+                            @if (  $course->image
+                                || Str::length($course->description) >= 50
+                                || $course->goals->count() && $course->goals->count() >= 3
+                                || $course->requirements->count() && $course->requirements->count() >= 3
+                                || $course->sections->count() >= 3
+                                || $course->lessons->count() >= 8
+                            )
+                                <x-button color="blue" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
+                                    Aprobar
+                                </x-button>
+                            @else
+                                <x-button type="button" color="disabled" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
+                                    Aprobar
+                                </x-button>
+                            @endif
+
                         </form>
                         <form action="{{ route('admin.courses.reject', $course) }}" method="post"
-                                class="w-full mx-0.5">
+                                class="w-full mx-1">
                             @csrf
                             <x-button color="rose" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
                                 Rechazar
