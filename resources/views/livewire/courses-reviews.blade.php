@@ -4,7 +4,54 @@
             <i class="fa fa-solid fa-comment-dots mr-2"></i>
             Opiniones
         </h3>
+
+        <div class="">
+
+            <div class="px-4 py-2">
+                <div>
+                    <div class="flex items-center mb-2">
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($course->rating >= $i)
+                                <i class="fa fa-solid fa-star text-amber-400"></i>
+                            @else
+                                <i class="fa fa-solid fa-star text-gray-400"></i>
+                            @endif
+                        @endfor
+                        <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{ $course->rating }}</p>
+                        <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400"> de </p>
+                        <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
+                        <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">({{ $course->reviews->count() }} valoraciones)</p>
+                    </div>
+
+                    @php
+                        $ratingCounts = [
+                            ['rate' => '1', 'value' => $course->reviews->where('rating', '=', 1)->count()],
+                            ['rate' => '2', 'value' => $course->reviews->where('rating', '=', 2)->count()],
+                            ['rate' => '3', 'value' => $course->reviews->where('rating', '=', 3)->count()],
+                            ['rate' => '4', 'value' => $course->reviews->where('rating', '=', 4)->count()],
+                            ['rate' => '5', 'value' => $course->reviews->where('rating', '=', 5)->count()],
+                        ]
+                    @endphp
+
+                    @foreach ($ratingCounts as $ratingCount)
+                        @php
+                            $ratingCountPercent = $ratingCount['value'] * 100 / $course->reviews->count();
+                        @endphp
+                        <div class="flex items-center mt-1">
+                            <span class="text-sm font-medium text-indigo-600">{{ $ratingCount['rate'] }}</span>
+                            <div class="w-full h-2 mx-4 bg-gray-200 rounded">
+                                <div class="h-2 bg-amber-400 rounded" style="width: {{ $ratingCountPercent }}%"></div>
+                            </div>
+                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ $ratingCountPercent }}%</span>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+        </div>
+
         <div class="card p-0 divide-y-2">
+
             @foreach ($course->reviews as $review)
 
                 <article class="flex p-4">
