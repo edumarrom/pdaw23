@@ -11,11 +11,7 @@
                 </p>
 
                 {{-- Search bar --}}
-                <div class="pt-2 relative mx-auto text-gray-600">
-                    <input class=" w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none focus:ring-indigo-500"
-                    type="search" name="search" placeholder="Vue para principantes...">
-                    <x-button class="absolute rounded-l-none right-0 top-0 h-10 mt-2">Buscar</x-button>
-                </div>
+                @livewire('search')
 
             </div>
         </div>
@@ -31,9 +27,13 @@
                 </figure>
 
                 <header class="mt-2">
-                    <h3 class="text-center text-xl text-gray-700">Lorem Ipsum</h3>
+                    <h3 class="text-center text-xl text-gray-700">
+                        Descubre el Futuro de la Programación
+                    </h3>
 
-                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit voluptatum, ullam fugiat illum ea.</p>
+                    <p class="text-sm text-gray-500">
+                        Sumérgete en Dabaliu: Cursos flexibles y al ritmo que elijas para dominar la programación.
+                    </p>
 
                 </header>
 
@@ -44,9 +44,13 @@
                 </figure>
 
                 <header class="mt-2">
-                    <h3 class="text-center text-xl text-gray-700">Lorem Ipsum</h3>
+                    <h3 class="text-center text-xl text-gray-700">
+                        Conviértete en un Experto en Desarrollo
+                    </h3>
 
-                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit voluptatum, ullam fugiat illum ea.</p>
+                    <p class="text-sm text-gray-500">
+                        Dabaliu te guía hacia el éxito con cursos en vídeo para dominar el desarrollo de aplicaciones.
+                    </p>
 
                 </header>
 
@@ -57,9 +61,13 @@
                 </figure>
 
                 <header class="mt-2">
-                    <h3 class="text-center text-xl text-gray-700">Lorem Ipsum</h3>
+                    <h3 class="text-center text-xl text-gray-700">
+                        Crea y Comparte: Tu Conocimiento Importa
+                    </h3>
 
-                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit voluptatum, ullam fugiat illum ea.</p>
+                    <p class="text-sm text-gray-500">
+                        Tú enseñas, tú aprendes en Dabaliu: Crea y comparte tu propio curso en nuestra plataforma.
+                    </p>
 
                 </header>
 
@@ -70,9 +78,13 @@
                 </figure>
 
                 <header class="mt-2">
-                    <h3 class="text-center text-xl text-gray-700">Lorem Ipsum</h3>
+                    <h3 class="text-center text-xl text-gray-700">
+                        Explora el Universo de la Programación
+                    </h3>
 
-                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit voluptatum, ullam fugiat illum ea.</p>
+                    <p class="text-sm text-gray-500">
+                        Desde principiantes hasta avanzados: Dabaliu tiene el curso perfecto para tu viaje en programación
+                    </p>
 
                 </header>
 
@@ -81,25 +93,39 @@
     </section>
 
     <section class="mt-24 bg-blue-950 py-12">
-        <h2 class="text-center text-white text-3xl">¿Deseando aprender algo nuevo?</h2>
-        <p class="text-center text-white">Crea una cuenta y comienza a formarte.</p>
+        @auth
+            <h2 class="text-center text-white text-3xl">Aquí tienes una selección de nuestros cursos</h2>
+            <p class="text-center text-white">Y si ninguno te convence pásate por la página de cursos y encuentra tu curso ideal.</p>
 
-        <div class="flex justify-center mt-4">
-            <x-link-button href="{{ route('register') }}" color="teal" class="py-4 px-6">
-                {{ __('Regístrate') }}
-            </x-link-button>
-        </div>
+            <div class="flex justify-center mt-4">
+                <x-link-button href="{{ route('courses.index') }}" color="teal" class="py-4 px-6">
+                    {{ __('Ver todos los cursos') }}
+                </x-link-button>
+            </div>
+        @else
+            <h2 class="text-center text-white text-3xl">¿Deseando aprender algo nuevo?</h2>
+            <p class="text-center text-white">Crea una cuenta y comienza a formarte.</p>
+
+            <div class="flex justify-center mt-4">
+                <x-link-button href="{{ route('register') }}" color="teal" class="py-4 px-6">
+                    {{ __('Regístrate') }}
+                </x-link-button>
+            </div>
+        @endauth
     </section>
 
     <section class="mt-24">
 
-        <h2 class="text-gray-600 text-center text-3xl">Cursos más recientes</h2>
-        <p class="text-center text-gray-600 text-sm mb-6">Estos son los últimos cursos publicados</p>
-
+        <h2 class="text-gray-600 text-center text-3xl font-semibold">
+            Cursos más recientes
+        </h2>
+        <p class="text-center text-gray-600 text-sm mb-6">
+            Recién publicados por nuestro profesores ¡Aún queman!. Estos son los últimos cursos publicados.
+        </p>
 
         <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
 
-            @foreach ($courses as $course)
+            @foreach ($mostRecentCourses as $course)
 
                 <x-course-card :course="$course"></x-course-card>
 
@@ -108,4 +134,25 @@
         </div>
 
     </section>
+
+    <section class="mt-24">
+
+        <h2 class="text-gray-600 text-center text-3xl font-semibold">
+            Cursos mejor valorados
+        </h2>
+        <p class="text-center text-gray-600 text-sm mb-6">No lo decimos nosotros, sino sus alumnos. Estos son los cursos con la mejores opiniones.</p>
+
+
+        <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+
+            @foreach ($bestRatedCourses as $course)
+
+                <x-course-card :course="$course"></x-course-card>
+
+            @endforeach
+
+        </div>
+
+    </section>
+
 </x-app-layout>
