@@ -42,4 +42,13 @@ class CoursePolicy
     {
         return $course->user_id == $user->id;
     }
+
+    /**
+     * Comprueba si el curso ha sido llamado a revisión.
+     * @return bool
+     */
+    public function requested(User $user, Course $course)
+    {
+        return $course->status == 2;
+    }
 }

@@ -1,5 +1,5 @@
 <div>
-    <div class="container py-8 grid grid-cols-5">
+    <div class="container py-8 grid grid-cols-5 gap-2">
 
         @include('teacher.includes.courses.aside')
 

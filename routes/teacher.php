@@ -21,3 +21,6 @@ Route::get('courses/{course}/edit/goals', [CourseController::class, 'goals'])
 
 Route::get('courses/{course}/edit/students', CoursesStudents::class)
     ->name('courses.edit.students');
+
+Route::post('courses/{course}/edit/status', [CourseController::class, 'status'])
+    ->name('courses.edit.status');
