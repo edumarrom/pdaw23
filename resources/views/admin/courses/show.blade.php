@@ -269,11 +269,11 @@
                                 class="w-full mx-1">
                             @csrf
                             @if (  $course->image
-                                || Str::length($course->description) >= 50
-                                || $course->goals->count() && $course->goals->count() >= 3
-                                || $course->requirements->count() && $course->requirements->count() >= 3
-                                || $course->sections->count() >= 3
-                                || $course->lessons->count() >= 8
+                                && Str::length($course->description) >= 200
+                                && $course->goals->count() && $course->goals->count() >= 3
+                                && $course->requirements->count() && $course->requirements->count() >= 3
+                                && $course->sections->count() >= 3
+                                && $course->lessons->count() >= 8
                             )
                                 <x-button color="blue" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
                                     Aprobar

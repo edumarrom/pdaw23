@@ -24,11 +24,11 @@ class CourseController extends Controller
     {
         if (
             $course->image
-            || Str::length($course->description) >= 200
-            || $course->goals->count() && $course->goals->count() >= 3
-            || $course->requirements->count() && $course->requirements->count() >= 3
-            || $course->sections->count() >= 3
-            || $course->lessons->count() >= 8
+            && Str::length($course->description) >= 200
+            && $course->goals->count() && $course->goals->count() >= 3
+            && $course->requirements->count() && $course->requirements->count() >= 3
+            && $course->sections->count() >= 3
+            && $course->lessons->count() >= 8
         ) {
             $course->status = Course::PUBLICADO;
             $course->save();
