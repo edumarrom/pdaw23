@@ -7,6 +7,8 @@ use Livewire\Component;
 class CoursesReviews extends Component
 {
     public $course;
+    public $rating = 5;
+    public $comment = '';
 
     public function render()
     {
