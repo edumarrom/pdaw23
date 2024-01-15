@@ -213,14 +213,14 @@
                     </div>
 
                     <div class="flex justify-between">
-                        <form action="" method="post"
+                        <form action="{{ route('admin.courses.approve', $course) }}" method="post"
                                 class="w-full mx-0.5">
                             @csrf
                             <x-button color="blue" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
                                 Aprobar
                             </x-button>
                         </form>
-                        <form action="" method="post"
+                        <form action="{{ route('admin.courses.reject', $course) }}" method="post"
                                 class="w-full mx-0.5">
                             @csrf
                             <x-button color="rose" class="w-full justify-center rounded-md !text-sm h-12 mt-4">

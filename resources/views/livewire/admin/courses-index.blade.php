@@ -80,13 +80,17 @@
                                     </x-link-button>
                                     @break
                                 @case(3)
-                                    <x-link-button color="rose" class="w-full justify-center">
-                                        <i class="fa-solid fa-eye-slash"></i>
-                                        Suspender
-                                    </x-link-button>
+                                    <form action="{{ route('admin.courses.reject', $course) }}" method="post"
+                                            id="suspend-form-{{ $course->id }}">
+                                        @csrf
+                                        <x-button type="button" color="rose" class="w-full justify-center"
+                                                onclick="suspendCourse({{ $course->id }})">
+                                            <i class="fa-solid fa-eye-slash"></i>
+                                            Suspender
+                                        </x-button>
+                                    </form>
                                     @break
                                 @default
-
                             @endswitch
                         </td>
                     </tr>

@@ -17,4 +17,34 @@ class CourseController extends Controller
     {
         return view('admin.courses.show', compact('course'));
     }
+
+    public function approve(Course $course)
+    {
+        $course->status = Course::PUBLICADO;
+        $course->save();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Curso '$course->title' publicado satisfactoriamente.",
+            'confirmButtonColor' => '#3B82F6',
+        ]);
+
+        return redirect()->route('admin.courses.index');
+    }
+
+    public function reject(Course $course)
+    {
+        $course->status = Course::BORRADOR;
+        $course->save();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => "Curso '$course->title' rechazado satisfactoriamente.",
+            'confirmButtonColor' => '#3B82F6',
+        ]);
+
+        return redirect()->route('admin.courses.index');
+    }
 }
