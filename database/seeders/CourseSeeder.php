@@ -8,7 +8,9 @@ use App\Models\Goal;
 use App\Models\Image;
 use App\Models\Lesson;
 use App\Models\Requirement;
+use App\Models\Review;
 use App\Models\Section;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -45,6 +47,26 @@ class CourseSeeder extends Seeder
             Goal::factory(3)->create([
                 'course_id' => $course->id,
             ]);
+
+            $studentsCount = 0;
+            $randomMax = rand(0, 10);
+            foreach (User::all() as $student) {
+                $course->students()->sync($student->id);
+                $studentsCount++;
+
+                if (rand(0,1)) {
+                    Review::factory(1)->create([
+                        'course_id' => $course->id,
+                        'user_id' => $student->id,
+                    ]);
+                }
+
+                if ($studentsCount >= $randomMax) {
+                    break;
+                }
+            }
+
+
 
             $sections = Section::factory(rand(3, 5))->create([
                 'course_id' => $course->id,
