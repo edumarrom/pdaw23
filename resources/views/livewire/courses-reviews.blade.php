@@ -42,7 +42,7 @@
                             <div class="w-full h-2 mx-4 bg-gray-200 rounded">
                                 <div class="h-2 bg-amber-400 rounded" style="width: {{ $ratingCountPercent }}%"></div>
                             </div>
-                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ $ratingCountPercent }}%</span>
+                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ round($ratingCountPercent) }}%</span>
                         </div>
                     @endforeach
                 </div>
@@ -54,7 +54,7 @@
 
             <div  class="px-4 py-2  ">
 
-                <form wire:submit.prevent='updateLesson'>
+                <form wire:submit.prevent='store'>
                     <div class="mb-2">
                         <span class="text-xl font-semibold mr-2">Valora este curso:</span>
 

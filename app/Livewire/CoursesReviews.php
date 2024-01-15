@@ -14,4 +14,21 @@ class CoursesReviews extends Component
     {
         return view('livewire.courses-reviews');
     }
+
+    public function store()
+    {
+        $this->validate([
+            'comment' => 'required|min:10',
+        ]);
+
+        $this->course->reviews()->create([
+            'rating' => $this->rating,
+            'comment' => $this->comment,
+            'user_id' => auth()->id(),
+        ]);
+
+        $this->reset(['rating', 'comment']);
+
+        $this->course = $this->course->fresh();
+    }
 }
