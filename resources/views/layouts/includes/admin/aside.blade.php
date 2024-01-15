@@ -7,6 +7,12 @@
             'active' => request()->routeIs('admin.dashboard'),
         ],
         [
+            'name' => 'Cursos',
+            'route' => route('admin.courses.index'),
+            'icon' => 'fa-solid fa-book',
+            'active' => request()->routeIs('admin.courses.*'),
+        ],
+        [
             'name' => 'Niveles',
             'route' => route('admin.levels.index'),
             'icon' => 'fa-solid fa-layer-group',
