@@ -73,7 +73,8 @@
                         <td class="px-6 py-4">
                             @switch($course->status)
                                 @case(2)
-                                    <x-link-button color="blue" class="w-full justify-center">
+                                    <x-link-button href="{{ route('admin.courses.show', $course) }}"
+                                            color="blue" class="w-full justify-center">
                                         <i class="fa-solid fa-eye mr-1"></i>
                                         Revisar
                                     </x-link-button>

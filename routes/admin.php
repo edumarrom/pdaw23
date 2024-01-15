@@ -25,3 +25,5 @@ Route::resource('/permissions', PermissionController::class)->names('permissions
 Route::resource('/users', UserController::class)->names('users')->except('show');
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
+
+Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
