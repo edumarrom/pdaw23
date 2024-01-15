@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ApprovedCourse;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class CourseController extends Controller
@@ -32,6 +34,8 @@ class CourseController extends Controller
         ) {
             $course->status = Course::PUBLICADO;
             $course->save();
+
+            Mail::to($course->teacher->email)->send(new ApprovedCourse($course));
 
             session()->flash('swal', [
                 'icon' => 'success',
