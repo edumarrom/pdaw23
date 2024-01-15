@@ -20,31 +20,26 @@
                         <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{ $course->rating }}</p>
                         <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400"> de </p>
                         <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
-                        <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">({{ $course->reviews->count() }} valoraciones)</p>
+                        <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">({{ $reviews->count() }} valoraciones)</p>
                     </div>
 
-                    @php
-                        $ratingCounts = [
-                            ['rate' => '1', 'value' => $course->reviews->where('rating', '=', 1)->count()],
-                            ['rate' => '2', 'value' => $course->reviews->where('rating', '=', 2)->count()],
-                            ['rate' => '3', 'value' => $course->reviews->where('rating', '=', 3)->count()],
-                            ['rate' => '4', 'value' => $course->reviews->where('rating', '=', 4)->count()],
-                            ['rate' => '5', 'value' => $course->reviews->where('rating', '=', 5)->count()],
-                        ]
-                    @endphp
-
-                    @foreach ($ratingCounts as $ratingCount)
-                        @php
-                            $ratingCountPercent = $ratingCount['value'] * 100 / $course->reviews->count();
-                        @endphp
-                        <div class="flex items-center mt-1">
-                            <span class="text-sm font-medium text-indigo-600">{{ $ratingCount['rate'] }}</span>
-                            <div class="w-full h-2 mx-4 bg-gray-200 rounded">
-                                <div class="h-2 bg-amber-400 rounded" style="width: {{ $ratingCountPercent }}%"></div>
+                    <div>
+                        @for ($i = 1; $i <= 5; $i++)
+                            @php
+                                $ratingCount = $reviews->where('rating', '=', $i)->count();
+                                $ratingCountPercent = $ratingCount * 100 / ($reviews->count()? : 1);
+                            @endphp
+                            <div class="flex items-center mt-1">
+                                <span class="text-sm font-medium text-indigo-600">{{ $i }}</span>
+                                <div class="w-full h-2 mx-4 bg-gray-200 rounded">
+                                    <div class="h-2 bg-amber-400 rounded" style="width: {{ $ratingCountPercent }}%"></div>
+                                </div>
+                                <div class="w-0">
+                                    <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ round($ratingCountPercent) }}%</span>
+                                </div>
                             </div>
-                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ round($ratingCountPercent) }}%</span>
-                        </div>
-                    @endforeach
+                        @endfor
+                    </div>
                 </div>
             </div>
 
@@ -52,7 +47,7 @@
 
         @can('enrolled', $course)
 
-            @if($course->reviews->contains('user_id', auth()->id()))
+            @if($reviews->contains('user_id', auth()->id()))
                 <div class="card mb-4">
 
                     <div  class="px-4 py-1  ">
@@ -116,9 +111,7 @@
         @endcan
 
         <div class="card p-0 divide-y-2">
-
-            @foreach ($reviews as $review)
-
+            @forelse ($reviews as $review)
                 <article class="flex p-4">
                     <figure class="mr-4">
                         <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$review->user->profile_photo_url}}" alt="">
@@ -139,7 +132,14 @@
                         </div>
                     </div>
                 </article>
-            @endforeach
+            @empty
+                <div class="flex items-center justify-center p-4">
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-star text-8xl text-gray-200 mb-6"></i>
+                        <h3 class="text-lg font-bold text-gray-500">Este curso aún no ha recibido opiniones</h3>
+                    </div>
+                </div>
+            @endforelse
         </div>
 
         <div class="mt-6">

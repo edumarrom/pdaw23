@@ -51,7 +51,7 @@ class CourseSeeder extends Seeder
             $studentsCount = 0;
             $randomMax = rand(0, 10);
             foreach (User::all() as $student) {
-                $course->students()->sync($student->id);
+                $course->students()->syncWithoutDetaching($student->id);
                 $studentsCount++;
 
                 if (rand(0,1)) {
