@@ -2,6 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\Course;
+use App\Models\Level;
+use App\Models\Price;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -23,12 +28,16 @@ class CourseFactory extends Factory
             'title' => $title,
             'subtitle' => fake()->sentence(),
             'description' => fake()->paragraph(),
-            'status' => fake()->randomElement([1, 2, 3]), // 1 = Borrador,  2 = Revision, 3 = Publicado
+            'status' => fake()->randomElement([
+                Course::BORRADOR,
+                Course::REVISION,
+                Course::PUBLICADO
+            ]),
             'slug' => Str::slug($title),
-            'user_id' => rand(1, 100),
-            'level_id' => rand(1, 3),
-            'category_id' => rand(1, 3),
-            'price_id' => rand(1, 3),
+            'user_id' => User::all()->random()->id,
+            'level_id' => Level::all()->random()->id,
+            'category_id' => Category::all()->random()->id,
+            'price_id' => Price::all()->random()->id,
         ];
     }
 }
