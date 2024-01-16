@@ -51,6 +51,17 @@ class LessonsComments extends Component
         $this->body = $comment->body;
     }
 
+    public function update()
+    {
+        $this->validate();
+
+        $this->comment->save();
+
+        $this->comment = new Comment();
+
+        $this->lesson = $this->lesson->fresh();
+    }
+
     public function cancel()
     {
         $this->comment = new Comment();

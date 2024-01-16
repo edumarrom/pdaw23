@@ -39,7 +39,7 @@
             @if ($comment->id == $item->id)
                 <div class="px-4 py-2">
 
-                    <form wire:submit.prevent='update'>
+                    <form wire:submit.prevent="update">
 
                         <div class="flex">
                             <figure class="flex-shrink-0">
