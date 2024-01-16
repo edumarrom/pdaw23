@@ -62,7 +62,7 @@
                             </x-secondary-button>
 
                             <x-button color="indigo" class="ml-2">
-                                Comentar
+                                Guardar
                             </x-button>
                         </div>
 
@@ -78,7 +78,11 @@
                         <article class="w-full">
                             <div class="ml-4">
                                 <p class="text-gray-700 font-bold">{{ $item->user->name }}</p>
-                                <p class="mb-2 text-xs text-gray-600">{{ $item->created_at ? $item->created_at->diffForHumans() : '' }}</p>
+                                <p class="mb-2 text-xs text-gray-600">{{ $item->created_at ? $item->created_at->diffForHumans() : '' }}
+                                    @if ($item->updated_at != $item->created_at)
+                                    (Editado)
+                                    @endif
+                                </p>
                                 <p class="text-sm text-gray-600">{{ $item->body }}</p>
                             </div>
                         </article>

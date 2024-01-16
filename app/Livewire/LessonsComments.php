@@ -40,7 +40,7 @@ class LessonsComments extends Component
             'user_id' => auth()->id(),
         ]);
 
-        $this->reset('body');
+        $this->reset('create_body');
 
         $this->lesson = $this->lesson->fresh();
     }
