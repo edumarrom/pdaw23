@@ -7,9 +7,9 @@
     <div class="card">
         <div class="px-4 py-2">
 
-            <form wire:submit.prevent='storeLesson'>
+            <form wire:submit.prevent='store'>
 
-                <div class="flex items-center">
+                <div class="flex">
                     <figure class="flex-shrink-0">
                         <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{ auth()->user()->profile_photo_url }}" alt="">
                     </figure>
@@ -18,7 +18,7 @@
                         <x-textarea id="comment"
                                     name="comment"
                                     class="w-full"
-                                    rows="3"
+                                    rows="2"
                                     placeholder="Añade un comentario..."
                                     wire:model.live="comment"></x-textarea>
                         <x-input-error for="comment" class="mt-2" />
@@ -38,9 +38,8 @@
 
         </div>
 
-        <hr class="my-4">
-
         @foreach ($lesson->comments as $comment)
+            <hr class="my-4">
             <article class="flex mb-8">
                 <figure class="flex-shrink-0">
                     <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{ $comment->user->profile_photo_url }}" alt="">
