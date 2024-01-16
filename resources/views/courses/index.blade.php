@@ -11,11 +11,7 @@
                 </p>
 
                 {{-- Search bar --}}
-                <div class="pt-2 relative mx-auto text-gray-600">
-                    <input class=" w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none focus:ring-indigo-500"
-                    type="search" name="search" placeholder="Figma desde cero...">
-                    <x-button class="absolute rounded-r-lg right-0 top-0 h-10 mt-2">Buscar</x-button>
-                </div>
+                @livewire('search')
 
             </div>
         </div>
