@@ -48,6 +48,10 @@
                 </x-link-button>
                 @endif
             </div>
+
+            {{-- Comentarios --}}
+            @livewire('lessons-comments', ['lesson' => $lesson], key($lesson->id))
+
         </div>
 
         {{-- Columna derecha--}}
@@ -87,7 +91,7 @@
                             </span>
                         </div>
                         <ul x-show="open" x-collapse>
-                            @foreach ($section->lessons as $lesson)
+                            @foreach ($section->lessons as $key => $lesson)
                                 <li class="flex"
                                     @if ($lesson->id == $this->lesson->id)
                                         x-init="open = 'true'"
@@ -115,7 +119,7 @@
                                     {{-- <i class="fa-solid fa-play-circle mr-2"></i> --}}
 
                                         {{-- <span class="font-bold text-rose-400">[{{ $lesson->id }}]</span> --}}
-                                        {{ Str::limit($lesson->title, 40) }}
+                                        {{ $key+1 }}. {{ Str::limit($lesson->title, 40) }}
                                     </a>
                                 </li>
 
