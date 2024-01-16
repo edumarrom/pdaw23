@@ -48,6 +48,10 @@
                 </x-link-button>
                 @endif
             </div>
+
+            {{-- Comentarios --}}
+            @livewire('lessons-comments', ['lesson' => $lesson], key($lesson->id))
+
         </div>
 
         {{-- Columna derecha--}}
@@ -55,7 +59,7 @@
             <p class="text-xl font-bold text-center">{{ $course->title }}</p>
 
             <div class="flex items-center mt-2">
-                <figure>
+                <figure class="flex-shrink-0">
                     <img class="h-16 w-16 object-cover rounded-full shadow-lg" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
                 </figure>
                 <div class="ml-2">
@@ -76,6 +80,11 @@
             </div>
 
             <ul class="mt-4">
+
+                @php
+                    $lessonNumber = 1;
+                @endphp
+
                 @foreach ($course->sections as $section)
                     <li class="text-gray-700 mb-4"
                         x-data="{open: false}">
@@ -115,7 +124,8 @@
                                     {{-- <i class="fa-solid fa-play-circle mr-2"></i> --}}
 
                                         {{-- <span class="font-bold text-rose-400">[{{ $lesson->id }}]</span> --}}
-                                        {{ Str::limit($lesson->title, 40) }}
+                                        {{ $lessonNumber }}. {{ Str::limit($lesson->title, 40) }}
+                                        @php $lessonNumber++; @endphp
                                     </a>
                                 </li>
 
