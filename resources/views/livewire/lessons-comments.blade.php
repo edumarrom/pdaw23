@@ -70,7 +70,7 @@
 
                 </div>
             @else
-                <div class="flex mb-8">
+                <div class="flex px-4 py-2 mb-4">
                     <figure class="flex-shrink-0">
                         <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{ $item->user->profile_photo_url }}" alt="">
                     </figure>
@@ -95,7 +95,7 @@
                                         <i class="fa-solid fa-pen mr-1"></i>
                                         Editar
                                     </x-dropdown-link>
-                                    <x-dropdown-link class="cursor-pointer" wire:click="">
+                                    <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $item }})">
                                         <i class="fa-solid fa-trash mr-1"></i>
                                         Eliminar
                                     </x-dropdown-link>

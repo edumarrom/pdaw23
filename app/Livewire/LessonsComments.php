@@ -62,6 +62,13 @@ class LessonsComments extends Component
         $this->lesson = $this->lesson->fresh();
     }
 
+    public function destroy(Comment $comment)
+    {
+        $comment->delete();
+
+        $this->lesson = $this->lesson->fresh();
+    }
+
     public function cancel()
     {
         $this->comment = new Comment();
