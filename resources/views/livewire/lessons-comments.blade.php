@@ -29,7 +29,7 @@
                         Cancelar
                     </x-secondary-button>
 
-                    <x-button color="indigo" class="ml-2" {{-- :disabled="empty($comment)" --}}>
+                    <x-button color="indigo" class="ml-2">
                         Comentar
                     </x-button>
                 </div>
@@ -40,16 +40,25 @@
 
         @foreach ($lesson->comments as $comment)
             <hr class="my-4">
-            <article class="flex mb-8">
+            <div class="flex mb-8">
                 <figure class="flex-shrink-0">
                     <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{ $comment->user->profile_photo_url }}" alt="">
                 </figure>
-                <div class="ml-4">
-                    <p class="text-gray-700 font-bold">{{ $comment->user->name }}</p>
-                    <p class="mb-2 text-xs text-gray-600">{{ $comment->created_at ? $comment->created_at->diffForHumans() : '' }}</p>
-                    <p class="text-sm text-gray-600">{{ $comment->body }}</p>
+                <div class="flex w-full">
+                    <article class="w-full">
+                        <div class="ml-4">
+                            <p class="text-gray-700 font-bold">{{ $comment->user->name }}</p>
+                            <p class="mb-2 text-xs text-gray-600">{{ $comment->created_at ? $comment->created_at->diffForHumans() : '' }}</p>
+                            <p class="text-sm text-gray-600">{{ $comment->body }}</p>
+                        </div>
+                    </article>
+                    @can('author', $comment)
+                        <div>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    @endcan
                 </div>
-            </article>
+            </div>
         @endforeach
 
     </div>
