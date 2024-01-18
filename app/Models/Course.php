@@ -67,6 +67,12 @@ class Course extends Model
         }
     }
 
+    public function getPriceEurAttribute()
+    {
+        $price = $this->price->price;
+        return $price == 0 ? 'Gratis' : number_format($price, 2, ',', '.') . ' €';
+    }
+
     /**
      * Devuelve el profesor que creó el curso
      */

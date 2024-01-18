@@ -153,7 +153,7 @@
                     </div>
 
                     <div class="mb-2 text-4xl font-bold">
-                        {{ number_format($course->price->price, 2, ',', '.') }} €
+                        {{ $course->priceEur }}
                     </div>
 
                     @can('enrolled', $course)

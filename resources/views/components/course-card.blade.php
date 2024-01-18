@@ -49,7 +49,7 @@
         </div>
 
         <div>
-            <span class="text-gray-700 text-lg font-bold">{{ number_format($course->price->price, 2, ',', '.') }} €</span>
+            <span class="text-gray-700 text-lg font-bold">{{ $course->priceEur }}</span>
         </div>
 
         <x-link-button color="teal" class="w-full justify-center mt-2"
