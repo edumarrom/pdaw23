@@ -134,7 +134,7 @@
                                 <!-- Teacher Management -->
                                 @can('teacher-cpanel')
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Teacher Management') }}
+                                        {{ __('Teachers') }}
                                     </div>
 
                                     <x-dropdown-link href="{{ route('teacher.courses.index') }}">
@@ -146,11 +146,11 @@
 
                                 @can('admin-cpanel')
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Admin Management') }}
+                                        {{ __('Administrator') }}
                                     </div>
 
                                     <x-dropdown-link href="{{ route('admin.dashboard') }}">
-                                        {{ __('Dashboard') }}
+                                        {{ __('Admin dashboard') }}
                                     </x-dropdown-link>
 
                                     <div class="border-t border-gray-200"></div>
@@ -170,7 +170,7 @@
                         <div class="ltr:origin-top-right rtl:origin-top-left end-0">
                             <span class="inline-flex rounded-md">
                                 <a href="{{ route('login') }}" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                    {{ __('Log In') }}
+                                    {{ __('Log in') }}
                                 </a>
                             </span>
 
@@ -233,7 +233,7 @@
                     @can('teacher-cpanel')
                         <!-- Teacher Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Teacher Management') }}
+                            {{ __('Teachers') }}
                         </div>
 
                         <x-responsive-nav-link href="{{ route('teacher.courses.index') }}" :active="request()->routeIs('teacher.courses.index')">
@@ -246,7 +246,7 @@
                     @can('admin-cpanel')
                         <!-- Admin Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Admin Management') }}
+                            {{ __('Admin dashboard') }}
                         </div>
 
                         <x-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
