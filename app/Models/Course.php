@@ -53,9 +53,9 @@ class Course extends Model
     public function getRatingAttribute()
     {
         if ($this->reviews_count) {
-            return round($this->reviews->avg('rating'), 1);
+            return round($this->reviews->avg('rating'));
         } else {
-            return 5;
+            return 0;
         }
     }
 

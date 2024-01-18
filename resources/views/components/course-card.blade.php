@@ -34,18 +34,21 @@
 
         <div class="flex items-center mb-2 cursor-default">
 
-            <span class="font-semibold text-gray-500 mr-1">{{ $course->rating }}</span>
-
-            <div class="flex text-sm">
-                @for ($i = 1; $i <= 5; $i++)
-                    @if ($course->rating >= $i)
-                        <i class="fa-solid fa-star text-amber-400"></i>
-                    @else
-                        <i class="fa-solid fa-star text-gray-500"></i>
-                    @endif
-                @endfor
-            </div>
-            <span class="text-sm text-gray-500 ml-2">({{ $course->reviews_count }})</span>
+            @if ($course->reviews_count > 0)
+                <span class="font-semibold text-gray-500 mr-1">{{ $course->rating }}</span>
+                <div class="flex text-sm">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($course->rating >= $i)
+                            <i class="fa-solid fa-star text-amber-400"></i>
+                        @else
+                            <i class="fa-solid fa-star text-gray-500"></i>
+                        @endif
+                    @endfor
+                </div>
+                <span class="text-sm text-gray-500 ml-2">({{ $course->reviews_count }})</span>
+            @else
+                <span class="text-sm text-gray-500 ml-2">Sin valoraciones</span>
+            @endif
         </div>
 
         <div>

@@ -22,15 +22,13 @@
                         {{$course->students_count}}
                     </li>
                     <li>
-                        <span class="text-2xl mx-1 font-semibold">{{$course->rating}}</span>
-                        @for ($i = 1; $i <= 5; $i++)
-                            @if ($course->rating >= $i)
-                                <i class="fa-solid fa-star"></i>
-                            @else
-                                <i class="fa-solid fa-star text-gray-500"></i>
-                            @endif
-                        @endfor
-                        <span class="ml-2">({{ $course->reviews_count }} valoraciones)</span>
+                        @if ($course->reviews_count > 0)
+                            <i class="fa-solid fa-star text-xl mr-2"></i>
+                            {{$course->rating}} {{ $course->rating == 1 ? 'estrella' : 'estrellas' }}
+                            ({{ $course->reviews_count }} {{ $course->reviews_count == 1 ? 'valoración' : 'valoraciones' }})
+                        @else
+                            <span>Sin valoraciones</span>
+                        @endif
                     </li>
                 </ul>
             </div>
