@@ -22,6 +22,7 @@
                         {{$course->students_count}}
                     </li>
                     <li>
+                        <span class="text-2xl mx-1 font-semibold">{{$course->rating}}</span>
                         @for ($i = 1; $i <= 5; $i++)
                             @if ($course->rating >= $i)
                                 <i class="fa-solid fa-star"></i>
@@ -29,7 +30,7 @@
                                 <i class="fa-solid fa-star text-gray-500"></i>
                             @endif
                         @endfor
-                        ({{$course->rating}})
+                        <span class="ml-2">({{ $course->reviews_count }} valoraciones)</span>
                     </li>
                 </ul>
             </div>
@@ -136,19 +137,23 @@
         <div class="order-1 lg:order-2 lg:relative lg:bottom-24">
             <section class="card shadow-lg space-y-4">
                 <div>
-                    <div class="flex">
-                        <img class="h-16 w-16 object-cover rounded-full shadow-lg" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
+                    <div class="flex items-center mb-4">
+                        <img class="h-16 w-16 object-cover object-center flex-shrink-0 rounded-full shadow-lg" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
 
                         <div class="ml-2">
                             <p>Realizado por</p>
                             <h3 class="text-xl font-bold">
                                 {{ $course->teacher->name }}
                             </h3>
-                            <a class="text-sm text-teal-500 hover:text-teal-700"
+                            {{-- <a class="text-sm text-teal-500 hover:text-teal-700"
                                     href="">
                                 {{'@' . Str::slug($course->teacher->name, '')}}
-                            </a>
+                            </a> --}}
                         </div>
+                    </div>
+
+                    <div class="mb-2 text-4xl font-bold">
+                        {{ number_format($course->price->price, 2, ',', '.') }} €
                     </div>
 
                     @can('enrolled', $course)
@@ -157,12 +162,22 @@
                             Continuar con el curso
                         </x-link-button>
                     @else
-                        <form action="{{ route('courses.enroll', $course) }}" method="post">
-                            @csrf
-                            <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
-                                Inscríbete ahora
-                            </x-button>
-                        </form>
+                        @if ($course->price->price == 0)
+                            <form action="{{ route('courses.enroll', $course) }}" method="post">
+                                @csrf
+                                <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
+                                    Inscríbete ahora
+                                </x-button>
+                            </form>
+                        @else
+                            <form action="{{ route('courses.enroll', $course) }}" method="post">
+                                @csrf
+                                <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
+                                    Comprar ahora
+                                </x-button>
+                            </form>
+                        @endif
+
                     @endcan
 
                 </div>
