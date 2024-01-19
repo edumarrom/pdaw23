@@ -168,7 +168,7 @@
                                 </x-button>
                             </form>
                         @else
-                            <form action="{{ route('courses.enroll', $course) }}" method="post">
+                            <form action="{{ route('payment.checkout', $course) }}" method="get">
                                 @csrf
                                 <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
                                     Comprar ahora
