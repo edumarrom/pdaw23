@@ -158,6 +158,51 @@
                     <i class="fa fa-solid fa-comment-dots mr-2"></i>
                     Opiniones
                 </h3>
+
+                @if ($course->reviews_count > 0)
+                    <div class="mb-2">
+
+                        <div class="px-4 py-2">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($course->rating >= $i)
+                                            <i class="fa fa-solid fa-star text-amber-400"></i>
+                                        @else
+                                            <i class="fa fa-solid fa-star text-gray-400"></i>
+                                        @endif
+                                    @endfor
+                                    <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{ $course->rating }}</p>
+                                    <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400"> de </p>
+                                    <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
+                                    <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+                                        ({{ $course->reviews_count }} {{ $course->reviews_count == 1 ? 'valoración' : 'valoraciones' }})
+                                    </p>
+                                </div>
+
+                                <div>
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @php
+                                            $ratingCount = $course->reviews->where('rating', '=', $i)->count();
+                                            $ratingCountPercent = $ratingCount * 100 / ($course->reviews->count()? : 1);
+                                        @endphp
+                                        <div class="flex items-center mt-1">
+                                            <span class="text-sm font-medium text-indigo-600">{{ $i }}</span>
+                                            <div class="w-full h-2 mx-4 bg-gray-200 rounded">
+                                                <div class="h-2 bg-amber-400 rounded" style="width: {{ $ratingCountPercent }}%"></div>
+                                            </div>
+                                            <div class="w-0">
+                                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ round($ratingCountPercent) }}%</span>
+                                            </div>
+                                        </div>
+                                    @endfor
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                @endif
+
                 <div class="card p-0 divide-y-2">
                     @forelse ($course->reviews as $review)
 
@@ -197,19 +242,19 @@
         <div class="order-1 lg:order-2 lg:relative lg:bottom-24">
             <section class="card shadow-lg space-y-4">
                 <div>
-                    <div class="flex">
-                        <img class="h-16 w-16 object-cover rounded-full shadow-lg" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
+                    <div class="flex items-center mb-4">
+                        <img class="h-16 w-16 object-cover object-center flex-shrink-0 rounded-full shadow-lg" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
 
                         <div class="ml-2">
                             <p>Realizado por</p>
                             <h3 class="text-xl font-bold">
                                 {{ $course->teacher->name }}
                             </h3>
-                            <a class="text-sm text-teal-500 hover:text-teal-700"
-                                    href="">
-                                {{'@' . Str::slug($course->teacher->name, '')}}
-                            </a>
                         </div>
+                    </div>
+
+                    <div class="mb-2 text-4xl font-bold">
+                        {{ $course->priceEur }}
                     </div>
 
                     <div class="mt-6 mb-2">
@@ -279,7 +324,7 @@
                                     Aprobar
                                 </x-button>
                             @else
-                                <x-button type="button" color="disabled" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
+                                <x-button type="button" disabled class="w-full justify-center rounded-md !text-sm h-12 mt-4">
                                     Aprobar
                                 </x-button>
                             @endif
