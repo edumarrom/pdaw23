@@ -168,12 +168,10 @@
                                 </x-button>
                             </form>
                         @else
-                            <form action="{{ route('payment.checkout', $course) }}" method="get">
-                                @csrf
-                                <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
-                                    Comprar ahora
-                                </x-button>
-                            </form>
+                            <x-link-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4"
+                                    href="{{ route('payment.checkout', $course) }}">
+                                Comprar ahora
+                            </x-link-button>
                         @endif
 
                     @endcan

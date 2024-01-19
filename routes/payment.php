@@ -11,3 +11,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/checkout/{course}', [PaymentController::class, 'checkout'])->name('checkout');
+
+Route::post('/checkout/{course}/purchase', [PaymentController::class, 'purchase'])->name('purchase');
