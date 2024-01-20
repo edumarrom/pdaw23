@@ -72,12 +72,12 @@
                     </div>
 
                     <div>
-                        <form action="{{ route('payment.purchase', $course) }}" method="post">
+                        <form action="{{ route('payment.handle', $course) }}" method="post">
                             @csrf
 
                            <div class="mb-2 text-sm">
                                 <x-checkbox id="acceptance" name="acceptance" required/>
-                                He leído y acepto los <a href="" class="text-teal-500 hover:text-teal-700">términos y condiciones</a>
+                                He leído y acepto los <span class="text-teal-500 hover:text-teal-700">términos y condiciones</span>
                                 <x-input-error for="acceptance" class="mt-2"></x-input-error>
                            </div>
 
