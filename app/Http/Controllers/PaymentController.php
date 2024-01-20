@@ -45,35 +45,35 @@ class PaymentController extends Controller
                     return redirect()->away($links['href']);
                 }
             }
-            /* return redirect()
-                ->route('payment.cancel.payment', $course)
-                ->with('error', 'Something went wrong.'); */
-            return "Algo salio mal al cancelar el pago";
+            // No se obtubo el link de aprobación
+            return redirect()->route('payment.cancel', $course, 'wrong');
         } else {
-            /* return redirect()
-                ->route('payment.create.payment')
-                ->with('error', $response['message'] ?? 'Something went wrong.'); */
-                return "Algo salio mal al crear el pago";
+            // No se obtubo la orden de compra
+            return redirect()->route('payment.cancel', $course, 'wrong');
         }
-
-        /* $course->students()->sync(auth()->user()->id);
-
-        session()->flash('swal', [
-            'icon' => 'success',
-            'title' => '¡Enhorabuena!',
-            'text' => "Tu compra del curso '$course->title' se ha realizado con éxito.",
-            'confirmButtonColor' => '#3B82F6',
-        ]);
-
-        return redirect()->route('courses.show', $course); */
     }
 
-    public function paymentCancel(Course $course)
+    public function paymentCancel(Course $course, $type = '')
     {
-        /* return redirect()
-            ->route('payment.create.payment')
-            ->with('error', $response['message'] ?? 'You have canceled the transaction.'); */
-        return "Has cancelado la compra";
+        if ($type == 'wrong') {
+            session()->flash('swal', [
+                'icon' => 'error',
+                'title' => 'Lo sentimos',
+                'text' => "Algo salió mal con tu compra del curso '$course->title'. Por favor, inténtalo de nuevo.",
+                'confirmButtonColor' => '#14b8a6',
+            ]);
+
+            return redirect()->route('payment.checkout', $course);
+        } else {
+            session()->flash('swal', [
+                'icon' => 'info',
+                'title' => 'Cancelada',
+                'text' => "Has cancelado la compra del curso '$course->title'.",
+                'confirmButtonColor' => '#14b8a6',
+            ]);
+
+            return redirect()->route('courses.show', $course);
+        }
     }
 
     public function paymentSuccess(Request $request, Course $course)
@@ -83,15 +83,19 @@ class PaymentController extends Controller
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            /* return redirect()
-                ->route('payment.create.payment')
-                ->with('success', 'Transaction complete.'); */
-            return $course;
+            $course->students()->sync(auth()->user()->id);
+
+            session()->flash('swal', [
+                'icon' => 'success',
+                'title' => '¡Enhorabuena!',
+                'text' => "Tu compra del curso '$course->title' se ha realizado con éxito.",
+                'confirmButtonText' => '<a href="' . route('courses.learn', $course) . '">Ir al curso</a>',
+                'confirmButtonColor' => '#14b8a6',
+            ]);
+
+            return redirect()->route('courses.show', $course);
         } else {
-            /* return redirect()
-                ->route('payment.create.payment')
-                ->with('error', $response['message'] ?? 'Something went wrong.'); */
-            return "Algo salio mal al confirmar el pago";
+            return redirect()->route('payment.cancel', $course, 'wrong');
         }
     }
 }
