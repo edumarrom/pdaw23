@@ -29,7 +29,7 @@ Route::get('/courses/category/{categoryId}', function (Request $request) {
                     'title' => $course->title,
                     'slug' => $course->slug,
                     'teacher' => $course->teacher->name,
-                    'price' => $course->price->price,
+                    'price' => $course->priceEur,
                     'image' => $course->image ? $course->imagePath : null,
                     'rating' => $course->rating,
                     'students' => $course->students_count,
