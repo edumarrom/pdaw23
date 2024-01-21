@@ -132,7 +132,7 @@
         </div>
 
         {{-- Columna derecha --}}
-        <div class="order-1 lg:order-2 lg:relative lg:bottom-24">
+        <div id="course-info" class="order-1 lg:order-2 lg:relative lg:bottom-24">
             <section class="card shadow-lg space-y-4">
                 <div>
                     <div class="flex items-center mb-4">
@@ -179,6 +179,49 @@
                 </div>
             </section>
         </div>
-
     </div>
+
+    @push('scripts')
+
+        {{-- Cursos relacionados --}}
+        <script>
+            const courseInfo = document.getElementById('course-info');
+
+            const relatedCoursesTitle = document.createElement('h3');
+            relatedCoursesTitle.classList.add('text-2xl', 'text-gray-800', 'font-bold', 'mt-6', 'mb-2');
+            relatedCoursesTitle.textContent = 'Cursos relacionados';
+
+            const relatedCoursesContainer = document.createElement('div');
+            relatedCoursesContainer.classList.add('card', 'shadow-lg', 'space-y-4');
+
+            courseInfo.appendChild(relatedCoursesTitle);
+            courseInfo.appendChild(relatedCoursesContainer);
+
+            async function getRelatedCourses() {
+                const url = '{{ config('app.url') }}' + '/api/courses/category/' + '{{ $course->category->id}}';
+                console.log(url);
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                    throw new Error('Se produjo un error al recuperar los datos');
+                    }
+
+                    const data = await response.json();
+                    data.forEach(course => {
+                        console.log(course);
+                    });
+
+                    return data;
+                } catch (error) {
+                    console.error('El error devuelto es:', error);
+                    throw error;
+                }
+            }
+
+            getRelatedCourses();
+
+        </script>
+
+    @endpush
+
 </x-app-layout>

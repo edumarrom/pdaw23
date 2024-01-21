@@ -45,5 +45,6 @@ Route::get('/courses/category/{categoryId}', function (Request $request) {
                     'updated_at' => $course->updated_at,
                 ];
             })
+            ->values()
     );
 });
