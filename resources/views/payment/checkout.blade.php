@@ -78,10 +78,9 @@
                            <div id="acceptance-container" class="mb-2 text-sm">
                                 <x-checkbox id="acceptance"
                                             name="acceptance"
-                                            class="mr-1 !text-teal-600 focus:!ring-teal-500" />
+                                            class="mr-1 !text-teal-600 focus:!ring-teal-500" required/>
                                 He leído y acepto los <span class="text-teal-500 hover:text-teal-700">términos y condiciones</span>
                                 <x-input-error for="acceptance" class="mt-2"></x-input-error>
-                                {{-- Aqui va el error --}}
                            </div>
 
                             <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
