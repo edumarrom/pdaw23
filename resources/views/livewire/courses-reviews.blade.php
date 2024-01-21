@@ -5,45 +5,49 @@
             Opiniones
         </h3>
 
-        <div class="mb-2">
+        @if ($course->reviews_count > 0)
+            <div class="mb-2">
 
-            <div class="px-4 py-2">
-                <div>
-                    <div class="flex items-center mb-2">
-                        @for ($i = 1; $i <= 5; $i++)
-                            @if ($course->rating >= $i)
-                                <i class="fa fa-solid fa-star text-amber-400"></i>
-                            @else
-                                <i class="fa fa-solid fa-star text-gray-400"></i>
-                            @endif
-                        @endfor
-                        <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{ $course->rating }}</p>
-                        <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400"> de </p>
-                        <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
-                        <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">({{ $reviews->count() }} valoraciones)</p>
-                    </div>
-
+                <div class="px-4 py-2">
                     <div>
-                        @for ($i = 1; $i <= 5; $i++)
-                            @php
-                                $ratingCount = $reviews->where('rating', '=', $i)->count();
-                                $ratingCountPercent = $ratingCount * 100 / ($reviews->count()? : 1);
-                            @endphp
-                            <div class="flex items-center mt-1">
-                                <span class="text-sm font-medium text-indigo-600">{{ $i }}</span>
-                                <div class="w-full h-2 mx-4 bg-gray-200 rounded">
-                                    <div class="h-2 bg-amber-400 rounded" style="width: {{ $ratingCountPercent }}%"></div>
+                        <div class="flex items-center mb-2">
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($course->rating >= $i)
+                                    <i class="fa fa-solid fa-star text-amber-400"></i>
+                                @else
+                                    <i class="fa fa-solid fa-star text-gray-400"></i>
+                                @endif
+                            @endfor
+                            <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{ $course->rating }}</p>
+                            <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400"> de </p>
+                            <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
+                            <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+                                ({{ $course->reviews_count }} {{ $course->reviews_count == 1 ? 'valoración' : 'valoraciones' }})
+                            </p>
+                        </div>
+
+                        <div>
+                            @for ($i = 1; $i <= 5; $i++)
+                                @php
+                                    $ratingCount = $reviews->where('rating', '=', $i)->count();
+                                    $ratingCountPercent = $ratingCount * 100 / ($reviews->count()? : 1);
+                                @endphp
+                                <div class="flex items-center mt-1">
+                                    <span class="text-sm font-medium text-indigo-600">{{ $i }}</span>
+                                    <div class="w-full h-2 mx-4 bg-gray-200 rounded">
+                                        <div class="h-2 bg-amber-400 rounded" style="width: {{ $ratingCountPercent }}%"></div>
+                                    </div>
+                                    <div class="w-0">
+                                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ round($ratingCountPercent) }}%</span>
+                                    </div>
                                 </div>
-                                <div class="w-0">
-                                    <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ round($ratingCountPercent) }}%</span>
-                                </div>
-                            </div>
-                        @endfor
+                            @endfor
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
+        @endif
 
         @can('enrolled', $course)
 
@@ -66,21 +70,15 @@
                                 {{-- Hacer un checkbox que su label sea un icono de estrella de fontawesome  --}}
                                 <div class="inline-block">
                                     <ul class="flex text-xl">
-                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 1)">
-                                            <i class="fa fa-solid fa-star @if ($rating >= 1) text-amber-400 @else text-gray-400 @endif"></i>
-                                        </li>
-                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 2)">
-                                            <i class="fa fa-solid fa-star @if ($rating >= 2) text-amber-400 @else text-gray-400 @endif"></i>
-                                        </li>
-                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 3)">
-                                            <i class="fa fa-solid fa-star @if ($rating >= 3) text-amber-400 @else text-gray-400 @endif"></i>
-                                        </li>
-                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 4)">
-                                            <i class="fa fa-solid fa-star @if ($rating >= 4) text-amber-400 @else text-gray-400 @endif"></i>
-                                        </li>
-                                        <li class="mr-1 cursor-pointer" wire:click="$set('rating', 5)">
-                                            <i class="fa fa-solid fa-star @if ($rating == 5) text-amber-400 @else text-gray-400 @endif"></i>
-                                        </li>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <li class="mr-1 cursor-pointer" wire:click="$set('rating', {{ $i }})">
+                                                @if ($rating >= $i)
+                                                    <i class="fa fa-solid fa-star text-amber-400"></i>
+                                                @else
+                                                    <i class="fa fa-solid fa-star text-gray-400"></i>
+                                                @endif
+                                            </li>
+                                        @endfor
                                     </ul>
                                 </div>
                             </div>

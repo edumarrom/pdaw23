@@ -53,9 +53,9 @@ class Course extends Model
     public function getRatingAttribute()
     {
         if ($this->reviews_count) {
-            return round($this->reviews->avg('rating'), 1);
+            return round($this->reviews->avg('rating'));
         } else {
-            return 5;
+            return 0;
         }
     }
 
@@ -65,6 +65,12 @@ class Course extends Model
         } else {
             return Storage::url('blank-image.png');
         }
+    }
+
+    public function getPriceEurAttribute()
+    {
+        $price = $this->price->price;
+        return $price == 0 ? 'Gratis' : number_format($price, 2, ',', '.') . ' €';
     }
 
     /**
