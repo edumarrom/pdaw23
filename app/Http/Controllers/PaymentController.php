@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CoursePurchased;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PaymentController extends Controller
@@ -83,19 +85,26 @@ class PaymentController extends Controller
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            $course->students()->sync(auth()->user()->id);
-
-            session()->flash('swal', [
-                'icon' => 'success',
-                'title' => '¡Enhorabuena!',
-                'text' => "Tu compra del curso '$course->title' se ha realizado con éxito.",
-                'confirmButtonText' => '<a href="' . route('courses.learn', $course) . '">Ir al curso</a>',
-                'confirmButtonColor' => '#14b8a6',
-            ]);
-
-            return redirect()->route('courses.show', $course);
+            return $this->purchase($course);
         } else {
             return redirect()->route('payment.cancel', $course, 'wrong');
         }
+    }
+
+    private function purchase(Course $course)
+    {
+        $course->students()->sync(auth()->user()->id);
+
+        Mail::to(auth()->user()->email)->send(new CoursePurchased($course));
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Enhorabuena!',
+            'text' => "Tu compra del curso '$course->title' se ha realizado con éxito.",
+            'confirmButtonText' => '<a href="' . route('courses.learn', $course) . '">Ir al curso</a>',
+            'confirmButtonColor' => '#14b8a6',
+        ]);
+
+        return redirect()->route('courses.show', $course);
     }
 }

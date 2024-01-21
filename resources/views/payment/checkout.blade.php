@@ -82,8 +82,31 @@
                            </div>
 
                             <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">
-                                Confirmar compra
+                                Proceder con el pago
                             </x-button>
+
+                            <div id="paypal-info">
+                                <table border="0" cellpadding="10" cellspacing="0" align="center">
+                                    <tr>
+                                    <td align="center"></td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center">
+                                        <a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="Cómo funciona PayPal" target="_blank" rel="nofollow"
+                                        {{-- @requirement: DWECL - Gestión de ventanas --}}
+                                        onclick="javascript:window.open('https://www.paypal.com/co/webapps/mpp/what-is-paypal','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">
+                                        <img
+                                            src="https://www.paypalobjects.com/webstatic/mktg/logo-center/logotipo_paypal_pagos_seguros.png" border="0"
+                                            alt="Seguro con PayPal">
+                                        </a>
+                                        <div style="text-align:center">
+                                        <a href="https://www.paypal.com/co/webapps/mpp/what-is-paypal" target="_blank" rel="nofollow">
+                                            <font size="2" face="Arial" color="#0079CD"><b>Cómo funciona PayPal</b></font>
+                                        </a></div>
+                                    </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </form>
                     </div>
 
