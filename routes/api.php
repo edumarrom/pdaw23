@@ -17,3 +17,33 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/courses/category/{categoryId}', function (Request $request) {
+    return response()->json(
+        App\Models\Course::all()
+            ->where('status', '3')
+            ->where('category_id', $request->categoryId)
+            ->sortByDesc('updated_at')
+            ->map(function ($course) {
+                return [
+                    'title' => $course->title,
+                    'slug' => $course->slug,
+                    'teacher' => $course->teacher->name,
+                    'price' => $course->price->price,
+                    'image' => $course->image ? $course->imagePath : null,
+                    'rating' => $course->rating,
+                    'students' => $course->students_count,
+                    'level' => [
+                        'id' => $course->level->id,
+                        'name' => $course->level->name,
+                    ],
+                    'category' => [
+                        'id' => $course->category->id,
+                        'name' => $course->category->name,
+                    ],
+                    'created_at' => $course->created_at,
+                    'updated_at' => $course->updated_at,
+                ];
+            })
+    );
+});
