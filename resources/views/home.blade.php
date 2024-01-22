@@ -94,14 +94,25 @@
 
     <section class="mt-24 bg-blue-950 py-12">
         @auth
-            <h2 class="text-center text-white text-3xl">Aquí tienes una selección de nuestros cursos</h2>
-            <p class="text-center text-white">Y si ninguno te convence pásate por la página de cursos y encuentra tu curso ideal.</p>
+            @if (Cookie::get('last_course_studied'))
+                <h2 class="text-center text-white text-3xl">¿Quieres continuar con tu curso?</h2>
+                <p class="text-center text-white">Continúa con tu curso justo donde lo dejaste.</p>
 
-            <div class="flex justify-center mt-4">
-                <x-link-button href="{{ route('courses.index') }}" color="teal" class="py-4 px-6">
-                    {{ __('Ver todos los cursos') }}
-                </x-link-button>
-            </div>
+                <div class="flex justify-center mt-4">
+                    <x-link-button href="{{ route('courses.learn', Cookie::get('last_course_studied')) }}" color="teal" class="py-4 px-6">
+                        {{ __('Ir al curso') }}
+                    </x-link-button>
+                </div>
+            @else
+                <h2 class="text-center text-white text-3xl">Aquí tienes una selección de nuestros cursos</h2>
+                <p class="text-center text-white">Y si ninguno te convence pásate por la página de cursos y encuentra tu curso ideal.</p>
+
+                <div class="flex justify-center mt-4">
+                    <x-link-button href="{{ route('courses.index') }}" color="teal" class="py-4 px-6">
+                        {{ __('Ver todos los cursos') }}
+                    </x-link-button>
+                </div>
+            @endif
         @else
             <h2 class="text-center text-white text-3xl">¿Deseando aprender algo nuevo?</h2>
             <p class="text-center text-white">Crea una cuenta y comienza a formarte.</p>
