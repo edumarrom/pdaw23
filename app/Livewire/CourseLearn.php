@@ -47,7 +47,7 @@ class CourseLearn extends Component
 
     public function render()
     {
-        Cookie::queue('last_course_studied', $this->course->slug, 60 * 24 * 30);
+        Cookie::queue('last_course_studied', $this->course->id, 60 * 24 * 30);
 
         return view('livewire.course-learn');
     }

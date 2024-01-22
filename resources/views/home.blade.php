@@ -94,15 +94,67 @@
 
     <section class="mt-24 bg-blue-950 py-12">
         @auth
-            @if (Cookie::get('last_course_studied'))
-                <h2 class="text-center text-white text-3xl">¿Quieres continuar con tu curso?</h2>
-                <p class="text-center text-white">Continúa con tu curso justo donde lo dejaste.</p>
+            @if ($lastCourseStudied)
+            <div class="container">
+                <h2 class="text-center text-white text-3xl mb-8">Continúa donde lo dejaste</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-                <div class="flex justify-center mt-4">
-                    <x-link-button href="{{ route('courses.learn', Cookie::get('last_course_studied')) }}" color="teal" class="py-4 px-6">
-                        {{ __('Ir al curso') }}
-                    </x-link-button>
+                    {{-- Columna izquierda --}}
+                    <div class="lg:col-span-2">
+                        <section>
+                            <div class="px-4 py-2">
+                                <div class="flex flex-col md:flex-row">
+                                    <img class="w-auto h-36 aspect-[16/9] rounded object-cover object-center" src="{{ $lastCourseStudied->imagePath }}" alt="">
+
+                                    <div class="flex flex-col flex-1 mx-2 text-white">
+                                        <p class="text-lg font-semibold ">
+                                            {{$lastCourseStudied->title}}
+                                        </p>
+                                        <p>Por {{ $lastCourseStudied->teacher->name }}</p>
+
+                                        <div class="cursor-default">
+                                            <ul class="flex text-xs mb-2">
+                                                <li class=" mr-2">
+                                                    <i class="fa-solid fa-layer-group"></i>
+                                                    {{$lastCourseStudied->category->name}}
+                                                </li>
+
+                                                <li class=" mr-2">
+                                                    <i class="fa-solid fa-cubes"></i>
+                                                    {{$lastCourseStudied->level->name}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="text-lg">
+                                            Siguiente lección: <span class="text-base font-semibold">{{ $nextLesson->title }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    {{-- Columna derecha --}}
+                    <div class="my-auto">
+                        <div class="flex justify-center">
+                            <x-link-button href="{{ route('courses.learn', $lastCourseStudied) }}" color="teal" class="py-4 px-6">
+                                {{ __('Continuar con el curso') }}
+                            </x-link-button>
+                        </div>
+                    </div>
+                    {{-- <div class="flex flex-col lg:flex-row">
+                        <figure>
+                            <img class="w-auto h-36 aspect-[16/9] rounded object-cover object-center" src="{{ $lastCourseStudied->imagePath }}" alt="">
+                        </figure>
+                        <div>
+                            <h2 class="text-white text-xl">{{ $lastCourseStudied->title }}</h2>
+                            <p class="text-center text-white">{{ $nextLesson->title }}</p>
+                        </div>
+                    </div> --}}
+
+
                 </div>
+            </div>
             @else
                 <h2 class="text-center text-white text-3xl">Aquí tienes una selección de nuestros cursos</h2>
                 <p class="text-center text-white">Y si ninguno te convence pásate por la página de cursos y encuentra tu curso ideal.</p>
