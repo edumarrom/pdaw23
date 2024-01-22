@@ -188,15 +188,30 @@
             const colLeft = document.querySelector('#col-left');
             const colRight = document.querySelector('#col-right');
 
+            const relatedCourses = document.createElement('section');
+
             const relatedCoursesTitle = document.createElement('h3');
             relatedCoursesTitle.classList.add('text-xl', 'text-gray-900', 'font-medium', 'mt-8', 'mb-2');
             relatedCoursesTitle.innerHTML = '<i class="fa-solid fa-layer-group mr-2"></i>Más cursos de <span class="font-bold">{{ $course->category->name }}</span>';
 
-            const relatedCoursesContainer = document.createElement('div');
-            relatedCoursesContainer.classList.add('card', 'shadow-lg', 'space-y-4');
+            const relatedCoursesCard = document.createElement('div');
+            relatedCoursesCard.classList.add('card', 'shadow-lg', 'space-y-4');
 
-            colRight.appendChild(relatedCoursesTitle);
-            colRight.appendChild(relatedCoursesContainer);
+            relatedCourses.appendChild(relatedCoursesTitle);
+            relatedCourses.appendChild(relatedCoursesCard);
+
+            let numCourses = 4;
+            if (window.innerWidth < 1024) {
+                colLeft.appendChild(relatedCourses);
+                if (window.innerWidth > 768) {
+                    relatedCoursesCard.classList.add('grid', 'grid-cols-2', 'gap-4', 'space-y-0');
+                    numCourses = 6;
+                }
+            } else {
+                colRight.appendChild(relatedCourses);
+            }
+
+            getRelatedCourses(numCourses);
 
             async function getRelatedCourses(limit = 5) {
                 const url = '{{ config('app.url') }}' + '/api/courses';
@@ -287,11 +302,9 @@
                 courseLink.href = '{{ config('app.url') }}' + '/courses/' + course.slug;
                 courseLink.appendChild(courseCard);
 
-                relatedCoursesContainer.appendChild(courseLink);
+                relatedCoursesCard.appendChild(courseLink);
 
             }
-
-            getRelatedCourses();
 
         </script>
 
