@@ -188,6 +188,7 @@
             const colRight = document.querySelector('#col-right');
 
             const relatedCourses = document.createElement('section');
+            relatedCourses.classList.add('hidden');
 
             const relatedCoursesTitle = document.createElement('h3');
             relatedCoursesTitle.classList.add('text-xl', 'text-gray-900', 'font-medium', 'mt-8', 'mb-2');
@@ -203,11 +204,18 @@
             getRelatedCourses(numCourses);
             renderRelatedCourses();
 
+            setTimeout(() => {
+                relatedCourses.classList.remove('hidden');
+            }, 500);
+
             window.addEventListener('resize', renderRelatedCourses);
 
-            async function getRelatedCourses(limit = 5) {
+            /*
+             * @requirement: DWECL - #15 DOM
+             * @requirement: DWECL - #19 Utilización de AJAX
+             */
+            async function getRelatedCourses(limit = 4) {
                 const url = '{{ config('app.url') }}' + '/api/courses';
-                // console.log(url);
                 let count = 0;
 
                 try {
@@ -218,7 +226,6 @@
 
                     const data = await response.json();
                     data.forEach(course => {
-                        // console.log(course);
                         if (count < limit
                                 && course.id != {{ $course->id }}
                                 && course.category.id == {{ $course->category->id }}) {
@@ -298,7 +305,7 @@
 
             }
 
-            function renderRelatedCourses(courses) {
+            function renderRelatedCourses() {
                 if (window.innerWidth < 1024) {
                     if (window.innerWidth < 640) {
                         relatedCoursesCard.classList.remove('grid', 'grid-cols-2', 'gap-4');
