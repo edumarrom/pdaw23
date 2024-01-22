@@ -182,7 +182,6 @@
     </div>
 
     @push('scripts')
-
         {{-- Cursos relacionados --}}
         <script>
             const colLeft = document.querySelector('#col-left');
@@ -195,23 +194,16 @@
             relatedCoursesTitle.innerHTML = '<i class="fa-solid fa-layer-group mr-2"></i>Más cursos de <span class="font-bold">{{ $course->category->name }}</span>';
 
             const relatedCoursesCard = document.createElement('div');
-            relatedCoursesCard.classList.add('card', 'shadow-lg', 'space-y-4');
+            relatedCoursesCard.classList.add('card', 'shadow-lg');
 
             relatedCourses.appendChild(relatedCoursesTitle);
             relatedCourses.appendChild(relatedCoursesCard);
 
-            let numCourses = 4;
-            if (window.innerWidth < 1024) {
-                colLeft.appendChild(relatedCourses);
-                if (window.innerWidth > 768) {
-                    relatedCoursesCard.classList.add('grid', 'grid-cols-2', 'gap-4', 'space-y-0');
-                    numCourses = 6;
-                }
-            } else {
-                colRight.appendChild(relatedCourses);
-            }
-
+            numCourses = 4;
             getRelatedCourses(numCourses);
+            renderRelatedCourses();
+
+            window.addEventListener('resize', renderRelatedCourses);
 
             async function getRelatedCourses(limit = 5) {
                 const url = '{{ config('app.url') }}' + '/api/courses';
@@ -244,7 +236,7 @@
 
             function renderCourse(course) {
                 const courseCard = document.createElement('article');
-                courseCard.classList.add('px-4', 'py-2');
+                courseCard.classList.add('mb-2', 'px-4', 'py-2');
 
                 const courseImage = document.createElement('img');
                 courseImage.classList.add('h-auto', 'w-full', 'object-cover', 'object-center', 'flex-shrink-0', 'rounded', 'shadow');
@@ -304,6 +296,21 @@
 
                 relatedCoursesCard.appendChild(courseLink);
 
+            }
+
+            function renderRelatedCourses(courses) {
+                if (window.innerWidth < 1024) {
+                    if (window.innerWidth < 640) {
+                        relatedCoursesCard.classList.remove('grid', 'grid-cols-2', 'gap-4');
+                    } else {
+                        relatedCoursesCard.classList.add('grid', 'grid-cols-2', 'gap-4');
+                    }
+                    colLeft.appendChild(relatedCourses);
+                } else {
+                    numCourses = 4;
+                    relatedCoursesCard.classList.remove('grid', 'grid-cols-2', 'gap-4');
+                    colRight.appendChild(relatedCourses);
+                }
             }
 
         </script>
