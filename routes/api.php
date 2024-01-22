@@ -18,11 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/courses/category/{categoryId}', function (Request $request) {
+Route::get('/courses', function () {
     return response()->json(
         App\Models\Course::all()
             ->where('status', '3')
-            ->where('category_id', $request->categoryId)
             ->sortByDesc('updated_at')
             ->map(function ($course) {
                 return [

@@ -199,7 +199,7 @@
             colRight.appendChild(relatedCoursesContainer);
 
             async function getRelatedCourses(limit = 5) {
-                const url = '{{ config('app.url') }}' + '/api/courses/category/' + '{{ $course->category->id}}';
+                const url = '{{ config('app.url') }}' + '/api/courses';
                 // console.log(url);
                 let count = 0;
 
@@ -212,7 +212,9 @@
                     const data = await response.json();
                     data.forEach(course => {
                         // console.log(course);
-                        if (count < limit && course.id != {{ $course->id }}) {
+                        if (count < limit
+                                && course.id != {{ $course->id }}
+                                && course.category.id == {{ $course->category->id }}) {
                             renderCourse(course);
                             count++;
                         }
