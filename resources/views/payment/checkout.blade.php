@@ -117,4 +117,8 @@
         </div>
     </div>
 
+    @push('scripts')
+        <script src="{{Vite::asset('resources/js/payment/checkout.js')}}"></script>
+    @endpush
+
 </x-app-layout>
