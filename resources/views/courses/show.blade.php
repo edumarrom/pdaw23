@@ -227,7 +227,7 @@
                     const data = await response.json();
                     data.forEach(course => {
                         if (count < limit
-                                && course.id != {{ $course->id }}
+                                && course.slug != '{{ $course->slug }}'
                                 && course.category.id == {{ $course->category->id }}) {
                             renderCourse(course);
                             count++;
