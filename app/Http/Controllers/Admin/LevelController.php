@@ -67,7 +67,7 @@ class LevelController extends Controller
         session()->flash('swal', [
             'icon' => 'success',
             'title' => '¡Hecho!',
-            'text' => 'Nivel editado satisfactoriamente.',
+            'text' => "Nivel '$level->name' editado satisfactoriamente.",
         ]);
 
         return redirect()->route('admin.levels.index');
