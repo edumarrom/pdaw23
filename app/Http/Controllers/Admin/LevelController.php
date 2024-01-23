@@ -43,15 +43,6 @@ class LevelController extends Controller
         ]);
 
         return redirect()->route('admin.levels.index');
-            /* ->with('success', 'Nivel creado satisfactoriamente.'); */
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Level $level)
-    {
-        return view('admin.levels.show');
     }
 
     /**
