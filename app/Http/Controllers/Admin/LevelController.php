@@ -78,12 +78,29 @@ class LevelController extends Controller
      */
     public function destroy(Level $level)
     {
+        $levelName = $level->name;
+
+        if ($level->courses->count()) {
+            session()->flash('swal', [
+                'icon' => 'error',
+                'iconColor' => '#f43f5e',
+                'title' => "D'oh!",
+                'text' => "No es posible eliminar el nivel '$levelName' porque tiene cursos asociados.",
+                'confirmButtonText' => 'Aceptar',
+                'confirmButtonColor' => '#3b82f6',
+            ]);
+
+            return redirect()->route('admin.levels.index');
+        }
+
         $level->delete();
 
         session()->flash('swal', [
             'icon' => 'success',
             'title' => '¡Hecho!',
-            'text' => 'Nivel borrado satisfactoriamente.',
+            'text' => "Nivel '$levelName' borrado satisfactoriamente.",
+            'confirmButtonText' => 'Aceptar',
+            'confirmButtonColor' => '#3b82f6',
         ]);
 
         return redirect()->route('admin.levels.index');
