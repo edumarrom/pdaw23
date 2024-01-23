@@ -21,7 +21,7 @@
     </div>
     <div class="flex items-center flex-shrink-0 space-x-4">
         <form wire:submit.prevent="denyCookies">
-            <x-button color="gray" class="!text-sm normal-case tracking-normal"
+            <x-button color="gray" class="!text-sm normal-case tracking-normal hover:border-gray-400"
             x-on:click="show = false">Rechazar cookies</x-button>
         </form>
 
