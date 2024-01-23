@@ -49,7 +49,10 @@ class CourseLearn extends Component
     {
 
         /* @requirement: DWECL - #16 Almacenamiento en el lado del cliente */
-        Cookie::queue('last_course_studied', $this->course->id, 60 * 24 * 30);
+        /* Si la cookie "cookies_consent" tiene el valor true */
+        if (Cookie::get('cookies_consent')) {
+            Cookie::queue('last_course_studied', $this->course->id, 60 * 24 * 30);
+        }
 
         return view('livewire.course-learn');
     }

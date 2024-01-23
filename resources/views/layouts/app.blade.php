@@ -24,6 +24,11 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
+        <!-- Cookies Banner -->
+        @if (is_null(request()->cookie('cookies_consent')))
+            @livewire('cookies-banner')
+        @endif
+
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">
