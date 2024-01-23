@@ -21,13 +21,16 @@ class HomeController extends Controller
 
         $lastCourseStudied = Course::find(request()->cookie('last_course_studied'));
 
-        foreach ($lastCourseStudied->lessons as $lesson) {
-            if (!$lesson->completed || $lastCourseStudied->lessons->last()->id == $lesson->id) {
-                $nextLesson = $lesson;
-                break;
+        if (auth()->check() && $lastCourseStudied) {
+            foreach ($lastCourseStudied->lessons as $lesson) {
+                if (!$lesson->completed || $lastCourseStudied->lessons->last()->id == $lesson->id) {
+                    $nextLesson = $lesson;
+                    break;
+                }
             }
+            return view('home', compact('mostRecentCourses', 'bestRatedCourses', 'lastCourseStudied', 'nextLesson'));
+        } else {
+            return view('home', compact('mostRecentCourses', 'bestRatedCourses', 'lastCourseStudied'));
         }
-
-        return view('home', compact('mostRecentCourses', 'bestRatedCourses', 'lastCourseStudied', 'nextLesson'));
     }
 }
