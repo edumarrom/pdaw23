@@ -8,29 +8,31 @@ use Spatie\Permission\Models\Role;
 
 class RoleSeeder extends Seeder
 {
+    public $permissions = [
+        'courses' => ['course-create', 'course-read', 'course-edit', 'course-delete'],
+        'levels' => ['level-create', 'level-read', 'level-edit', 'level-delete'],
+    ];
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $role = Role::create([
+        $admin = Role::create([
             'name' => 'admin',
         ]);
 
-        $role->givePermissionTo([
+        $admin->givePermissionTo([
             'admin-cpanel',
             'teacher-cpanel',
-            'course-create',
-            'course-read',
-            'course-edit',
-            'course-delete',
+            $this->permissions['courses'],
+            $this->permissions['levels'],
         ]);
 
-        $role = Role::create([
+        $teacher = Role::create([
             'name' => 'teacher',
         ]);
 
-        $role->givePermissionTo([
+        $teacher->givePermissionTo([
             'teacher-cpanel',
             'course-create',
             'course-read',

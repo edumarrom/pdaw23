@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class LevelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:level-read')->only('index');
+        $this->middleware('can:level-create')->only('create', 'store');
+        $this->middleware('can:level-edit')->only('edit', 'update', 'goals');
+        $this->middleware('can:level-delete')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      */
