@@ -94,59 +94,82 @@
 
     <section class="mt-24 bg-blue-950 py-12">
         @auth
+            {{-- @requirement: DWECL - #16 Almacenamiento en el lado del cliente --}}
             @if ($lastCourseStudied)
-            <div class="container">
-                <h2 class="text-center text-white text-3xl mb-8">Continúa donde lo dejaste</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                @if (!$nextLesson )
+                    <div class="container">
+                        <div>
+                            <i class="fa-solid fa-medal block text-center text-white text-8xl motion-safe:animate-pulse"></i>
+                            <h2 class="text-center text-white text-3xl">¡Enhorabuena!</h2>
+                            <p class="text-center text-white">Has completado con éxito el curso</p>
+                            <p class="text-center text-white text-xl font-semibold">{{ $lastCourseStudied->title }}</p>
+                        </div>
 
-                    {{-- Columna izquierda --}}
-                    <div class="lg:col-span-2">
-                        <section>
-                            <div class="px-4 py-2">
-                                <div class="flex flex-col md:flex-row">
-                                    <img class="w-auto h-36 aspect-[16/9] rounded object-cover object-center border-2 border-gray-300 border-s-white" src="{{ $lastCourseStudied->imagePath }}" alt="">
+                        <div class="mt-4">
+                            <p class="text-center text-white text-lg">¿Qué será lo próximo por aprender?</p>
 
-                                    <div class="flex flex-col flex-1 mx-2 justify-around text-white">
-                                        <div>
-                                            <h3 class="text-lg font-semibold ">
-                                                {{$lastCourseStudied->title}}
-                                            </h3>
-                                            <p>Por {{ $lastCourseStudied->teacher->name }}</p>
-                                            <div class="cursor-default">
-                                                <ul class="flex text-xs mb-2">
-                                                    <li class=" mr-2">
-                                                        <i class="fa-solid fa-layer-group"></i>
-                                                        {{$lastCourseStudied->category->name}}
-                                                    </li>
-
-                                                    <li class=" mr-2">
-                                                        <i class="fa-solid fa-cubes"></i>
-                                                        {{$lastCourseStudied->level->name}}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="text-lg">
-                                            Siguiente lección: <span class="text-base font-semibold">{{ $nextLesson->title }}</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="flex justify-center mt-2">
+                                <x-link-button href="{{ route('courses.index') }}" color="teal" class="py-4 px-6">
+                                    {{ __('Ver todos los cursos') }}
+                                </x-link-button>
                             </div>
-                        </section>
-                    </div>
-
-                    {{-- Columna derecha --}}
-                    <div class="my-auto">
-                        <div class="flex justify-center">
-                            <x-link-button href="{{ route('courses.learn', $lastCourseStudied) }}" color="teal" class="py-4 px-6">
-                                {{ __('Continuar con el curso') }}
-                            </x-link-button>
                         </div>
                     </div>
+                @else
+                    <div class="container">
+                        <h2 class="text-center text-white text-3xl mb-8">Continúa donde lo dejaste</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-                </div>
-            </div>
+                            {{-- Columna izquierda --}}
+                            <div class="lg:col-span-2">
+                                <section>
+                                    <div class="px-4 py-2">
+                                        <div class="flex flex-col md:flex-row">
+                                            <img class="w-auto h-36 aspect-[16/9] rounded object-cover object-center border-2 border-gray-300 border-s-white" src="{{ $lastCourseStudied->imagePath }}" alt="">
+
+                                            <div class="flex flex-col flex-1 mx-2 justify-around text-white">
+                                                <div>
+                                                    <h3 class="text-lg font-semibold ">
+                                                        {{$lastCourseStudied->title}}
+                                                    </h3>
+                                                    <p>Por {{ $lastCourseStudied->teacher->name }}</p>
+                                                    <div class="cursor-default">
+                                                        <ul class="flex text-xs mb-2">
+                                                            <li class=" mr-2">
+                                                                <i class="fa-solid fa-layer-group"></i>
+                                                                {{$lastCourseStudied->category->name}}
+                                                            </li>
+
+                                                            <li class=" mr-2">
+                                                                <i class="fa-solid fa-cubes"></i>
+                                                                {{$lastCourseStudied->level->name}}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-lg">
+                                                    Siguiente lección: <span class="text-base font-semibold">{{ $nextLesson->title }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+
+                            {{-- Columna derecha --}}
+                            <div class="my-auto">
+                                <div class="flex justify-center">
+                                    <x-link-button href="{{ route('courses.learn', $lastCourseStudied) }}" color="teal" class="py-4 px-6">
+                                        {{ __('Continuar con el curso') }}
+                                    </x-link-button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                @endif
+
             @else
                 <h2 class="text-center text-white text-3xl">Aquí tienes una selección de nuestros cursos</h2>
                 <p class="text-center text-white">Y si ninguno te convence pásate por la página de cursos y encuentra tu curso ideal.</p>

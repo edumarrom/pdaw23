@@ -19,13 +19,17 @@ class HomeController extends Controller
             ->take(8)
             ->get();
 
+        /* @requirement: DWECL - #16 Almacenamiento en el lado del cliente */
         $lastCourseStudied = Course::find(request()->cookie('last_course_studied'));
+        $nextLesson = null;
 
         if (auth()->check() && $lastCourseStudied) {
             foreach ($lastCourseStudied->lessons as $lesson) {
-                if (!$lesson->completed || $lastCourseStudied->lessons->last()->id == $lesson->id) {
+                if (!$lesson->completed) {
                     $nextLesson = $lesson;
                     break;
+                } else {
+                    $nextLesson = null;
                 }
             }
             return view('home', compact('mostRecentCourses', 'bestRatedCourses', 'lastCourseStudied', 'nextLesson'));
