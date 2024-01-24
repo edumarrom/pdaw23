@@ -23,7 +23,7 @@ class PriceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.prices.create');
     }
 
     /**
@@ -31,15 +31,16 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name'  => 'required|string|max:255|unique:prices',
+            'price' => 'required|numeric|min:0',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Price $price)
-    {
-        //
+        $price = Price::create($request->all());
+
+        session()->flash('swal', $this->getSwalSuccess("Pecio '$price->name' creado satisfactoriamente"));
+
+        return redirect()->route('admin.prices.index');
     }
 
     /**
@@ -64,5 +65,28 @@ class PriceController extends Controller
     public function destroy(Price $price)
     {
         //
+    }
+
+    private function getSwalSuccess($text = '')
+    {
+        return [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => $text,
+            'confirmButtonText' => 'Aceptar',
+            'confirmButtonColor' => '#3B82F6',
+        ];
+    }
+
+    private function getSwalError($text = '')
+    {
+        return [
+            'icon' => 'error',
+            'iconColor' => '#f43f5e',
+            'title' => "D'oh!",
+            'text' => $text,
+            'confirmButtonText' => 'Aceptar',
+            'confirmButtonColor' => '#3B82F6',
+        ];
     }
 }

@@ -9,6 +9,8 @@ class Price extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'price'];
+
     public function courses()
     {
         return $this->hasMany(Course::class);

@@ -20,7 +20,7 @@
                             Nombre
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Importe (EUR)
+                            Importe
                         </th>
                         <th scope="col" class="px-6 py-3 md:w-1/3 lg:w-1/6">
                             Acciones
