@@ -4,21 +4,21 @@
             <h1 class="text-3xl font-bold">Editar categoría</h1>
         </div>
 
-        <form action="{{ route('admin.categories.update', $category) }}" method="post"
+        <form id="category-form"  action="{{ route('admin.categories.update', $category) }}" method="post"
             class="card rounded-lg p-6 shadow-lg">
             @method('PUT')
             @csrf
 
-            <x-validation-errors class="mb-4" />
-
             <div class="mb-4">
                 <x-label for="name" class="mb-2" value="Nombre" />
-                <x-input name="name"
+                <x-input id="name"
+                         name="name"
                          type="text"
                          required
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          placeholder="Escribe un nombre para este categoría"
                          value="{{old('name', $category->name)}}" />
+                <x-input-error for="name" class="mt-2" />
             </div>
 
             <div class="flex justify-between mt-16">

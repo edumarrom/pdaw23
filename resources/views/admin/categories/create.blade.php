@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="md:container"></div>
+    <div class="md:container">
         <div class="flex items-center justify-between mb-4">
             <h1 class="text-3xl font-bold">Nueva Categoría</h1>
         </div>
