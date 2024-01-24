@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('admin.dashboard');})->name('dashboard');
 
-Route::resource('/levels', LevelController::class)->names('levels');
+Route::resource('/levels', LevelController::class)->names('levels')->except('show');
 
 Route::resource('/roles', RoleController::class)->names('roles')->except('show');
 
