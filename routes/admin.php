@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {return view('admin.dashboard');})->name('dashboard');
 
 Route::resource('/levels', LevelController::class)->names('levels')->except('show');
+
+Route::resource('/categories', CategoryController::class)->names('categories')->except('show');
 
 Route::resource('/roles', RoleController::class)->names('roles')->except('show');
 
