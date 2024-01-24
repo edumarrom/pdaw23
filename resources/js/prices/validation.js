@@ -1,6 +1,6 @@
 errorMessages = {
   name: 'El campo nombre es obligatorio',
-  price: 'El campo precio es obligatorio',
+  value: 'El campo precio es obligatorio',
 }
 
 const form = document.querySelector('#price-form');
@@ -9,7 +9,7 @@ form.addEventListener('submit', validateForm);
 function validateForm(event) {
   event.preventDefault();
   const name = document.getElementById('name').value;
-  const price = document.getElementById('price').value;
+  const value = document.getElementById('value').value;
 
   const errors = {};
   if (
@@ -20,10 +20,10 @@ function validateForm(event) {
   }
 
   if (
-    price === null
-    || price.trim() === ''
+    value === null
+    || value.trim() === ''
   ) {
-    errors.price = errorMessages.price;
+    errors.value = errorMessages.value;
   }
 
   if (Object.keys(errors).length > 0) {

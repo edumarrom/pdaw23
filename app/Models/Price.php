@@ -9,7 +9,7 @@ class Price extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price'];
+    protected $fillable = ['name', 'value'];
 
     public function courses()
     {

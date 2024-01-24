@@ -33,7 +33,7 @@ class PriceController extends Controller
     {
         $request->validate([
             'name'  => 'required|string|max:255|unique:prices',
-            'price' => 'required|numeric|min:0',
+            'value' => 'required|numeric|min:0',
         ]);
 
         $price = Price::create($request->all());

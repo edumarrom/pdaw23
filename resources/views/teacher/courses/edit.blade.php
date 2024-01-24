@@ -127,7 +127,7 @@
                             @foreach($prices as $price)
                                 <option value="{{ $price->id }}"
                                         @if($price->id == old('price_id', $course->price_id)) selected @endif>
-                                    {{ $price->name }}
+                                    {{ $price->name }} ({{ $price->value }})
                                 </option>
                             @endforeach
                         </x-select>

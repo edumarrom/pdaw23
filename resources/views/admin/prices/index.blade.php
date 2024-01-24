@@ -37,7 +37,7 @@
                                 {{ $price->name }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $price->price }}
+                                {{ $price->value }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="{{ route('admin.prices.edit', $price) }}" class="hover:text-gray-700">

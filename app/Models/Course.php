@@ -69,7 +69,7 @@ class Course extends Model
 
     public function getPriceEurAttribute()
     {
-        $price = $this->price->price;
+        $price = $this->price->value;
         return $price == 0 ? 'Gratis' : number_format($price, 2, ',', '.') . ' €';
     }
 

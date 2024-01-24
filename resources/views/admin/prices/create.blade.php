@@ -21,15 +21,15 @@
             </div>
 
             <div class="mb-4">
-                <x-label for="price" class="mb-2" value="Importe" />
-                <x-input id="price"
-                         name="price"
+                <x-label for="value" class="mb-2" value="Importe" />
+                <x-input id="value"
+                         name="value"
                          type="text"
                          required
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          placeholder="Escribe un importe para este precio"
-                         value="{{old('price')}}" />
-                <x-input-error for="price" class="mt-2" />
+                         value="{{old('value')}}" />
+                <x-input-error for="value" class="mt-2" />
             </div>
 
             <div class="flex justify-between mt-16">
