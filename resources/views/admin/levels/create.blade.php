@@ -4,20 +4,20 @@
             <h1 class="text-3xl font-bold">Nuevo nivel</h1>
         </div>
 
-        <form action="{{ route('admin.levels.store') }}" method="post"
+        <form id="level-form" action="{{ route('admin.levels.store') }}" method="post"
             class="card rounded-lg p-6 shadow-lg">
             @csrf
 
-            <x-validation-errors class="mb-4"/>
-
             <div class="mb-4">
                 <x-label for="name" class="mb-2" value="Nombre" />
-                <x-input name="name"
+                <x-input id="name"
+                         name="name"
                          type="text"
                          required
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          placeholder="Escribe un nombre para este nivel"
                          value="{{old('name')}}" />
+                <x-input-error for="name" class="mt-2" />
             </div>
 
             <div class="flex justify-between mt-16">
@@ -33,4 +33,10 @@
             </div>
 
         </form>
+    </div>
+
+    @push('scripts')
+        <script src="{{Vite::asset('resources/js/levels/level-validation.js')}}"></script>
+    @endpush
+
 </x-admin-layout>
