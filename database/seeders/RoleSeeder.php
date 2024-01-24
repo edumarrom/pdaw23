@@ -40,10 +40,6 @@ class RoleSeeder extends Seeder
             'course-edit',
             'course-delete',
         ]);
-
-        Role::create([
-            'name' => 'student',
-        ]);
     }
 
     /* private function getCrudPermissions($model)
