@@ -12,7 +12,7 @@ class LevelController extends Controller
     {
         $this->middleware('can:level-read')->only('index');
         $this->middleware('can:level-create')->only('create', 'store');
-        $this->middleware('can:level-edit')->only('edit', 'update', 'goals');
+        $this->middleware('can:level-edit')->only('edit', 'update');
         $this->middleware('can:level-delete')->only('destroy');
     }
     /**
