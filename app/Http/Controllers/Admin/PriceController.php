@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Price;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 
 class PriceController extends Controller
 {
@@ -31,6 +32,8 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
+        $request->attributes->set('value', 'amount');
+
         $request->validate([
             'name'  => 'required|string|max:255|unique:prices',
             'value' => 'required|numeric|min:0',
@@ -48,7 +51,7 @@ class PriceController extends Controller
      */
     public function edit(Price $price)
     {
-        //
+        return view('admin.prices.edit', compact('price'));
     }
 
     /**
@@ -56,7 +59,16 @@ class PriceController extends Controller
      */
     public function update(Request $request, Price $price)
     {
-        //
+        $request->validate([
+            'name'  => 'required|string|max:255|unique:prices,name,' . $price->id,
+            'value' => 'required|numeric|min:0',
+        ]);
+
+        $price->update($request->all());
+
+        session()->flash('swal', $this->getSwalSuccess("Precio '$price->name' editado satisfactoriamente"));
+
+        return redirect()->route('admin.prices.index');
     }
 
     /**

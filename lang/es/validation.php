@@ -236,6 +236,7 @@ return [
         'updated_at'               => 'actualizado el',
         'user'                     => 'usuario',
         'username'                 => 'usuario',
+        'value'                    => 'importe',
         'year'                     => 'año',
     ],
 ];

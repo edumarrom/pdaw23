@@ -1,15 +1,13 @@
 <x-admin-layout>
     <div class="md:container">
         <div class="flex items-center justify-between mb-4">
-            <h1 class="text-3xl font-bold">Editar nivel</h1>
+            <h1 class="text-3xl font-bold">Editar precio</h1>
         </div>
 
-        <form id="level-form" action="{{ route('admin.levels.update', $level) }}" method="post"
+        <form id="price-form" action="{{ route('admin.prices.update', $price) }}" method="post"
             class="card rounded-lg p-6 shadow-lg">
             @method('PUT')
             @csrf
-
-            <x-validation-errors class="mb-4" />
 
             <div class="mb-4">
                 <x-label for="name" class="mb-2" value="Nombre" />
@@ -18,13 +16,25 @@
                          type="text"
                          required
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Escribe un nombre para este nivel"
-                         value="{{old('name', $level->name)}}" />
+                         placeholder="Escribe un nombre para este precio"
+                         value="{{old('name', $price->name)}}" />
                 <x-input-error for="name" class="mt-2" />
             </div>
 
+            <div class="mb-4">
+                <x-label for="value" class="mb-2" value="Importe" />
+                <x-input id="value"
+                         name="value"
+                         type="text"
+                         required
+                         class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
+                         placeholder="Escribe un importe para este precio"
+                         value="{{old('value', $price->value)}}" />
+                <x-input-error for="value" class="mt-2" />
+            </div>
+
             <div class="flex justify-between mt-16">
-                <x-link-button href="{{ route('admin.levels.index') }}">
+                <x-link-button href="{{ route('admin.prices.index') }}">
                     <i class="fa-solid fa-xmark mr-2"></i>
                     Cancelar
                 </x-link-button>
@@ -37,6 +47,6 @@
         </form>
     </div>
     @push('scripts')
-        <script src="{{Vite::asset('resources/js/levels/validation.js')}}"></script>
+        <script src="{{Vite::asset('resources/js/prices/validation.js')}}"></script>
     @endpush
 </x-admin-layout>
