@@ -27,20 +27,18 @@
                 <table class="w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                         <tr>
+                            <th scope="col" class="px-6 py-3"></th>
                             <th scope="col" class="px-6 py-3">
-
+                                {{__('Create')}}
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Create
+                                {{__('Read')}}
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Read
+                                {{__('Update')}}
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Update
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Delete
+                                {{__('Delete')}}
                             </th>
                         </tr>
                     </thead>
@@ -49,7 +47,7 @@
                         @foreach ($permissions as $key => $value)
                             <tr class="border-b border-gray-200">
                                 <td class="px-6 py-3 font-medium text-gray-700 capitalize">
-                                    {{ $key }}
+                                    {{ __(Str::plural(Str::headline($key))) }}
                                 </td>
                                 @foreach ($value as $permissions)
                                     <td class="px-6 py-3">
