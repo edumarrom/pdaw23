@@ -9,6 +9,14 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+    private $models = [
+        'role',
+        'category',
+        'level',
+        'course',
+        'price',
+    ];
+
     public function __construct()
     {
         $this->middleware('can:role-read')->only('index');
@@ -31,9 +39,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::where('name', '!=', 'admin-cpanel')
-            ->where('name', '!=', 'teacher-cpanel')
-            ->get()
+        $permissions = Permission::all()
+            ->filter(function ($permission) {
+                return in_array(explode('-', $permission->name)[0], $this->models);
+            })
             ->groupBy(function ($permission) {
                 return explode('-', $permission->name)[0];
             });
@@ -64,9 +73,10 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        $permissions = Permission::where('name', '!=', 'admin-cpanel')
-            ->where('name', '!=', 'teacher-cpanel')
-            ->get()
+        $permissions = Permission::all()
+            ->filter(function ($permission) {
+                return in_array(explode('-', $permission->name)[0], $this->models);
+            })
             ->groupBy(function ($permission) {
                 return explode('-', $permission->name)[0];
             });

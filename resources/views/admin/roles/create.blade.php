@@ -20,26 +20,7 @@
                          value="{{old('name')}}" />
             </div>
 
-            {{-- <div class="mb-4">
-                <p class="mb-2 font-medium text-sm text-gray-700">Permisos</p>
-                <ul>
-                    @foreach ($permissions as $permission)
-
-                    <li class="mb-2">
-
-                        <x-label>
-                            <x-checkbox name="permissions[]"
-                                        class="mr-1 !text-blue-600 focus:!ring-blue-500"
-                                        value="{{ $permission->id }}"
-                                        :checked="in_array($permission->id, old('permissions', []))"
-                            />
-                                {{ $permission->name }}
-                        </x-label>
-                    @endforeach
-                </ul>
-            </div> --}}
-
-            <div class="relative overflow-x-auto rounded-lg shadow-xl">
+            <div class="relative overflow-x-auto rounded-lg shadow-md">
                 <table class="w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                         <tr>
@@ -63,13 +44,11 @@
 
                     <tbody>
                         @foreach ($permissions as $key => $value)
-                            <tr class="border-b border-gray-200">
+                            <tr class="bg-white border-b hover:bg-gray-50">
                                 <td class="px-6 py-3 font-medium text-gray-700 capitalize">
                                     {{ $key }}
                                 </td>
-
                                 @foreach ($value as $permissions)
-
                                     {{-- @dd($permissions['id']) --}}
                                     <td class="px-6 py-3">
                                         <x-checkbox name="permissions[]"
@@ -77,9 +56,7 @@
                                                     value="{{ $permissions['id'] }}"
                                                     :checked="in_array($permissions['id'], old('permissions', []))" />
                                     </td>
-
                                 @endforeach
-
                             </tr>
                         @endforeach
                     </tbody>
