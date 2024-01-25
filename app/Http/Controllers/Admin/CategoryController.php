@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         $this->middleware('can:category-read')->only('index');
         $this->middleware('can:category-create')->only('create', 'store');
-        $this->middleware('can:category-edit')->only('edit', 'update');
+        $this->middleware('can:category-update')->only('edit', 'update');
         $this->middleware('can:category-delete')->only('destroy');
     }
 

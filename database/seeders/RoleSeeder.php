@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 class RoleSeeder extends Seeder
 {
     private $models = [
+        'role',
         'category',
         'level',
         'course',
@@ -38,7 +39,7 @@ class RoleSeeder extends Seeder
             'teacher-cpanel',
             'course-create',
             'course-read',
-            'course-edit',
+            'course-update',
             'course-delete',
         ]);
     }
@@ -46,7 +47,7 @@ class RoleSeeder extends Seeder
     /* private function getCrudPermissions($model)
     {
         $permissions = [];
-        $actions = ['create', 'read', 'edit', 'delete'];
+        $actions = ['create', 'read', 'update', 'delete'];
         foreach ($actions as $action){
             $permissions[] = $model . '-' . $action;
         }
@@ -57,7 +58,7 @@ class RoleSeeder extends Seeder
     private function bulkGivePermissions($role, $models)
     {
         foreach ($models as $model){
-            $actions = ['create', 'read', 'edit', 'delete'];
+            $actions = ['create', 'read', 'update', 'delete'];
             foreach ($actions as $action){
                 $role->givePermissionTo($model . '-' . $action);
             }

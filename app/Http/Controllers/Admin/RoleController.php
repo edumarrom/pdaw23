@@ -13,7 +13,7 @@ class RoleController extends Controller
     {
         $this->middleware('can:role-read')->only('index');
         $this->middleware('can:role-create')->only('create', 'store');
-        $this->middleware('can:role-edit')->only('edit', 'update');
+        $this->middleware('can:role-update')->only('edit', 'update');
         $this->middleware('can:role-delete')->only('destroy');
     }
 
@@ -31,8 +31,12 @@ class RoleController extends Controller
      */
     public function create()
     {
-
-        $permissions = Permission::all();
+        $permissions = Permission::where('name', '!=', 'admin-cpanel')
+            ->where('name', '!=', 'teacher-cpanel')
+            ->get()
+            ->groupBy(function ($permission) {
+                return explode('-', $permission->name)[0];
+            });
 
         return view('admin.roles.create', compact('permissions'));
     }
@@ -60,7 +64,12 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        $permissions = Permission::all();
+        $permissions = Permission::where('name', '!=', 'admin-cpanel')
+            ->where('name', '!=', 'teacher-cpanel')
+            ->get()
+            ->groupBy(function ($permission) {
+                return explode('-', $permission->name)[0];
+            });
 
         return view('admin.roles.edit', compact('role', 'permissions'));
     }

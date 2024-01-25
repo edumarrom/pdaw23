@@ -12,7 +12,7 @@ class PriceController extends Controller
     {
         $this->middleware('can:price-read')->only('index');
         $this->middleware('can:price-create')->only('create', 'store');
-        $this->middleware('can:price-edit')->only('edit', 'update');
+        $this->middleware('can:price-update')->only('edit', 'update');
         $this->middleware('can:price-delete')->only('destroy');
     }
 
