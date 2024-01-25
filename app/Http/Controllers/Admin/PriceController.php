@@ -5,10 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Price;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Lang;
 
 class PriceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:price-read')->only('index');
+        $this->middleware('can:price-create')->only('create', 'store');
+        $this->middleware('can:price-edit')->only('edit', 'update');
+        $this->middleware('can:price-delete')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      */
