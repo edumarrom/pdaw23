@@ -76,7 +76,19 @@ class PriceController extends Controller
      */
     public function destroy(Price $price)
     {
-        //
+        $priceName = $price->name;
+
+        if ($price->courses->count()) {
+            session()->flash('swal', $this->getSwalError("No es posible eliminar el precio '$priceName' porque tiene cursos asociados"));
+
+            return redirect()->route('admin.prices.index');
+        }
+
+        $price->delete();
+
+        session()->flash('swal', $this->getSwalSuccess("Precio '$priceName' borrado satisfactoriamente"));
+
+        return redirect()->route('admin.prices.index');
     }
 
     private function getSwalSuccess($text = '')
