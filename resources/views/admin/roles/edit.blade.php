@@ -4,7 +4,7 @@
             <h1 class="text-3xl font-bold">Editar rol</h1>
         </div>
 
-        <form action="{{ route('admin.roles.update', $role) }}" method="post"
+        <form id="role-form" action="{{ route('admin.roles.update', $role) }}" method="post"
             class="bg-white rounded-lg p-6 shadow-lg">
             @method('PUT')
             @csrf
@@ -13,12 +13,14 @@
 
             <div class="mb-4">
                 <x-label for="name" class="mb-2" value="Nombre" />
-                <x-input name="name"
+                <x-input id="name"
+                         name="name"
                          type="text"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          required
                          placeholder="Escribe un nombre para este rol"
                          value="{{old('name', $role->name)}}" />
+                <x-input-error for="name" class="mt-2" />
             </div>
 
             <div class="relative overflow-x-auto rounded-lg shadow-xl">
@@ -77,4 +79,7 @@
             </div>
         </form>
     </div>
+    @push('scripts')
+        <script src="{{Vite::asset('resources/js/categories/validation.js')}}"></script>
+    @endpush
 </x-admin-layout>
