@@ -11,6 +11,7 @@ class PermissionSeeder extends Seeder
     private $models = [
         'category',
         'level',
+        'price',
         'course',
     ];
     /**

@@ -15,22 +15,22 @@ class PriceSeeder extends Seeder
     {
         Price::create([
             'name' => 'Gratis',
-            'price' => 0,
+            'value' => 0,
         ]);
 
         Price::create([
             'name' => 'Básico',
-            'price' => 9.99,
+            'value' => 9.99,
         ]);
 
         Price::create([
             'name' => 'Intermedio',
-            'price' => 19.99,
+            'value' => 19.99,
         ]);
 
         Price::create([
             'name' => 'Avanzado',
-            'price' => 49.99,
+            'value' => 49.99,
         ]);
     }
 }

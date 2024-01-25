@@ -160,7 +160,7 @@
                             Continuar con el curso
                         </x-link-button>
                     @else
-                        @if ($course->price->price == 0)
+                        @if ($course->price->value == 0)
                             <form action="{{ route('courses.enroll', $course) }}" method="post">
                                 @csrf
                                 <x-button color="teal" class="w-full justify-center rounded-md !text-sm h-12 mt-4">

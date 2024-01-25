@@ -12,6 +12,7 @@ class RoleSeeder extends Seeder
         'category',
         'level',
         'course',
+        'price',
     ];
     /**
      * Run the database seeds.

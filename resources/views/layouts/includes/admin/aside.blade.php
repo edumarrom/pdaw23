@@ -25,6 +25,12 @@
             'icon' => 'fa-solid fa-cubes',
             'active' => request()->routeIs('admin.levels.*'),
         ],
+        [
+            'name' => 'Precios',
+            'route' => route('admin.prices.index'),
+            'icon' => 'fa-solid fa-coins',
+            'active' => request()->routeIs('admin.prices.*'),
+        ],
         [],
         [
             'name' => 'Usuarios',

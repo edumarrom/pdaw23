@@ -36,7 +36,7 @@ class PaymentController extends Controller
                 0 => [
                     "amount" => [
                         "currency_code" => config('paypal.currency'),
-                        "value" => $course->price->price,
+                        "value" => $course->price->value,
                     ]
                 ]
             ]
