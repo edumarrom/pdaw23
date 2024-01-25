@@ -1,6 +1,6 @@
 <x-admin-layout>
 
-    <div class="container">
+    <div class="md:container">
         <div class="flex items-center justify-between mb-4">
             <h1 class="text-3xl font-bold">Roles</h1>
             <x-link-button href="{{ route('admin.roles.create') }}" color="blue">
@@ -13,7 +13,7 @@
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-blue-100">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 md:w-1/6 lg:w-1/12">
                             ID
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -34,7 +34,7 @@
                                 {{ $role->name }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('admin.roles.edit', $role) }}">
+                                <a href="{{ route('admin.roles.edit', $role) }}" class="hover:text-gray-700">
                                     <i class="fa-solid fa-pen"></i>
                                     Editar
                                 </a>
@@ -42,8 +42,8 @@
                                     id='delete-form-{{ $role->id }}'>
                                     @csrf
                                     @method('delete')
-                                    <button type="button" class="text-red-500"
-                                        onclick="deleteRole({{ $role->id }})">
+                                    <button type="button" class="text-rose-500 hover:text-rose-700"
+                                        onclick="destroy({{ $role->id }})">
                                         <i class="fa-solid fa-trash"></i>
                                         Borrar
                                     </button>
@@ -55,19 +55,20 @@
             </table>
         </div>
     </div>
-
     @push('scripts')
         <script>
-            function deleteRole(roleId) {
-                const form = document.querySelector('#delete-form-' + roleId);
+            function destroy(elementId) {
+                const form = document.querySelector('#delete-form-' + elementId);
                 Swal.fire({
                     icon: 'warning',
+                    iconColor: '#f43f5e',
                     title: '¿Estás seguro?',
                     text: "Esta acción es irreversible",
                     showCancelButton: true,
                     confirmButtonText: 'Confirmar',
-                    confirmButtonColor: '#EF4444',
+                    confirmButtonColor: '#f43f5e',
                     cancelButtonText: 'Cancelar',
+                    cancelButtonColor: '#1f2937',
 
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -77,5 +78,4 @@
             }
         </script>
     @endpush
-
 </x-admin-layout>

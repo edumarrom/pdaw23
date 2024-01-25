@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 class PermissionSeeder extends Seeder
 {
     private $models = [
+        'role',
         'category',
         'level',
         'price',
@@ -34,7 +35,7 @@ class PermissionSeeder extends Seeder
     private function bulkCreatePermissions($models)
     {
         foreach ($models as $model){
-            $actions = ['create', 'read', 'edit', 'delete'];
+            $actions = ['create', 'read', 'update', 'delete'];
             foreach ($actions as $action){
                 Permission::create([
                     'name' => $model . '-' . $action,
