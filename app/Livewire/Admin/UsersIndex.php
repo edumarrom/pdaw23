@@ -14,10 +14,20 @@ class UsersIndex extends Component
 
     public function render()
     {
-        $users = User::where('name', 'ILIKE', '%' . $this->search . '%')
+        /* $users = User::where('name', 'ILIKE', '%' . $this->search . '%')
             ->orWhere('email', 'ILIKE', '%' . $this->search . '%')
             ->orWhereHas('roles', function ($query) {
                 $query->where('name', 'ILIKE', '%' . $this->search . '%');
+            })
+            ->orderBy('id', 'asc')
+            ->paginate(); */
+
+            $users = User::where(function ($query) {
+                $query->where('name', 'ILIKE', '%' . $this->search . '%')
+                ->orWhere('email', 'ILIKE', '%' . $this->search . '%')
+                ->orWhereHas('roles', function ($query) {
+                    $query->where('name', 'ILIKE', '%' . $this->search . '%');
+                });
             })
             ->orderBy('id', 'asc')
             ->paginate();
