@@ -21,7 +21,7 @@
             </div>
 
             <div class="relative overflow-x-auto rounded-lg shadow-xl">
-                <table class="w-full text-sm text-left text-gray-500">
+                <table class="w-full text-sm text-center text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                         <tr>
                             <th scope="col" class="px-6 py-3"></th>
@@ -43,7 +43,7 @@
                     <tbody>
                         @foreach ($permissions as $key => $value)
                             <tr class="bg-white border-b hover:bg-gray-50">
-                                <td class="px-6 py-3 font-medium text-gray-700 capitalize">
+                                <td class="px-6 py-3 font-medium text-left text-gray-700 capitalize">
                                     {{ __(Str::plural(Str::headline($key))) }}
                                 </td>
                                 @foreach ($value as $permissions)
