@@ -17,41 +17,51 @@ const errorMessages = {
 const form = document.querySelector('#user-form');
 form.addEventListener('submit', validateForm);
 
+const request = {
+  name: document.getElementById('name'),
+  email: document.getElementById('email'),
+  password: document.getElementById('password'),
+  passwordConfirmation: document.getElementById('password_confirmation'),
+};
+
+let errors = {};
+
+for (const key in request) {
+  request[key].addEventListener('keyup', () => {
+    removeErrorMessage(key);
+  });
+}
+
 function validateForm(event) {
   event.preventDefault();
+  errors = {};
 
-  const name = document.getElementById('name');
-  removeErrorMessage('name');
+  validate({
+    name: ['required'],
+    email: ['required', 'email'],
+  });
 
-  const email = document.getElementById('email');
-  removeErrorMessage('email');
-
-  const password = document.getElementById('password');
-  removeErrorMessage('password');
-
-  const errors = {};
-
-  if (!required(name)) {
+   /* if (!required(request.name)) {
     errors.name = errorMessages.required(trans.name);
-  }
+  } */
 
-  if (!required(email)) {
+  /* if (!required(request.email)) {
     errors.email = errorMessages.required(trans.email);
-  } else if (!isEmail(email)) {
+  } else if (!isEmail(request.email)) {
     errors.email = errorMessages.email(trans.email);
-  }
+  } */
 
-  if (!required(password)) {
+  if (!required(request.password)) {
     errors.password = errorMessages.required(trans.password);
-  } else if (!min(password, 8)) {
+  } else if (!min(request.password, 8)) {
     errors.password = errorMessages.min(trans.password, 8);
-  } else if (!letters(password)) {
+  } else if (!letters(request.password)) {
     errors.password = errorMessages.letters(trans.password);
-  } else if (!numbers(password)) {
+  } else if (!numbers(request.password)) {
     errors.password = errorMessages.numbers(trans.password);
-  } else if (!symbols(password)) {
+  } else if (!symbols(request.password)) {
     errors.password = errorMessages.symbols(trans.password);
-  } else if (!confirmed(password)) {
+  } else if (!confirmed(request.password)) {
     errors.password = errorMessages.confirmed;
   }
 
@@ -61,6 +71,30 @@ function validateForm(event) {
   else {
     form.submit();
   }
+}
+function validate(elements) {
+  const inputs = Object.keys(elements);
+
+  inputs.forEach(key => {
+    const validations = elements[key];
+
+    validations.forEach(validationType => {
+      switch (validationType) {
+        case 'required':
+          if (!required(request[key])) {
+            errors[key] = errorMessages.required(trans[key]);
+          }
+          break;
+        case 'email':
+          if (!email(request[key])) {
+            errors[key] = errorMessages.email(trans[key]);
+          }
+          break;
+        default:
+          break;
+      }
+    });
+  });
 }
 
 function showErrors(errors) {
@@ -89,15 +123,9 @@ function removeErrorMessage(key) {
 }
 
 const required = (e) => /\S+/.test(e.value);
-
-const isEmail = (e) => /\S+@\S+\.\S+/.test(e.value);
-
+const email = (e) => /\S+@\S+\.\S+/.test(e.value);
 const min = (e, n) => e.value.length >= n;
-
 const letters = (e) => /[a-zA-Z]/.test(e.value);
-
 const numbers = (e) => /\d/.test(e.value);
-
 const symbols = (e) => /[!@#$%^&*(),.?":{}|<>]/.test(e.value);
-
 const confirmed = (e) => e.value === document.getElementById('password_confirmation').value;
