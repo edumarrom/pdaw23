@@ -1,19 +1,17 @@
-// required: (e) => `El campo ${e.name} es obligatorio.`
-errorMessages = {
-  name: {
-    required: 'El campo nombre es obligatorio.',
-  },
-  email: {
-    required: 'El campo correo electrónico es obligatorio.',
-    email: 'El campo correo electrónico no es un email válido.',
-  },
-  password: {
-    required: 'El campo contraseña es obligatorio.',
-    min: 'El campo contraseña debe tener al menos 8 caracteres.',
-    number: 'El campo contraseña debe tener al menos un número.',
-    special: 'El campo contraseña debe tener al menos un caracter especial.',
-    confirmation: 'La confirmación de contraseña no coincide.',
-  },
+const trans = {
+  name: 'nombre',
+  email: 'correo electrónico',
+  password: 'contraseña',
+};
+
+const errorMessages = {
+  required: (e) => `El campo ${e} es obligatorio.`,
+  email: (e) => `El campo ${e} no es un correo válido.`,
+  min: (e, n) => `El campo ${e} debe contener al menos ${n} caracteres.`,
+  letters: (e) => `El campo ${e} debe contener al menos una letra.`,
+  numbers: (e) => `El campo ${e} debe contener al menos un número.`,
+  symbols: (e) => `El campo ${e} debe contener al menos un símbolo.`,
+  confirmed: 'La confirmación de contraseña no coincide.',
 };
 
 const form = document.querySelector('#user-form');
@@ -27,42 +25,34 @@ function validateForm(event) {
 
   const email = document.getElementById('email');
   removeErrorMessage('email');
-  const emailRegex = /\S+@\S+\.\S+/;
 
   const password = document.getElementById('password');
   removeErrorMessage('password');
-  /* const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; */
-  const numberRegex = /\d/;
-  const specialRegex = /[!@#$%^&*(),.?":{}|<>]/;
-
-  const passwordConfirmation = document.getElementById('password_confirmation');
-  removeErrorMessage('password_confirmation');
 
   const errors = {};
 
-  if (
-    name.value === null
-    || name.value.trim() === ''
-  ) {
-    errors.name = errorMessages.name.required;
+  if (!required(name)) {
+    errors.name = errorMessages.required(trans.name);
   }
 
-  if (email.value === null || email.value.trim() === '') {
-    errors.email = errorMessages.email.required;
-  } else if (!emailRegex.test(email.value)) {
-    errors.email = errorMessages.email.email;
+  if (!required(email)) {
+    errors.email = errorMessages.required(trans.email);
+  } else if (!isEmail(email)) {
+    errors.email = errorMessages.email(trans.email);
   }
 
-  if (password.value === null || password.value.trim() === '') {
-    errors.password = errorMessages.password.required;
-  } else if (password.value.length < 8) {
-    errors.password = errorMessages.password.min;
-  } else if (!numberRegex.test(password.value)) {
-    errors.password = errorMessages.password.number;
-  } else if (!specialRegex.test(password.value)) {
-    errors.password = errorMessages.password.special;
-  } else if (passwordConfirmation.value !== password.value) {
-    errors.password = errorMessages.password.confirmation;
+  if (!required(password)) {
+    errors.password = errorMessages.required(trans.password);
+  } else if (!min(password, 8)) {
+    errors.password = errorMessages.min(trans.password, 8);
+  } else if (!letters(password)) {
+    errors.password = errorMessages.letters(trans.password);
+  } else if (!numbers(password)) {
+    errors.password = errorMessages.numbers(trans.password);
+  } else if (!symbols(password)) {
+    errors.password = errorMessages.symbols(trans.password);
+  } else if (!confirmed(password)) {
+    errors.password = errorMessages.confirmed;
   }
 
   if (Object.keys(errors).length > 0) {
@@ -97,3 +87,17 @@ function removeErrorMessage(key) {
     oldErrorMessage.remove();
   }
 }
+
+const required = (e) => /\S+/.test(e.value);
+
+const isEmail = (e) => /\S+@\S+\.\S+/.test(e.value);
+
+const min = (e, n) => e.value.length >= n;
+
+const letters = (e) => /[a-zA-Z]/.test(e.value);
+
+const numbers = (e) => /\d/.test(e.value);
+
+const symbols = (e) => /[!@#$%^&*(),.?":{}|<>]/.test(e.value);
+
+const confirmed = (e) => e.value === document.getElementById('password_confirmation').value;

@@ -39,7 +39,7 @@
                          type="password"
                          {{-- required --}}
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Debe tener al menos 8 caracteres, un número y un caracter especial." />
+                         placeholder="Debe contener al menos 8 caracteres, un número y un símbolo." />
                 <x-input-error for="password" />
             </div>
 

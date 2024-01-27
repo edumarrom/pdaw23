@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -37,8 +38,11 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
-            'password'  => 'required|string|min:8|confirmed',
-            'permissions'   => 'nullable|array',
+            /* 'password'  => 'required|string|min:8|confirmed', */
+            'password'  => ['required', 'confirmed',
+                Password::min(8)->letters()->numbers()->symbols(),
+            ],
+            'roles'   => 'nullable|array',
         ]);
 
         $user = User::create([
