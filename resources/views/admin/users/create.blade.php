@@ -4,52 +4,59 @@
             <h1 class="text-3xl font-bold">Nuevo usuario</h1>
         </div>
 
-        <form action="{{ route('admin.users.store') }}" method="post"
+        <form id="user-form" action="{{ route('admin.users.store') }}" method="post"
             class="bg-white rounded-lg p-6 shadow-lg">
             @csrf
 
-            <x-validation-errors class="mb-4"/>
-
             <div class="mb-4">
                 <x-label for="name" class="mb-2" value="Nombre" />
-                <x-input name="name"
+                <x-input id="name"
+                         name="name"
                          type="text"
-                         required
+                         {{-- required --}}
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Escribe el nombre del nuevo usuario"
+                         placeholder="Escribe un nombre para este usuario"
                          value="{{old('name')}}" />
+                <x-input-error for="name" />
             </div>
 
             <div class="mb-4">
                 <x-label for="email" class="mb-2" value="Email" />
                 <x-input id="email"
                          name="email"
-                         type="email"
+                         type="text"
+                         {{-- required --}}
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         required
-                         placeholder="Escribe el email del nuevo usuario"
+                         placeholder="Escribe un email para este usuario"
                          value="{{old('email')}}" />
+                <x-input-error for="email" />
             </div>
 
             <div class="mb-4">
                 <x-label for="password" class="mb-2" value="Contraseña" />
-                <x-input name="password"
+                <x-input id="password"
+                         name="password"
                          type="password"
+                         {{-- required --}}
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Escribe la contraseña del nuevo usuario" />
+                         placeholder="Debe tener al menos 8 caracteres, un número y un caracter especial." />
+                <x-input-error for="password" />
             </div>
 
             <div class="mb-4">
                 <x-label for="password_confirmation" class="mb-2" value="Confirmar contraseña" />
-                <x-input name="password_confirmation"
+                <x-input id="password_confirmation"
+                         name="password_confirmation"
                          type="password"
+                         {{-- required --}}
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          placeholder="Confirma la contraseña" />
+                <x-input-error for="password_confirmation" />
             </div>
 
             <div class="mb-4">
                 <x-label for="roles" class="mb-2" value="Roles" />
-                <ul id="roles">
+                <ul id="roles" class="flex space-x-4">
                     @foreach ($roles as $role)
                         <li class="mb-2">
                             <x-label>
@@ -78,4 +85,7 @@
 
         </form>
     </div>
+    @push('scripts')
+        <script src="{{Vite::asset('resources/js/users/validation.js')}}"></script>
+    @endpush
 </x-admin-layout>
