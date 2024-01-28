@@ -22,14 +22,13 @@
                         {{$course->students_count}}
                     </li>
                     <li>
-                        @for ($i = 1; $i <= 5; $i++)
-                            @if ($course->rating >= $i)
-                                <i class="fa-solid fa-star"></i>
-                            @else
-                                <i class="fa-solid fa-star text-gray-500"></i>
-                            @endif
-                        @endfor
-                        ({{$course->rating}})
+                        <i class="fa-solid fa-star text-xl mr-2"></i>
+                        @if ($course->reviews_count > 0)
+                            {{$course->rating}} {{ $course->rating == 1 ? 'estrella' : 'estrellas' }}
+                            ({{ $course->reviews_count }} {{ $course->reviews_count == 1 ? 'valoración' : 'valoraciones' }})
+                        @else
+                            <span>Sin valoraciones</span>
+                        @endif
                     </li>
                 </ul>
             </div>
@@ -130,12 +129,10 @@
                                 <hr/>
                                 <ul>
                                     @foreach ($section->lessons as $lesson)
-                                        <a href="{{-- ruta al visor de lección --}}">
-                                            <li class="flex px-4 py-2 hover:bg-gray-200">
-                                                <i class="fa fa-solid fa-play-circle text-lg mr-2"></i>
-                                                {{ $lesson->title }}
-                                            </li>
-                                        </a>
+                                        <li class="flex px-4 py-2 hover:bg-gray-200 cursor-pointer">
+                                            <i class="fa fa-solid fa-play-circle text-lg mr-2"></i>
+                                            {{ $lesson->title }}
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -153,89 +150,7 @@
 
             </section>
 
-            <section>
-                <h3 class="text-3xl font-bold mt-6 mb-2">
-                    <i class="fa fa-solid fa-comment-dots mr-2"></i>
-                    Opiniones
-                </h3>
-
-                @if ($course->reviews_count > 0)
-                    <div class="mb-2">
-
-                        <div class="px-4 py-2">
-                            <div>
-                                <div class="flex items-center mb-2">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        @if ($course->rating >= $i)
-                                            <i class="fa fa-solid fa-star text-amber-400"></i>
-                                        @else
-                                            <i class="fa fa-solid fa-star text-gray-400"></i>
-                                        @endif
-                                    @endfor
-                                    <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{ $course->rating }}</p>
-                                    <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400"> de </p>
-                                    <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
-                                    <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
-                                        ({{ $course->reviews_count }} {{ $course->reviews_count == 1 ? 'valoración' : 'valoraciones' }})
-                                    </p>
-                                </div>
-
-                                <div>
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        @php
-                                            $ratingCount = $course->reviews->where('rating', '=', $i)->count();
-                                            $ratingCountPercent = $ratingCount * 100 / ($course->reviews->count()? : 1);
-                                        @endphp
-                                        <div class="flex items-center mt-1">
-                                            <span class="text-sm font-medium text-indigo-600">{{ $i }}</span>
-                                            <div class="w-full h-2 mx-4 bg-gray-200 rounded">
-                                                <div class="h-2 bg-amber-400 rounded" style="width: {{ $ratingCountPercent }}%"></div>
-                                            </div>
-                                            <div class="w-0">
-                                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ round($ratingCountPercent) }}%</span>
-                                            </div>
-                                        </div>
-                                    @endfor
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                @endif
-
-                <div class="card p-0 divide-y-2">
-                    @forelse ($course->reviews as $review)
-
-                        <article class="flex p-4">
-                            <figure class="mr-4">
-                                <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$review->user->profile_photo_url}}" alt="">
-                            </figure>
-                            <div class="flex-1">
-                                <div>
-                                    <h2 class="text-xl font-bold">{{$review->user->name}}</h2>
-                                    <ul class="flex text-sm">
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            @if ($review->rating >= $i)
-                                                <li class="mr-1"><i class="fa fa-solid fa-star text-amber-400"></i></li>
-                                            @else
-                                                <li class="mr-1"><i class="fa fa-solid fa-star text-gray-400"></i></li>
-                                            @endif
-                                        @endfor
-                                    </ul>
-                                    {{$review->comment}}
-                                </div>
-                            </div>
-                        </article>
-                    @empty
-                        <div class="flex items-center justify-center p-4">
-                            <div class="flex flex-col items-center">
-                                <i class="fa-solid fa-star text-8xl text-gray-200 mb-6"></i>
-                                <h3 class="text-lg font-bold text-gray-500">Este curso aún no ha recibido opiniones</h3>
-                            </div>
-                        </div>
-                    @endforelse
-                </div>
-            </section>
+            @livewire('courses-reviews', ['course' => $course])
         </div>
 
         {{-- Columna derecha --}}
@@ -324,7 +239,8 @@
                                     Aprobar
                                 </x-button>
                             @else
-                                <x-button type="button" disabled class="w-full justify-center rounded-md !text-sm h-12 mt-4">
+                                <x-button type="button" disabled title="No cumple los requisitos para ser aprobado"
+                                        class="w-full justify-center rounded-md !text-sm h-12 mt-4">
                                     Aprobar
                                 </x-button>
                             @endif

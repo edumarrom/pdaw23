@@ -6,12 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Mail\ApprovedCourse;
 use App\Mail\RejectedCourse;
 use App\Models\Course;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:course-read')->only('index', 'show');
+        $this->middleware('can:course-update')->only('approve', 'reject');
+    }
+
     public function index()
     {
         return view('admin.courses.index');
@@ -38,19 +43,9 @@ class CourseController extends Controller
 
             Mail::to($course->teacher->email)->send(new ApprovedCourse($course));
 
-            session()->flash('swal', [
-                'icon' => 'success',
-                'title' => '¡Hecho!',
-                'text' => "Curso '$course->title' publicado satisfactoriamente.",
-                'confirmButtonColor' => '#3B82F6',
-            ]);
+            session()->flash('swal', $this->getSwalSuccess("El curso '$course->title' ha sido publicado satisfactoriamente."));
         } else {
-            session()->flash('swal', [
-                'icon' => 'error',
-                'title' => '¡Ups!',
-                'text' => "El curso '$course->title' no cumple los requisitos para ser aprobado.",
-                'confirmButtonColor' => '#3B82F6',
-            ]);
+            session()->flash('swal', $this->getSwalError("El curso '$course->title' no cumple los requisitos para ser aprobado."));
         };
 
         return redirect()->route('admin.courses.index');
@@ -63,13 +58,31 @@ class CourseController extends Controller
 
         Mail::to($course->teacher->email)->send(new RejectedCourse($course));
 
-        session()->flash('swal', [
-            'icon' => 'success',
-            'title' => '¡Hecho!',
-            'text' => "Curso '$course->title' rechazado satisfactoriamente.",
-            'confirmButtonColor' => '#3B82F6',
-        ]);
+        session()->flash('swal', $this->getSwalSuccess("Curso '$course->title' rechazado satisfactoriamente."));
 
         return redirect()->route('admin.courses.index');
+    }
+
+    private function getSwalSuccess($text = '')
+    {
+        return [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => $text,
+            'confirmButtonText' => 'Aceptar',
+            'confirmButtonColor' => '#3B82F6',
+        ];
+    }
+
+    private function getSwalError($text = '')
+    {
+        return [
+            'icon' => 'error',
+            'iconColor' => '#f43f5e',
+            'title' => "D'oh!",
+            'text' => $text,
+            'confirmButtonText' => 'Aceptar',
+            'confirmButtonColor' => '#3B82F6',
+        ];
     }
 }

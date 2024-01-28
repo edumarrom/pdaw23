@@ -18,12 +18,26 @@ class CoursesIndex extends Component
 
     public $status;
 
+    public $search;
+
     public function render()
     {
         $courses = Course::where('status', 'LIKE', '%' . $this->status . '%' )
+            ->where(function ($query) {
+                $query->where('title', 'ILIKE', '%' . $this->search . '%')
+                ->orWhere('id', 'ILIKE', '%' . $this->search . '%')
+                ->orWhereHas('teacher', function ($query) {
+                    $query->where('name', 'ILIKE', '%' . $this->search . '%');
+                });
+            })
             ->orderBy('created_at', 'desc')->orderBy('id', 'desc')
             ->paginate();
 
         return view('livewire.admin.courses-index', compact('courses'));
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }
