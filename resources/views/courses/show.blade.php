@@ -22,8 +22,8 @@
                         {{$course->students_count}}
                     </li>
                     <li>
+                        <i class="fa-solid fa-star text-xl mr-2"></i>
                         @if ($course->reviews_count > 0)
-                            <i class="fa-solid fa-star text-xl mr-2"></i>
                             {{$course->rating}} {{ $course->rating == 1 ? 'estrella' : 'estrellas' }}
                             ({{ $course->reviews_count }} {{ $course->reviews_count == 1 ? 'valoración' : 'valoraciones' }})
                         @else
