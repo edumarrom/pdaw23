@@ -46,6 +46,8 @@ function validateForm(event) {
 }
 
 function validate(elements) {
+  typeof trans === 'undefined' ? trans = {} : null;
+
   const inputs = Object.keys(elements);
 
   inputs.forEach(key => {
@@ -55,31 +57,31 @@ function validate(elements) {
       switch (requirement) {
         case 'required':
           if (!required(request[key])) {
-            errors[key] = errorMessages.required(trans[key]);
+            errors[key] = errorMessages.required(trans?.[key] ?? key);
             return;
           }
           break;
         case 'email':
           if (!isEmail(request[key])) {
-            errors[key] = errorMessages.email(trans[key]);
+            errors[key] = errorMessages.email(trans?.[key] ?? key);
             return;
           }
           break;
         case 'letters':
           if (!letters(request[key])) {
-            errors[key] = errorMessages.letters(trans[key]);
+            errors[key] = errorMessages.letters(trans?.[key] ?? key);
             return;
           }
           break;
         case 'numbers':
           if (!numbers(request[key])) {
-            errors[key] = errorMessages.numbers(trans[key]);
+            errors[key] = errorMessages.numbers(trans?.[key] ?? key);
             return;
           }
           break;
         case 'symbols':
           if (!symbols(request[key])) {
-            errors[key] = errorMessages.symbols(trans[key]);
+            errors[key] = errorMessages.symbols(trans?.[key] ?? key);
             return;
           }
           break;
@@ -98,7 +100,7 @@ function validate(elements) {
           const minNumber = parseInt(requirement.split(':')[1], 10);
           if (!min(request[key], minNumber)) {
             console.log('min');
-            errors[key] = errorMessages.min(trans[key], minNumber);
+            errors[key] = errorMessages.min(trans?.[key] ?? key, minNumber);
             return;
           }
         continue;
