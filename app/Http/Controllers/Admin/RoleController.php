@@ -48,7 +48,12 @@ class RoleController extends Controller
                 return explode('-', $permission->name)[0];
             });
 
-        return view('admin.roles.create', compact('permissions'));
+        $otherPermissions = Permission::all()
+            ->reject(function ($permission) {
+                return in_array(explode('-', $permission->name)[0], $this->models);
+            });
+
+        return view('admin.roles.create', compact('permissions', 'otherPermissions'));
     }
 
     /**
@@ -82,7 +87,12 @@ class RoleController extends Controller
                 return explode('-', $permission->name)[0];
             });
 
-        return view('admin.roles.edit', compact('role', 'permissions'));
+        $otherPermissions = Permission::all()
+            ->reject(function ($permission) {
+                return in_array(explode('-', $permission->name)[0], $this->models);
+            });
+
+        return view('admin.roles.edit', compact('role', 'permissions', 'otherPermissions'));
     }
 
     /**

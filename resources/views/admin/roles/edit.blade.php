@@ -23,7 +23,7 @@
                 <x-input-error for="name" class="mt-2" />
             </div>
 
-            <div class="relative overflow-x-auto rounded-lg shadow-xl">
+            <div class="mb-6 relative overflow-x-auto rounded-lg shadow-lg">
                 <table class="w-full text-sm text-center text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                         <tr>
@@ -54,7 +54,6 @@
                                         <x-checkbox name="permissions[]"
                                                     class="mr-1 !text-blue-600 focus:!ring-blue-500"
                                                     value="{{ $permissions['id'] }}"
-                                                    :checked="in_array($permissions['id'], old('permissions', []))"
                                                     :checked="in_array($permissions['id'], old('permissions', $role->permissions->pluck('id')->toArray()))" />
                                     </td>
                                 @endforeach
@@ -62,6 +61,26 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+
+            <div class="mb-4">
+                <p class="mb-2 font-medium text-xl text-gray-700">Otros permisos</p>
+                <div class="card border border-gray-100 rounded-lg shadow-lg">
+                    <ul class="px-4 py-2 columns-3xs">
+                        @foreach ($otherPermissions as $permission)
+
+                    <li class="mb-2">
+
+                        <x-label>
+                            <x-checkbox name="permissions[]"
+                                        class="mr-1 !text-blue-600 focus:!ring-blue-500"
+                                        value="{{ $permission->id }}"
+                                        :checked="in_array($permission->id, old('permissions', $role->permissions->pluck('id')->toArray()  ))" />
+                                {{ $permission->name }}
+                        </x-label>
+                    @endforeach
+                    </ul>
+                </div>
             </div>
 
             <div class="flex justify-between mt-16">
