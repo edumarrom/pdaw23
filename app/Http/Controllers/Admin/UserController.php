@@ -10,6 +10,14 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:user-read')->only('index');
+        $this->middleware('can:user-create')->only('create', 'store');
+        $this->middleware('can:user-update')->only('edit', 'update');
+        $this->middleware('can:user-delete')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      */

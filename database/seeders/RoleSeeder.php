@@ -10,6 +10,7 @@ class RoleSeeder extends Seeder
 {
     private $models = [
         'role',
+        'user',
         'category',
         'level',
         'course',

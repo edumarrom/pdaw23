@@ -10,6 +10,7 @@ class PermissionSeeder extends Seeder
 {
     private $models = [
         'role',
+        'user',
         'category',
         'level',
         'price',
