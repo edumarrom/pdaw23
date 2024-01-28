@@ -46,19 +46,14 @@
                             </td>
                             <td class="px-6 py-4">
                                 @foreach ($user->roles->sortBy('id') as $role)
-                                    @switch($role->id)
-                                        @case(1)
+                                    @switch($role->name)
+                                        @case('admin')
                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                                 {{ $role->name }}
                                             </span>
                                             @break
-                                        @case(2)
+                                        @case('teacher')
                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                                {{ $role->name }}
-                                            </span>
-                                            @break
-                                        @case(3)
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
                                                 {{ $role->name }}
                                             </span>
                                             @break
@@ -78,7 +73,7 @@
                                     @csrf
                                     @method('delete')
                                     <button type="button" class=" text-rose-500 hover:text-rose-700"
-                                        onclick="deleteUser({{ $user->id }})">
+                                        onclick="destroy({{ $user->id }})">
                                         <i class="fa-solid fa-trash"></i>
                                         Borrar
                                     </button>
@@ -94,11 +89,27 @@
             {{ $users->links() }}
         </div>
     @else
-        <div class="flex items-center justify-center p-4">
+        {{-- <div class="flex items-center justify-center p-4">
             <div class="flex flex-col items-center">
                 <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt="">
-                {{-- Source: https://www.creativefabrica.com/product/cactus-tumbleweed-2/ref/154380/ --}}
+                <span class="text-xs">Source: https://www.creativefabrica.com/product/cactus-tumbleweed-2/ref/154380/</span>
                 <h3 class="text-lg font-bold text-gray-600">No hay usuarios que coincidan con tu búsqueda</h3>
+            </div>
+        </div> --}}
+        <div class="flex items-center justify-center p-4">
+            <div class="flex flex-col items-center">
+                @if ($search)
+                    <i class="fa-regular fa-face-sad-tear text-8xl text-gray-300 mb-6"></i>
+                    <h3 class="text-lg font-bold text-gray-600">
+                        No hay usuarios que coincidan con "{{ $search }}".
+                    </h3>
+                @else
+                    {{-- <img class="w-64 h-auto mb-4" src="{{ asset('img/tumbleweed.png') }}" alt=""> --}}
+                    <i class="fa-solid fa-cloud-moon text-8xl text-gray-300 mb-6"></i>
+                    <h3 class="text-lg font-bold text-gray-600">
+                            Esto está muy tranquilo. Demasiado...
+                    </h3>
+                @endif
             </div>
         </div>
     @endif

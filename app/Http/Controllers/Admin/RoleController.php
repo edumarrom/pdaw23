@@ -11,6 +11,7 @@ class RoleController extends Controller
 {
     private $models = [
         'role',
+        'user',
         'category',
         'level',
         'course',

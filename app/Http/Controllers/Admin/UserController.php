@@ -6,9 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:user-read')->only('index');
+        $this->middleware('can:user-create')->only('create', 'store');
+        $this->middleware('can:user-update')->only('edit', 'update');
+        $this->middleware('can:user-delete')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -37,8 +46,11 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
-            'password'  => 'required|string|min:8|confirmed',
-            'permissions'   => 'nullable|array',
+            /* 'password'  => 'required|string|min:8|confirmed', */
+            'password'  => ['required', 'confirmed',
+                Password::min(8)->letters()->numbers()->symbols(),
+            ],
+            'roles'   => 'nullable|array',
         ]);
 
         $user = User::create([
@@ -77,7 +89,9 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'password'  => 'nullable|string|min:8|confirmed',
+            'password'  => ['nullable', 'confirmed',
+                Password::min(8)->letters()->numbers()->symbols(),
+            ],
             'permissions'   => 'nullable|array',
         ]);
 
