@@ -11,6 +11,12 @@ use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:course-read')->only('index', 'show');
+        $this->middleware('can:course-update')->only('approve', 'reject');
+    }
+
     public function index()
     {
         return view('admin.courses.index');
