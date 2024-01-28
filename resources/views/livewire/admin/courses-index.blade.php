@@ -67,13 +67,13 @@
                         <th scope="col" class="px-6 py-3">
                             Título
                         </th>
-                        <th scope="col" class="wpx-6 py-3">
+                        <th scope="col" class="px-6 py-3">
                             Profesor
                         </th>
-                        <th scope="col" class="wpx-6 py-3">
+                        <th scope="col" class="px-6 py-3">
                             Estado
                         </th>
-                        <th scope="col" class="wpx-6 py-3 md:w-1/3 lg:w-1/12">
+                        <th scope="col" class="px-6 py-3 md:w-1/3 lg:w-1/12">
                             Acciones
                         </th>
                     </tr>
@@ -110,7 +110,7 @@
                                     @default
                                 @endswitch
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-4 py-2">
                                 @switch($course->status)
                                     @case(2)
                                         <x-link-button href="{{ route('admin.courses.show', $course) }}"
