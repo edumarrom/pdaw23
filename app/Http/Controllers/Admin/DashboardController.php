@@ -12,10 +12,20 @@ class DashboardController extends Controller
     public function __invoke()
     {
 
-        $pendingCourses = Course::where('status', 2)->count();
+        //$pendingCourses = Course::where('status', 2)->count();
+        $courses = Course::all();;
 
-        $users = User::count();
+        $users = User::all();
 
-        return view('admin.dashboard', compact('pendingCourses', 'users'));
+        $adminsCount = User::permission([1])->count();
+
+        $teachersCount = User::permission([2])->count();
+
+        $studentsCount = User::whereNotIn('id', User::permission([1, 2])->pluck('id'))->count();
+
+        /* $test = User::permission([2])->get();
+        return $test; */
+
+        return view('admin.dashboard', compact('courses', 'users', 'adminsCount', 'teachersCount', 'studentsCount'));
     }
 }
