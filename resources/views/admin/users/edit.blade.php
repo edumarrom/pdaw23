@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="container">
+    <div class="md:container">
         <div class="flex items-center justify-between mb-4">
             <h1 class="text-3xl font-bold">Editar Usuario</h1>
         </div>
