@@ -25,39 +25,33 @@
             </div>
 
             <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <a href="{{ route('admin.courses.index')}}">
-                    <dt>
-                        <i class="fa-solid fa-file-circle-exclamation inline-block text-5xl w-14 h-14 text-gray-200 absolute top-1 right-0"></i>
-                        <p class="truncate text-sm font-medium text-gray-500">En borrador</p>
-                    </dt>
-                    <dd class="flex items-baseline">
-                        <p class="text-3xl font-semibold text-blue-800">{{ $courses->where('status', 1)->count() }}</p>
-                    </dd>
-                </a>
+                <dt>
+                    <i class="fa-solid fa-file-circle-exclamation inline-block text-5xl w-14 h-14 text-gray-200 absolute top-1 right-0"></i>
+                    <p class="truncate text-sm font-medium text-gray-500">En borrador</p>
+                </dt>
+                <dd class="flex items-baseline">
+                    <p class="text-3xl font-semibold text-blue-800">{{ $courses->where('status', 1)->count() }}</p>
+                </dd>
             </div>
 
             <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <a href="{{ route('admin.courses.index')}}">
-                    <dt>
-                        <i class="fa-solid fa-file-circle-question inline-block text-5xl w-14 h-14 text-gray-200 absolute top-1 right-0"></i>
-                        <p class="truncate text-sm font-medium text-gray-500">En revisión</p>
-                    </dt>
-                    <dd class="flex items-baseline">
-                        <p class="text-3xl font-semibold text-blue-800">{{ $courses->where('status', 2)->count() }}</p>
-                    </dd>
-                </a>
+                <dt>
+                    <i class="fa-solid fa-file-circle-question inline-block text-5xl w-14 h-14 text-gray-200 absolute top-1 right-0"></i>
+                    <p class="truncate text-sm font-medium text-gray-500">En revisión</p>
+                </dt>
+                <dd class="flex items-baseline">
+                    <p class="text-3xl font-semibold text-blue-800">{{ $courses->where('status', 2)->count() }}</p>
+                </dd>
             </div>
 
             <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <a href="{{ route('admin.courses.index')}}">
-                    <dt>
-                        <i class="fa-solid fa-file-circle-check inline-block text-5xl w-14 h-14 text-gray-200 absolute top-1 right-0"></i>
-                        <p class="truncate text-sm font-medium text-gray-500">Publicados</p>
-                    </dt>
-                    <dd class="flex items-baseline">
-                        <p class="text-3xl font-semibold text-blue-800">{{ $courses->where('status', 3)->count() }}</p>
-                    </dd>
-                </a>
+                <dt>
+                    <i class="fa-solid fa-file-circle-check inline-block text-5xl w-14 h-14 text-gray-200 absolute top-1 right-0"></i>
+                    <p class="truncate text-sm font-medium text-gray-500">Publicados</p>
+                </dt>
+                <dd class="flex items-baseline">
+                    <p class="text-3xl font-semibold text-blue-800">{{ $courses->where('status', 3)->count() }}</p>
+                </dd>
             </div>
         </div>
 
@@ -67,13 +61,15 @@
 
         <div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <dt>
-                    <i class="fa-solid fa-users inline-block text-5xl w-16 h-16 text-gray-200 absolute top-1 right-0"></i>
-                    <p class="truncate text-sm font-medium text-gray-500">Usuarios registrados</p>
-                </dt>
-                <dd class="flex items-baseline">
-                    <p class="text-3xl font-semibold text-blue-800">{{ $users->count() }}</p>
-                </dd>
+                <a href="{{ route("admin.users.index") }}">
+                    <dt>
+                        <i class="fa-solid fa-users inline-block text-5xl w-16 h-16 text-gray-200 absolute top-1 right-0"></i>
+                        <p class="truncate text-sm font-medium text-gray-500">Usuarios registrados</p>
+                    </dt>
+                    <dd class="flex items-baseline">
+                        <p class="text-3xl font-semibold text-blue-800">{{ $users->count() }}</p>
+                    </dd>
+                </a>
             </div>
 
             <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
