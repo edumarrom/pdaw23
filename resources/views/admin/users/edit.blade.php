@@ -17,7 +17,6 @@
                          name="name"
                          type="text"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         {{-- required --}}
                          placeholder="Escribe un nombre para este usuario"
                          value="{{old('name', $user->name)}}" />
             </div>
@@ -28,7 +27,6 @@
                          name="email"
                          type="email"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         {{-- required --}}
                          placeholder="Escribe un email para este usuario"
                          value="{{old('email', $user->email)}}" />
             </div>
@@ -39,7 +37,7 @@
                          name="password"
                          type="password"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Escribe la nueva contraseña del usuario" />
+                         placeholder="Debe contener al menos 8 caracteres, un número y un símbolo." />
             </div>
 
             <div class="mb-4">

@@ -17,7 +17,6 @@
                          name="name"
                          type="text"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         required
                          placeholder="Escribe un nombre para este rol"
                          value="{{old('name', $role->name)}}" />
                 <x-input-error for="name" class="mt-2" />

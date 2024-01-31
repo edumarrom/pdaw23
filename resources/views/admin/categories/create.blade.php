@@ -13,7 +13,6 @@
                 <x-input id="name"
                          name="name"
                          type="text"
-                         required
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          placeholder="Escribe un nombre para esta categoría"
                          value="{{old('name')}}" />
