@@ -48,7 +48,7 @@
     </div>
 
     @push('scripts')
-        <script src="{{Vite::asset('resources/js/prices/validation.js')}}"></script>
+        <script src="{{Vite::asset('resources/js/admin/prices/validation.js')}}"></script>
     @endpush
 
 </x-admin-layout>

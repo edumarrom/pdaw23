@@ -97,6 +97,6 @@
         </form>
     </div>
     @push('scripts')
-        <script src="{{Vite::asset('resources/js/categories/validation.js')}}"></script>
+        <script src="{{Vite::asset('resources/js/admin/categories/validation.js')}}"></script>
     @endpush
 </x-admin-layout>

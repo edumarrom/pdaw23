@@ -37,6 +37,6 @@
         </form>
     </div>
     @push('scripts')
-        <script src="{{Vite::asset('resources/js/levels/validation.js')}}"></script>
+        <script src="{{Vite::asset('resources/js/admin/levels/validation.js')}}"></script>
     @endpush
 </x-admin-layout>

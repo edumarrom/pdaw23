@@ -98,6 +98,6 @@
         </form>
     </div>
     @push('scripts')
-        <script src="{{Vite::asset('resources/js/roles/validation.js')}}"></script>
+        <script src="{{Vite::asset('resources/js/admin/roles/validation.js')}}"></script>
     @endpush
 </x-admin-layout>

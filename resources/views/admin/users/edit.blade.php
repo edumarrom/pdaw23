@@ -83,6 +83,6 @@
     </div>
 
     @push('scripts')
-        <script src="{{Vite::asset('resources/js/users/validation.js')}}"></script>
+        <script src="{{Vite::asset('resources/js/admin/users/validation.js')}}"></script>
     @endpush
 </x-admin-layout>
