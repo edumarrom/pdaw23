@@ -1,68 +1,122 @@
 <x-admin-layout>
 
-    <div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus aut quam et illo vel deserunt enim modi quaerat obcaecati nemo quisquam, a, asperiores neque ullam, accusamus laborum sapiente vitae inventore!</p>
-        <p>In officia tenetur enim voluptatibus id placeat, aliquam repellat harum facere, assumenda officiis? Possimus eum impedit qui exercitationem, laborum perspiciatis, nostrum fugiat porro non facere soluta, vero fugit aliquam? Repellendus.</p>
-        <p>Dolore odio dolor, maiores explicabo molestiae fugit magni asperiores nulla odit totam libero officiis quibusdam ipsa est itaque nostrum consequatur repudiandae fuga excepturi laboriosam quos corrupti iste architecto. Magnam, sunt.</p>
-        <p>Porro et eveniet iusto reprehenderit necessitatibus placeat cum libero dolorem eos. At deleniti voluptatem distinctio quas voluptatum velit sapiente iure nobis! Itaque veritatis qui ipsa at quia. Velit, suscipit nemo!</p>
-        <p>Dicta animi provident vitae? Cupiditate quidem rem omnis. Sed culpa itaque cum quisquam corporis enim eius reiciendis excepturi. Voluptatibus laboriosam impedit officiis recusandae nulla eum explicabo magnam hic atque sunt.</p>
-        <p>Blanditiis hic velit nemo eveniet quisquam laudantium magni laborum aperiam maxime, facere adipisci dolorum ratione a incidunt iusto, quos atque fugiat, natus consequuntur commodi! A doloremque dignissimos modi illum odio.</p>
-        <p>Neque tempore repellat obcaecati dicta eum quas deserunt corrupti reiciendis dolorum iusto, ab, numquam non molestiae optio veniam quam aspernatur quos expedita ipsam commodi molestias odit amet quis. Dignissimos, deserunt.</p>
-        <p>Sed doloribus voluptate, tempore, hic deserunt repellat porro omnis itaque nesciunt perferendis dicta nisi sint ipsa saepe ipsam non aperiam, atque tenetur minus quibusdam. Facere dicta assumenda aspernatur ex sint.</p>
-        <p>Sed quaerat molestiae harum deserunt modi, maxime iure, quia a odio quidem numquam eum? Ipsam tempore doloremque nemo reprehenderit asperiores, necessitatibus eaque magnam commodi facilis, aliquam alias. Porro, eveniet fugit!</p>
-        <p>Et magnam adipisci ratione architecto est hic, perferendis praesentium alias at! Eligendi, dolorum tempore. Labore error, quos, eum beatae perspiciatis obcaecati ex saepe eos non quibusdam adipisci quo tempora animi?</p>
-    </div>
+    <div class="container">
+        <div class="mb-4">
+            <h1 class="text-3xl font-bold">Dashboard</h1>
+        </div>
 
-    <div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus aut quam et illo vel deserunt enim modi quaerat obcaecati nemo quisquam, a, asperiores neque ullam, accusamus laborum sapiente vitae inventore!</p>
-        <p>In officia tenetur enim voluptatibus id placeat, aliquam repellat harum facere, assumenda officiis? Possimus eum impedit qui exercitationem, laborum perspiciatis, nostrum fugiat porro non facere soluta, vero fugit aliquam? Repellendus.</p>
-        <p>Dolore odio dolor, maiores explicabo molestiae fugit magni asperiores nulla odit totam libero officiis quibusdam ipsa est itaque nostrum consequatur repudiandae fuga excepturi laboriosam quos corrupti iste architecto. Magnam, sunt.</p>
-        <p>Porro et eveniet iusto reprehenderit necessitatibus placeat cum libero dolorem eos. At deleniti voluptatem distinctio quas voluptatum velit sapiente iure nobis! Itaque veritatis qui ipsa at quia. Velit, suscipit nemo!</p>
-        <p>Dicta animi provident vitae? Cupiditate quidem rem omnis. Sed culpa itaque cum quisquam corporis enim eius reiciendis excepturi. Voluptatibus laboriosam impedit officiis recusandae nulla eum explicabo magnam hic atque sunt.</p>
-        <p>Blanditiis hic velit nemo eveniet quisquam laudantium magni laborum aperiam maxime, facere adipisci dolorum ratione a incidunt iusto, quos atque fugiat, natus consequuntur commodi! A doloremque dignissimos modi illum odio.</p>
-        <p>Neque tempore repellat obcaecati dicta eum quas deserunt corrupti reiciendis dolorum iusto, ab, numquam non molestiae optio veniam quam aspernatur quos expedita ipsam commodi molestias odit amet quis. Dignissimos, deserunt.</p>
-        <p>Sed doloribus voluptate, tempore, hic deserunt repellat porro omnis itaque nesciunt perferendis dicta nisi sint ipsa saepe ipsam non aperiam, atque tenetur minus quibusdam. Facere dicta assumenda aspernatur ex sint.</p>
-        <p>Sed quaerat molestiae harum deserunt modi, maxime iure, quia a odio quidem numquam eum? Ipsam tempore doloremque nemo reprehenderit asperiores, necessitatibus eaque magnam commodi facilis, aliquam alias. Porro, eveniet fugit!</p>
-        <p>Et magnam adipisci ratione architecto est hic, perferendis praesentium alias at! Eligendi, dolorum tempore. Labore error, quos, eum beatae perspiciatis obcaecati ex saepe eos non quibusdam adipisci quo tempora animi?</p>
-    </div>
 
-    <div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus aut quam et illo vel deserunt enim modi quaerat obcaecati nemo quisquam, a, asperiores neque ullam, accusamus laborum sapiente vitae inventore!</p>
-        <p>In officia tenetur enim voluptatibus id placeat, aliquam repellat harum facere, assumenda officiis? Possimus eum impedit qui exercitationem, laborum perspiciatis, nostrum fugiat porro non facere soluta, vero fugit aliquam? Repellendus.</p>
-        <p>Dolore odio dolor, maiores explicabo molestiae fugit magni asperiores nulla odit totam libero officiis quibusdam ipsa est itaque nostrum consequatur repudiandae fuga excepturi laboriosam quos corrupti iste architecto. Magnam, sunt.</p>
-        <p>Porro et eveniet iusto reprehenderit necessitatibus placeat cum libero dolorem eos. At deleniti voluptatem distinctio quas voluptatum velit sapiente iure nobis! Itaque veritatis qui ipsa at quia. Velit, suscipit nemo!</p>
-        <p>Dicta animi provident vitae? Cupiditate quidem rem omnis. Sed culpa itaque cum quisquam corporis enim eius reiciendis excepturi. Voluptatibus laboriosam impedit officiis recusandae nulla eum explicabo magnam hic atque sunt.</p>
-        <p>Blanditiis hic velit nemo eveniet quisquam laudantium magni laborum aperiam maxime, facere adipisci dolorum ratione a incidunt iusto, quos atque fugiat, natus consequuntur commodi! A doloremque dignissimos modi illum odio.</p>
-        <p>Neque tempore repellat obcaecati dicta eum quas deserunt corrupti reiciendis dolorum iusto, ab, numquam non molestiae optio veniam quam aspernatur quos expedita ipsam commodi molestias odit amet quis. Dignissimos, deserunt.</p>
-        <p>Sed doloribus voluptate, tempore, hic deserunt repellat porro omnis itaque nesciunt perferendis dicta nisi sint ipsa saepe ipsam non aperiam, atque tenetur minus quibusdam. Facere dicta assumenda aspernatur ex sint.</p>
-        <p>Sed quaerat molestiae harum deserunt modi, maxime iure, quia a odio quidem numquam eum? Ipsam tempore doloremque nemo reprehenderit asperiores, necessitatibus eaque magnam commodi facilis, aliquam alias. Porro, eveniet fugit!</p>
-        <p>Et magnam adipisci ratione architecto est hic, perferendis praesentium alias at! Eligendi, dolorum tempore. Labore error, quos, eum beatae perspiciatis obcaecati ex saepe eos non quibusdam adipisci quo tempora animi?</p>
-    </div>
+        <div class="mb-4">
+            <h2 class="text-xl text-gray-700 font-bold">Cursos</h2>
+        </div>
 
-    <div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus aut quam et illo vel deserunt enim modi quaerat obcaecati nemo quisquam, a, asperiores neque ullam, accusamus laborum sapiente vitae inventore!</p>
-        <p>In officia tenetur enim voluptatibus id placeat, aliquam repellat harum facere, assumenda officiis? Possimus eum impedit qui exercitationem, laborum perspiciatis, nostrum fugiat porro non facere soluta, vero fugit aliquam? Repellendus.</p>
-        <p>Dolore odio dolor, maiores explicabo molestiae fugit magni asperiores nulla odit totam libero officiis quibusdam ipsa est itaque nostrum consequatur repudiandae fuga excepturi laboriosam quos corrupti iste architecto. Magnam, sunt.</p>
-        <p>Porro et eveniet iusto reprehenderit necessitatibus placeat cum libero dolorem eos. At deleniti voluptatem distinctio quas voluptatum velit sapiente iure nobis! Itaque veritatis qui ipsa at quia. Velit, suscipit nemo!</p>
-        <p>Dicta animi provident vitae? Cupiditate quidem rem omnis. Sed culpa itaque cum quisquam corporis enim eius reiciendis excepturi. Voluptatibus laboriosam impedit officiis recusandae nulla eum explicabo magnam hic atque sunt.</p>
-        <p>Blanditiis hic velit nemo eveniet quisquam laudantium magni laborum aperiam maxime, facere adipisci dolorum ratione a incidunt iusto, quos atque fugiat, natus consequuntur commodi! A doloremque dignissimos modi illum odio.</p>
-        <p>Neque tempore repellat obcaecati dicta eum quas deserunt corrupti reiciendis dolorum iusto, ab, numquam non molestiae optio veniam quam aspernatur quos expedita ipsam commodi molestias odit amet quis. Dignissimos, deserunt.</p>
-        <p>Sed doloribus voluptate, tempore, hic deserunt repellat porro omnis itaque nesciunt perferendis dicta nisi sint ipsa saepe ipsam non aperiam, atque tenetur minus quibusdam. Facere dicta assumenda aspernatur ex sint.</p>
-        <p>Sed quaerat molestiae harum deserunt modi, maxime iure, quia a odio quidem numquam eum? Ipsam tempore doloremque nemo reprehenderit asperiores, necessitatibus eaque magnam commodi facilis, aliquam alias. Porro, eveniet fugit!</p>
-        <p>Et magnam adipisci ratione architecto est hic, perferendis praesentium alias at! Eligendi, dolorum tempore. Labore error, quos, eum beatae perspiciatis obcaecati ex saepe eos non quibusdam adipisci quo tempora animi?</p>
-    </div>
+        <div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 
-    <div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus aut quam et illo vel deserunt enim modi quaerat obcaecati nemo quisquam, a, asperiores neque ullam, accusamus laborum sapiente vitae inventore!</p>
-        <p>In officia tenetur enim voluptatibus id placeat, aliquam repellat harum facere, assumenda officiis? Possimus eum impedit qui exercitationem, laborum perspiciatis, nostrum fugiat porro non facere soluta, vero fugit aliquam? Repellendus.</p>
-        <p>Dolore odio dolor, maiores explicabo molestiae fugit magni asperiores nulla odit totam libero officiis quibusdam ipsa est itaque nostrum consequatur repudiandae fuga excepturi laboriosam quos corrupti iste architecto. Magnam, sunt.</p>
-        <p>Porro et eveniet iusto reprehenderit necessitatibus placeat cum libero dolorem eos. At deleniti voluptatem distinctio quas voluptatum velit sapiente iure nobis! Itaque veritatis qui ipsa at quia. Velit, suscipit nemo!</p>
-        <p>Dicta animi provident vitae? Cupiditate quidem rem omnis. Sed culpa itaque cum quisquam corporis enim eius reiciendis excepturi. Voluptatibus laboriosam impedit officiis recusandae nulla eum explicabo magnam hic atque sunt.</p>
-        <p>Blanditiis hic velit nemo eveniet quisquam laudantium magni laborum aperiam maxime, facere adipisci dolorum ratione a incidunt iusto, quos atque fugiat, natus consequuntur commodi! A doloremque dignissimos modi illum odio.</p>
-        <p>Neque tempore repellat obcaecati dicta eum quas deserunt corrupti reiciendis dolorum iusto, ab, numquam non molestiae optio veniam quam aspernatur quos expedita ipsam commodi molestias odit amet quis. Dignissimos, deserunt.</p>
-        <p>Sed doloribus voluptate, tempore, hic deserunt repellat porro omnis itaque nesciunt perferendis dicta nisi sint ipsa saepe ipsam non aperiam, atque tenetur minus quibusdam. Facere dicta assumenda aspernatur ex sint.</p>
-        <p>Sed quaerat molestiae harum deserunt modi, maxime iure, quia a odio quidem numquam eum? Ipsam tempore doloremque nemo reprehenderit asperiores, necessitatibus eaque magnam commodi facilis, aliquam alias. Porro, eveniet fugit!</p>
-        <p>Et magnam adipisci ratione architecto est hic, perferendis praesentium alias at! Eligendi, dolorum tempore. Labore error, quos, eum beatae perspiciatis obcaecati ex saepe eos non quibusdam adipisci quo tempora animi?</p>
+            <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <a href="{{ route('admin.courses.index')}}">
+                    <dt>
+                        <i class="fa-solid fa-book inline-block text-5xl w-12 h-12 text-gray-200 absolute top-1 right-0"></i>
+                        <p class="truncate text-sm font-medium text-gray-500">Cursos en total</p>
+                    </dt>
+                    <dd class="flex items-baseline">
+                        <p class="text-3xl font-semibold text-blue-800">{{ $courses->count() }}</p>
+                    </dd>
+                </a>
+            </div>
+
+            <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <a href="{{ route('admin.courses.index')}}">
+                    <dt>
+                        <i class="fa-solid fa-file-circle-exclamation inline-block text-5xl w-14 h-14 text-gray-200 absolute top-1 right-0"></i>
+                        <p class="truncate text-sm font-medium text-gray-500">En borrador</p>
+                    </dt>
+                    <dd class="flex items-baseline">
+                        <p class="text-3xl font-semibold text-blue-800">{{ $courses->where('status', 1)->count() }}</p>
+                    </dd>
+                </a>
+            </div>
+
+            <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <a href="{{ route('admin.courses.index')}}">
+                    <dt>
+                        <i class="fa-solid fa-file-circle-question inline-block text-5xl w-14 h-14 text-gray-200 absolute top-1 right-0"></i>
+                        <p class="truncate text-sm font-medium text-gray-500">En revisión</p>
+                    </dt>
+                    <dd class="flex items-baseline">
+                        <p class="text-3xl font-semibold text-blue-800">{{ $courses->where('status', 2)->count() }}</p>
+                    </dd>
+                </a>
+            </div>
+
+            <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <a href="{{ route('admin.courses.index')}}">
+                    <dt>
+                        <i class="fa-solid fa-file-circle-check inline-block text-5xl w-14 h-14 text-gray-200 absolute top-1 right-0"></i>
+                        <p class="truncate text-sm font-medium text-gray-500">Publicados</p>
+                    </dt>
+                    <dd class="flex items-baseline">
+                        <p class="text-3xl font-semibold text-blue-800">{{ $courses->where('status', 3)->count() }}</p>
+                    </dd>
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <h2 class="text-xl text-gray-700 font-bold">Usuarios</h2>
+        </div>
+
+        <div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <dt>
+                    <i class="fa-solid fa-users inline-block text-5xl w-16 h-16 text-gray-200 absolute top-1 right-0"></i>
+                    <p class="truncate text-sm font-medium text-gray-500">Usuarios registrados</p>
+                </dt>
+                <dd class="flex items-baseline">
+                    <p class="text-3xl font-semibold text-blue-800">{{ $users->count() }}</p>
+                </dd>
+            </div>
+
+            <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <dt>
+                    <i class="fa-solid fa-user-tie inline-block text-5xl w-12 h-12 text-gray-200 absolute top-1 right-0"></i>
+                    <p class="truncate text-sm font-medium text-gray-500">Administradores</p>
+                </dt>
+                <dd class="flex items-baseline">
+                    <p class="text-3xl font-semibold text-blue-800">{{ $adminsCount }}</p>
+                </dd>
+            </div>
+
+            <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <dt>
+                    <i class="fa-solid fa-chalkboard-user inline-block text-5xl w-16 h-16 text-gray-200 absolute top-1 right-0"></i>
+                    <p class="truncate text-sm font-medium text-gray-500">Profesores</p>
+                </dt>
+                <dd class="flex items-baseline">
+                    <p class="text-3xl font-semibold text-blue-800">{{ $teachersCount }}</p>
+                </dd>
+            </div>
+
+            <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <dt>
+                    <i class="fa-solid fa-graduation-cap inline-block text-5xl w-16 h-16 text-gray-200 absolute top-1 right-0"></i>
+                    <p class="truncate text-sm font-medium text-gray-500">Estudiantes</p>
+                </dt>
+                <dd class="flex items-baseline">
+                    <p class="text-3xl font-semibold text-blue-800">{{ $studentsCount }}</p>
+                </dd>
+            </div>
+
+            {{-- <div class="card relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <dt>
+                    <i class="fa-solid fa-globe inline-block text-5xl w-16 h-16 text-gray-200 absolute top-1 right-0"></i>
+                    <p class="truncate text-sm font-medium text-gray-500">En línea</p>
+                </dt>
+                <dd class="flex items-baseline">
+                    @todo: lograr saber el nº de usuarios en línea
+                    <p class="text-3xl font-semibold text-blue-800">{{ $studentsCount }}</p>
+                </dd>
+            </div> --}}
+        </div>
     </div>
 
 </x-admin-layout>

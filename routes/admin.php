@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LevelController;
-use App\Http\Controllers\Admin\PermissionController;
+// use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\PriceController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('admin.dashboard');})->name('dashboard');
+Route::get('/', DashboardController::class)->name('dashboard');
 
 Route::resource('/categories', CategoryController::class)->names('categories')->except('show');
 
