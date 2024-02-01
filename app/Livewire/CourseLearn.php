@@ -64,6 +64,10 @@ class CourseLearn extends Component
         } else {
             $this->lesson->users()->attach(auth()->user()->id);
         }
+
+        if ($this->course->lessons->count() == $this->course->lessons->where('completed', true)->count()) {
+            $this->markCourseAsCompleted();
+        }
     }
 
     public function getAdvanceProperty()
@@ -76,5 +80,12 @@ class CourseLearn extends Component
         }
         $advance = ($i * 100) / ($this->course->lessons->count());
         return round($advance, 2);
+    }
+
+    public function markCourseAsCompleted()
+    {
+        if ($this->course->students->where('id', auth()->user()->id)->first()->pivot->completed_at == null) {
+            $this->course->students()->updateExistingPivot(auth()->user()->id, ['completed_at' => now()]);
+        }
     }
 }
