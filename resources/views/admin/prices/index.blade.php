@@ -2,8 +2,8 @@
 
     <div class="md:container">
         <div class="flex items-center justify-between mb-4">
-            <h1 class="text-3xl font-bold">Niveles</h1>
-            <x-link-button href="{{ route('admin.levels.create') }}" color="blue">
+            <h1 class="text-3xl font-bold">Precios</h1>
+            <x-link-button href="{{ route('admin.prices.create') }}" color="blue">
                 <i class="fa-solid fa-plus mr-2"></i>
                 Nuevo
             </x-link-button>
@@ -19,31 +19,37 @@
                         <th scope="col" class="px-6 py-3">
                             Nombre
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            Importe
+                        </th>
                         <th scope="col" class="px-6 py-3 md:w-1/3 lg:w-1/6">
                             Acciones
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($levels as $level)
+                    @foreach ($prices as $price)
                         <tr class="bg-white border-b hover:bg-gray-50">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {{ $level->id }}
+                                {{ $price->id }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $level->name }}
+                                {{ $price->name }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('admin.levels.edit', $level) }}" class="hover:text-gray-700">
+                                {{ $price->value }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="{{ route('admin.prices.edit', $price) }}" class="hover:text-gray-700">
                                     <i class="fa-solid fa-pen"></i>
                                     Editar
                                 </a>
-                                <form action="{{ route('admin.levels.destroy', $level) }}" method="post"
-                                    id='delete-form-{{ $level->id }}'>
+                                <form action="{{ route('admin.prices.destroy', $price) }}" method="post"
+                                    id='delete-form-{{ $price->id }}'>
                                     @csrf
                                     @method('delete')
                                     <button type="button" class="text-rose-500 hover:text-rose-700"
-                                        onclick="destroy({{ $level->id }})">
+                                        onclick="destroy({{ $price->id }})">
                                         <i class="fa-solid fa-trash"></i>
                                         Borrar
                                     </button>

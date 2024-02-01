@@ -9,6 +9,23 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+    private $models = [
+        'role',
+        'user',
+        'category',
+        'level',
+        'course',
+        'price',
+    ];
+
+    public function __construct()
+    {
+        $this->middleware('can:role-read')->only('index');
+        $this->middleware('can:role-create')->only('create', 'store');
+        $this->middleware('can:role-update')->only('edit', 'update');
+        $this->middleware('can:role-delete')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -23,10 +40,20 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $permissions = Permission::all()
+            ->filter(function ($permission) {
+                return in_array(explode('-', $permission->name)[0], $this->models);
+            })
+            ->groupBy(function ($permission) {
+                return explode('-', $permission->name)[0];
+            });
 
-        $permissions = Permission::all();
+        $otherPermissions = Permission::all()
+            ->reject(function ($permission) {
+                return in_array(explode('-', $permission->name)[0], $this->models);
+            });
 
-        return view('admin.roles.create', compact('permissions'));
+        return view('admin.roles.create', compact('permissions', 'otherPermissions'));
     }
 
     /**
@@ -42,12 +69,7 @@ class RoleController extends Controller
         $role = Role::create($request->all());
         $role->permissions()->attach($request->permissions);
 
-        session()->flash('swal', [
-            'icon' => 'success',
-            'title' => '¡Hecho!',
-            'text' => "Rol '$role->name' creado satisfactoriamente.",
-            'confirmButtonColor' => '#3B82F6',
-        ]);
+        session()->flash('swal', $this->getSwalSuccess("Rol '$role->name' creado satisfactoriamente"));
 
         return redirect()->route('admin.roles.index');
     }
@@ -57,12 +79,20 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        /* $permissions = $role->permissions->pluck('id')->toArray();
-        dd(in_array(1, $permissions)); */
+        $permissions = Permission::all()
+            ->filter(function ($permission) {
+                return in_array(explode('-', $permission->name)[0], $this->models);
+            })
+            ->groupBy(function ($permission) {
+                return explode('-', $permission->name)[0];
+            });
 
-        $permissions = Permission::all();
+        $otherPermissions = Permission::all()
+            ->reject(function ($permission) {
+                return in_array(explode('-', $permission->name)[0], $this->models);
+            });
 
-        return view('admin.roles.edit', compact('role', 'permissions'));
+        return view('admin.roles.edit', compact('role', 'permissions', 'otherPermissions'));
     }
 
     /**
@@ -78,12 +108,7 @@ class RoleController extends Controller
         $role->update($request->all());
         $role->permissions()->sync($request->permissions);
 
-        session()->flash('swal', [
-            'icon' => 'success',
-            'title' => '¡Hecho!',
-            'text' => "Rol '$role->name' editado satisfactoriamente.",
-            'confirmButtonColor' => '#3B82F6',
-        ]);
+        session()->flash('swal', $this->getSwalSuccess("Rol '$role->name' editado satisfactoriamente"));
 
         return redirect()->route('admin.roles.index');
     }
@@ -94,15 +119,40 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $roleName = $role->name;
+
+        if ($role->users->count()) {
+            session()->flash('swal', $this->getSwalError("No es posible eliminar el rol '$roleName' porque tiene usuarios asociados"));
+
+            return redirect()->route('admin.roles.index');
+        }
+
         $role->delete();
 
-        session()->flash('swal', [
-            'icon' => 'success',
-            'title' => '¡Hecho!',
-            'text' => "Rol '$roleName' borrado satisfactoriamente.",
-            'confirmButtonColor' => '#3B82F6',
-        ]);
+        session()->flash('swal', $this->getSwalSuccess("Rol '$roleName' borrado satisfactoriamente"));
 
         return redirect()->route('admin.roles.index');
+    }
+
+    private function getSwalSuccess($text = '')
+    {
+        return [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => $text,
+            'confirmButtonText' => 'Aceptar',
+            'confirmButtonColor' => '#3B82F6',
+        ];
+    }
+
+    private function getSwalError($text = '')
+    {
+        return [
+            'icon' => 'error',
+            'iconColor' => '#f43f5e',
+            'title' => "D'oh!",
+            'text' => $text,
+            'confirmButtonText' => 'Aceptar',
+            'confirmButtonColor' => '#3B82F6',
+        ];
     }
 }

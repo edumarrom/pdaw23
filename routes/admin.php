@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LevelController;
-use App\Http\Controllers\Admin\PermissionController;
+// use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\PriceController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -14,13 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('admin.dashboard');})->name('dashboard');
+Route::get('/', DashboardController::class)->name('dashboard');
 
-Route::resource('/levels', LevelController::class)->names('levels');
+Route::resource('/categories', CategoryController::class)->names('categories')->except('show');
+
+Route::resource('/levels', LevelController::class)->names('levels')->except('show');
+
+Route::resource('/prices', PriceController::class)->names('prices')->except('show');
 
 Route::resource('/roles', RoleController::class)->names('roles')->except('show');
 
-Route::resource('/permissions', PermissionController::class)->names('permissions')->except('show');
+// Route::resource('/permissions', PermissionController::class)->names('permissions')->except('show');
 
 Route::resource('/users', UserController::class)->names('users')->except('show');
 

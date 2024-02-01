@@ -1,6 +1,6 @@
 <x-admin-layout>
 
-    <div class="container">
+    <div class="md:container">
         <div class="flex items-center justify-between mb-4">
             <h1 class="text-3xl font-bold">Cursos</h1>
         </div>
@@ -28,12 +28,14 @@
                 const form = document.querySelector('#suspend-form-' + courseId);
                 Swal.fire({
                     icon: 'warning',
+                    iconColor: '#f43f5e',
                     title: '¿Estás seguro?',
                     text: "Esta acción es irreversible",
                     showCancelButton: true,
                     confirmButtonText: 'Confirmar',
-                    confirmButtonColor: '#EF4444',
+                    confirmButtonColor: '#f43f5e',
                     cancelButtonText: 'Cancelar',
+                    cancelButtonColor: '#1f2937',
 
                 }).then((result) => {
                     if (result.isConfirmed) {

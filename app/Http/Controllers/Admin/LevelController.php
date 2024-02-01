@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class LevelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:level-read')->only('index');
+        $this->middleware('can:level-create')->only('create', 'store');
+        $this->middleware('can:level-update')->only('edit', 'update');
+        $this->middleware('can:level-delete')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -36,22 +43,9 @@ class LevelController extends Controller
 
         $level = Level::create($request->all());
 
-        session()->flash('swal', [
-            'icon' => 'success',
-            'title' => '¡Hecho!',
-            'text' => 'Nivel creado satisfactoriamente.',
-        ]);
+        session()->flash('swal', $this->getSwalSuccess("Nivel '$level->name' creado satisfactoriamente"));
 
         return redirect()->route('admin.levels.index');
-            /* ->with('success', 'Nivel creado satisfactoriamente.'); */
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Level $level)
-    {
-        return view('admin.levels.show');
     }
 
     /**
@@ -73,11 +67,7 @@ class LevelController extends Controller
 
         $level->update($request->all());
 
-        session()->flash('swal', [
-            'icon' => 'success',
-            'title' => '¡Hecho!',
-            'text' => 'Nivel editado satisfactoriamente.',
-        ]);
+        session()->flash('swal', $this->getSwalSuccess("Nivel '$level->name' editado satisfactoriamente"));
 
         return redirect()->route('admin.levels.index');
     }
@@ -87,14 +77,41 @@ class LevelController extends Controller
      */
     public function destroy(Level $level)
     {
+        $levelName = $level->name;
+
+        if ($level->courses->count()) {
+            session()->flash('swal', $this->getSwalError("No es posible eliminar el nivel '$levelName' porque tiene cursos asociados"));
+
+            return redirect()->route('admin.levels.index');
+        }
+
         $level->delete();
 
-        session()->flash('swal', [
-            'icon' => 'success',
-            'title' => '¡Hecho!',
-            'text' => 'Nivel borrado satisfactoriamente.',
-        ]);
+        session()->flash('swal', $this->getSwalSuccess("Nivel '$levelName' borrado satisfactoriamente"));
 
         return redirect()->route('admin.levels.index');
+    }
+
+    private function getSwalSuccess($text = '')
+    {
+        return [
+            'icon' => 'success',
+            'title' => '¡Hecho!',
+            'text' => $text,
+            'confirmButtonText' => 'Aceptar',
+            'confirmButtonColor' => '#3B82F6',
+        ];
+    }
+
+    private function getSwalError($text = '')
+    {
+        return [
+            'icon' => 'error',
+            'iconColor' => '#f43f5e',
+            'title' => "D'oh!",
+            'text' => $text,
+            'confirmButtonText' => 'Aceptar',
+            'confirmButtonColor' => '#3B82F6',
+        ];
     }
 }

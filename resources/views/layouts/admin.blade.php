@@ -46,7 +46,7 @@
 
     </div>
 
-    <div x-show='open' x-on:click="open = false"
+    <div x-show='open' x-on:click="open = false" x-transition.duration.300ms
     style="display:none;" class="bg-gray-900 bg-opacity-50 fixed inset-0 z-30 sm:hidden"></div>
 
     @stack('modals')

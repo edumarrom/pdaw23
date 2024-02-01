@@ -1,10 +1,10 @@
 <x-admin-layout>
-    <div class="container">
+    <div class="md:container">
         <div class="flex items-center justify-between mb-4">
             <h1 class="text-3xl font-bold">Editar Usuario</h1>
         </div>
 
-        <form action="{{ route('admin.users.update', $user) }}" method="post"
+        <form id="user-form" action="{{ route('admin.users.update', $user) }}" method="post"
             class="bg-white rounded-lg p-6 shadow-lg">
             @method('PUT')
             @csrf
@@ -17,7 +17,6 @@
                          name="name"
                          type="text"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         required
                          placeholder="Escribe un nombre para este usuario"
                          value="{{old('name', $user->name)}}" />
             </div>
@@ -28,22 +27,23 @@
                          name="email"
                          type="email"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         required
                          placeholder="Escribe un email para este usuario"
                          value="{{old('email', $user->email)}}" />
             </div>
 
             <div class="mb-4">
                 <x-label for="password" class="mb-2" value="Contraseña" />
-                <x-input name="password"
+                <x-input id="password"
+                         name="password"
                          type="password"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
-                         placeholder="Escribe la nueva contraseña del usuario" />
+                         placeholder="Debe contener al menos 8 caracteres, un número y un símbolo." />
             </div>
 
             <div class="mb-4">
                 <x-label for="password_confirmation" class="mb-2" value="Confirmar contraseña" />
-                <x-input name="password_confirmation"
+                <x-input id="password_confirmation"
+                         name="password_confirmation"
                          type="password"
                          class="block w-full mb-2 focus:!border-blue-500 focus:!ring-blue-500"
                          placeholder="Confirma la contraseña" />
@@ -79,4 +79,8 @@
             </div>
         </form>
     </div>
+
+    @push('scripts')
+        <script src="{{Vite::asset('resources/js/admin/users/validation.js')}}"></script>
+    @endpush
 </x-admin-layout>

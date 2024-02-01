@@ -2,8 +2,8 @@
 
     <div class="md:container">
         <div class="flex items-center justify-between mb-4">
-            <h1 class="text-3xl font-bold">Niveles</h1>
-            <x-link-button href="{{ route('admin.levels.create') }}" color="blue">
+            <h1 class="text-3xl font-bold">Categorías</h1>
+            <x-link-button href="{{ route('admin.categories.create') }}" color="blue">
                 <i class="fa-solid fa-plus mr-2"></i>
                 Nuevo
             </x-link-button>
@@ -25,25 +25,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($levels as $level)
+                    @foreach ($categories as $category)
                         <tr class="bg-white border-b hover:bg-gray-50">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {{ $level->id }}
+                                {{ $category->id }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $level->name }}
+                                {{ $category->name }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('admin.levels.edit', $level) }}" class="hover:text-gray-700">
+                                <a href="{{ route('admin.categories.edit', $category) }}" class="hover:text-gray-700">
                                     <i class="fa-solid fa-pen"></i>
                                     Editar
                                 </a>
-                                <form action="{{ route('admin.levels.destroy', $level) }}" method="post"
-                                    id='delete-form-{{ $level->id }}'>
+                                <form action="{{ route('admin.categories.destroy', $category) }}" method="post"
+                                    id='delete-form-{{ $category->id }}'>
                                     @csrf
                                     @method('delete')
                                     <button type="button" class="text-rose-500 hover:text-rose-700"
-                                        onclick="destroy({{ $level->id }})">
+                                        onclick="destroy({{ $category->id }})">
                                         <i class="fa-solid fa-trash"></i>
                                         Borrar
                                     </button>

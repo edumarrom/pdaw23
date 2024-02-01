@@ -1,6 +1,6 @@
 <x-admin-layout>
 
-    <div class="container">
+    <div class="md:container">
         <div class="flex items-center justify-between mb-4">
             <h1 class="text-3xl font-bold">Usuarios</h1>
             <x-link-button href="{{ route('admin.users.create') }}" color="blue">
@@ -15,16 +15,18 @@
 
     @push('scripts')
         <script>
-            function deleteUser(userId) {
-                const form = document.querySelector('#delete-form-' + userId);
+            function destroy(elementId) {
+                const form = document.querySelector('#delete-form-' + elementId);
                 Swal.fire({
                     icon: 'warning',
+                    iconColor: '#f43f5e',
                     title: '¿Estás seguro?',
                     text: "Esta acción es irreversible",
                     showCancelButton: true,
                     confirmButtonText: 'Confirmar',
-                    confirmButtonColor: '#EF4444',
+                    confirmButtonColor: '#f43f5e',
                     cancelButtonText: 'Cancelar',
+                    cancelButtonColor: '#1f2937',
 
                 }).then((result) => {
                     if (result.isConfirmed) {

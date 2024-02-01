@@ -8,6 +8,14 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
+    private $models = [
+        'role',
+        'user',
+        'category',
+        'level',
+        'price',
+        'course',
+    ];
     /**
      * Run the database seeds.
      */
@@ -22,21 +30,18 @@ class PermissionSeeder extends Seeder
             'name' => 'teacher-cpanel',
         ]);
 
-        // Course permissions
-        Permission::create([
-            'name' => 'course-create',
-        ]);
+        $this->bulkCreatePermissions($this->models);
+    }
 
-        Permission::create([
-            'name' => 'course-read',
-        ]);
-
-        Permission::create([
-            'name' => 'course-edit',
-        ]);
-
-        Permission::create([
-            'name' => 'course-delete',
-        ]);
+    private function bulkCreatePermissions($models)
+    {
+        foreach ($models as $model){
+            $actions = ['create', 'read', 'update', 'delete'];
+            foreach ($actions as $action){
+                Permission::create([
+                    'name' => $model . '-' . $action,
+                ]);
+            }
+        }
     }
 }
