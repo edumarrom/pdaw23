@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Mail\CourseProposed;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Image;
 use App\Models\Level;
 use App\Models\Price;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
@@ -174,6 +177,13 @@ class CourseController extends Controller
     {
         $course->status = Course::REVISION;
         $course->save();
+
+        // Notificar a los administradores de la nueva propuesta
+        $admins = User::permission([1])->get();
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new CourseProposed($course, $admin));
+        };
 
         return back();
     }
