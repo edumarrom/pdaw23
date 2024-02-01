@@ -42,8 +42,6 @@ class LessonsComments extends Component
             'user_id' => auth()->id(),
         ]);
 
-        // @todo: enviar un email al profesor
-        //Mail::to(auth()->user()->email)->send(new CoursePurchased($course));
         Mail::to($this->lesson->section->course->teacher->email)->send(new LessonCommented($this->lesson));
 
         $this->reset('create_body');
