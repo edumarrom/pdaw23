@@ -9,8 +9,8 @@
 El profesor **{{ $teacher->name }}** ha propuesto un nuevo curso:
 
 <x-mail::table>
-| Título             | Categoría                   | Nivel                    | Precio                                           |
-| :----------------- |:----------------------------|:-------------------------|:-------------------------------------------------|
+| Título             | Categoría                   | Nivel                    | Precio                                                 |
+| :----------------- |:----------------------------|:-------------------------|:-------------------------------------------------------|
 | {{$course->title}} | {{$course->category->name}} | {{$course->level->name}} | {{$course->price->name}} ({{$course->price->value}} €) |
 </x-mail::table>
 

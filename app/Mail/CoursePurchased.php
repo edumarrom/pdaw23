@@ -30,7 +30,7 @@ class CoursePurchased extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '📚 Acabas de comprar un curso',
+            subject: '📚 Acabas de adquirir un curso',
         );
     }
 

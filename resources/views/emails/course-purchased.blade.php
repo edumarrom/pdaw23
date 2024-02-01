@@ -4,13 +4,13 @@
     <img src="{{ $message->embed('storage/dabaliu_logo.png') }}" alt="{{ config('app.name') }}" width="100" height="100" style="display: block; margin: 0 auto;">
 </a>
 
-# ¡Gracias por tu compra!
+# ¡Enhorabuena por tu nueva adquisición! 🎉
 
-Aquí tienes un resumen de tu compra:
+A continuación te mostramos un resumen del curso recién adquirido:
 
 <x-mail::table>
 | Curso              | Profesor                   | Precio                |
-| :----------------- |:---------------------------|----------------------:|
+| :----------------- |:---------------------------|:----------------------|
 | {{$course->title}} | {{$course->teacher->name}} | {{$course->priceEur}} |
 </x-mail::table>
 
