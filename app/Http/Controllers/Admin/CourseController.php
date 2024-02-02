@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Mail\ApprovedCourse;
-use App\Mail\RejectedCourse;
+use App\Mail\Teacher\CourseApproved;
+use App\Mail\Teacher\CourseRejected;
 use App\Models\Course;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -41,7 +41,7 @@ class CourseController extends Controller
             $course->status = Course::PUBLICADO;
             $course->save();
 
-            Mail::to($course->teacher->email)->send(new ApprovedCourse($course));
+            Mail::to($course->teacher->email)->send(new CourseApproved($course));
 
             session()->flash('swal', $this->getSwalSuccess("El curso '$course->title' ha sido publicado satisfactoriamente."));
         } else {
@@ -56,7 +56,7 @@ class CourseController extends Controller
         $course->status = Course::BORRADOR;
         $course->save();
 
-        Mail::to($course->teacher->email)->send(new RejectedCourse($course));
+        Mail::to($course->teacher->email)->send(new CourseRejected($course));
 
         session()->flash('swal', $this->getSwalSuccess("Curso '$course->title' rechazado satisfactoriamente."));
 

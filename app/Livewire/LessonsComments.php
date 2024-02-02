@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Mail\Teacher\LessonCommented;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class LessonsComments extends Component
@@ -39,6 +41,8 @@ class LessonsComments extends Component
             'body' => $this->create_body,
             'user_id' => auth()->id(),
         ]);
+
+        Mail::to($this->lesson->section->course->teacher->email)->send(new LessonCommented($this->lesson));
 
         $this->reset('create_body');
 

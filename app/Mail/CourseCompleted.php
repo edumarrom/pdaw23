@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CoursePurchased extends Mailable
+class CourseCompleted extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,7 +30,7 @@ class CoursePurchased extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '📚 Acabas de adquirir un curso',
+            subject: '🏅 Acabas de completar un curso',
         );
     }
 
@@ -40,9 +40,10 @@ class CoursePurchased extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.course-purchased',
-        with: [
-                'learn' => route('courses.learn', $this->course),
+            markdown: 'emails.course-completed',
+            with: [
+                'courses' => route('courses.index'),
+                'reviews' => route('courses.show', $this->course) . '#reviews',
             ],
         );
     }

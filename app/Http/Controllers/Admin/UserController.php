@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\UserRegistered;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Spatie\Permission\Models\Role;
 
@@ -67,6 +69,8 @@ class UserController extends Controller
             'text' => "Usuario '$user->name' editado satisfactoriamente.",
             'confirmButtonColor' => '#3B82F6',
         ]);
+
+        Mail::to($user->email)->send(new UserRegistered($user));
 
         return redirect()->route('admin.users.index');
     }

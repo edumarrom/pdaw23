@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Teacher;
 
 use App\Models\Course;
 use Illuminate\Bus\Queueable;
@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RejectedCourse extends Mailable
+class CourseRejected extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,7 +30,7 @@ class RejectedCourse extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Tu curso ha sido rechazado',
+            subject: '🔴 Tu curso ha sido rechazado',
         );
     }
 
@@ -40,7 +40,8 @@ class RejectedCourse extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.rejected-course',
+            markdown: 'emails.teacher.course-rejected',
+            with: ['edit' => route('teacher.courses.edit', $this->course)],
         );
     }
 

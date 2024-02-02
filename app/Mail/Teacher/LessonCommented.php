@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Teacher;
 
-use App\Models\Course;
+use App\Models\Lesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -10,18 +10,22 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CoursePurchased extends Mailable
+class LessonCommented extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $lesson;
     public $course;
+    public $teacher;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(Course $course)
+    public function __construct(Lesson $lesson)
     {
-        $this->course = $course;
+        $this->lesson = $lesson;
+        $this->course = $lesson->section->course;
+        $this->teacher = $this->course->teacher;
     }
 
     /**
@@ -30,7 +34,7 @@ class CoursePurchased extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '📚 Acabas de adquirir un curso',
+            subject: '💬 Nuevo comentario en tu curso',
         );
     }
 
@@ -40,9 +44,9 @@ class CoursePurchased extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.course-purchased',
+            markdown: 'emails.teacher.lesson-commented',
         with: [
-                'learn' => route('courses.learn', $this->course),
+                'learn' => route('courses.learn', [$this->course, $this->lesson]),
             ],
         );
     }

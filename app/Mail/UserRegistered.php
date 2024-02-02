@@ -2,7 +2,6 @@
 
 namespace App\Mail;
 
-use App\Models\Course;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -10,17 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ApprovedCourse extends Mailable
+class UserRegistered extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $course;
+    public $user;
+
     /**
      * Create a new message instance.
      */
-    public function __construct(Course $course)
+    public function __construct($user)
     {
-        $this->course = $course;
+        $this->user = $user;
     }
 
     /**
@@ -29,7 +29,7 @@ class ApprovedCourse extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Tu curso ha sido aprobado',
+            subject: '¡Bienvenido a ' . config('app.name') . '!',
         );
     }
 
@@ -39,7 +39,10 @@ class ApprovedCourse extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.approved-course',
+            markdown: 'emails.user-registered',
+            with: [
+                'index' => config('app.url'),
+            ],
         );
     }
 

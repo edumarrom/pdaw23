@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CoursePurchased;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CourseController extends Controller
 {
@@ -67,6 +69,8 @@ class CourseController extends Controller
 
     public function enroll(Course $course) {
         $course->students()->sync(auth()->user()->id);
+
+        Mail::to(auth()->user()->email)->send(new CoursePurchased($course));
 
         return redirect()->route('courses.learn', $course);
     }
