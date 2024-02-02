@@ -45,8 +45,8 @@ Route::middleware([
 |
 */
 
-Route::get('/mailable/course-completed', function () {
-    $course = App\Models\Course::find(50);
+Route::get('/mailable/user-registered', function () {
+    $user = App\Models\Course::find(1);
 
-    return new App\Mail\CourseCompleted($course);
+    return new App\Mail\UserRegistered($user);
 });
