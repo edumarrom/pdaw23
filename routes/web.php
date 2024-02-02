@@ -46,7 +46,16 @@ Route::middleware([
 */
 
 Route::get('/mailable/user-registered', function () {
-    $user = App\Models\Course::find(1);
-
+    $user = App\Models\User::first();
     return new App\Mail\UserRegistered($user);
+});
+
+Route::get('/mailable/course-approved', function () {
+    $course = App\Models\Course::where('status', '3')->first();
+    return new App\Mail\CourseApproved($course);
+});
+
+Route::get('/mailable/course-rejected', function () {
+    $course = App\Models\Course::find(50);
+    return new App\Mail\CourseRejected($course);
 });

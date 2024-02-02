@@ -20,9 +20,9 @@ Te informamos que tu curso **"{{ $course->title }}"** ha sido rechazado.
 Tu curso ha vuelto al estado de borrador, por lo que puedes editarlo y volver a enviarlo para que sea revisado.
 Puedes ver el estado de tu curso desde este enlace:
 
-{{-- <x-mail::button :url="''">
-Button Text
-</x-mail::button> --}}
+<x-mail::button :url="$edit" color="teal">
+Acceder a mi curso
+</x-mail::button>
 
 Si necesitas más ayuda, puedes consultar nuestra [Guía para crear un curso]().
 {{-- Si tienes alguna duda, puedes contactar con nosotros a través de este correo electrónico. --}}

@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ApprovedCourse extends Mailable
+class CourseApproved extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,7 +29,7 @@ class ApprovedCourse extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Tu curso ha sido aprobado',
+            subject: '🟢 Tu curso ha sido aprobado',
         );
     }
 
@@ -39,7 +39,8 @@ class ApprovedCourse extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.approved-course',
+            markdown: 'emails.course-approved',
+            with: ['show' => route('courses.show', $this->course)],
         );
     }
 
