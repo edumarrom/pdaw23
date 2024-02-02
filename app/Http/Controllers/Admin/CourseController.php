@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Mail\CourseApproved;
-use App\Mail\CourseRejected;
+use App\Mail\Teacher\CourseApproved;
+use App\Mail\Teacher\CourseRejected;
 use App\Models\Course;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;

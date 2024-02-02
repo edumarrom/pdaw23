@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Mail\LessonCommented;
+use App\Mail\Teacher\LessonCommented;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;

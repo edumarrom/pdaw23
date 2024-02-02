@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Mail\CourseReviewed;
+use App\Mail\Teacher\CourseReviewed;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;

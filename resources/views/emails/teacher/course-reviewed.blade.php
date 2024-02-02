@@ -11,7 +11,7 @@ Acabas de recibir una valoración de tu curso <strong>{{ $course->title }}</stro
 
 Puedes ver la valoración accediendo desde este enlace:
 
-<x-mail::button :url="$show" color="teal">
+<x-mail::button :url="$reviews" color="teal">
 Acceder al curso
 </x-mail::button>
 

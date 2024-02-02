@@ -45,17 +45,45 @@ Route::middleware([
 |
 */
 
+// Usuario registrado
+
 Route::get('/mailable/user-registered', function () {
     $user = App\Models\User::first();
     return new App\Mail\UserRegistered($user);
 });
 
+// Curso prouesto
+
+Route::get('/mailable/course-proposed', function () {
+    $course = App\Models\Course::find(50);
+    $admins = App\Models\User::permission([1])->get();
+    return new App\Mail\Admin\CourseProposed($course, $admins->first());
+});
+
+// Curso aprobado
+
 Route::get('/mailable/course-approved', function () {
     $course = App\Models\Course::where('status', '3')->first();
-    return new App\Mail\CourseApproved($course);
+    return new App\Mail\Teacher\CourseApproved($course);
 });
+
+// Curso rechazado
 
 Route::get('/mailable/course-rejected', function () {
     $course = App\Models\Course::find(50);
-    return new App\Mail\CourseRejected($course);
+    return new App\Mail\Teacher\CourseRejected($course);
+});
+
+// Nueva valoración de curso
+
+Route::get('/mailable/course-reviewed', function () {
+    $course = App\Models\Course::where('status', '3')->first();
+    return new App\Mail\Teacher\CourseReviewed($course);
+});
+
+// Nuevo comentario en el curso
+
+Route::get('/mailable/lesson-commented', function () {
+    $course = App\Models\Lesson::first();
+    return new App\Mail\Teacher\LessonCommented($course);
 });

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
-use App\Mail\CourseProposed;
+use App\Mail\Admin\CourseProposed;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Image;
