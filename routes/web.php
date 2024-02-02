@@ -43,14 +43,10 @@ Route::middleware([
 | Mailable Test Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-Route::get('/mailable/course-purchased', function () {
-    $course = App\Models\Course::find(5);
+Route::get('/mailable/course-completed', function () {
+    $course = App\Models\Course::find(50);
 
-    return new App\Mail\CoursePurchased($course);
+    return new App\Mail\CourseCompleted($course);
 });

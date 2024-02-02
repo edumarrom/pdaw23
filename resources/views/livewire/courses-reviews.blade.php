@@ -1,5 +1,5 @@
 <div>
-    <section>
+    <section id="reviews">
         <h3 class="text-3xl font-bold mt-6 mb-2">
             <i class="fa fa-solid fa-comment-dots mr-2"></i>
             Opiniones
