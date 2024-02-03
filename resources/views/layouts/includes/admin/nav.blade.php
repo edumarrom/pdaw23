@@ -40,7 +40,7 @@
                                 @endif
                             </x-slot>
 
-                            <x-slot name="content">
+                            {{-- <x-slot name="content">
                                 <!-- Account Management -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     {{ __('Manage Account') }}
@@ -58,6 +58,63 @@
 
                                 <div class="border-t border-gray-200"></div>
 
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                    @csrf
+
+                                    <x-dropdown-link href="{{ route('logout') }}"
+                                            @click.prevent="$root.submit();">
+                                        {{ __('Log Out') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </x-slot> --}}
+
+                            <x-slot name="content">
+                                <!-- Account Management -->
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Manage Account') }}
+                                </div>
+
+                                <x-dropdown-link href="{{ route('profile.show') }}">
+                                    {{ __('Profile') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link href="{{ route('courses.my-courses') }}">
+                                    {{ __('My courses') }}
+                                </x-dropdown-link>
+
+                                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                    <x-dropdown-link href="{{ route('api-tokens.index') }}">
+                                        {{ __('API Tokens') }}
+                                    </x-dropdown-link>
+                                @endif
+
+                                <div class="border-t border-gray-200"></div>
+
+                                <!-- Teacher Management -->
+                                @can('teacher-cpanel')
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('Teacher') }}
+                                    </div>
+
+                                    <x-dropdown-link href="{{ route('teacher.courses.index') }}">
+                                        {{ __('My courses') }}
+                                    </x-dropdown-link>
+
+                                    <div class="border-t border-gray-200"></div>
+                                @endcan
+
+                                @can('admin-cpanel')
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('Administrator') }}
+                                    </div>
+
+                                    <x-dropdown-link href="{{ route('admin.dashboard') }}">
+                                        {{ __('Admin dashboard') }}
+                                    </x-dropdown-link>
+
+                                    <div class="border-t border-gray-200"></div>
+                                @endcan
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf

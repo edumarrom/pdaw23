@@ -1,10 +1,10 @@
 @php
     $links = [
-        [
+        /* [
             'name' => __('Dashboard'),
             'route' => route('dashboard'),
             'active' => request()->routeIs('dashboard'),
-        ],
+        ], */
         [
             'name' => __('Courses'),
             'route' => route('courses.index'),
@@ -254,7 +254,7 @@
                     @can('admin-cpanel')
                         <!-- Admin Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Admin') }}
+                            {{ __('Administrator') }}
                         </div>
 
                         <x-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
