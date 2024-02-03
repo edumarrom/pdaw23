@@ -14,14 +14,33 @@
         </div>
     </div>
 
+    @if ($courses->count())
+        <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 
-    <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            @foreach ($courses as $course)
+                <x-course-card-min :course="$course"></x-course-card-min>
+            @endforeach
+        </div>
 
-        @foreach ($courses as $course)
-            <x-course-card-min :course="$course"></x-course-card-min>
-        @endforeach
-</div>
+        <div class="mt-8">
+            {{ $courses->links(data: ['scrollTo' => false]) }}
+        </div>
+    @else
+        <div class="flex items-center justify-center p-4">
+            <div class="flex flex-col items-center">
+                @if ($search)
+                    <i class="fa-regular fa-face-sad-tear text-8xl text-gray-300 mb-6"></i>
+                    <h3 class="text-lg font-bold text-gray-600">
+                        No hay cursos que coincidan con "{{ $search }}".
+                    </h3>
+                @else
+                    <i class="fa-solid fa-cloud-moon text-8xl text-gray-300 mb-6"></i>
+                    <h3 class="text-lg font-bold text-gray-600">
+                            Esto está muy tranquilo. Demasiado...
+                    </h3>
+                @endif
+            </div>
+        </div>
+    @endif
 
-<div class="mt-8">
-    {{ $courses->links(data: ['scrollTo' => false]) }}
 </div>

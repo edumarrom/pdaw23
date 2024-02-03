@@ -123,6 +123,10 @@
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
 
+                                <x-dropdown-link href="{{ route('courses.my-courses') }}">
+                                    {{ __('My courses') }}
+                                </x-dropdown-link>
+
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-dropdown-link href="{{ route('api-tokens.index') }}">
                                         {{ __('API Tokens') }}
@@ -134,7 +138,7 @@
                                 <!-- Teacher Management -->
                                 @can('teacher-cpanel')
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Teachers') }}
+                                        {{ __('Teacher') }}
                                     </div>
 
                                     <x-dropdown-link href="{{ route('teacher.courses.index') }}">
@@ -228,12 +232,16 @@
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
 
+                    <x-responsive-nav-link href="{{ route('courses.my-courses') }}" :active="request()->routeIs('courses.my-courses')">
+                        {{ __('My courses') }}
+                    </x-responsive-nav-link>
+
                     <div class="border-t border-gray-200"></div>
 
                     @can('teacher-cpanel')
                         <!-- Teacher Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Teachers') }}
+                            {{ __('Teacher') }}
                         </div>
 
                         <x-responsive-nav-link href="{{ route('teacher.courses.index') }}" :active="request()->routeIs('teacher.courses.index')">
@@ -246,11 +254,11 @@
                     @can('admin-cpanel')
                         <!-- Admin Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Admin dashboard') }}
+                            {{ __('Admin') }}
                         </div>
 
                         <x-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
-                            {{ __('Dashboard') }}
+                            {{ __('Admin dashboard') }}
                         </x-responsive-nav-link>
 
                         <div class="border-t border-gray-200"></div>
