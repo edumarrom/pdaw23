@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Livewire\CourseLearn;
+use App\Livewire\MyCourses;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class)->name('home');
+
+Route::get('courses/my-courses', MyCourses::class)
+    ->middleware('auth')
+    ->name('courses.my-courses');
 
 Route::resource('courses', CourseController::class)->names('courses');
 
