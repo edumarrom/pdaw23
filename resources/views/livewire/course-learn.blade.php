@@ -1,14 +1,14 @@
-<div class="mt-8">
+<div id="lesson-viewer" class="mt-8">
     <div class="container grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         {{-- Columna izquierda--}}
         <div class="lg:col-span-2 mb-6">
 
-            <div class="embed-responsive rounded mb-4 shadow-lg">
+            <div class="plyr__video-embed embed-responsive rounded mb-4 shadow-lg" id="player">
                 {!! $lesson->iframe !!}
             </div>
 
-            <h1 class="text-2xl text-gray-700 font-bold">
+            <h1 class="my-2 text-2xl text-gray-700 font-bold">
                 <span>{{$index+1}}. </span>{{ $lesson->title }}
             </h1>
 
@@ -29,7 +29,7 @@
 
             <div class="flex justify-between card shadow-lg rounded-lg">
                 @if ($previous)
-                <x-link-button href="{{route('courses.learn', [$course, $previous])}}">
+                <x-link-button color="white" href="{{route('courses.learn', [$course, $previous])}}">
                     Anterior
                 </x-link-button>
                 @else
@@ -39,11 +39,11 @@
                 @endif
 
                 @if ($next)
-                <x-link-button href="{{route('courses.learn', [$course, $next])}}">
+                <x-link-button color="white" id=next-lesson href="{{route('courses.learn', [$course, $next])}}">
                     Siguiente
                 </x-link-button>
                 @else
-                <x-link-button disabled>
+                <x-link-button id=next-lesson disabled>
                     Siguiente
                 </x-link-button>
                 @endif
@@ -67,10 +67,6 @@
                     <h3 class="text-xl font-bold">
                         {{ $course->teacher->name }}
                     </h3>
-                    <a class="text-sm text-teal-500 hover:text-teal-700"
-                            href="">
-                        {{'@' . Str::slug($course->teacher->name, '')}}
-                    </a>
                 </div>
             </div>
 
@@ -138,4 +134,33 @@
         </div>
 
     </div>
+
+    @push('styles')
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    @endpush
+
+    @push('scripts')
+        <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
+        <script>
+            const nextUrl = document.querySelector('#next-lesson').getAttribute('href');
+            // console.log(nextUrl);
+
+            const lesssonViewer = document.getElementById('lesson-viewer');
+            const wireId = lesssonViewer.getAttribute('wire:id');
+
+            const player = new Plyr('#player');
+
+            player.on('ended', (event) => {
+                console.log('video completado');
+                // $wire.dispatch('lessonCompleted');
+                Livewire.find(wireId).dispatch('videoEnded');
+
+                if(nextUrl){
+                    window.location.href = nextUrl;
+                }
+            });
+        </script>
+    @endpush
+
 </div>

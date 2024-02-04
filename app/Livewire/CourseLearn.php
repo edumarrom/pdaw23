@@ -8,6 +8,7 @@ use App\Models\Lesson;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CourseLearn extends Component
@@ -19,6 +20,8 @@ class CourseLearn extends Component
     public $index;
     public $previous;
     public $next;
+
+    //public $listeners = ['lessonCompleted' => 'toggleCompleted'];
 
     public function mount(Course $course, $lesson = null)
     {
@@ -67,9 +70,10 @@ class CourseLearn extends Component
             $this->lesson->users()->attach(auth()->user()->id);
         }
 
-        if ($this->course->lessons->count() == $this->course->lessons->where('completed', true)->count()) {
-            $this->markCourseAsCompleted();
-        }
+        $this->course->refresh();
+        $this->lesson->refresh();
+
+        $this->markCourseAsCompleted();
     }
 
     public function getAdvanceProperty()
@@ -81,14 +85,28 @@ class CourseLearn extends Component
             }
         }
         $advance = ($i * 100) / ($this->course->lessons->count());
-        return round($advance, 2);
+        return round($advance);
+    }
+
+    #[On('videoEnded')]
+    public function markLessonAsCompleted()
+    {
+        if (!$this->lesson->completed) {
+            $this->lesson->users()->attach(auth()->user()->id);
+            $this->course->refresh();
+            $this->lesson->refresh();
+
+            $this->markCourseAsCompleted();
+        }
     }
 
     public function markCourseAsCompleted()
     {
-        if ($this->course->students->where('id', auth()->user()->id)->first()->pivot->completed_at == null) {
-            $this->course->students()->updateExistingPivot(auth()->user()->id, ['completed_at' => now()]);
-            Mail::to(auth()->user())->send(new CourseCompleted($this->course));
+        if ($this->course->lessons->count() == $this->course->lessons->where('completed', true)->count()) {
+            if ($this->course->students->where('id', auth()->user()->id)->first()->pivot->completed_at == null) {
+                $this->course->students()->updateExistingPivot(auth()->user()->id, ['completed_at' => now()]);
+                Mail::to(auth()->user())->send(new CourseCompleted($this->course));
+            }
         }
     }
 }
