@@ -19,11 +19,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
+Route::get('courses', CourseController::class)
+    ->name('courses.index');
+
 Route::get('courses/my-courses', MyCourses::class)
     ->middleware('auth')
     ->name('courses.my-courses');
 
-Route::resource('courses', CourseController::class)->names('courses');
+Route::get('courses/{course}', [CourseController::class, 'show'])
+    ->name('courses.show');
 
 Route::post('courses/{course}/enroll', [CourseController::class, 'enroll'])
     ->middleware('auth')
