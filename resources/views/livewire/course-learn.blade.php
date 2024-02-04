@@ -147,10 +147,8 @@
         <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 
         <script>
-
             const nextUrl = document.querySelector('#next-lesson').getAttribute('href');
-
-            console.log(nextUrl);
+            // console.log(nextUrl);
 
             const lesssonViewer = document.getElementById('lesson-viewer');
             const wireId = lesssonViewer.getAttribute('wire:id');
@@ -159,8 +157,8 @@
 
             player.on('ended', (event) => {
                 console.log('video completado');
-                //$wire.dispatch('lessonCompleted');
-                Livewire.find(wireId).dispatch('lessonCompleted');
+                // $wire.dispatch('lessonCompleted');
+                Livewire.find(wireId).dispatch('videoEnded');
 
                 if(nextUrl){
                     window.location.href = nextUrl;
