@@ -92,6 +92,10 @@
                 </h3>
 
                 <div class="grid grid-cols-1 text-gray-700  bg-white shadow rounded divide-y-2">
+                    @php
+                        $lessonNumber = 1;
+                    @endphp
+
                     @foreach ($course->sections as $section)
                         <article class="py-2"
                             @if ($loop->first)
@@ -111,12 +115,21 @@
                                 <hr/>
                                 <ul>
                                     @foreach ($section->lessons as $lesson)
-                                        <a href="{{-- ruta al visor de lección --}}">
-                                            <li class="flex px-4 py-2 hover:bg-gray-200">
-                                                <i class="fa fa-solid fa-play-circle text-lg mr-2"></i>
-                                                {{ $lesson->title }}
+                                        @can('enrolled', $course)
+                                            <a href="{{ route('courses.learn', [$course, $lesson]) }}">
+                                                <li class="flex px-4 py-2 hover:bg-gray-200">
+                                                    <i class="fa fa-solid fa-play-circle text-lg mr-2"></i>
+                                                    {{ $lessonNumber }}. {{ $lesson->title }}
+                                                    @php $lessonNumber++; @endphp
+                                                </li>
+                                            </a>
+                                        @else
+                                            <li class="flex px-4 py-2 hover:bg-gray-200 cursor-default">
+                                                {{-- <i class="fa fa-solid fa-play-circle text-lg mr-2"></i> --}}
+                                                {{ $lessonNumber }}. {{ $lesson->title }}
+                                                @php $lessonNumber++; @endphp
                                             </li>
-                                        </a>
+                                        @endcan
                                     @endforeach
                                 </ul>
                             </div>
@@ -143,15 +156,7 @@
                             <h3 class="text-xl font-bold">
                                 {{ $course->teacher->name }}
                             </h3>
-                            {{-- <a class="text-sm text-teal-500 hover:text-teal-700"
-                                    href="">
-                                {{'@' . Str::slug($course->teacher->name, '')}}
-                            </a> --}}
                         </div>
-                    </div>
-
-                    <div class="mb-2 text-4xl font-bold">
-                        {{ $course->priceEur }}
                     </div>
 
                     @can('enrolled', $course)
@@ -160,6 +165,11 @@
                             Continuar con el curso
                         </x-link-button>
                     @else
+
+                        <div class="mb-2 text-4xl font-bold">
+                            {{ $course->priceEur }}
+                        </div>
+
                         @if ($course->price->value == 0)
                             <form action="{{ route('courses.enroll', $course) }}" method="post">
                                 @csrf
