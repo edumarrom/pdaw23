@@ -67,6 +67,8 @@ class CourseLearn extends Component
             $this->lesson->users()->attach(auth()->user()->id);
         }
 
+        $this->course->refresh();
+
         if ($this->course->lessons->count() == $this->course->lessons->where('completed', true)->count()) {
             $this->markCourseAsCompleted();
         }
