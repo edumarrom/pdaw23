@@ -32,7 +32,7 @@
 
         <x-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="pb-24 min-h-screen bg-gray-100">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
@@ -48,12 +48,12 @@
             <main>
                 {{ $slot }}
             </main>
-
-            <!-- Page Footer -->
-            <footer class="mt-24 bg-white border-t-2">
-                @include('layouts.includes.app.footer')
-            </footer>
         </div>
+
+        <!-- Page Footer -->
+        <footer class="bg-white border-t-2">
+            @include('layouts.includes.app.footer')
+        </footer>
 
         @stack('modals')
 

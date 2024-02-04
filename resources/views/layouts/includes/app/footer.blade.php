@@ -11,7 +11,7 @@
     <div class="py-6">
         <h3 class="text-xl text-gray-700">Sobre nosotros</h3>
         <ul class="text-sm mt-2 space-y-1">
-            <li>Sobre nosotros</li>
+            <li>Quienes somos</li>
             <li>Contacto</li>
         </ul>
     </div>
