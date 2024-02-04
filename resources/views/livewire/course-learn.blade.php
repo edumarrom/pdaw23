@@ -39,11 +39,11 @@
                 @endif
 
                 @if ($next)
-                <x-link-button href="{{route('courses.learn', [$course, $next])}}">
+                <x-link-button id=next-lesson href="{{route('courses.learn', [$course, $next])}}">
                     Siguiente
                 </x-link-button>
                 @else
-                <x-link-button disabled>
+                <x-link-button id=next-lesson disabled>
                     Siguiente
                 </x-link-button>
                 @endif
@@ -148,6 +148,10 @@
 
         <script>
 
+            const nextUrl = document.querySelector('#next-lesson').getAttribute('href');
+
+            console.log(nextUrl);
+
             const lesssonViewer = document.getElementById('lesson-viewer');
             const wireId = lesssonViewer.getAttribute('wire:id');
 
@@ -157,6 +161,10 @@
                 console.log('video completado');
                 //$wire.dispatch('lessonCompleted');
                 Livewire.find(wireId).dispatch('lessonCompleted');
+
+                if(nextUrl){
+                    window.location.href = nextUrl;
+                }
             });
         </script>
     @endpush
