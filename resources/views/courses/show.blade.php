@@ -143,15 +143,7 @@
                             <h3 class="text-xl font-bold">
                                 {{ $course->teacher->name }}
                             </h3>
-                            {{-- <a class="text-sm text-teal-500 hover:text-teal-700"
-                                    href="">
-                                {{'@' . Str::slug($course->teacher->name, '')}}
-                            </a> --}}
                         </div>
-                    </div>
-
-                    <div class="mb-2 text-4xl font-bold">
-                        {{ $course->priceEur }}
                     </div>
 
                     @can('enrolled', $course)
@@ -160,6 +152,11 @@
                             Continuar con el curso
                         </x-link-button>
                     @else
+
+                        <div class="mb-2 text-4xl font-bold">
+                            {{ $course->priceEur }}
+                        </div>
+
                         @if ($course->price->value == 0)
                             <form action="{{ route('courses.enroll', $course) }}" method="post">
                                 @csrf
