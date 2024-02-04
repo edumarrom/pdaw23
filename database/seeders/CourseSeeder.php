@@ -13,6 +13,7 @@ use App\Models\Section;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CourseSeeder extends Seeder
 {
@@ -21,66 +22,152 @@ class CourseSeeder extends Seeder
      */
     public function run(): void
     {
-        $courses = Course::factory(49)->create();
+        $cursos = [
+            [
+                'title' => 'Aprende Laravel desde cero',
+                'subtitle' => 'El mejor curso de Laravel',
+                'description' => 'Aprende Laravel desde cero, con las mejores prácticas y con ejemplos reales.',
+                'slug' => 'aprende-laravel-desde-cero',
+                'status' => 3,              // Publicado
+                'user_id' => 1,             // edu@dabaliu.test
+                'level_id' => 1,            // Básico
+                'category_id' => 1,         // Desarrollo web
+                'price_id' => 1,            // Gratis
+            ],
+        ];
 
-        $myCourse = Course::factory()->create([
-            'title' => 'Mi primer curso',
-            'slug' => 'mi-primer-curso',
-            'status' => 3,              // Publicado
-            'user_id' => 1,             // edu@dabaliu.test
-            'category_id' => 1,         // Desarrollo web
-            'level_id' => 1,            // Básico
-            'price_id' => 1,            // Gratis
-        ]);
-        $courses->push($myCourse);
+        $imagenes = [
+            'courses/aprende-laravel-desde-cero.jpg',
+        ];
 
-        foreach ($courses as $course) {
-            Image::factory(1)->create([
-                'imageable_id' => $course->id,
-                'imageable_type' => 'App\Models\Course',
+        $requisitos = [
+            'Conocimientos previos de ...',
+            'Experiencia previa con ...',
+            'Disponer de ciertas ...'
+        ];
+
+        $metas = [
+            'Comprender los fundamentos de...',
+            'Dominar los aspectos de ...',
+            'Desarrollar una aplicación con ...',
+        ];
+
+        $secciones = [
+            'Planteamiento del curso',
+            'Contenido principal',
+            'Últimos retoques y despedida',
+        ];
+
+        $lecciones = [
+            [
+                'Presentación del curso',
+                'Materiales necesarios',
+                'Preparando el entorno de trabajo',
+            ],
+            [
+                'Fundamentos básicos',
+                'Contenidos principales',
+                'Profundizando en los conceptos'
+            ],
+            [
+                'Problemas frecuentes',
+                'Revisión final',
+                'Despedida y agradecimientos'
+            ],
+        ];
+
+        $valoraciones = [
+            [
+                'rating' => 5,
+                'comment' => 'Excelente curso, muy completo y bien explicado.',
+            ],
+            [
+                'rating' => 4,
+                'comment' => 'Buen curso, aunque esperaba algo más.',
+            ],
+            [
+                'rating' => 3,
+                'comment' => 'Regular, no me ha gustado mucho.',
+            ],
+            [
+                'rating' => 2,
+                'comment' => 'No lo recomendaría, no me ha aportado nada.',
+            ],
+            [
+                'rating' => 1,
+                'comment' => 'Pésimo, no lo recomendaría a nadie.',
+            ],
+        ];
+
+        /* Crear un curso por cada elemento dentro del array $cursos */
+        foreach ($cursos as $item) {
+            $curso = Course::create($item);
+
+            // Crear 1 imagen por cada curso
+            Image::create([
+                'path' => $imagenes[$curso->id - 1],
+                'imageable_id' => $curso->id,
+                'imageable_type' => Course::class,
             ]);
 
-            Requirement::factory(3)->create([
-                'course_id' => $course->id,
-            ]);
+            // Crear 3 requisitos por cada curso
+            foreach ($requisitos as $requisito) {
+                Requirement::create([
+                    'name' => $requisito,
+                    'course_id' => $curso->id,
+                ]);
+            }
 
-            Goal::factory(3)->create([
-                'course_id' => $course->id,
-            ]);
+            // Crear 3 metas por cada curso
+            foreach ($metas as $meta) {
+                Goal::create([
+                    'name' => $meta,
+                    'course_id' => $curso->id,
+                ]);
+            }
 
-            $studentsCount = 0;
-            $randomMax = rand(0, 10);
-            foreach (User::all() as $student) {
-                $course->students()->syncWithoutDetaching($student->id);
-                $studentsCount++;
+            // Crear 3 secciones por cada curso
+            foreach ($secciones as $item) {
+                $seccion = Section::create([
+                    'title' => $item,
+                    'course_id' => $curso->id,
+                ]);
 
-                if (rand(0,1)) {
-                    Review::factory(1)->create([
-                        'course_id' => $course->id,
-                        'user_id' => $student->id,
+                // Crear 3 lecciones por cada sección
+                for ($i = 0; $i < 3; $i++) {
+                    Lesson::create([
+                        'title' => $lecciones[$seccion->id - 1][$i],
+                        'slug' => Str::slug($lecciones[$seccion->id - 1][$i]),
+                        'path' => 'https://youtu.be/FUKmyRLOlAA',
+                        'iframe' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/FUKmyRLOlAA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                        'platform_id' => 1,
+                        'section_id' => $seccion->id,
                     ]);
-                }
-
-                if ($studentsCount >= $randomMax) {
-                    break;
                 }
             }
 
+            // Matricular estudiantes en el curso
+            if ($curso->status === 3) {
+                $studentsCount = 0;
+                $randomMax = rand(0, 10);
+                foreach (User::all() as $student) {
+                    if(fake()->randomElement([0, 0, 1])) {
+                        $curso->students()->attach($student->id);
+                        $studentsCount++;
+                        if (fake()->randomElement([0, 0, 1])) {
+                            $valoracion = fake()->randomElement($valoraciones);
+                            Review::create([
+                                'course_id' => $curso->id,
+                                'user_id' => $student->id,
+                                'rating' => $valoracion['rating'],
+                                'comment' => $valoracion['comment'],
+                            ]);
+                        }
+                    }
 
-
-            $sections = Section::factory(rand(3, 5))->create([
-                'course_id' => $course->id,
-            ]);
-
-            foreach ($sections as $section) {
-                $lessons = Lesson::factory(rand(3, 5))->create([
-                    'section_id' => $section->id,
-                ]);
-
-                foreach ($lessons as $lesson) {
-                    Description::factory(1)->create([
-                        'lesson_id' => $lesson->id,
-                    ]);
+                    if ($studentsCount >= $randomMax) {
+                        break;
+                    }
                 }
             }
         }
