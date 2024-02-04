@@ -9,7 +9,7 @@
         </x-link-button>
     </div>
 
-    <div class="relative overflow-x-auto mt-6 shadow-md sm:rounded-lg">
+    <div class="bg-white relative overflow-x-auto mt-6 shadow-md rounded-lg">
         {{-- Buscador --}}
         <div class="{{-- flex items-center justify-between flex-column flex-wrap md:flex-row --}} space-y-4 md:space-y-0 p-4 bg-white">
             <label for="table-search" class="sr-only">Buscar</label>
