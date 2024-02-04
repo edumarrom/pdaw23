@@ -85,7 +85,7 @@ class CourseLearn extends Component
             }
         }
         $advance = ($i * 100) / ($this->course->lessons->count());
-        return round($advance, 2);
+        return round($advance);
     }
 
     #[On('videoEnded')]

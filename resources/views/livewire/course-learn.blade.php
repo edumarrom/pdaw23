@@ -8,7 +8,7 @@
                 {!! $lesson->iframe !!}
             </div>
 
-            <h1 class="text-2xl text-gray-700 font-bold">
+            <h1 class="my-2 text-2xl text-gray-700 font-bold">
                 <span>{{$index+1}}. </span>{{ $lesson->title }}
             </h1>
 
@@ -29,7 +29,7 @@
 
             <div class="flex justify-between card shadow-lg rounded-lg">
                 @if ($previous)
-                <x-link-button href="{{route('courses.learn', [$course, $previous])}}">
+                <x-link-button color="white" href="{{route('courses.learn', [$course, $previous])}}">
                     Anterior
                 </x-link-button>
                 @else
@@ -39,7 +39,7 @@
                 @endif
 
                 @if ($next)
-                <x-link-button id=next-lesson href="{{route('courses.learn', [$course, $next])}}">
+                <x-link-button color="white" id=next-lesson href="{{route('courses.learn', [$course, $next])}}">
                     Siguiente
                 </x-link-button>
                 @else
@@ -67,10 +67,6 @@
                     <h3 class="text-xl font-bold">
                         {{ $course->teacher->name }}
                     </h3>
-                    <a class="text-sm text-teal-500 hover:text-teal-700"
-                            href="">
-                        {{'@' . Str::slug($course->teacher->name, '')}}
-                    </a>
                 </div>
             </div>
 
