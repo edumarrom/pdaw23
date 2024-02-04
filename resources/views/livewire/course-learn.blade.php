@@ -1,10 +1,10 @@
-<div class="mt-8">
+<div id="lesson-viewer" class="mt-8">
     <div class="container grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         {{-- Columna izquierda--}}
         <div class="lg:col-span-2 mb-6">
 
-            <div class="embed-responsive rounded mb-4 shadow-lg">
+            <div class="plyr__video-embed embed-responsive rounded mb-4 shadow-lg" id="player">
                 {!! $lesson->iframe !!}
             </div>
 
@@ -138,4 +138,27 @@
         </div>
 
     </div>
+
+    @push('styles')
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    @endpush
+
+    @push('scripts')
+        <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
+        <script>
+
+            const lesssonViewer = document.getElementById('lesson-viewer');
+            const wireId = lesssonViewer.getAttribute('wire:id');
+
+            const player = new Plyr('#player');
+
+            player.on('ended', (event) => {
+                console.log('video completado');
+                //$wire.dispatch('lessonCompleted');
+                Livewire.find(wireId).dispatch('lessonCompleted');
+            });
+        </script>
+    @endpush
+
 </div>

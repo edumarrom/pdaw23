@@ -8,6 +8,7 @@ use App\Models\Lesson;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CourseLearn extends Component
@@ -19,6 +20,8 @@ class CourseLearn extends Component
     public $index;
     public $previous;
     public $next;
+
+    //public $listeners = ['lessonCompleted' => 'toggleCompleted'];
 
     public function mount(Course $course, $lesson = null)
     {
@@ -59,6 +62,7 @@ class CourseLearn extends Component
         return view('livewire.course-learn');
     }
 
+    #[On('lessonCompleted')]
     public function toggleCompleted()
     {
         if ($this->lesson->completed) {
