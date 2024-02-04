@@ -38,7 +38,7 @@
                                         <div class="h-2 bg-amber-400 rounded" style="width: {{ $ratingCountPercent }}%"></div>
                                     </div>
                                     <div class="w-0">
-                                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ round($ratingCountPercent) }}%</span>
+                                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ $ratingCount }}</span>
                                     </div>
                                 </div>
                             @endfor
