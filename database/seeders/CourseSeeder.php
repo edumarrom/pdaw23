@@ -23,15 +23,43 @@ class CourseSeeder extends Seeder
      */
     public function run(): void
     {
-        $courses = [
+        $myCourse = [
             [
                 'title' => 'Aprende Laravel desde cero',
-                'subtitle' => 'El mejor curso de Laravel',
-                'description' => 'Aprende Laravel desde cero, con las mejores prácticas y con ejemplos reales.',
+                'subtitle' => 'Crea apps con un framework excelente, usando tecnologías como Livewire, TailwindCSS, AlpineJS y más',
+                'description' => 'En este curso aprenderás a trabajar con el framework PHP Laravel 10 desde cero, cuando termines el curso podrás crear aplicaciones en este framework básicas y no tan básicas de manera fluida. Tendrás una idea clara de cómo atacar cualquier proyecto para el consumo y gestión de contenido por Internet, desarrollar los componentes fundamentales de una aplicación tipo Blog en PHP.',
                 'level_id' => 1,            // Básico
                 'category_id' => 1,         // Desarrollo web
                 'price_id' => 1,            // Gratis
             ],
+        ];
+
+        $courses = [
+            [
+                'title' => 'Introducción al Desarrollo Web',
+                'subtitle' => 'Construye tu base en el desarrollo web con HTML, CSS y JavaScript.',
+                'description' => 'Descubre los fundamentos del desarrollo web mientras creas proyectos prácticos. Aprende a estructurar contenido con HTML, dar estilo con CSS y agregar interactividad con JavaScript.',
+                'level_id' => 1,            // Básico
+                'category_id' => 1,         // Desarrollo web
+                'price_id' => 1,            // Gratis
+            ],
+            [
+                'title' => 'Diseño de Interfaces Avanzado',
+                'subtitle' => 'Perfecciona tus habilidades de diseño para crear experiencias de usuario sorprendentes.',
+                'description' => 'Avanza en el diseño centrado en el usuario. Aprende técnicas avanzadas de prototipado, diseño de interacción y principios de usabilidad. Domina herramientas como Figma y obtén una perspectiva sólida sobre las tendencias actuales en UI/UX.',
+                'level_id' => 2,            // Intermedio
+                'category_id' => 2,         // Diseño gráfico
+                'price_id' => 3,            // Intermedio
+            ],
+            [
+                'title' => 'Introducción al SEO y Marketing Digital',
+                'subtitle' => 'Descubre los fundamentos del SEO y posiciona tu contenido en los motores de búsqueda.',
+                'description' => 'Aprende los conceptos básicos del SEO y cómo aplicar estrategias efectivas para mejorar la visibilidad de tu sitio web en los motores de búsqueda. Explora técnicas de optimización de contenido, palabras clave y análisis de datos para impulsar el tráfico orgánico.',
+                'level_id' => 1,            // Básico
+                'category_id' => 5,         // Marketing Digital
+                'price_id' => 2,            // Básico
+            ],
+
         ];
 
         $requirements = [
@@ -106,6 +134,17 @@ class CourseSeeder extends Seeder
             ],
         ];
 
+        $comments = [
+            'Muy buena explicación, me ha gustado mucho. Gracias!',
+            'No os parece que el profesor habla demasiado rápido?',
+            'No me ha gustado nada, el contenido está obsoleto.',
+            'Tienes algun enlace para poder buscar más información?',
+            'Me da error, ¿alguien más tiene este problema?',
+            'El tiempo pasa... volando, pero no me entero de nada.',
+        ];
+
+        $teachers = DB::table('model_has_roles')->where('role_id', 2)->pluck('model_id')->toArray();
+
         /* Crear un curso por cada elemento dentro del array $courses */
         foreach ($courses as $item) {
             $course = Course::create([
@@ -117,7 +156,7 @@ class CourseSeeder extends Seeder
                 'user_id' => 1,
                 'level_id' => $item['level_id'],
                 'category_id' => $item['category_id'],
-                'price_id' => $item['price_id'],
+                'price_id' => 1,
             ]);
 
             // Crear 1 imagen por cada curso
@@ -143,29 +182,8 @@ class CourseSeeder extends Seeder
                 ]);
             }
 
-            // Crear 3 secciones por cada curso
-            foreach ($sections as $item) {
-                $section = Section::create([
-                    'title' => $item,
-                    'course_id' => $course->id,
-                ]);
-
-                // Crear 3 lecciones por cada sección
-                for ($i = 0; $i < 3; $i++) {
-                    $video = fake()->randomElement($videos);
-                    Lesson::create([
-                        'title' => $lessons[$section->id - 1][$i],
-                        'slug' => Str::slug($lessons[$section->id - 1][$i]),
-                        'path' => $video['path'],
-                        'iframe' => $video['iframe'],
-                        'platform_id' => $video['platform_id'],
-                        'section_id' => $section->id,
-                    ]);
-                }
-            }
-
             // Matricular estudiantes en el curso
-            if ($course->status === 3) {
+            if ($course->status == 3) {
                 $studentsCount = 0;
                 $randomMax = rand(0, 10);
                 foreach (User::all() as $student) {
@@ -185,6 +203,41 @@ class CourseSeeder extends Seeder
 
                     if ($studentsCount >= $randomMax) {
                         break;
+                    }
+                }
+            }
+
+            // Crear 3 secciones por cada curso
+            for ($i = 0; $i < 3; $i++) {
+                $section = Section::create([
+                    'title' => $sections[$i],
+                    'course_id' => $course->id,
+                ]);
+
+                // Crear 3 lecciones por cada sección
+                for ($j = 0; $j < 3; $j++) {
+                    $video = fake()->randomElement($videos);
+                    $lesson = Lesson::create([
+                        'title' => $lessons[$i][$j],
+                        'slug' => Str::slug($lessons[$i][$j]) . '-' . $section->id,
+                        'path' => $video['path'],
+                        'iframe' => $video['iframe'],
+                        'platform_id' => $video['platform_id'],
+                        'section_id' => $section->id,
+                    ]);
+
+                    // Insertar comentarios en las lecciones
+                    if ($course->status === 3) {
+                        $students = $course->students;
+                        if ($students->count()) {
+                        if (fake()->randomElement([0, 0, 0, 0, 0, 1])) {
+                                $student = fake()->randomElement($students);
+                                $lesson->comments()->create([
+                                    'body' => fake()->randomElement($comments),
+                                    'user_id' => $student->id,
+                                ]);
+                            }
+                        }
                     }
                 }
             }
