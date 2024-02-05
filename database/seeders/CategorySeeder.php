@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
-            'name' => 'UI/UX',
+            'name' => 'Diseño web',
         ]);
 
         Category::create([
