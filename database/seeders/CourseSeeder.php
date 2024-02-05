@@ -510,6 +510,16 @@ class CourseSeeder extends Seeder
             'Tienes algun enlace para poder buscar más información?',
             'Me da error, ¿alguien más tiene este problema?',
             'El tiempo pasa... volando, pero no me entero de nada.',
+            'Excelente explicación, todo quedó claro. ¡Gracias por compartir!',
+            'Creo que podrías profundizar un poco más en el tema, se queda corto.',
+            'Me encanta tu manera de enseñar, haces que todo parezca fácil.',
+            'El contenido es muy completo, me ha sido de gran ayuda.',
+            'Necesito más ejemplos prácticos para entender mejor el concepto.',
+            '¿Alguien más encuentra la velocidad de la explicación perfecta?',
+            'Genial, pero ¿podrías hacer un vídeo sobre este tema?',
+            'Me parece un poco aburrido, podrías añadirle más dinamismo.',
+            '¡Estoy enganchado a tus explicaciones, sigue así!',
+            'Tengo la misma duda que el comentario anterior, ¿alguna respuesta?'
         ];
 
         $teachers = DB::table('model_has_roles')->where('role_id', 2)->pluck('model_id')->toArray();
@@ -599,7 +609,7 @@ class CourseSeeder extends Seeder
                     if ($course->status === 3) {
                         $students = $course->students;
                         if ($students->count()) {
-                        if (fake()->randomElement([0, 0, 1])) {
+                        if (fake()->randomElement([0, 1])) {
                                 $student = fake()->randomElement($students);
                                 $lesson->comments()->create([
                                     'body' => fake()->randomElement($comments),
