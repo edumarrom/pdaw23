@@ -13,6 +13,7 @@ use App\Models\Section;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class CourseSeeder extends Seeder
@@ -27,17 +28,10 @@ class CourseSeeder extends Seeder
                 'title' => 'Aprende Laravel desde cero',
                 'subtitle' => 'El mejor curso de Laravel',
                 'description' => 'Aprende Laravel desde cero, con las mejores prácticas y con ejemplos reales.',
-                'slug' => 'aprende-laravel-desde-cero',
-                'status' => 3,              // Publicado
-                'user_id' => 1,             // edu@dabaliu.test
                 'level_id' => 1,            // Básico
                 'category_id' => 1,         // Desarrollo web
                 'price_id' => 1,            // Gratis
             ],
-        ];
-
-        $imagenes = [
-            'courses/aprende-laravel-desde-cero.jpg',
         ];
 
         $requirements = [
@@ -76,6 +70,19 @@ class CourseSeeder extends Seeder
             ],
         ];
 
+        $videos = [
+            [
+                'path' => 'https://youtu.be/FUKmyRLOlAA',
+                'iframe' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/FUKmyRLOlAA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                'platform_id' => 1,
+            ],
+            [
+                'path' => 'https://vimeo.com/110778582',
+                'iframe' => '<iframe src="https://player.vimeo.com/video/110778582" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>',
+                'platform_id' => 2,
+            ],
+        ];
+
         $reviews = [
             [
                 'rating' => 5,
@@ -101,11 +108,21 @@ class CourseSeeder extends Seeder
 
         /* Crear un curso por cada elemento dentro del array $courses */
         foreach ($courses as $item) {
-            $course = Course::create($item);
+            $course = Course::create([
+                'title' => $item['title'],
+                'subtitle' => $item['subtitle'],
+                'description' => $item['description'],
+                'slug' => Str::slug($item['title']),
+                'status' => 3,
+                'user_id' => 1,
+                'level_id' => $item['level_id'],
+                'category_id' => $item['category_id'],
+                'price_id' => $item['price_id'],
+            ]);
 
             // Crear 1 imagen por cada curso
             Image::create([
-                'path' => $imagenes[$course->id - 1],
+                'path' => "courses/$course->slug.jpg",
                 'imageable_id' => $course->id,
                 'imageable_type' => Course::class,
             ]);
@@ -135,12 +152,13 @@ class CourseSeeder extends Seeder
 
                 // Crear 3 lecciones por cada sección
                 for ($i = 0; $i < 3; $i++) {
+                    $video = fake()->randomElement($videos);
                     Lesson::create([
                         'title' => $lessons[$section->id - 1][$i],
                         'slug' => Str::slug($lessons[$section->id - 1][$i]),
-                        'path' => 'https://youtu.be/FUKmyRLOlAA',
-                        'iframe' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/FUKmyRLOlAA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
-                        'platform_id' => 1,
+                        'path' => $video['path'],
+                        'iframe' => $video['iframe'],
+                        'platform_id' => $video['platform_id'],
                         'section_id' => $section->id,
                     ]);
                 }
