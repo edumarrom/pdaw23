@@ -22,7 +22,7 @@ class CourseSeeder extends Seeder
      */
     public function run(): void
     {
-        $cursos = [
+        $courses = [
             [
                 'title' => 'Aprende Laravel desde cero',
                 'subtitle' => 'El mejor curso de Laravel',
@@ -40,25 +40,25 @@ class CourseSeeder extends Seeder
             'courses/aprende-laravel-desde-cero.jpg',
         ];
 
-        $requisitos = [
+        $requirements = [
             'Conocimientos previos de ...',
             'Experiencia previa con ...',
             'Disponer de ciertas ...'
         ];
 
-        $metas = [
+        $goals = [
             'Comprender los fundamentos de...',
             'Dominar los aspectos de ...',
             'Desarrollar una aplicación con ...',
         ];
 
-        $secciones = [
+        $sections = [
             'Planteamiento del curso',
             'Contenido principal',
             'Últimos retoques y despedida',
         ];
 
-        $lecciones = [
+        $lessons = [
             [
                 'Presentación del curso',
                 'Materiales necesarios',
@@ -76,7 +76,7 @@ class CourseSeeder extends Seeder
             ],
         ];
 
-        $valoraciones = [
+        $reviews = [
             [
                 'rating' => 5,
                 'comment' => 'Excelente curso, muy completo y bien explicado.',
@@ -99,68 +99,68 @@ class CourseSeeder extends Seeder
             ],
         ];
 
-        /* Crear un curso por cada elemento dentro del array $cursos */
-        foreach ($cursos as $item) {
-            $curso = Course::create($item);
+        /* Crear un curso por cada elemento dentro del array $courses */
+        foreach ($courses as $item) {
+            $course = Course::create($item);
 
             // Crear 1 imagen por cada curso
             Image::create([
-                'path' => $imagenes[$curso->id - 1],
-                'imageable_id' => $curso->id,
+                'path' => $imagenes[$course->id - 1],
+                'imageable_id' => $course->id,
                 'imageable_type' => Course::class,
             ]);
 
             // Crear 3 requisitos por cada curso
-            foreach ($requisitos as $requisito) {
+            foreach ($requirements as $requirement) {
                 Requirement::create([
-                    'name' => $requisito,
-                    'course_id' => $curso->id,
+                    'name' => $requirement,
+                    'course_id' => $course->id,
                 ]);
             }
 
             // Crear 3 metas por cada curso
-            foreach ($metas as $meta) {
+            foreach ($goals as $goal) {
                 Goal::create([
-                    'name' => $meta,
-                    'course_id' => $curso->id,
+                    'name' => $goal,
+                    'course_id' => $course->id,
                 ]);
             }
 
             // Crear 3 secciones por cada curso
-            foreach ($secciones as $item) {
-                $seccion = Section::create([
+            foreach ($sections as $item) {
+                $section = Section::create([
                     'title' => $item,
-                    'course_id' => $curso->id,
+                    'course_id' => $course->id,
                 ]);
 
                 // Crear 3 lecciones por cada sección
                 for ($i = 0; $i < 3; $i++) {
                     Lesson::create([
-                        'title' => $lecciones[$seccion->id - 1][$i],
-                        'slug' => Str::slug($lecciones[$seccion->id - 1][$i]),
+                        'title' => $lessons[$section->id - 1][$i],
+                        'slug' => Str::slug($lessons[$section->id - 1][$i]),
                         'path' => 'https://youtu.be/FUKmyRLOlAA',
                         'iframe' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/FUKmyRLOlAA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
                         'platform_id' => 1,
-                        'section_id' => $seccion->id,
+                        'section_id' => $section->id,
                     ]);
                 }
             }
 
             // Matricular estudiantes en el curso
-            if ($curso->status === 3) {
+            if ($course->status === 3) {
                 $studentsCount = 0;
                 $randomMax = rand(0, 10);
                 foreach (User::all() as $student) {
                     if(fake()->randomElement([0, 0, 1])) {
-                        $curso->students()->attach($student->id);
+                        $course->students()->attach($student->id);
                         $studentsCount++;
                         if (fake()->randomElement([0, 0, 1])) {
-                            $valoracion = fake()->randomElement($valoraciones);
+                            $review = fake()->randomElement($reviews);
                             Review::create([
-                                'course_id' => $curso->id,
+                                'course_id' => $course->id,
                                 'user_id' => $student->id,
-                                'rating' => $valoracion['rating'],
-                                'comment' => $valoracion['comment'],
+                                'rating' => $review['rating'],
+                                'comment' => $review['comment'],
                             ]);
                         }
                     }

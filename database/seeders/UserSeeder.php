@@ -21,6 +21,19 @@ class UserSeeder extends Seeder
 
         $admin->assignRole('admin');
 
-        User::factory(99)->create();
+        $teachers = User::factory(99)->create();
+
+        $teachersCount = 0;
+        while ($teachersCount < 15) {
+            foreach ($teachers as $teacher) {
+                if (fake()->randomElement(['0', '0', '0', '0', '1'])) {
+                    $teacher->assignRole('teacher');
+                    $teachersCount++;
+                    if ($teachersCount >= 14) {
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

@@ -32,5 +32,10 @@ class PriceSeeder extends Seeder
             'name' => 'Avanzado',
             'value' => 49.99,
         ]);
+
+        Price::create([
+            'name' => 'Experto',
+            'value' => 99.99,
+        ]);
     }
 }
