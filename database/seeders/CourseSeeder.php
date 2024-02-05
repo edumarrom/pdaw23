@@ -316,9 +316,9 @@ class CourseSeeder extends Seeder
                 'price_id' => 3,            // Intermedio
             ],
             [
-                'title' => 'Desarrollo de Aplicaciones Móviles con Ionic',
-                'subtitle' => 'Aprende a construir aplicaciones móviles multiplataforma con Ionic, Angular y Cordova.',
-                'description' => 'En este curso de desarrollo de aplicaciones móviles con Ionic, te sumergirás en el mundo del desarrollo multiplataforma utilizando tecnologías web estándar. Aprenderás a utilizar Ionic junto con Angular para construir aplicaciones móviles atractivas y funcionales. Explorarás cómo integrar funcionalidades nativas utilizando Cordova, y cómo implementar y publicar tus aplicaciones en tiendas de aplicaciones. Con ejemplos prácticos y proyectos reales, estarás preparado para desarrollar tus propias aplicaciones móviles con Ionic y llegar a una amplia audiencia en iOS y Android.',
+                'title' => 'Desarrollo de Aplicaciones Móviles con Flutter y Dart',
+                'subtitle' => 'Construye aplicaciones móviles atractivas y multiplataforma con el framework Flutter y el lenguaje Dart.',
+                'description' => 'En este curso de desarrollo de aplicaciones móviles, aprenderás a utilizar Flutter y Dart para crear aplicaciones nativas y atractivas que funcionan en iOS y Android. Explorarás la estructura del framework, la creación de interfaces de usuario fluidas con widgets personalizables, y la gestión eficiente del estado de la aplicación. Aprenderás a implementar funcionalidades avanzadas, como integración de API, gestión de rutas y almacenamiento local. Con ejemplos prácticos y proyectos reales, estarás preparado para llevar tus ideas a dispositivos móviles con Flutter y Dart.',
                 'level_id' => 2,            // Intermedio
                 'category_id' => 1,         // Desarrollo web
                 'price_id' => 3,            // Intermedio
