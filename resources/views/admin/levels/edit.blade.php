@@ -1,3 +1,6 @@
+@section('title')
+    Editar nivel: {{ $level->name }} - Administración | {{ config('app.name') }}
+@endsection
 <x-admin-layout>
     <div class="md:container">
         <div class="flex items-center justify-between mb-4">

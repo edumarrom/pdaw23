@@ -51,7 +51,13 @@
                             <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-wrap">
                                 <img class="w-auto h-20 aspect-[16/9] rounded object-cover object-center" src="{{ $course->imagePath }}" alt="">
                                 <div class="ps-3">
-                                    <div class="text-base font-semibold">{{ $course->title }}</div>
+                                    <div class="text-base font-semibold">
+                                        @if ($course->status != 3)
+                                            {{ $course->title }}
+                                        @else
+                                            <a href="{{ route('courses.show', $course) }}" class="hover:text-indigo-700">{{ $course->title }}</a>
+                                        @endif
+                                    </div>
                                     <div class="font-normal text-gray-500">{{ $course->category->name }}</div>
                                 </div>
                             </th>

@@ -1,3 +1,6 @@
+@section('title')
+    Revisando: {{ $course->title }} - Administración | {{ config('app.name') }}
+@endsection
 <x-admin-layout>
     <section class="bg-cover {{-- bg-right-top bg-no-repeat --}} py-12" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url({{$course->imagePath }})">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">

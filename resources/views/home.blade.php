@@ -1,3 +1,4 @@
+@section('title', 'Cursos en línea para todos ➡ El placer de aprender | Dabaliu')
 <x-app-layout>
 
     {{-- Hero Section --}}

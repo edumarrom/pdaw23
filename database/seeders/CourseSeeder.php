@@ -605,6 +605,12 @@ class CourseSeeder extends Seeder
                         'section_id' => $section->id,
                     ]);
 
+                    // Crear una descripción
+                    Description::create([
+                        'description' => 'En esta lección vamos a hacer...',
+                        'lesson_id' => $lesson->id,
+                    ]);
+
                     // Insertar comentarios en las lecciones
                     if ($course->status === 3) {
                         $students = $course->students;

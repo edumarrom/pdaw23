@@ -1,3 +1,4 @@
+@section('title', 'Mis cursos | Dabaliu')
 <div class="container">
 
     <div class="flex flex-col justify-between mt-24 md:flex-row">
