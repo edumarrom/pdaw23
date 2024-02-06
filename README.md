@@ -36,3 +36,54 @@ Esta aplicación y el Framework Laravel son software de código abierto licencia
 # Instalación
 
 ## Requisitos
+
+Esta aplicación ha sido desarrollada con las siguientes versiones de software, por lo que se recomienda utilizar estas versiones o superiores para su correcto funcionamiento:
+
+- PHP 8.2.15
+
+- Composer 2.6.2
+
+- Node.js 18.19.0
+
+- NPM 10.2.3
+
+- PostgreSQL 14.10
+
+## Pasos para la instalación
+1. Clonar el repositorio, ya sea:
+
+    1. Mediante gh: `gh repo clone edumarrom/dabaliu`
+
+    2. Mediante git `git clone https://github.com/edumarrom/dabaliu.git`
+
+2. Instalar las dependencias de composer: `composer install`
+
+3. Instalar las dependencias de npm: `npm install`
+
+4. Crear el archivo .env a partir del .env.example: `cp .env.example .env`
+
+5. Generar la clave de la aplicación: `php artisan key:generate`
+
+6. Generar el enlace simbólico para el almacenamiento de archivos: `php artisan storage:link`
+
+7. Configurar la base de datos en el archivo .env
+
+8. Configurar el email y la contraseña del usuario admin en el archivo .env:
+
+    ```env
+    ADMIN_EMAIL="fulano@detal.com"
+    ADMIN_PASSWORD="C0ntr@s3ñA"
+    ```
+    > Puedes dejar los valores por defecto si lo deseas.
+
+9. Ejecutar las migraciones y los seeders: `php artisan migrate --seed`
+
+10. Ejecutar el servidor de desarrollo: `php artisan serve`
+
+11. Compilar los assets:
+
+    1. `npm run build` para compilar los assets en producción.
+
+    2. `npm run dev` para mantener al compilador a la escucha de cambios y compilarlos en tiempo real.
+
+12. Acceder a la aplicación en el navegador: `http://dabaliu.test:8000`
