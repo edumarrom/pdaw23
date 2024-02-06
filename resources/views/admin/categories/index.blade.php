@@ -1,3 +1,4 @@
+@section('title', 'Categorías - Administración | Dabaliu')
 <x-admin-layout>
 
     <div class="md:container">

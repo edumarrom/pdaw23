@@ -1,3 +1,4 @@
+@section('title', 'Nueva categoría - Administración | Dabaliu')
 <x-admin-layout>
     <div class="md:container">
         <div class="flex items-center justify-between mb-4">
