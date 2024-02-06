@@ -6,7 +6,7 @@
             <h3 class="inline-flex items-center text-xl text-gray-700">Filtrar por: </h3>
 
             <button class="bg-white text-gray-700 rounded shadow h-10 px-4"
-                    wire:click="resetFilters">Todos los cursos</button>
+                    wire:click="resetFilters">Reiniciar</button>
 
             <x-dropdown align="left">
                 <x-slot name="trigger">
