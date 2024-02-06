@@ -30,7 +30,7 @@ class CourseController extends Controller
     public function enroll(Course $course) {
         $course->students()->sync(auth()->user()->id);
 
-        Mail::to(auth()->user()->email)->send(new CoursePurchased($course));
+        // Mail::to(auth()->user()->email)->send(new CoursePurchased($course));
 
         return redirect()->route('courses.learn', $course);
     }

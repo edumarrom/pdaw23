@@ -18,7 +18,15 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
-            'name' => 'Diseño gráfico',
+            'name' => 'Diseño web',
+        ]);
+
+        Category::create([
+            'name' => 'Lenguajes de programación',
+        ]);
+
+        Category::create([
+            'name' => 'Bases de datos',
         ]);
 
         Category::create([

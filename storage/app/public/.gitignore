@@ -1,6 +1,7 @@
-# Ignora todo excepto el logo
 *
 !.gitignore
+!courses/
+!courses/*
 !dabaliu_logo.png
 !no-image.png
 !blank-image.png
