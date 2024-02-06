@@ -31,8 +31,6 @@ Esta aplicación y el Framework Laravel son software de código abierto licencia
 
 <br/>
 <br/>
-<br/>
-<br/>
 
 # Instalación
 
@@ -91,8 +89,6 @@ Esta aplicación ha sido desarrollada con las siguientes versiones de software, 
 
 <br/>
 <br/>
-<br/>
-<br/>
 
 # Inicio rápido
 
@@ -119,6 +115,9 @@ Tenemos un panel con un resumen de nuestro progreso en el curso, y un botón par
 ## Mis cursos
 
 En el desplegable de la barra de navegación tenemos un enlace a la página de mis cursos, donde podemos ver los cursos que hemos adquirido, junto a un buscador para localizar fácilmente un curso por su nombre, categoría, nivel o nombre del profesor.
+
+<br/>
+<br/>
 
 # Profesores
 
@@ -156,6 +155,9 @@ Desde aquí podemos una lista de los alumnos que se encuentran matriculados a nu
 ## Solicitar revisión del curso
 
 Si nuestro curso se encuentra en estado de borrador, podemos solicitar su revisión para notificar al administrador y pueda revisarlo para su publicación.
+
+<br/>
+<br/>
 
 # Administración
 
