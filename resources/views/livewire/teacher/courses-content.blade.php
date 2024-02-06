@@ -1,3 +1,6 @@
+@section('title')
+    Contenido del curso - Editando: {{ $course->title }} - Profesores | Dabaliu
+@endsection
 <div>
     <div class="container py-8 grid grid-cols-5 gap-2">
 

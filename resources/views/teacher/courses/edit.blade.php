@@ -1,3 +1,6 @@
+@section('title')
+    Información básica - Editando: {{ $course->title }} - Profesores | Dabaliu
+@endsection
 <x-app-layout>
     <div class="container py-8 grid grid-cols-5 gap-2">
 

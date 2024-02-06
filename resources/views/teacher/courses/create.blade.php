@@ -1,3 +1,4 @@
+@section('title', 'Nuevo curso - Profesores | Dabaliu')
 <x-app-layout>
     <div class="container py-8">
 

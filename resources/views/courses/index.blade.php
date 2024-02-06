@@ -1,3 +1,4 @@
+@section('title', 'Cursos gratis, de Básico a Experto ➡ Desarrollo, Diseño y más | Dabaliu')
 <x-app-layout>
 
     {{-- Hero Section --}}
