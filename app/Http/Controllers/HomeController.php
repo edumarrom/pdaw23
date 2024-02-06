@@ -13,7 +13,14 @@ class HomeController extends Controller
             ->take(8)
             ->get();
 
+        /* $bestRatedCourses = Course::where('status', 3)
+            ->withAvg('reviews', 'rating')
+            ->orderByDesc('reviews_avg_rating')
+            ->take(8)
+            ->get(); */
+
         $bestRatedCourses = Course::where('status', 3)
+            ->has('reviews')
             ->withAvg('reviews', 'rating')
             ->orderByDesc('reviews_avg_rating')
             ->take(8)
